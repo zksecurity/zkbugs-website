@@ -1,0 +1,62 @@
+[
+  {
+    "Tool": "Circomspect",
+    "URL": "https://github.com/trailofbits/circomspect",
+    "DSL": "Circom",
+    "Analysis": "Static Analysis"
+  },
+  {
+    "Tool": "ZKAP",
+    "URL": "https://github.com/whbjzzwjxq/ZKAP",
+    "DSL": "Circom",
+    "Analysis": "Static Analysis"
+  },
+  {
+    "Tool": "halo2-analyzer",
+    "URL": "https://github.com/quantstamp/halo2-analyzer",
+    "DSL": "halo2",
+    "Analysis": "Static Analysis / Symbolic Analysis"
+  },
+  {
+    "Tool": "Coda",
+    "URL": "https://github.com/Veridise/coda",
+    "DSL": "Circom",
+    "Analysis": "Formal Verification (Coq)"
+  },
+  {
+    "Tool": "Picus",
+    "URL": "https://github.com/Veridise/Picus",
+    "DSL": "Circom, GNARK (R1CS)",
+    "Analysis": "Formal Verification"
+  },
+  {
+    "Tool": "Ecne",
+    "URL": "https://github.com/franklynwang/EcneProject",
+    "DSL": "Circom (R1CS)",
+    "Analysis": "Formal Verification"
+  },
+  {
+    "Tool": "circom_civer",
+    "URL": "https://github.com/costa-group/circom_civer",
+    "DSL": "Circom",
+    "Analysis": "Formal Verification"
+  },
+  {
+    "Tool": "gnark-lean-extractor",
+    "URL": "https://github.com/reilabs/gnark-lean-extractor",
+    "DSL": "Gnark",
+    "Analysis": "Formal Verification (Lean)"
+  },
+  {
+    "Tool": "sierra_analyzer",
+    "URL": "https://github.com/FuzzingLabs/sierra-analyzer",
+    "DSL": "Cairo",
+    "Analysis": "Static Analysis / Symbolic Execution"
+  },
+  {
+    "Tool": "Pilspector",
+    "URL": "https://github.com/Schaeff/pilspector/",
+    "DSL": "PIL",
+    "Analysis": "Symbolic Analysis"
+  }
+]

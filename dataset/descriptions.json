@@ -1,0 +1,58 @@
+{
+  "vulnerabilities": [
+    {
+      "title": "Under-Constrained",
+      "description": "The most frequent vulnerability in ZKP circuits arises from insufficient constraints. This deficiency causes the verifier to mistakenly accept invalid proofs for incorrect witnesses, thus undermining the system's soundness."
+    },
+    {
+      "title": "Over-Constrained",
+      "description": "Although less common than being underconstrained, circuits can be over-constrained, leading to the rejection of valid witnesses by honest provers. This issue stems from extra constraints in the verifier circuit and leads to breaking completeness, where legitimate solutions cannot be proven or verified."
+    },
+    {
+      "title": "Computational Issues",
+      "description": "Occurs when the computational part of a circuit is erroneous, often leading to completeness issues where for correct inputs, the witness generation either fails or produces wrong results. This category is distinct as the primary issue is not directly related to applying constraints."
+    }
+  ],
+  "root_causes": [
+    {
+      "title": "Assigned but Unconstrained",
+      "description": "A frequent issue in zk circuit design lies in distinguishing between assignments and constraints. The problem arises when variables are assigned values based on correct computations but lack corresponding constraints, leading the verifier to erroneously accept any value for these variables."
+    },
+    {
+      "title": "Missing Input Constraints",
+      "description": "Developers sometimes neglect to apply constraints on input variables in reusable circuits, either unintentionally or because they anticipate these constraints will be enforced at a different interface level. This can lead to severe vulnerabilities if not explicitly documented or constrained."
+    },
+    {
+      "title": "Unsafe Reuse of Circuit",
+      "description": "The practice of reusing circuits can introduce vulnerabilities if not handled correctly. This occurs when circuits are reused without appropriately constraining their inputs/outputs or when developers fail to apply necessary constraints on output signals."
+    },
+    {
+      "title": "Wrong Translation of Logic into Constraints",
+      "description": "Variables that, despite being constrained, can take multiple or any values under certain assignments of other variables, leading to underconstrained variables. This can result from missing corner cases or incorrect constraint logic."
+    },
+    {
+      "title": "Incorrect Custom Gates",
+      "description": "This occurs when custom gates are not applied to the correct rows/cells, such as accidentally choosing the wrong offset when defining/using a gate or enabling the wrong selector."
+    },
+    {
+      "title": "Out-of-Circuit Computation Not Being Constrained",
+      "description": "Out-of-circuit computation refers to operations within the code that do not directly impact witness generation but play a crucial role in functionality. If these computations lead to incorrect witness values, they can cause vulnerabilities."
+    },
+    {
+      "title": "Arithmetic Field Issues",
+      "description": "Arithmetic overflows and underflows in zk circuits pose challenges due to the absence of runtime checks. These issues can lead to multiple solutions being accepted, making circuits underconstrained."
+    },
+    {
+      "title": "Circuit Design Issue",
+      "description": "Design flaws in circuits that lead to undesired behavior or break protocol properties, such as incorrectly defining a variable as private instead of public."
+    },
+    {
+      "title": "Misimplementation of a Specification",
+      "description": "This occurs when a circuit fails to adhere completely to explicit or implicit specifications, particularly in addressing critical aspects or corner cases, leading to unexpected behavior."
+    },
+    {
+      "title": "Other Programming Errors",
+      "description": "This category includes common programming mistakes such as API misuse, incorrect indexing in arrays, and logical errors in witness generation that are not directly related to constraint application."
+    }
+  ]
+}
