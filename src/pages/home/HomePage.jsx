@@ -1,5 +1,11 @@
+import BugsTable from "../../components/bugs-table/BugsTable";
+
 function HomePage() {
-  return <div>HomePage</div>;
+  return (
+    <div>
+      <BugsTable />
+    </div>
+  );
 }
 
 export default HomePage;
