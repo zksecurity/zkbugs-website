@@ -23,3 +23,9 @@ export const wordToCamel = (word) => {
     rest.map((str) => str[0].toUpperCase() + str.slice(1)).join("")
   );
 };
+
+export const camelToWord = (camel) => {
+  return camel
+    .replace(/([A-Z])/g, " $1")
+    .replace(/^./, (str) => str.toUpperCase());
+};

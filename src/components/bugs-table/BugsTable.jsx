@@ -1,15 +1,14 @@
-import { useEffect } from "react";
+import { DataGrid } from "@mui/x-data-grid";
+import useTableConfig from "../../hooks/useTableConfig";
 import Container from "../layout/Container";
-import { api } from "../../api/api";
 
 function BugsTable() {
-  useEffect(() => {
-    api.fetchBugs().then((data) => {
-      console.log(data);
-    });
-  }, []);
-
-  return <Container></Container>;
+  const { rows, columns } = useTableConfig();
+  return (
+    <Container>
+      <DataGrid rows={rows} columns={columns} />
+    </Container>
+  );
 }
 
 export default BugsTable;

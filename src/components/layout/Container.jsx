@@ -1,11 +1,10 @@
 import { styled } from "@mui/material";
 
 const Container = styled("div")(({ theme }) => ({
-  width: "100%",
   margin: "0 auto",
   maxWidth: `calc(${theme.breakpoints.values.xl}px - 6rem)`,
   [theme.breakpoints.down("xl")]: {
-    maxWidth: `calc(${theme.breakpoints.values.xl}px - 5rem)`,
+    maxWidth: `calc(${theme.breakpoints.values.lg}px - 5rem)`,
   },
   [theme.breakpoints.down("lg")]: {
     maxWidth: `calc(${theme.breakpoints.values.md}px - 4rem)`,
