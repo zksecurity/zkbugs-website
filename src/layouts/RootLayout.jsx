@@ -1,11 +1,14 @@
 import { lazy } from "react";
 import { BrowserRouter, Route, Routes } from "react-router";
-import Header from "../components/header/Header";
 import { paths } from "../utils/paths";
+import Header from "../components/header/Header";
 import Footer from "../components/footer/Footer";
 
 const HomePage = lazy(() => import("../pages/home/HomePage"));
 const ToolsPage = lazy(() => import("../pages/tools/ToolsPage"));
+const DescriptionsPage = lazy(() =>
+  import("../pages/descriptions/DescriptionsPage")
+);
 
 function RootLayout() {
   return (
@@ -13,7 +16,8 @@ function RootLayout() {
       <Header />
       <Routes>
         <Route path={paths.home} element={<HomePage />} />
-        <Route path={paths.expertise} element={<ToolsPage />} />
+        <Route path={paths.tools} element={<ToolsPage />} />
+        <Route path={paths.descriptions} element={<DescriptionsPage />} />
       </Routes>
       <Footer />
     </BrowserRouter>

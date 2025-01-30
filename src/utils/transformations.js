@@ -16,7 +16,7 @@ export const deepTransformKeys = (obj, transform, exclude = []) => {
 };
 
 export const wordToCamel = (word) => {
-  const [first, ...rest] = word.split(" ");
+  const [first, ...rest] = word.split(/[_ ]/);
 
   return (
     first.toLowerCase() +
