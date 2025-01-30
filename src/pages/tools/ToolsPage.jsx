@@ -3,11 +3,9 @@ import ToolsTable from "../../components/tools-table/ToolsTable";
 
 function ToolsPage() {
   return (
-    <div>
-      <Container>
-        <ToolsTable />
-      </Container>
-    </div>
+    <Container sx={{ marginTop: "4rem" }}>
+      <ToolsTable />
+    </Container>
   );
 }
 

@@ -1,10 +1,11 @@
 import BugsTable from "../../components/bugs-table/BugsTable";
+import Container from "../../components/layout/Container";
 
 function HomePage() {
   return (
-    <div>
+    <Container sx={{ marginTop: "4rem" }}>
       <BugsTable />
-    </div>
+    </Container>
   );
 }
 

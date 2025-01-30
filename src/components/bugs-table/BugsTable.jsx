@@ -1,7 +1,6 @@
 import { DataGrid } from "@mui/x-data-grid";
 import { styled } from "@mui/material";
 import useTableConfig from "../../hooks/useTableConfig";
-import Container from "../layout/Container";
 
 const DataGridStyled = styled(DataGrid)({
   "& .MuiDataGrid-columnHeaders [role=row]": {
@@ -15,11 +14,7 @@ const DataGridStyled = styled(DataGrid)({
 
 function BugsTable() {
   const { rows, columns } = useTableConfig();
-  return (
-    <Container>
-      <DataGridStyled rows={rows} columns={columns} />
-    </Container>
-  );
+  return <DataGridStyled rows={rows} columns={columns} />;
 }
 
 export default BugsTable;
