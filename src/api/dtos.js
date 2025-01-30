@@ -26,6 +26,10 @@ const getSourceVariant = (source = {}) => {
 export class JsonDTO {
   static convertToCamelCase(bugsJson) {
     const bugsCamel = deepTransformKeys(bugsJson, wordToCamel);
+    return bugsCamel;
+  }
+  static convertBugs(bugsJSON) {
+    const bugsCamel = this.convertToCamelCase(bugsJSON);
     return bugsCamel.map((bug) => {
       const sourceValue = getSourceValue(bug.source);
       const sourceVariant = getSourceVariant(bug.source);
@@ -38,5 +42,14 @@ export class JsonDTO {
         },
       };
     });
+  }
+  static convertTools(toolsJSON) {
+    const toolsCamel = this.convertToCamelCase(toolsJSON, wordToCamel);
+    return toolsCamel.map((tool, index) => ({ ...tool, id: `tool-${index}` }));
+  }
+
+  static convertDescriptions(descriptionsJSON) {
+    const descriptionsCamel = this.convertToCamelCase(descriptionsJSON);
+    return descriptionsCamel;
   }
 }
