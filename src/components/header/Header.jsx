@@ -25,7 +25,15 @@ const HeaderStyled = styled("div")({
   },
   "& .menu": {
     display: "flex",
-    gap: "1rem",
+    gap: "1.25rem",
+    "& a": {
+      color: "#657795",
+      borderBottom: "2px solid transparent",
+      transition: "border-bottom 0.2s",
+      "&:hover": {
+        borderBottom: "2px solid rgb(128, 143, 170)",
+      },
+    },
   },
 });
 
@@ -40,6 +48,7 @@ function Header() {
             <Logo />
           </NavLink>
           <div className="menu">
+            <NavLink to={paths.home}>Bugs</NavLink>
             <NavLink to={paths.descriptions}>Descriptions</NavLink>
             <NavLink to={paths.tools}>Security Tools</NavLink>
           </div>
