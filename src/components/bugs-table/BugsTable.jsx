@@ -11,6 +11,9 @@ const DataGridStyled = styled(DataGrid)({
       color: "#657795",
     },
   },
+  "& .MuiDataGrid-cell:focus, .MuiDataGrid-cell:focus-within": {
+    outline: "none",
+  },
 });
 
 function BugsTable({ data }) {
