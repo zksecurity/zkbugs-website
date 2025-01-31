@@ -1,10 +1,6 @@
 import { useEffect, useState } from "react";
 import { Check, Clear } from "@mui/icons-material";
-
-const getTrimmedPathFromUrl = (url) => {
-  const urlObj = new URL(url);
-  return urlObj.pathname.split("/").slice(1, 3).join("/");
-};
+import { getTrimmedPathFromUrl } from "../utils/transformations";
 
 const columnsStaticConfig = [
   {

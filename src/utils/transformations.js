@@ -29,3 +29,8 @@ export const camelToWord = (camel) => {
     .replace(/([A-Z])/g, " $1")
     .replace(/^./, (str) => str.toUpperCase());
 };
+
+export const getTrimmedPathFromUrl = (url) => {
+  const urlObj = new URL(url);
+  return urlObj.pathname.split("/").slice(1, 3).join("/");
+};
