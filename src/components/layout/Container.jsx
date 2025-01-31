@@ -13,9 +13,6 @@ const Container = styled("div")(({ theme }) => ({
     maxWidth: `calc(${theme.breakpoints.values.sm}px - 2rem)`,
   },
   [theme.breakpoints.down("sm")]: {
-    maxWidth: `calc(${theme.breakpoints.values.xs}px - 1rem)`,
-  },
-  [theme.breakpoints.down("xs")]: {
     paddingLeft: "1rem",
     paddingRight: "1rem",
   },
