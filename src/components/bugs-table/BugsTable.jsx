@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { DataGrid } from "@mui/x-data-grid";
 import { styled } from "@mui/material";
 import useTableConfig from "../../hooks/useTableConfig";
@@ -12,9 +13,29 @@ const DataGridStyled = styled(DataGrid)({
   },
 });
 
-function BugsTable() {
-  const { rows, columns } = useTableConfig();
+function BugsTable({ data }) {
+  const { rows, columns } = useTableConfig(data);
   return <DataGridStyled rows={rows} columns={columns} />;
 }
 
 export default BugsTable;
+
+BugsTable.propTypes = {
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      dsl: PropTypes.string,
+      impact: PropTypes.string,
+      id: PropTypes.string,
+      title: PropTypes.string,
+      reproduced: PropTypes.bool,
+      rootCause: PropTypes.string,
+      vulnerability: PropTypes.string,
+      similarBugs: PropTypes.arrayOf(PropTypes.string),
+      source: PropTypes.shape({
+        variant: PropTypes.string,
+        variantName: PropTypes.string,
+        sourceLink: PropTypes.string,
+      }),
+    })
+  ),
+};

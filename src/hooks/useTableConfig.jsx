@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { api } from "../api/api";
 import { Check, Clear } from "@mui/icons-material";
 
 const getTrimmedPathFromUrl = (url) => {
@@ -102,16 +101,14 @@ const getColumnsConfig = (data = []) => {
   ];
 };
 
-const useTableConfig = () => {
+const useTableConfig = (data) => {
   const [columns, setColumns] = useState([]);
   const [rows, setRows] = useState([]);
   useEffect(() => {
-    api.fetchBugs().then((data) => {
-      const config = getColumnsConfig(data);
-      setColumns(config);
-      setRows(data);
-    });
-  }, []);
+    const config = getColumnsConfig(data);
+    setColumns(config);
+    setRows(data);
+  }, [data]);
 
   return { rows, columns };
 };
