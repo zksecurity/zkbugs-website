@@ -4,6 +4,7 @@ import { useBugsAvailableFilters } from "../../hooks/useBugsAvailableFilters";
 import Select from "../select/Select";
 import { useCallback, useState } from "react";
 import { getTrimmedPathFromUrl } from "../../utils/transformations";
+import { FilterAlt, FilterAltOutlined } from "@mui/icons-material";
 
 const FILTERS = ["dsl", "vulnerability", "project", "reproduced", "rootCause"];
 
@@ -16,6 +17,7 @@ const renderFilterLabel = (filter, value) => {
 
 const ContainerStyled = styled("div")(({ theme }) => ({
   display: "flex",
+  alignItems: "center",
   gap: "0.75rem",
   padding: "1rem",
   borderRadius: "0.5rem",
@@ -48,6 +50,7 @@ function BugsFilters({ data, onChange }) {
 
   return (
     <ContainerStyled>
+      <FilterAltOutlined sx={{ stroke: "#e0e0e0" }} />
       <Select
         label="DSL"
         options={availableFilters.dsl}
