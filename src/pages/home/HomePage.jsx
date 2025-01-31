@@ -4,6 +4,7 @@ import Container from "../../components/layout/Container";
 import ChartsSection from "../../components/charts-section/ChartsSection";
 import BugsFilters from "../../components/bugs-filters/BugsFilters";
 import { useBugs } from "../../hooks/useBugs";
+import { useFilteredBugs } from "../../hooks/useFilteredBugs";
 
 const SectionContainer = styled(Container)({
   marginTop: "4rem",
@@ -16,17 +17,18 @@ const SectionContainer = styled(Container)({
 
 function HomePage() {
   const bugsData = useBugs();
-
+  const { filteredBugs, updateFilters } = useFilteredBugs(bugsData);
+  console.log(filteredBugs);
   return (
     <>
       <SectionContainer className="filters-section">
-        <BugsFilters data={bugsData} />
+        <BugsFilters data={bugsData} onChange={updateFilters} />
       </SectionContainer>
       <SectionContainer>
-        <ChartsSection data={bugsData} />
+        <ChartsSection data={filteredBugs} />
       </SectionContainer>
       <SectionContainer>
-        <BugsTable data={bugsData} />
+        <BugsTable data={filteredBugs} />
       </SectionContainer>
     </>
   );
