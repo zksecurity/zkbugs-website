@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { Check, Clear } from "@mui/icons-material";
 import { getTrimmedPathFromUrl } from "../utils/transformations";
+import Menu from "../components/menu/Menu";
+import { Typography } from "@mui/material";
 
 const columnsStaticConfig = [
   {
@@ -53,12 +55,39 @@ const columnsStaticConfig = [
         <Clear color="error" />
       );
     },
-    // renderCell: (params) => params.row.reproduced ?
   },
   {
     field: "similarBugs",
     headerName: "Similar Bugs",
     width: 230,
+    renderCell: (params) => {
+      const total = params.row.similarBugs?.length ?? 0;
+
+      if (total === 0) {
+        return (
+          <span style={{ fontStyle: "italic", fontWeight: 100 }}>
+            No Similar Bugs
+          </span>
+        );
+      }
+      if (total === 1) {
+        return params.row.similarBugs[0];
+      }
+      return (
+        <Menu options={params.row.similarBugs}>
+          <Typography
+            sx={{
+              fontSize: "14px",
+              "&:hover": {
+                textDecoration: "underline",
+              },
+            }}
+          >
+            {`${total} Similar Bugs`}
+          </Typography>
+        </Menu>
+      );
+    },
   },
 ];
 
