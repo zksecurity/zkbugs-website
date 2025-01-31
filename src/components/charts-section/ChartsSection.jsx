@@ -68,6 +68,7 @@ function ChartsSection({ data }) {
         value={value}
         onChange={handleChange}
         indicatorColor="secondary"
+        variant="scrollable"
         textColor="inherit"
         aria-label="full width tabs example"
         className="chart-tabs"
