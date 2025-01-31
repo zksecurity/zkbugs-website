@@ -1,8 +1,10 @@
+import { NavLink } from "react-router";
 import { styled } from "@mui/material";
 import Container from "../layout/Container";
-import { NavLink } from "react-router";
 import { paths } from "../../utils/paths";
 import Logo from "../logo/Logo";
+import { useScrollDetection } from "../../hooks/useScrollDetection";
+import clsx from "clsx";
 
 const HeaderContainer = styled("div")({
   position: "sticky",
@@ -17,6 +19,10 @@ const HeaderStyled = styled("div")({
   display: "flex",
   justifyContent: "space-between",
   alignItems: "center",
+  transition: "padding 0.2s",
+  "&.scrolled": {
+    padding: 0,
+  },
   "& .menu": {
     display: "flex",
     gap: "1rem",
@@ -24,10 +30,12 @@ const HeaderStyled = styled("div")({
 });
 
 function Header() {
+  const isScrolled = useScrollDetection();
+
   return (
     <HeaderContainer>
       <Container>
-        <HeaderStyled>
+        <HeaderStyled className={clsx({ scrolled: isScrolled })}>
           <NavLink to={paths.home}>
             <Logo />
           </NavLink>
