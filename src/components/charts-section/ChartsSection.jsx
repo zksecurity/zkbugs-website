@@ -5,6 +5,7 @@ import PieChart from "../charts/PieChart";
 import { getChartData, getOccuranciesPercentage } from "./chart-utils";
 import ChartTabPanel from "./ChartTabPanel";
 import PieChartInnerLabel from "../charts/PieChartInnerLabel";
+import { useTabs } from "../../hooks/useTabs";
 
 const a11yProps = (index) => {
   return {
@@ -38,6 +39,7 @@ function ChartsSection({ data }) {
     reproduced: [],
     rootCause: [],
   });
+  const { tabValue, handleTabChange } = useTabs();
 
   useEffect(() => {
     setChartsData({
@@ -57,16 +59,11 @@ function ChartsSection({ data }) {
     return occuranciesPercentage[true];
   }, [data]);
 
-  const [value, setValue] = useState(0);
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
-
   return (
     <ContainerStyled>
       <Tabs
-        value={value}
-        onChange={handleChange}
+        value={tabValue}
+        onChange={handleTabChange}
         indicatorColor="secondary"
         variant="scrollable"
         textColor="inherit"
@@ -80,20 +77,20 @@ function ChartsSection({ data }) {
         <Tab label="Root Cause" {...a11yProps(2)} />
       </Tabs>
       <div className="chart-wrapper">
-        <ChartTabPanel value={value} index={0}>
+        <ChartTabPanel value={tabValue} index={0}>
           <PieChart data={chartsData.dsl} width={500} className="chart" />
         </ChartTabPanel>
-        <ChartTabPanel value={value} index={1}>
+        <ChartTabPanel value={tabValue} index={1}>
           <PieChart
             data={chartsData.vulnerability}
             width={500}
             className="chart"
           />
         </ChartTabPanel>
-        <ChartTabPanel value={value} index={2}>
+        <ChartTabPanel value={tabValue} index={2}>
           <PieChart data={chartsData.impact} width={500} className="chart" />
         </ChartTabPanel>
-        <ChartTabPanel value={value} index={3}>
+        <ChartTabPanel value={tabValue} index={3}>
           <PieChart
             data={chartsData.reproduced}
             width={500}
@@ -105,7 +102,7 @@ function ChartsSection({ data }) {
             </PieChartInnerLabel>
           </PieChart>
         </ChartTabPanel>
-        <ChartTabPanel value={value} index={4}>
+        <ChartTabPanel value={tabValue} index={4}>
           <PieChart data={chartsData.rootCause} className="chart" />
         </ChartTabPanel>
       </div>
