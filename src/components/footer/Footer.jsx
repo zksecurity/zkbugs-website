@@ -1,22 +1,27 @@
-import { styled } from "@mui/material";
-import Container from "../layout/Container";
+import { styled, Typography } from "@mui/material";
 
 const FooterStyled = styled("footer")({
-  // backgroundColor: "#111821",
-  width: "100%",
-  paddingTop: "2rem",
-  paddingBottom: "2rem",
+  padding: "2rem 4rem",
   marginTop: "4rem",
-  "& .copyright-disclaimer": {
-    color: "#a3a3a3",
-    backgroundColor: "##111111",
+  borderTop: "1px solid #e0e0e0",
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
+  "& .footer-text": {
+    color: "#808080",
+    fontSize: "14px",
   },
 });
+
+const currentDate = new Date().getFullYear();
 
 function Footer() {
   return (
     <FooterStyled>
-      <Container></Container>
+      <Typography className="footer-text">
+        @ {currentDate} zkBugs - All Rights Reserved | This project was
+        partially funded by the Ethereum Foundation
+      </Typography>
     </FooterStyled>
   );
 }
