@@ -1,15 +1,13 @@
 import { useEffect, useState } from "react";
 
-export const useScrollDetection = (callback) => {
+export const useScrollDetection = () => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 0) {
-        callback?.(true);
         setIsScrolled(true);
       } else {
-        callback?.(false);
         setIsScrolled(false);
       }
     };
@@ -18,7 +16,7 @@ export const useScrollDetection = (callback) => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [callback]);
+  }, [isScrolled]);
 
   return isScrolled;
 };
