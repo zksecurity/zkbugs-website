@@ -29,6 +29,7 @@ const ContainerStyled = styled("div")({
     border: "1px solid #e0e0e0",
     borderTopRightRadius: "0.25rem",
     borderTopLeftRadius: "0.25rem",
+    backgroundColor: "#f3f3f3",
   },
 });
 
