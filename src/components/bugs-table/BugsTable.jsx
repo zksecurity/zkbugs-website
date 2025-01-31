@@ -15,7 +15,16 @@ const DataGridStyled = styled(DataGrid)({
 
 function BugsTable({ data }) {
   const { rows, columns } = useTableConfig(data);
-  return <DataGridStyled rows={rows} columns={columns} />;
+  return (
+    <DataGridStyled
+      rows={rows}
+      columns={columns}
+      pageSizeOptions={[10, 25, 50, 100]}
+      initialState={{
+        pagination: { paginationModel: { pageSize: 10 } },
+      }}
+    />
+  );
 }
 
 export default BugsTable;
