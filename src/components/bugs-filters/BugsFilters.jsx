@@ -1,10 +1,10 @@
 import PropTypes from "prop-types";
 import { styled } from "@mui/material";
+import { FilterAltOutlined } from "@mui/icons-material";
 import { useBugsAvailableFilters } from "../../hooks/useBugsAvailableFilters";
 import Select from "../select/Select";
 import { useCallback, useState } from "react";
 import { getTrimmedPathFromUrl } from "../../utils/transformations";
-import { FilterAlt, FilterAltOutlined } from "@mui/icons-material";
 
 const FILTERS = ["dsl", "vulnerability", "project", "reproduced", "rootCause"];
 
