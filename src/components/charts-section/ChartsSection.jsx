@@ -1,11 +1,12 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo } from "react";
 import PropTypes from "prop-types";
 import { styled, Tab, Tabs } from "@mui/material";
 import PieChart from "../charts/PieChart";
-import { getChartData, getOccuranciesPercentage } from "./chart-utils";
+import { getOccuranciesPercentage } from "./chart-utils";
 import ChartTabPanel from "./ChartTabPanel";
 import PieChartInnerLabel from "../charts/PieChartInnerLabel";
 import { useTabs } from "../../hooks/useTabs";
+import { useBugsChartData } from "../../hooks/useBugsChartData";
 
 const a11yProps = (index) => {
   return {
@@ -32,27 +33,9 @@ const ContainerStyled = styled("div")({
 });
 
 function ChartsSection({ data }) {
-  const [chartsData, setChartsData] = useState({
-    dsl: [],
-    vulnerability: [],
-    impact: [],
-    reproduced: [],
-    rootCause: [],
-  });
   const { tabValue, handleTabChange } = useTabs();
 
-  useEffect(() => {
-    setChartsData({
-      dsl: getChartData(data, "dsl"),
-      vulnerability: getChartData(data, "vulnerability"),
-      impact: getChartData(data, "impact"),
-      reproduced: getChartData(data, "reproduced", {
-        true: "Reproduced",
-        false: "Not Reproduced",
-      }),
-      rootCause: getChartData(data, "rootCause"),
-    });
-  }, [data]);
+  const chartsData = useBugsChartData(data);
 
   const reproducedPercentage = useMemo(() => {
     const occuranciesPercentage = getOccuranciesPercentage(data, "reproduced");
