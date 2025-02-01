@@ -1,10 +1,12 @@
-import { NavLink } from "react-router";
+import { NavLink, useNavigate } from "react-router";
+import clsx from "clsx";
 import { styled } from "@mui/material";
+import { Menu as MenuIcon } from "@mui/icons-material";
 import Container from "../layout/Container";
 import { paths } from "../../utils/paths";
-import Logo from "../logo/Logo";
 import { useScrollDetection } from "../../hooks/useScrollDetection";
-import clsx from "clsx";
+import Logo from "../logo/Logo";
+import Menu from "../menu/Menu";
 
 const HeaderContainer = styled("div")({
   position: "sticky",
@@ -14,7 +16,7 @@ const HeaderContainer = styled("div")({
   borderBottom: "1px solid #e0e0e0",
 });
 
-const HeaderStyled = styled("div")({
+const HeaderStyled = styled("div")(({ theme }) => ({
   padding: "1.75rem 0",
   display: "flex",
   justifyContent: "space-between",
@@ -41,11 +43,24 @@ const HeaderStyled = styled("div")({
         },
       },
     },
+    [theme.breakpoints.down(900)]: {
+      display: "none",
+    },
   },
-});
+  "& .burger-menu": {
+    display: "none",
+    [theme.breakpoints.down(900)]: {
+      display: "block",
+    },
+    "& .burger-link": {
+      width: "100%",
+    },
+  },
+}));
 
 function Header() {
   const isScrolled = useScrollDetection();
+  const navigate = useNavigate();
 
   return (
     <HeaderContainer>
@@ -59,6 +74,22 @@ function Header() {
             <NavLink to={paths.descriptions}>Descriptions</NavLink>
             <NavLink to={paths.tools}>Security Tools</NavLink>
           </div>
+          <Menu
+            className="burger-menu"
+            options={[
+              { to: paths.home, label: "Bugs" },
+              { to: paths.descriptions, label: "Descriptions" },
+              { to: paths.tools, label: "Security Tools" },
+            ]}
+            renderOption={(option) => (
+              <NavLink to={option.to} className="burger-link">
+                {option.label}
+              </NavLink>
+            )}
+            onSelect={(option) => navigate(option.to)}
+          >
+            <MenuIcon />
+          </Menu>
         </HeaderStyled>
       </Container>
     </HeaderContainer>

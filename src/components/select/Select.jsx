@@ -54,7 +54,7 @@ function Select({
         onChange={onChange}
       >
         {options.map((option, index) => (
-          <MenuItem key={index} value={option.value}>
+          <MenuItem key={index} value={option.value} sx={{ fontSize: "14px" }}>
             {option.label}
           </MenuItem>
         ))}
