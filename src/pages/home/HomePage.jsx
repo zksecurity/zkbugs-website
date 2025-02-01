@@ -18,7 +18,6 @@ const SectionContainer = styled(Container)({
 function HomePage() {
   const bugsData = useBugs();
   const { filteredBugs, updateFilters } = useFilteredBugs(bugsData);
-  console.log(filteredBugs);
   return (
     <>
       <SectionContainer className="filters-section">

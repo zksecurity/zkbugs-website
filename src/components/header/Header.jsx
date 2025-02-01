@@ -33,6 +33,13 @@ const HeaderStyled = styled("div")({
       "&:hover": {
         borderBottom: "2px solid rgb(128, 143, 170)",
       },
+      "&.active": {
+        // color: "#ae925c",
+        color: "#9333ea",
+        "&:hover": {
+          borderBottom: "2px solid transparent",
+        },
+      },
     },
   },
 });
