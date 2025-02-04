@@ -17,6 +17,9 @@ const PAPER_CITATION = [
 ];
 
 const ContainerStyled = styled(SmallContainer)({
+  "*": {
+    fontFamily: "PT Serif, serif",
+  },
   paddingTop: "2rem",
   textAlign: "center",
   "& .section": {
@@ -40,6 +43,9 @@ const ContainerStyled = styled(SmallContainer)({
   "& .hero": {
     "& > *": {
       marginTop: "2rem",
+    },
+    "& h3": {
+      fontWeight: 700,
     },
   },
   "& .embed-container": {
