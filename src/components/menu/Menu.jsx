@@ -16,6 +16,10 @@ function Menu({ className, children, options = [], onSelect, renderOption }) {
   };
 
   const handleSelect = (option) => () => {
+    if (option.component) {
+      return;
+    }
+
     if (typeof onSelect === "function") {
       onSelect(option);
     }
@@ -59,6 +63,7 @@ Menu.propTypes = {
     PropTypes.shape({
       label: PropTypes.string,
       value: PropTypes.string,
+      component: PropTypes.node,
     })
   ),
   onSelect: PropTypes.func,

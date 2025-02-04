@@ -1,13 +1,15 @@
 import { NavLink, useNavigate } from "react-router";
 import clsx from "clsx";
-import { styled } from "@mui/material";
+import { Divider, styled } from "@mui/material";
 import { Menu as MenuIcon } from "@mui/icons-material";
 import Container from "../layout/Container";
 import { paths } from "../../utils/paths";
 import { useScrollDetection } from "../../hooks/useScrollDetection";
 import Logo from "../logo/Logo";
 import Menu from "../menu/Menu";
+import ThemeToggle from "../theme-toggle/ThemeToggle";
 import { headerPaths } from "./headerPaths";
+import { useMemo } from "react";
 
 const HeaderContainer = styled("div")({
   position: "sticky",
@@ -53,15 +55,34 @@ const HeaderStyled = styled("div")(({ theme }) => ({
     [theme.breakpoints.down(900)]: {
       display: "block",
     },
-    "& .burger-link": {
-      width: "100%",
-    },
+  },
+}));
+const BurgerMenuItem = styled("span")(({ theme }) => ({
+  width: "100%",
+  fontSize: "16px",
+  "&.not-link": {
+    color: theme.palette.text.primary,
   },
 }));
 
 function Header() {
   const isScrolled = useScrollDetection();
   const navigate = useNavigate();
+
+  const burgerMenuOptions = useMemo(
+    () => [
+      ...headerPaths,
+      { component: <Divider /> },
+      {
+        component: (
+          <>
+            Theme <ThemeToggle />
+          </>
+        ),
+      },
+    ],
+    []
+  );
 
   return (
     <HeaderContainer>
@@ -76,14 +97,17 @@ function Header() {
                 {label}
               </NavLink>
             ))}
+            <ThemeToggle />
           </div>
           <Menu
             className="burger-menu"
-            options={headerPaths}
+            options={burgerMenuOptions}
             renderOption={(option) => (
-              <NavLink to={option.to} className="burger-link">
-                {option.label}
-              </NavLink>
+              <BurgerMenuItem>
+                {option.component ?? (
+                  <NavLink to={option.to}>{option.label}</NavLink>
+                )}
+              </BurgerMenuItem>
             )}
             onSelect={(option) => navigate(option.to)}
           >
