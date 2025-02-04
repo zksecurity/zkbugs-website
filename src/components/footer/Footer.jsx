@@ -130,7 +130,7 @@ function Footer() {
         </div>
       </Container>
       <Typography className="footer-text">
-        @ {currentDate} zkBugs - All Rights Reserved • This project was
+        @ {currentDate} zkSecurity - All Rights Reserved • This project was
         partially funded by the Ethereum Foundation
       </Typography>
     </FooterStyled>

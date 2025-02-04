@@ -70,9 +70,7 @@ const columnsStaticConfig = [
           </span>
         );
       }
-      if (total === 1) {
-        return params.row.similarBugs[0];
-      }
+      const text = total === 1 ? "Similar Bug" : "Similar Bugs";
       return (
         <Menu options={params.row.similarBugs}>
           <Typography
@@ -83,54 +81,31 @@ const columnsStaticConfig = [
               },
             }}
           >
-            {`${total} Similar Bugs`}
+            {`${total} ${text}`}
           </Typography>
         </Menu>
       );
     },
   },
+  {
+    field: "source",
+    headerName: "Source",
+    width: 180,
+    renderCell: (params) => {
+      return (
+        <a href={params.row.source.sourceLink} target="_blank">
+          {params.row.source.variantName}
+        </a>
+      );
+    },
+  },
 ];
-
-const getSourceVariants = (data = []) => {
-  const variants = [];
-  data.forEach((item) => {
-    const variant = item.source.variant;
-
-    if (!variants.some((v) => v.variant)) {
-      variants.push({ variant, variantName: item.source.variantName });
-    }
-  });
-
-  return variants;
-};
-
-const getColumnsConfig = (data = []) => {
-  const config = [...columnsStaticConfig];
-
-  const sourceVariants = getSourceVariants(data);
-
-  return [
-    ...config,
-    ...sourceVariants.map((variant) => {
-      return {
-        field: variant.variant,
-        headerName: variant.variantName,
-        width: 250,
-        renderCell: (params) => (
-          <a href={params.row.source.sourceLink} target="_blank">
-            {params.row.source.sourceLink}
-          </a>
-        ),
-      };
-    }),
-  ];
-};
 
 const useTableConfig = (data) => {
   const [columns, setColumns] = useState([]);
   const [rows, setRows] = useState([]);
   useEffect(() => {
-    const config = getColumnsConfig(data);
+    const config = [...columnsStaticConfig];
     setColumns(config);
     setRows(data);
   }, [data]);
