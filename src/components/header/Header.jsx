@@ -30,6 +30,7 @@ const HeaderStyled = styled("div")(({ theme }) => ({
   },
   "& .menu": {
     display: "flex",
+    alignItems: "center",
     gap: "1.25rem",
     "& a": {
       color: "#657795",

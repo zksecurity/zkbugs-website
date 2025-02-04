@@ -1,6 +1,11 @@
 import { useMemo, useState } from "react";
 import PropTypes from "prop-types";
-import { createTheme, ThemeProvider, useMediaQuery } from "@mui/material";
+import {
+  createTheme,
+  CssBaseline,
+  ThemeProvider,
+  useMediaQuery,
+} from "@mui/material";
 import { MyThemeContext } from "./useMyThemeProvider";
 
 function MyThemeProvider({ children }) {
@@ -29,6 +34,7 @@ function MyThemeProvider({ children }) {
 
   return (
     <MyThemeContext.Provider value={value}>
+      <CssBaseline />
       <ThemeProvider theme={theme}>{children}</ThemeProvider>
     </MyThemeContext.Provider>
   );
