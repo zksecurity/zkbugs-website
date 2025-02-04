@@ -9,7 +9,7 @@ import { paths } from "../../utils/paths";
 
 const FooterStyled = styled("footer")(({ theme }) => ({
   padding: "2rem",
-  marginTop: "4rem",
+  marginTop: "8rem",
   borderTop: "1px solid #e0e0e0",
   alignItems: "center",
   color: "#808080",

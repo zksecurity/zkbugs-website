@@ -1,11 +1,11 @@
-import { ThemeProvider } from "@emotion/react";
 import RootLayout from "./layouts/RootLayout";
+import MyThemeProvider from "./providers/MyThemeProvider";
 
 function App() {
   return (
-    <ThemeProvider theme={{}}>
+    <MyThemeProvider>
       <RootLayout />
-    </ThemeProvider>
+    </MyThemeProvider>
   );
 }
 
