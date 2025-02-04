@@ -7,6 +7,7 @@ import { paths } from "../../utils/paths";
 import { useScrollDetection } from "../../hooks/useScrollDetection";
 import Logo from "../logo/Logo";
 import Menu from "../menu/Menu";
+import { headerPaths } from "./headerPaths";
 
 const HeaderContainer = styled("div")({
   position: "sticky",
@@ -70,17 +71,15 @@ function Header() {
             <Logo />
           </NavLink>
           <div className="menu">
-            <NavLink to={paths.home}>Bugs</NavLink>
-            <NavLink to={paths.descriptions}>Descriptions</NavLink>
-            <NavLink to={paths.tools}>Security Tools</NavLink>
+            {headerPaths.map(({ to, label }) => (
+              <NavLink key={to} to={to}>
+                {label}
+              </NavLink>
+            ))}
           </div>
           <Menu
             className="burger-menu"
-            options={[
-              { to: paths.home, label: "Bugs" },
-              { to: paths.descriptions, label: "Descriptions" },
-              { to: paths.tools, label: "Security Tools" },
-            ]}
+            options={headerPaths}
             renderOption={(option) => (
               <NavLink to={option.to} className="burger-link">
                 {option.label}

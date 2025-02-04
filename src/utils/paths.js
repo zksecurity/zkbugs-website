@@ -1,5 +1,6 @@
 export const paths = {
-  home: "/",
-  tools: "/tools",
   descriptions: "/descriptions",
+  home: "/",
+  paper: "/paper",
+  tools: "/tools",
 };
