@@ -2,7 +2,6 @@ import PropTypes from "prop-types";
 import { styled } from "@mui/material";
 
 const CodeStyled = styled("div")({
-  fontFamily: "Roboto Mono, monospace",
   backgroundColor: "#f4f4f4",
   border: "1px solid #ddd",
   borderRadius: "0.5rem",
@@ -11,6 +10,9 @@ const CodeStyled = styled("div")({
   textAlign: "left",
   lineHeight: "1.2",
   color: "#5b6f82",
+  "& p": {
+    fontFamily: "Roboto Mono, monospace !important",
+  },
 });
 
 function CodeBlock({ className, children }) {
