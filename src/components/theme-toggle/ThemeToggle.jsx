@@ -1,13 +1,8 @@
-import PropTypes from "prop-types";
-import { DarkMode, LightMode } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
 import { useMyThemeProvider } from "../../providers/theme/useMyThemeProvider";
+import ThemeIcon from "../theme-icon/ThemeIcon";
 
-function ThemeIcon({ isDark }) {
-  return isDark ? <LightMode /> : <DarkMode />;
-}
-
-function ThemeToggle() {
+export default function ThemeToggle() {
   const { isDarkMode, setIsDarkMode } = useMyThemeProvider();
 
   return (
@@ -20,9 +15,3 @@ function ThemeToggle() {
     </IconButton>
   );
 }
-
-export default ThemeToggle;
-
-ThemeIcon.propTypes = {
-  isDark: PropTypes.bool,
-};

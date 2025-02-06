@@ -1,14 +1,16 @@
+import { useMemo } from "react";
 import { NavLink, useNavigate } from "react-router";
-import clsx from "clsx";
 import { Divider, styled } from "@mui/material";
 import { Menu as MenuIcon } from "@mui/icons-material";
+import clsx from "clsx";
 import { paths } from "../../utils/paths";
 import { useScrollDetection } from "../../hooks/useScrollDetection";
 import Logo from "../logo/Logo";
 import Menu from "../menu/Menu";
 import ThemeToggle from "../theme-toggle/ThemeToggle";
 import { headerPaths } from "./headerPaths";
-import { useMemo } from "react";
+import ThemeIcon from "../theme-icon/ThemeIcon";
+import { useMyThemeProvider } from "../../providers/theme/useMyThemeProvider";
 
 const HeaderContainer = styled("div")(({ theme }) => ({
   position: "sticky",
@@ -39,14 +41,12 @@ const HeaderStyled = styled("div")(({ theme }) => [
       alignItems: "center",
       gap: "1.25rem",
       "& a": {
-        color: "#657795",
         borderBottom: "2px solid transparent",
         transition: "border-bottom 0.2s",
         "&:hover": {
           borderBottom: "2px solid rgb(128, 143, 170)",
         },
         "&.active": {
-          color: theme.palette.secondary.main,
           "&:hover": {
             borderBottom: "2px solid transparent",
           },
@@ -63,23 +63,48 @@ const HeaderStyled = styled("div")(({ theme }) => [
       },
     },
   },
-  theme.applyStyles("dark", {
-    "& .menu a": {
+]);
+const BurgerMenuItem = styled("span")(({ theme }) => [
+  {
+    width: "100%",
+    fontSize: "16px",
+    "&.not-link": {
       color: theme.palette.text.primary,
+    },
+  },
+]);
+const NavLinkStyled = styled(NavLink)(({ theme }) => [
+  {
+    color: "#657795",
+    "&.active": {
+      color: theme.palette.secondary.dark,
+    },
+  },
+  theme.applyStyles("dark", {
+    color: theme.palette.text.primary,
+    "&.active": {
+      color: theme.palette.secondary.main,
     },
   }),
 ]);
-const BurgerMenuItem = styled("span")(({ theme }) => ({
-  width: "100%",
-  fontSize: "16px",
-  "&.not-link": {
-    color: theme.palette.text.primary,
+
+const ToggleThemeItem = styled("span")(({ theme }) => [
+  {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    color: "#657795",
   },
-}));
+  theme.applyStyles("dark", {
+    color: theme.palette.text.primary,
+  }),
+]);
 
 function Header() {
   const isScrolled = useScrollDetection();
   const navigate = useNavigate();
+
+  const { setIsDarkMode } = useMyThemeProvider();
 
   const burgerMenuOptions = useMemo(
     () => [
@@ -87,13 +112,13 @@ function Header() {
       { component: <Divider /> },
       {
         component: (
-          <>
-            Theme <ThemeToggle />
-          </>
+          <ToggleThemeItem onClick={() => setIsDarkMode((prev) => !prev)}>
+            Theme <ThemeIcon />
+          </ToggleThemeItem>
         ),
       },
     ],
-    []
+    [setIsDarkMode]
   );
 
   return (
@@ -104,9 +129,9 @@ function Header() {
         </NavLink>
         <div className="menu">
           {headerPaths.map(({ to, label }) => (
-            <NavLink key={to} to={to}>
+            <NavLinkStyled key={to} to={to}>
               {label}
-            </NavLink>
+            </NavLinkStyled>
           ))}
           <ThemeToggle />
         </div>
@@ -116,7 +141,7 @@ function Header() {
           renderOption={(option) => (
             <BurgerMenuItem>
               {option.component ?? (
-                <NavLink to={option.to}>{option.label}</NavLink>
+                <NavLinkStyled to={option.to}>{option.label}</NavLinkStyled>
               )}
             </BurgerMenuItem>
           )}
