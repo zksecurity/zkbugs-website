@@ -30,6 +30,7 @@ body {
   border: none;
   padding: 0;
   font: inherit;
+  color: inherit;
   cursor: pointer;
   outline: inherit;
 }
@@ -37,16 +38,3 @@ body {
   cursor: default;
   opacity: 0.5;
 }
-
-/* @media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-} */
