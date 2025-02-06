@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import {
+  Link,
   styled,
   Table,
   TableBody,
@@ -43,9 +44,9 @@ function ToolsTable() {
           <TableRow key={row.id}>
             <TableCell>{row.tool}</TableCell>
             <TableCell>
-              <a href={row.url} target="_blank">
+              <Link href={row.url} target="_blank">
                 {row.url}
-              </a>
+              </Link>
             </TableCell>
             <TableCell>{row.dsl}</TableCell>
             <TableCell>{row.analysis}</TableCell>

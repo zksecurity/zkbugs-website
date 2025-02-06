@@ -12,9 +12,10 @@ const FooterStyled = styled("footer")(({ theme }) => ({
   marginTop: "8rem",
   borderTop: "1px solid #e0e0e0",
   alignItems: "center",
-  color: "#808080",
+  // color: "#808080",
+  color: theme.palette.text.secondary,
   "& *": {
-    transition: "all 0.2s",
+    // transition: "color 0.2s",
   },
   "& .main-content": {
     display: "grid",
@@ -40,8 +41,9 @@ const FooterStyled = styled("footer")(({ theme }) => ({
         justifyContent: "flex-start",
       },
       "& .social-icon": {
-        color: "#808080",
+        color: theme.palette.text.secondary,
         "&:hover": {
+          transition: "color 0.2s",
           color: "#9333ea",
         },
       },
@@ -54,9 +56,8 @@ const FooterStyled = styled("footer")(({ theme }) => ({
           marginBottom: "0.5rem",
           "& a": {
             color: "inherit",
-          },
-          "&:hover": {
-            "& a": {
+            "&:hover": {
+              transition: "color 0.2s",
               color: "#9333ea",
             },
           },
@@ -66,7 +67,6 @@ const FooterStyled = styled("footer")(({ theme }) => ({
   },
   "& .footer-text": {
     textAlign: "center",
-    color: "#808080",
     fontSize: "14px",
     marginTop: "2rem",
   },

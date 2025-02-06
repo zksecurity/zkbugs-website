@@ -10,8 +10,8 @@ const SectionContainer = styled(Container)({
   marginTop: "4rem",
   "&.filters-section": {
     position: "sticky",
-    top: "57px",
-    zIndex: 10,
+    top: "53px",
+    zIndex: 9,
   },
 });
 

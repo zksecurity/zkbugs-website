@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Check, Clear } from "@mui/icons-material";
 import { getTrimmedPathFromUrl } from "../utils/transformations";
 import Menu from "../components/menu/Menu";
-import { Typography } from "@mui/material";
+import { Link, Typography } from "@mui/material";
 
 const columnsStaticConfig = [
   {
@@ -21,9 +21,9 @@ const columnsStaticConfig = [
     width: 220,
     renderCell: (params) => {
       return (
-        <a href={params.row.project} target="_blank">
+        <Link href={params.row.project} target="_blank">
           {getTrimmedPathFromUrl(params.row.project)}
-        </a>
+        </Link>
       );
     },
   },
@@ -93,9 +93,9 @@ const columnsStaticConfig = [
     width: 180,
     renderCell: (params) => {
       return (
-        <a href={params.row.source.sourceLink} target="_blank">
+        <Link href={params.row.source.sourceLink} target="_blank">
           {params.row.source.variantName}
-        </a>
+        </Link>
       );
     },
   },

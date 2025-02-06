@@ -3,18 +3,19 @@ import { DataGrid } from "@mui/x-data-grid";
 import { styled } from "@mui/material";
 import useTableConfig from "../../hooks/useTableConfig";
 
-const DataGridStyled = styled(DataGrid)({
+const DataGridStyled = styled(DataGrid)(({ theme }) => ({
   "& .MuiDataGrid-columnHeaders [role=row]": {
-    backgroundColor: "#f3f3f3",
+    backgroundColor: theme.palette.background.paper,
     "& .MuiDataGrid-columnHeaderTitle": {
       textTransform: "uppercase",
-      color: "#657795",
+      // color: "#657795",
+      color: theme.palette.text.secondary,
     },
   },
   "& .MuiDataGrid-cell:focus, .MuiDataGrid-cell:focus-within": {
     outline: "none",
   },
-});
+}));
 
 function BugsTable({ data }) {
   const { rows, columns } = useTableConfig(data);

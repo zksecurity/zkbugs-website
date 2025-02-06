@@ -1,4 +1,5 @@
 import { styled } from "@mui/material";
+import { useMyThemeProvider } from "../../providers/theme/useMyThemeProvider";
 
 const ImageStyled = styled("img")(({ theme }) => ({
   height: "50px",
@@ -8,7 +9,10 @@ const ImageStyled = styled("img")(({ theme }) => ({
 }));
 
 function Logo() {
-  return <ImageStyled src="/logo.png" alt="logo" />;
+  const { isDarkMode } = useMyThemeProvider();
+
+  const logoPath = isDarkMode ? "/logo-inverted.svg" : "/logo.svg";
+  return <ImageStyled src={logoPath} alt="logo" />;
 }
 
 export default Logo;

@@ -15,9 +15,9 @@ const a11yProps = (index) => {
   };
 };
 
-const ContainerStyled = styled("div")({
+const ContainerStyled = styled("div")(({ theme }) => ({
   "& .chart-wrapper": {
-    border: "1px solid #e0e0e0",
+    border: `1px solid ${theme.palette.borders.default}`,
     borderTop: 0,
     borderBottomRightRadius: "0.25rem",
     borderBottomLeftRadius: "0.25rem",
@@ -26,12 +26,12 @@ const ContainerStyled = styled("div")({
     },
   },
   "& .chart-tabs": {
-    border: "1px solid #e0e0e0",
+    border: `1px solid ${theme.palette.borders.default}`,
     borderTopRightRadius: "0.25rem",
     borderTopLeftRadius: "0.25rem",
-    backgroundColor: "#f3f3f3",
+    backgroundColor: theme.palette.background.paper,
   },
-});
+}));
 
 function ChartsSection({ data }) {
   const { tabValue, handleTabChange } = useTabs();

@@ -7,20 +7,25 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import { MyThemeContext } from "./useMyThemeProvider";
+import { darkPalette } from "../../themes/darkTheme";
+import { lightPalette } from "../../themes/lightTheme";
 
 function MyThemeProvider({ children }) {
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
   const [isDarkMode, setIsDarkMode] = useState(prefersDarkMode);
 
-  const theme = useMemo(
-    () =>
-      createTheme({
-        palette: {
-          mode: isDarkMode ? "dark" : "light",
-        },
-      }),
-    [isDarkMode]
-  );
+  const theme = useMemo(() => {
+    const palette = isDarkMode ? darkPalette : lightPalette;
+
+    return createTheme({
+      colorSchemes: {
+        dark: isDarkMode,
+      },
+      palette,
+    });
+  }, [isDarkMode]);
+
+  // console.log(theme);
 
   const value = useMemo(
     () => ({
@@ -34,8 +39,10 @@ function MyThemeProvider({ children }) {
 
   return (
     <MyThemeContext.Provider value={value}>
-      <CssBaseline />
-      <ThemeProvider theme={theme}>{children}</ThemeProvider>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        {children}
+      </ThemeProvider>
     </MyThemeContext.Provider>
   );
 }

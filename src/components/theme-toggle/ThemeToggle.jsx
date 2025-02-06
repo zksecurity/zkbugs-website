@@ -1,13 +1,20 @@
 import PropTypes from "prop-types";
 import { DarkMode, LightMode } from "@mui/icons-material";
-import { IconButton } from "@mui/material";
-import { useMyThemeProvider } from "../../providers/useMyThemeProvider";
+import { IconButton, useTheme } from "@mui/material";
+import { useMyThemeProvider } from "../../providers/theme/useMyThemeProvider";
 
 function ThemeIcon({ isDark }) {
+  const theme = useTheme();
   return isDark ? (
-    <LightMode fontSize="small" color="error" />
+    <LightMode sx={{ color: theme.palette.grey[700] }} />
   ) : (
-    <DarkMode fontSize="small" />
+    <DarkMode
+      sx={{
+        "&:hover": {
+          color: theme.palette.primary.main,
+        },
+      }}
+    />
   );
 }
 
@@ -16,9 +23,7 @@ function ThemeToggle() {
 
   return (
     <IconButton
-      // sx={{ backgroundColor: isDarkMode  }}
       onClick={() => {
-        console.log(isDarkMode);
         setIsDarkMode((prev) => !prev);
       }}
     >

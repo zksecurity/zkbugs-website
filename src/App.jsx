@@ -1,5 +1,5 @@
 import RootLayout from "./layouts/RootLayout";
-import MyThemeProvider from "./providers/MyThemeProvider";
+import MyThemeProvider from "./providers/theme/MyThemeProvider";
 
 function App() {
   return (
