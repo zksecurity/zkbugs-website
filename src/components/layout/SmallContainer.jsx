@@ -13,6 +13,10 @@ const SmallContainer = styled("div")(({ theme }) => ({
     paddingLeft: "4rem",
     paddingRight: "4rem",
   },
+  [theme.breakpoints.down("sm")]: {
+    paddingLeft: "2rem",
+    paddingRight: "2rem",
+  },
 }));
 
 export default SmallContainer;

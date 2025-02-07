@@ -16,15 +16,14 @@ const PAPER_CITATION = [
   "}",
 ];
 
-const ContainerStyled = styled(SmallContainer)({
+const ContainerStyled = styled(SmallContainer)(({ theme }) => ({
   "*": {
     fontFamily: "PT Serif, serif",
   },
   paddingTop: "2rem",
   textAlign: "center",
   "& .section": {
-    paddingTop: "4rem",
-    paddingBottom: "4rem",
+    padding: "4rem 0",
     "&.has-top-divider": {
       position: "relative",
       "&::before": {
@@ -49,7 +48,8 @@ const ContainerStyled = styled(SmallContainer)({
     },
   },
   "& .embed-container": {
-    height: "500px",
+    height: "100vh",
+    minHeight: "600px",
   },
   "& .citation": {
     "& h4, h6": {
@@ -59,15 +59,25 @@ const ContainerStyled = styled(SmallContainer)({
       marginBottom: "2rem",
     },
   },
-});
+  [theme.breakpoints.down("sm")]: {
+    "& .embed-container": {
+      height: "600px",
+      minHeight: 0,
+    },
+  },
+}));
 
 function PaperPage() {
   return (
     <ContainerStyled>
       <div className="section hero">
         <div>
-          <Typography variant="h3">{PAPER_SUBJECT}:</Typography>
-          <Typography variant="h3">{PAPER_TITLE}</Typography>
+          <Typography sx={{ typography: { md: "h3", sm: "h4", xs: "h4" } }}>
+            {PAPER_SUBJECT}:
+          </Typography>
+          <Typography sx={{ typography: { md: "h3", sm: "h4", xs: "h4" } }}>
+            {PAPER_TITLE}
+          </Typography>
         </div>
         <Typography variant="h6">{PAPER_AUTHORS}</Typography>
       </div>
