@@ -1,8 +1,47 @@
-import { PieChart as MuiPieChart } from "@mui/x-charts";
+import { useMemo } from "react";
 import PropTypes from "prop-types";
+import { PieChart as MuiPieChart } from "@mui/x-charts";
+import { useMediaQuery } from "@mui/material";
 
 const pieParams = {
   height: 300,
+};
+
+const mergeWords = (currentWord, words, maxChars) => {
+  const wordsCopy = [...words];
+  const nextWord = wordsCopy.shift();
+
+  if (!nextWord) {
+    return currentWord;
+  }
+
+  if (currentWord.length + nextWord.length > maxChars) {
+    return currentWord + "\n" + mergeWords(nextWord, wordsCopy, maxChars);
+  }
+
+  return mergeWords(`${currentWord} ${nextWord}`, wordsCopy, maxChars);
+};
+
+const trimLongLengends = (data) => {
+  return data.map((item) => {
+    if (!item.label) return item;
+
+    if (item.label.length <= 18) {
+      return item;
+    }
+
+    // Split the label into words
+    const labelWords = item.label.split(" ");
+
+    // Apply new lines to the label
+    const firstWord = labelWords.shift();
+    const mergedWords = mergeWords(firstWord, labelWords, 18);
+
+    return {
+      ...item,
+      label: mergedWords,
+    };
+  });
 };
 
 function PieChart({
@@ -14,13 +53,31 @@ function PieChart({
   children,
   className,
 }) {
-  const finalPieParams = width ? { ...pieParams, width } : pieParams;
+  const isSmallScreen = useMediaQuery((theme) => theme.breakpoints.down("md"));
+
+  const finalData = useMemo(() => {
+    if (isSmallScreen) {
+      return trimLongLengends(data);
+    }
+    return data;
+  }, [data, isSmallScreen]);
+
+  const finalPieParams = useMemo(() => {
+    if (isSmallScreen) {
+      return { ...pieParams, width: 500 };
+    }
+    if (width) {
+      return { ...pieParams, width };
+    }
+    return pieParams;
+  }, [isSmallScreen, width]);
+
   return (
     <MuiPieChart
       colors={colors}
       series={[
         {
-          data,
+          data: finalData,
           highlightScope: { fade: "global", highlight: "item" },
           // valueFormatter,
           innerRadius,
