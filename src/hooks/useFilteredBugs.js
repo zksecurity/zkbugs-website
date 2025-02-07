@@ -14,11 +14,11 @@ export const useFilteredBugs = (bugsData = []) => {
   const updateFilters = useCallback(
     (filters) => {
       const filteredFields = getFilteredFields(filters);
-      console.log(filteredFields);
 
       const newFilteredBugs = bugsData.filter((bug) => {
         return filteredFields.every((field) => {
-          return bug[field] === filters[field];
+          const bugFiledStringValue = String(bug[field]);
+          return bugFiledStringValue === filters[field];
         });
       });
 

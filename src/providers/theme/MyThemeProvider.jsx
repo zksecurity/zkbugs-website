@@ -25,8 +25,6 @@ function MyThemeProvider({ children }) {
     });
   }, [isDarkMode]);
 
-  // console.log(theme);
-
   const value = useMemo(
     () => ({
       mode: isDarkMode ? "dark" : "light",

@@ -6,23 +6,50 @@ import BugsFilters from "../../components/bugs-filters/BugsFilters";
 import { useBugs } from "../../hooks/useBugs";
 import { useFilteredBugs } from "../../hooks/useFilteredBugs";
 
+const SECTION_SPACER = "4rem";
+
 const SectionContainer = styled(Container)({
-  marginTop: "4rem",
-  "&.filters-section": {
-    position: "sticky",
-    top: "53px",
-    zIndex: 9,
-  },
+  marginTop: SECTION_SPACER,
 });
+
+const FiltersSection = styled("div")(({ theme }) => ({
+  marginTop: SECTION_SPACER,
+  position: "sticky",
+  top: "57px",
+  zIndex: 9,
+  "& .bug-filters": {
+    padding: "0 1rem",
+    borderRadius: "0 0 0.5rem 0.5rem",
+    backgroundColor: theme.palette.background.paper,
+    boxShadow: theme.shadows[2],
+    "& .filters-inputs-container": {
+      paddingTop: "1rem",
+      paddingBottom: "1rem",
+    },
+  },
+  [theme.breakpoints.down("sm")]: {
+    top: "47px",
+    "& .bug-filters": {
+      "& .filters-inputs-container": {
+        paddingTop: "0.75rem",
+        paddingBottom: "0.625rem",
+      },
+    },
+  },
+}));
 
 function HomePage() {
   const bugsData = useBugs();
   const { filteredBugs, updateFilters } = useFilteredBugs(bugsData);
   return (
     <>
-      <SectionContainer className="filters-section">
-        <BugsFilters data={bugsData} onChange={updateFilters} />
-      </SectionContainer>
+      <FiltersSection className="filters-section">
+        <BugsFilters
+          data={bugsData}
+          className="bug-filters"
+          onChange={updateFilters}
+        />
+      </FiltersSection>
       <SectionContainer>
         <ChartsSection data={filteredBugs} />
       </SectionContainer>

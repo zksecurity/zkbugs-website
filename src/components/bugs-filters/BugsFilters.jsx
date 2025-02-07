@@ -1,10 +1,10 @@
+import { useCallback, useMemo, useState } from "react";
 import PropTypes from "prop-types";
-import { styled } from "@mui/material";
+import { Badge, Divider, styled } from "@mui/material";
 import { FilterAltOutlined } from "@mui/icons-material";
 import { useBugsAvailableFilters } from "../../hooks/useBugsAvailableFilters";
-import Select from "../select/Select";
-import { useCallback, useState } from "react";
 import { getTrimmedPathFromUrl } from "../../utils/transformations";
+import Select from "../select/Select";
 
 const FILTERS = ["dsl", "vulnerability", "project", "reproduced", "rootCause"];
 
@@ -15,17 +15,42 @@ const renderFilterLabel = (filter, value) => {
   return value;
 };
 
-const ContainerStyled = styled("div")(({ theme }) => ({
+const ContainerStyled = styled("div")({
   display: "flex",
   alignItems: "center",
   gap: "0.75rem",
-  padding: "1rem",
-  borderRadius: "0.5rem",
-  backgroundColor: theme.palette.background.paper,
-  boxShadow: theme.shadows[2],
+  overflowX: "auto",
+  "& .filters-inputs-container": {
+    flex: 1,
+    display: "flex",
+    alignItems: "center",
+    gap: "0.75rem",
+    overflowX: "auto",
+  },
+  "& .filter-input": {
+    minWidth: "180px",
+  },
+});
+
+const FilterBadge = styled(Badge)(({ theme }) => ({
+  "& .MuiBadge-badge": {
+    width: "1.25rem",
+    height: "1.25rem",
+    [theme.breakpoints.down("sm")]: {
+      width: "1rem",
+      height: "1rem",
+    },
+  },
+}));
+const FiltersIcon = styled(FilterAltOutlined)(({ theme }) => ({
+  color: theme.palette.text.secondary,
+  fontSize: "2rem",
+  [theme.breakpoints.down("sm")]: {
+    fontSize: "1.5rem",
+  },
 }));
 
-function BugsFilters({ data, onChange }) {
+function BugsFilters({ data, className, onChange }) {
   const availableFilters = useBugsAvailableFilters(
     data,
     FILTERS,
@@ -37,7 +62,17 @@ function BugsFilters({ data, onChange }) {
     vulnerability: "",
     project: "",
     rootCause: "",
+    reproduced: "",
   });
+
+  const filtersApplied = useMemo(() => {
+    return Object.values(filters).reduce((acc, value) => {
+      if (value) {
+        return [...acc, value];
+      }
+      return acc;
+    }, []).length;
+  }, [filters]);
 
   const handleFilterChange = useCallback(
     (field) => (event) => {
@@ -49,32 +84,51 @@ function BugsFilters({ data, onChange }) {
   );
 
   return (
-    <ContainerStyled>
-      <FilterAltOutlined sx={{ stroke: "#e0e0e0" }} />
-      <Select
-        label="DSL"
-        options={availableFilters.dsl}
-        value={filters.dsl}
-        onChange={handleFilterChange("dsl")}
-      />
-      <Select
-        label="Project"
-        options={availableFilters.project}
-        value={filters.project}
-        onChange={handleFilterChange("project")}
-      />
-      <Select
-        label="Vulnerability"
-        options={availableFilters.vulnerability}
-        value={filters.vulnerability}
-        onChange={handleFilterChange("vulnerability")}
-      />
-      <Select
-        label="Root Cause"
-        options={availableFilters.rootCause}
-        value={filters.rootCause}
-        onChange={handleFilterChange("rootCause")}
-      />
+    <ContainerStyled className={className}>
+      <FilterBadge badgeContent={filtersApplied} color="secondary">
+        <FiltersIcon />
+      </FilterBadge>
+      <Divider orientation="vertical" flexItem sx={{ paddingLeft: "0.5rem" }} />
+      <div className="filters-inputs-container">
+        <Select
+          label="DSL"
+          options={availableFilters.dsl}
+          value={filters.dsl}
+          className="filter-input"
+          onChange={handleFilterChange("dsl")}
+        />
+        <Select
+          label="Project"
+          options={availableFilters.project}
+          value={filters.project}
+          className="filter-input"
+          onChange={handleFilterChange("project")}
+        />
+        <Select
+          label="Vulnerability"
+          options={availableFilters.vulnerability}
+          value={filters.vulnerability}
+          className="filter-input"
+          onChange={handleFilterChange("vulnerability")}
+        />
+        <Select
+          label="Root Cause"
+          options={availableFilters.rootCause}
+          value={filters.rootCause}
+          className="filter-input"
+          onChange={handleFilterChange("rootCause")}
+        />
+        <Select
+          label="Reproduced"
+          options={[
+            { value: "true", label: "Yes" },
+            { value: "false", label: "No" },
+          ]}
+          value={filters.reproduced}
+          className="filter-input"
+          onChange={handleFilterChange("reproduced")}
+        />
+      </div>
     </ContainerStyled>
   );
 }
@@ -82,6 +136,7 @@ function BugsFilters({ data, onChange }) {
 export default BugsFilters;
 
 BugsFilters.propTypes = {
+  className: PropTypes.string,
   data: PropTypes.arrayOf(
     PropTypes.shape({
       dsl: PropTypes.string,
