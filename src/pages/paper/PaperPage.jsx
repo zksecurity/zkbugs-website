@@ -43,8 +43,9 @@ const ContainerStyled = styled(SmallContainer)(({ theme }) => ({
     "& > *": {
       marginTop: "2rem",
     },
-    "& h3": {
+    "& .paper-title": {
       fontWeight: 700,
+      fontFamily: "inherit",
     },
   },
   "& .embed-container": {
@@ -54,9 +55,11 @@ const ContainerStyled = styled(SmallContainer)(({ theme }) => ({
   "& .citation": {
     "& h4, h6": {
       fontWeight: 700,
+      fontFamily: "inherit",
     },
     "& h4": {
       marginBottom: "2rem",
+      fontFamily: "inherit",
     },
   },
   [theme.breakpoints.down("sm")]: {
@@ -72,10 +75,16 @@ function PaperPage() {
     <ContainerStyled>
       <div className="section hero">
         <div>
-          <Typography sx={{ typography: { md: "h3", sm: "h4", xs: "h4" } }}>
+          <Typography
+            sx={{ typography: { md: "h3", sm: "h4", xs: "h4" } }}
+            className="paper-title"
+          >
             {PAPER_SUBJECT}:
           </Typography>
-          <Typography sx={{ typography: { md: "h3", sm: "h4", xs: "h4" } }}>
+          <Typography
+            sx={{ typography: { md: "h3", sm: "h4", xs: "h4" } }}
+            className="paper-title"
+          >
             {PAPER_TITLE}
           </Typography>
         </div>
