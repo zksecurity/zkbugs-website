@@ -1,14 +1,38 @@
 import { useEffect, useState } from "react";
+import { Link, styled, Typography } from "@mui/material";
 import { Check, Clear } from "@mui/icons-material";
 import { getTrimmedPathFromUrl } from "../utils/transformations";
 import Menu from "../components/menu/Menu";
-import { Link, Typography } from "@mui/material";
+
+const LinkStyled = styled(Link)(({ theme }) => ({
+  textDecoration: "none",
+  "&:hover": {
+    textDecoration: "underline",
+  },
+  "&.title-link": {
+    fontWeight: 600,
+    color: theme.palette.text.primary,
+  },
+}));
+
+const BUG_BASE_URL = "https://github.com/zksecurity/zkbugs/tree/main/";
 
 const columnsStaticConfig = [
   {
     field: "title",
     headerName: "Title",
     width: 230,
+    renderCell: (params) => {
+      return (
+        <LinkStyled
+          href={BUG_BASE_URL + params.row.path}
+          target="_blank"
+          className="title-link"
+        >
+          {params.row.title}
+        </LinkStyled>
+      );
+    },
   },
   {
     field: "dsl",
@@ -21,9 +45,9 @@ const columnsStaticConfig = [
     width: 220,
     renderCell: (params) => {
       return (
-        <Link href={params.row.project} target="_blank">
+        <LinkStyled href={params.row.project} target="_blank">
           {getTrimmedPathFromUrl(params.row.project)}
-        </Link>
+        </LinkStyled>
       );
     },
   },
@@ -93,9 +117,9 @@ const columnsStaticConfig = [
     width: 180,
     renderCell: (params) => {
       return (
-        <Link href={params.row.source.sourceLink} target="_blank">
+        <LinkStyled href={params.row.source.sourceLink} target="_blank">
           {params.row.source.variantName}
-        </Link>
+        </LinkStyled>
       );
     },
   },
