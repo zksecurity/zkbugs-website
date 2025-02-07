@@ -50,6 +50,8 @@ function ChartsSection({ data }) {
         onChange={handleTabChange}
         indicatorColor="secondary"
         variant="scrollable"
+        scrollButtons="auto"
+        allowScrollButtonsMobile
         textColor="inherit"
         aria-label="full width tabs example"
         className="chart-tabs"
