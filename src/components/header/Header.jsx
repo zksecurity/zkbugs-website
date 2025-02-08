@@ -35,6 +35,7 @@ const HeaderStyled = styled("div")(({ theme }) => [
     transition: "padding 0.2s",
     "&.scrolled": {
       padding: 0,
+      transitionDelay: "300ms",
     },
     "& .menu": {
       display: "flex",
