@@ -1,10 +1,14 @@
 import { useCallback, useMemo, useState } from "react";
 import PropTypes from "prop-types";
-import { Badge, Divider, styled } from "@mui/material";
-import { FilterAltOutlined } from "@mui/icons-material";
-import { useBugsAvailableFilters } from "../../hooks/useBugsAvailableFilters";
+import { Divider } from "@mui/material";
+import { useAvailableFilters } from "../../hooks/useAvailableFilters";
 import { getTrimmedPathFromUrl } from "../../utils/transformations";
 import Select from "../select/Select";
+import {
+  ContainerStyled,
+  FilterBadge,
+  FiltersIcon,
+} from "./FiltersCommonComponents";
 
 const FILTERS = ["dsl", "vulnerability", "project", "reproduced", "rootCause"];
 
@@ -15,43 +19,8 @@ const renderFilterLabel = (filter, value) => {
   return value;
 };
 
-const ContainerStyled = styled("div")({
-  display: "flex",
-  alignItems: "center",
-  gap: "0.75rem",
-  overflowX: "auto",
-  "& .filters-inputs-container": {
-    flex: 1,
-    display: "flex",
-    alignItems: "center",
-    gap: "0.75rem",
-    overflowX: "auto",
-  },
-  "& .filter-input": {
-    minWidth: "180px",
-  },
-});
-
-const FilterBadge = styled(Badge)(({ theme }) => ({
-  "& .MuiBadge-badge": {
-    width: "1.25rem",
-    height: "1.25rem",
-    [theme.breakpoints.down("sm")]: {
-      width: "1rem",
-      height: "1rem",
-    },
-  },
-}));
-const FiltersIcon = styled(FilterAltOutlined)(({ theme }) => ({
-  color: theme.palette.text.secondary,
-  fontSize: "2rem",
-  [theme.breakpoints.down("sm")]: {
-    fontSize: "1.5rem",
-  },
-}));
-
 function BugsFilters({ data, className, onChange }) {
-  const availableFilters = useBugsAvailableFilters(
+  const availableFilters = useAvailableFilters(
     data,
     FILTERS,
     renderFilterLabel

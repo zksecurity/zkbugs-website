@@ -24,7 +24,7 @@ const getAvailableFilters = (data = [], filterFields = [], renderLabel) => {
   return filters;
 };
 
-export const useBugsAvailableFilters = (
+export const useAvailableFilters = (
   data = [],
   filterFields = [],
   renderLabel
