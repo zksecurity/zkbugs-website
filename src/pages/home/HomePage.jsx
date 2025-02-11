@@ -1,10 +1,10 @@
 import { styled } from "@mui/material";
-import BugsTable from "../../components/bugs-table/BugsTable";
+import BugsTable from "../../components/tables/BugsTable";
 import Container from "../../components/layout/Container";
 import ChartsSection from "../../components/charts-section/ChartsSection";
-import BugsFilters from "../../components/bugs-filters/BugsFilters";
+import BugsFilters from "../../components/filters/BugsFilters";
 import { useBugs } from "../../hooks/useBugs";
-import { useFilteredBugs } from "../../hooks/useFilteredBugs";
+import { useFilteredData } from "../../hooks/useFilteredData";
 
 const SECTION_SPACER = "4rem";
 
@@ -17,7 +17,7 @@ const FiltersSection = styled("div")(({ theme }) => ({
   position: "sticky",
   top: "57px",
   zIndex: 9,
-  "& .bug-filters": {
+  "& .filters": {
     padding: "0 1rem",
     borderRadius: "0 0 0.5rem 0.5rem",
     backgroundColor: theme.palette.background.paper,
@@ -29,7 +29,7 @@ const FiltersSection = styled("div")(({ theme }) => ({
   },
   [theme.breakpoints.down("sm")]: {
     top: "47px",
-    "& .bug-filters": {
+    "& .filters": {
       "& .filters-inputs-container": {
         paddingTop: "0.75rem",
         paddingBottom: "0.625rem",
@@ -40,21 +40,21 @@ const FiltersSection = styled("div")(({ theme }) => ({
 
 function HomePage() {
   const bugsData = useBugs();
-  const { filteredBugs, updateFilters } = useFilteredBugs(bugsData);
+  const { filteredData, updateFilters } = useFilteredData(bugsData);
   return (
     <>
       <FiltersSection className="filters-section">
         <BugsFilters
           data={bugsData}
-          className="bug-filters"
+          className="filters"
           onChange={updateFilters}
         />
       </FiltersSection>
       <SectionContainer>
-        <ChartsSection data={filteredBugs} />
+        <ChartsSection data={filteredData} />
       </SectionContainer>
       <SectionContainer>
-        <BugsTable data={filteredBugs} />
+        <BugsTable data={filteredData} />
       </SectionContainer>
     </>
   );

@@ -4,28 +4,28 @@ const getFilteredFields = (filters = {}) => {
   return Object.keys(filters).filter((filter) => filters[filter] !== "");
 };
 
-export const useFilteredBugs = (bugsData = []) => {
-  const [filteredBugs, setFilteredBugs] = useState(bugsData);
+export const useFilteredData = (bugsData = []) => {
+  const [filteredData, setFilteredData] = useState(bugsData);
 
   useEffect(() => {
-    setFilteredBugs(bugsData);
+    setFilteredData(bugsData);
   }, [bugsData]);
 
   const updateFilters = useCallback(
     (filters) => {
       const filteredFields = getFilteredFields(filters);
 
-      const newFilteredBugs = bugsData.filter((bug) => {
+      const newFilteredData = bugsData.filter((bug) => {
         return filteredFields.every((field) => {
           const bugFiledStringValue = String(bug[field]);
           return bugFiledStringValue === filters[field];
         });
       });
 
-      setFilteredBugs(newFilteredBugs);
+      setFilteredData(newFilteredData);
     },
     [bugsData]
   );
 
-  return { filteredBugs, updateFilters };
+  return { filteredData, updateFilters };
 };
