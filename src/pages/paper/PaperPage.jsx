@@ -4,9 +4,9 @@ import CodeBlock from "../../components/code-block/CodeBlock";
 
 const PDF_URL = "https://arxiv.org/pdf/2402.15293v4";
 const PAPER_SUBJECT = "Systematization of Knowledge (SoK)";
-const PAPER_TITLE = "What Don’t We Know? Decentralized Finance (DeFi) Attacks";
+const PAPER_TITLE = "What don't we know? Understanding Security Vulnerabilities in SNARKs";
 const PAPER_AUTHORS =
-  "Stefanos Chaliasos, Jens Ernstberger, David Theodore, David Wong, Mohammad Jahanara, Benjamin Livshits";
+  "Stefanos Chaliasos, Jens Ernstberger, David Theodore, David Wong, Mohammad Jahanara, and Benjamin Livshits";
 const PAPER_CITATION = [
   "@article{chaliasos2024sok,",
   "title={SoK: What don't we know? Understanding Security Vulnerabilities in SNARKs},",
