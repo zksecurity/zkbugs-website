@@ -3,10 +3,6 @@ import PropTypes from "prop-types";
 import { PieChart as MuiPieChart } from "@mui/x-charts";
 import { useMediaQuery } from "@mui/material";
 
-const pieParams = {
-  height: 300,
-};
-
 const mergeWords = (currentWord, words, maxChars) => {
   const wordsCopy = [...words];
   const nextWord = wordsCopy.shift();
@@ -22,11 +18,11 @@ const mergeWords = (currentWord, words, maxChars) => {
   return mergeWords(`${currentWord} ${nextWord}`, wordsCopy, maxChars);
 };
 
-const trimLongLengends = (data) => {
+const trimLongLengends = (data, trimPoint) => {
   return data.map((item) => {
     if (!item.label) return item;
 
-    if (item.label.length <= 18) {
+    if (item.label.length <= trimPoint) {
       return item;
     }
 
@@ -35,13 +31,26 @@ const trimLongLengends = (data) => {
 
     // Apply new lines to the label
     const firstWord = labelWords.shift();
-    const mergedWords = mergeWords(firstWord, labelWords, 18);
+    const mergedWords = mergeWords(firstWord, labelWords, trimPoint);
 
     return {
       ...item,
       label: mergedWords,
     };
   });
+};
+
+const HEIGHT_PER_ITEM = 48;
+const MIN_HEIGHT_WEB = 500;
+const MIN_HEIGHT_MOBILE = 300;
+
+const adjustHeight = (data, isMobile) => {
+  const height = data.length * HEIGHT_PER_ITEM + 50;
+  const minHeight = isMobile ? MIN_HEIGHT_MOBILE : MIN_HEIGHT_WEB;
+  if (height > minHeight) {
+    return height;
+  }
+  return minHeight;
 };
 
 function PieChart({
@@ -54,15 +63,21 @@ function PieChart({
   className,
 }) {
   const isSmallScreen = useMediaQuery((theme) => theme.breakpoints.down("md"));
+  const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
 
   const finalData = useMemo(() => {
     if (isSmallScreen) {
-      return trimLongLengends(data);
+      return trimLongLengends(data, 18);
     }
-    return data;
+    return trimLongLengends(data, 30);
   }, [data, isSmallScreen]);
 
+  const finalHeight = useMemo(() => {
+    return adjustHeight(data, isMobile);
+  }, [data, isMobile]);
+
   const finalPieParams = useMemo(() => {
+    const pieParams = { height: finalHeight };
     if (isSmallScreen) {
       return { ...pieParams, width: 500 };
     }
@@ -70,7 +85,7 @@ function PieChart({
       return { ...pieParams, width };
     }
     return pieParams;
-  }, [isSmallScreen, width]);
+  }, [isSmallScreen, width, finalHeight]);
 
   return (
     <MuiPieChart
