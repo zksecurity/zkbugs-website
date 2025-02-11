@@ -3,12 +3,11 @@ import { NavLink, useNavigate } from "react-router";
 import { Divider, styled } from "@mui/material";
 import { Menu as MenuIcon } from "@mui/icons-material";
 import clsx from "clsx";
-import { paths } from "../../utils/paths";
+import { paths, pathsLabeled } from "../../utils/paths";
 import { useScrollDetection } from "../../hooks/useScrollDetection";
 import Logo from "../logo/Logo";
 import Menu from "../menu/Menu";
 import ThemeToggle from "../theme-toggle/ThemeToggle";
-import { headerPaths } from "./headerPaths";
 import ThemeIcon from "../theme-icon/ThemeIcon";
 import { useMyThemeProvider } from "../../providers/theme/useMyThemeProvider";
 
@@ -109,7 +108,7 @@ function Header() {
 
   const burgerMenuOptions = useMemo(
     () => [
-      ...headerPaths,
+      ...pathsLabeled,
       { component: <Divider /> },
       {
         component: (
@@ -129,7 +128,7 @@ function Header() {
           <Logo />
         </NavLink>
         <div className="menu">
-          {headerPaths.map(({ to, label }) => (
+          {pathsLabeled.map(({ to, label }) => (
             <NavLinkStyled key={to} to={to}>
               {label}
             </NavLinkStyled>

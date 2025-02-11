@@ -1,11 +1,12 @@
 import { NavLink } from "react-router";
 import { styled, Typography } from "@mui/material";
 import {
+  NorthEast as OutsideLinkIcon,
   GitHub as GithubIcon,
   Twitter as TwitterIcon,
 } from "@mui/icons-material";
 import Container from "../layout/Container";
-import { paths } from "../../utils/paths";
+import { pathsLabeled } from "../../utils/paths";
 
 const FooterStyled = styled("footer")(({ theme }) => ({
   padding: "2rem",
@@ -55,6 +56,9 @@ const FooterStyled = styled("footer")(({ theme }) => ({
         "& li": {
           marginBottom: "0.5rem",
           "& a": {
+            display: "flex",
+            alignItems: "center",
+            gap: "0.5rem",
             color: "inherit",
             "&:hover": {
               transition: "color 0.2s",
@@ -95,30 +99,22 @@ function Footer() {
             </Typography>
             <ul>
               <li>
-                <a
-                  href="https://github.com/zksecurity/zkbugs"
-                  className="hover:text-white"
-                >
-                Repo
-              </a>
+                <a href="https://github.com/zksecurity/zkbugs" target="_blank">
+                  Repo
+                  <OutsideLinkIcon sx={{ width: "16px", height: "16px" }} />
+                </a>
               </li>
               <li>
-                <a
-                  href="https://www.zksecurity.xyz/"
-                  className="hover:text-white"
-                >
-               zkSecurity
-              </a>
+                <a href="https://www.zksecurity.xyz/" target="_blank">
+                  zkSecurity
+                  <OutsideLinkIcon sx={{ width: "16px", height: "16px" }} />
+                </a>
               </li>
-              <li>
-                <NavLink to={paths.home}>Bugs</NavLink>
-              </li>
-              <li>
-                <NavLink to={paths.descriptions}>Descriptions</NavLink>
-              </li>
-              <li>
-                <NavLink to={paths.tools}>Security Tools</NavLink>
-              </li>
+              {pathsLabeled.map(({ to, label }) => (
+                <li key={to}>
+                  <NavLink to={to}>{label}</NavLink>
+                </li>
+              ))}
             </ul>
           </div>
           <div>
