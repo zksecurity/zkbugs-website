@@ -1,7 +1,7 @@
 [
     {
         "Id": "lurk-lab/lurk-rs/inference_Multicase_number_of_defaults_not_enforced",
-        "Path": "dataset/dataset/bellperson/lurk-lab/lurk-rs/inference_Multicase_number_of_defaults_not_enforced",
+        "Path": "dataset/bellperson/lurk-lab/lurk-rs/inference_Multicase_number_of_defaults_not_enforced",
         "Project": "https://github.com/lurk-lab/lurk-rs",
         "Commit": "0x5c92c6a37856f43cb23bcfce59443da9d0ce0061",
         "Fix Commit": "edcda9760a66088db78f64994513fa19d67caa79",
@@ -36,7 +36,7 @@
     },
     {
         "Id": "lurk-lab/lurk-rs/inference_Under-constrained_outputs_in_reduce_sym",
-        "Path": "dataset/dataset/bellperson/lurk-lab/lurk-rs/inference_Under_constrained_outputs_in_reduce_sym",
+        "Path": "dataset/bellperson/lurk-lab/lurk-rs/inference_Under_constrained_outputs_in_reduce_sym",
         "Project": "https://github.com/lurk-lab/lurk-rs",
         "Commit": "0x5c92c6a37856f43cb23bcfce59443da9d0ce0061",
         "Fix Commit": "7236df555c2cfc7c37d290666d7d5167b3447032",
@@ -71,7 +71,7 @@
     },
     {
         "Id": "lurk-lab/lurk-rs/inference_Soundness_failure_due_to_0_value_not_enforced",
-        "Path": "dataset/dataset/bellperson/lurk-lab/lurk-rs/inference_Soundness_failure_due_to_0_value_not_enforced",
+        "Path": "dataset/bellperson/lurk-lab/lurk-rs/inference_Soundness_failure_due_to_0_value_not_enforced",
         "Project": "https://github.com/lurk-lab/lurk-rs",
         "Commit": "0x5c92c6a37856f43cb23bcfce59443da9d0ce0061",
         "Fix Commit": "",
@@ -106,7 +106,7 @@
     },
     {
         "Id": "lurk-lab/lurk-rs/inference_Vectors_not_constrained_to_be_of_the_same_size",
-        "Path": "dataset/dataset/bellperson/lurk-lab/lurk-rs/inference_Vectors_not_constrained_to_be_of_the_same_size",
+        "Path": "dataset/bellperson/lurk-lab/lurk-rs/inference_Vectors_not_constrained_to_be_of_the_same_size",
         "Project": "https://github.com/lurk-lab/lurk-rs",
         "Commit": "0x5c92c6a37856f43cb23bcfce59443da9d0ce0061",
         "Fix Commit": "d2c7c69efec6b36dfcb55a0586c21df88f0a00b6",
@@ -141,7 +141,7 @@
     },
     {
         "Id": "lurk-lab/lurk-rs/inference_Soundness_failure_due_toaccumulator_1_initial_value_not_enforced",
-        "Path": "dataset/dataset/bellperson/lurk-lab/lurk-rs/inference_Soundness_failure_due_toaccumulator_1_initial_value_not_enforced",
+        "Path": "dataset/bellperson/lurk-lab/lurk-rs/inference_Soundness_failure_due_toaccumulator_1_initial_value_not_enforced",
         "Project": "https://github.com/lurk-lab/lurk-rs",
         "Commit": "0x5c92c6a37856f43cb23bcfce59443da9d0ce0061",
         "Fix Commit": "",
@@ -176,7 +176,7 @@
     },
     {
         "Id": "lurk-lab/neptune/inference_Zero_padding_not_enforced",
-        "Path": "dataset/dataset/bellperson/lurk-lab/neptune/inference_Zero_padding_not_enforced",
+        "Path": "dataset/bellperson/lurk-lab/neptune/inference_Zero_padding_not_enforced",
         "Project": "https://github.com/lurk-lab/neptune",
         "Commit": "0x5c92c6a37856f43cb23bcfce59443da9d0ce0061",
         "Fix Commit": "2415d641dcbdab17b3264d2254705a382c86ce73",
@@ -211,7 +211,7 @@
     },
     {
         "Id": "filecoin-project/rust-fil-proofs/trapdoor_Add_missing_public_input_for_replica-id",
-        "Path": "dataset/dataset/bellperson/filecoin-project/rust-fil-proofs/trapdoor_Add_missing_public_input_for_replica_id",
+        "Path": "dataset/bellperson/filecoin-project/rust-fil-proofs/trapdoor_Add_missing_public_input_for_replica_id",
         "Project": "https://github.com/filecoin-project/rust-fil-proofs",
         "Commit": "8efe93",
         "Fix Commit": "a4c25bedaaa3099e89770d704ba3bee2cbec87c3fd7e4f5fabbcb1bce7aa9fce",
@@ -246,7 +246,7 @@
     },
     {
         "Id": "Consensys/gnark/Unsoundness_in_variable_comparison_/_non-unique_binary_decomposition",
-        "Path": "dataset/dataset/gnark/Consensys/gnark/Unsoundness_in_variable_comparison__non_unique_binary_decomposition",
+        "Path": "dataset/gnark/Consensys/gnark/Unsoundness_in_variable_comparison__non_unique_binary_decomposition",
         "Project": "https://github.com/Consensys/gnark",
         "Commit": "",
         "Fix Commit": "",
@@ -281,7 +281,7 @@
     },
     {
         "Id": "scroll-tech/poseidon-circuit/zellic_mpt_only_being_true_leads_to_overconstrained_circuits",
-        "Path": "dataset/dataset/halo2/scroll-tech/poseidon-circuit/zellic_mpt_only_being_true_leads_to_overconstrained_circuits",
+        "Path": "dataset/halo2/scroll-tech/poseidon-circuit/zellic_mpt_only_being_true_leads_to_overconstrained_circuits",
         "Project": "https://github.com/scroll-tech/poseidon-circuit",
         "Commit": "0xf3ebc6af0e5049d2f45259ef79741f9c7d7794e1",
         "Fix Commit": "912f5ed2c6cacd64a0006e868e3cb4b624acc019",
@@ -316,7 +316,7 @@
     },
     {
         "Id": "scroll-tech/zkevm-circuits/trailofbits_Nondeterministic_execution_of_ReturnDataCopyGadget_and_ErrorReturnDataOutOfBoundGadget",
-        "Path": "dataset/dataset/halo2/scroll-tech/zkevm-circuits/trailofbits_Nondeterministic_execution_of_ReturnDataCopyGadget_and_ErrorReturnDataOutOfBoundGadget",
+        "Path": "dataset/halo2/scroll-tech/zkevm-circuits/trailofbits_Nondeterministic_execution_of_ReturnDataCopyGadget_and_ErrorReturnDataOutOfBoundGadget",
         "Project": "https://github.com/scroll-tech/zkevm-circuits",
         "Commit": "0xe8bcb23e1f303bd6e0dc52924b0ed85710b8a016",
         "Fix Commit": "48172be100d36c89256fd55337997a56ba26d711",
@@ -351,7 +351,7 @@
     },
     {
         "Id": "scroll-tech/zkevm-circuits/zellic_Highest_tx_id_must_be_equal_to_cum_num_txs_in_Tx_Circuit",
-        "Path": "dataset/dataset/halo2/scroll-tech/zkevm-circuits/zellic_Highest_tx_id_must_be_equal_to_cum_num_txs_in_Tx_Circuit",
+        "Path": "dataset/halo2/scroll-tech/zkevm-circuits/zellic_Highest_tx_id_must_be_equal_to_cum_num_txs_in_Tx_Circuit",
         "Project": "https://github.com/scroll-tech/zkevm-circuits",
         "Commit": "0x25dd32aa316ec842ffe79bb8efe9f05f86edc33e",
         "Fix Commit": "2e422878e0d78f769e08f0b1ad1275ee039362d5",
@@ -386,7 +386,7 @@
     },
     {
         "Id": "scroll-tech/zkevm-circuits/zellic_Missing_check_in_the_initialization_on_the_state_machine_in_RLP_Circuit",
-        "Path": "dataset/dataset/halo2/scroll-tech/zkevm-circuits/zellic_Missing_check_in_the_initialization_on_the_state_machine_in_RLP_Circuit",
+        "Path": "dataset/halo2/scroll-tech/zkevm-circuits/zellic_Missing_check_in_the_initialization_on_the_state_machine_in_RLP_Circuit",
         "Project": "https://github.com/scroll-tech/zkevm-circuits",
         "Commit": "0x25dd32aa316ec842ffe79bb8efe9f05f86edc33e",
         "Fix Commit": "2e422878e0d78f769e08f0b1ad1275ee039362d5",
@@ -421,7 +421,7 @@
     },
     {
         "Id": "scroll-tech/zkevm-circuits/zellic_Missing_constraint_for_the_first_tx_id_in_Tx_Circuit",
-        "Path": "dataset/dataset/halo2/scroll-tech/zkevm-circuits/zellic_Missing_constraint_for_the_first_tx_id_in_Tx_Circuit",
+        "Path": "dataset/halo2/scroll-tech/zkevm-circuits/zellic_Missing_constraint_for_the_first_tx_id_in_Tx_Circuit",
         "Project": "https://github.com/scroll-tech/zkevm-circuits",
         "Commit": "0x25dd32aa316ec842ffe79bb8efe9f05f86edc33e",
         "Fix Commit": "2e422878e0d78f769e08f0b1ad1275ee039362d5",
@@ -456,7 +456,7 @@
     },
     {
         "Id": "scroll-tech/zkevm-circuits/trailofbits_The_“invalid_creation”_error_handling_circuit_is_unconstrained",
-        "Path": "dataset/dataset/halo2/scroll-tech/zkevm-circuits/trailofbits_The_invalid_creation_error_handling_circuit_is_unconstrained",
+        "Path": "dataset/halo2/scroll-tech/zkevm-circuits/trailofbits_The_invalid_creation_error_handling_circuit_is_unconstrained",
         "Project": "https://github.com/scroll-tech/zkevm-circuits",
         "Commit": "0xfc6c8a2972870e62e96cde480b3aa48c0cc1303d",
         "Fix Commit": "799450ce1434270c27e98916817935586369d8c8",
@@ -491,7 +491,7 @@
     },
     {
         "Id": "scroll-tech/zkevm-circuits/zellic_ChainId_is_not_mapped_to_it’s_corresponding_RLP_Tag_in_Tx_Circuit",
-        "Path": "dataset/dataset/halo2/scroll-tech/zkevm-circuits/zellic_ChainId_is_not_mapped_to_its_corresponding_RLP_Tag_in_Tx_Circuit",
+        "Path": "dataset/halo2/scroll-tech/zkevm-circuits/zellic_ChainId_is_not_mapped_to_its_corresponding_RLP_Tag_in_Tx_Circuit",
         "Project": "https://github.com/scroll-tech/zkevm-circuits",
         "Commit": "0x25dd32aa316ec842ffe79bb8efe9f05f86edc33e",
         "Fix Commit": "2e422878e0d78f769e08f0b1ad1275ee039362d5",
@@ -526,7 +526,7 @@
     },
     {
         "Id": "scroll-tech/zkevm-circuits/zellic_Missing_do_not_emit!_constraints",
-        "Path": "dataset/dataset/halo2/scroll-tech/zkevm-circuits/zellic_Missing_do_not_emit!_constraints",
+        "Path": "dataset/halo2/scroll-tech/zkevm-circuits/zellic_Missing_do_not_emit!_constraints",
         "Project": "https://github.com/scroll-tech/zkevm-circuits",
         "Commit": "0x25dd32aa316ec842ffe79bb8efe9f05f86edc33e",
         "Fix Commit": "2e422878e0d78f769e08f0b1ad1275ee039362d5",
@@ -561,7 +561,7 @@
     },
     {
         "Id": "scroll-tech/zkevm-circuits/trailofbits_Underconstrained_warm_status_on_CALL_opcodes_allows_gas_cost_forgery",
-        "Path": "dataset/dataset/halo2/scroll-tech/zkevm-circuits/trailofbits_Underconstrained_warm_status_on_CALL_opcodes_allows_gas_cost_forgery",
+        "Path": "dataset/halo2/scroll-tech/zkevm-circuits/trailofbits_Underconstrained_warm_status_on_CALL_opcodes_allows_gas_cost_forgery",
         "Project": "https://github.com/scroll-tech/zkevm-circuits",
         "Commit": "0xe8bcb23e1f303bd6e0dc52924b0ed85710b8a016",
         "Fix Commit": "e72a6a818cbda6c14cb551573432e59fe61ce109345dd4c088508a60c27979af",
@@ -596,7 +596,7 @@
     },
     {
         "Id": "scroll-tech/zkevm-circuits/trailofbits_ModGadget_is_underconstrained_and_allows_incorrect_MULMOD_operations_to_be_proven",
-        "Path": "dataset/dataset/halo2/scroll-tech/zkevm-circuits/trailofbits_ModGadget_is_underconstrained_and_allows_incorrect_MULMOD_operations_to_be_proven",
+        "Path": "dataset/halo2/scroll-tech/zkevm-circuits/trailofbits_ModGadget_is_underconstrained_and_allows_incorrect_MULMOD_operations_to_be_proven",
         "Project": "https://github.com/scroll-tech/zkevm-circuits",
         "Commit": "0xe8bcb23e1f303bd6e0dc52924b0ed85710b8a016",
         "Fix Commit": "069477d3efd1b4fb19640ff1d9dcd4fb3e3c9e5f3adc646e1bfc7ad0f07a0162",
@@ -631,7 +631,7 @@
     },
     {
         "Id": "scroll-tech/zkevm-circuits/zellic_The_CallDataRLC_value_in_the_fixed_assignments_is_not_validated_against_the_actual_calldata_in_Tx_Circuit",
-        "Path": "dataset/dataset/halo2/scroll-tech/zkevm-circuits/zellic_The_CallDataRLC_value_in_the_fixed_assignments_is_not_validated_against_the_actual_calldata_in_Tx_Circuit",
+        "Path": "dataset/halo2/scroll-tech/zkevm-circuits/zellic_The_CallDataRLC_value_in_the_fixed_assignments_is_not_validated_against_the_actual_calldata_in_Tx_Circuit",
         "Project": "https://github.com/scroll-tech/zkevm-circuits",
         "Commit": "0x25dd32aa316ec842ffe79bb8efe9f05f86edc33e",
         "Fix Commit": "2e422878e0d78f769e08f0b1ad1275ee039362d5",
@@ -666,7 +666,7 @@
     },
     {
         "Id": "scroll-tech/zkevm-circuits/zellic_The_first_row_of_each_Tx_in_the_calldata_section_is_undercon-_strained_in_Tx_Circuit",
-        "Path": "dataset/dataset/halo2/scroll-tech/zkevm-circuits/zellic_The_first_row_of_each_Tx_in_the_calldata_section_is_undercon__strained_in_Tx_Circuit",
+        "Path": "dataset/halo2/scroll-tech/zkevm-circuits/zellic_The_first_row_of_each_Tx_in_the_calldata_section_is_undercon__strained_in_Tx_Circuit",
         "Project": "https://github.com/scroll-tech/zkevm-circuits",
         "Commit": "0x25dd32aa316ec842ffe79bb8efe9f05f86edc33e",
         "Fix Commit": "",
@@ -701,7 +701,7 @@
     },
     {
         "Id": "scroll-tech/zkevm-circuits/zellic_Missing_range_checks_in_MulAdd_chip",
-        "Path": "dataset/dataset/halo2/scroll-tech/zkevm-circuits/zellic_Missing_range_checks_in_MulAdd_chip",
+        "Path": "dataset/halo2/scroll-tech/zkevm-circuits/zellic_Missing_range_checks_in_MulAdd_chip",
         "Project": "https://github.com/scroll-tech/zkevm-circuits",
         "Commit": "0xf3ebc6af0e5049d2f45259ef79741f9c7d7794e1",
         "Fix Commit": "b20bed27e0a1b1345c125a2975875be555d2dff9",
@@ -736,7 +736,7 @@
     },
     {
         "Id": "scroll-tech/zkevm-circuits/trailofbits_Incorrect_state_transitions_can_be_proven_for_any_chunk_by_manipulating_padding_flags",
-        "Path": "dataset/dataset/halo2/scroll-tech/zkevm-circuits/trailofbits_Incorrect_state_transitions_can_be_proven_for_any_chunk_by_manipulating_padding_flags",
+        "Path": "dataset/halo2/scroll-tech/zkevm-circuits/trailofbits_Incorrect_state_transitions_can_be_proven_for_any_chunk_by_manipulating_padding_flags",
         "Project": "https://github.com/scroll-tech/zkevm-circuits",
         "Commit": "0xe40ab9e8e78fd362c50fcd0277db79a1c9a98e60",
         "Fix Commit": "138b7a3d7381932d02caef4462e47f7990c72b82",
@@ -771,7 +771,7 @@
     },
     {
         "Id": "scroll-tech/zkevm-circuits/zellic_padding_shift_is_underconstrained_in_the_bytecode_circuit",
-        "Path": "dataset/dataset/halo2/scroll-tech/zkevm-circuits/zellic_padding_shift_is_underconstrained_in_the_bytecode_circuit",
+        "Path": "dataset/halo2/scroll-tech/zkevm-circuits/zellic_padding_shift_is_underconstrained_in_the_bytecode_circuit",
         "Project": "https://github.com/scroll-tech/zkevm-circuits",
         "Commit": "0xf3ebc6af0e5049d2f45259ef79741f9c7d7794e1",
         "Fix Commit": "e8aecb68ccd87759dc4ea46e2cec9649a0803f5b",
@@ -806,7 +806,7 @@
     },
     {
         "Id": "scroll-tech/zkevm-circuits/zellic_Equality_between_tag_value_and_the_final_tag_value_acc_not_checked",
-        "Path": "dataset/dataset/halo2/scroll-tech/zkevm-circuits/zellic_Equality_between_tag_value_and_the_final_tag_value_acc_not_checked",
+        "Path": "dataset/halo2/scroll-tech/zkevm-circuits/zellic_Equality_between_tag_value_and_the_final_tag_value_acc_not_checked",
         "Project": "https://github.com/scroll-tech/zkevm-circuits",
         "Commit": "0x25dd32aa316ec842ffe79bb8efe9f05f86edc33e",
         "Fix Commit": "2e422878e0d78f769e08f0b1ad1275ee039362d5",
@@ -841,7 +841,7 @@
     },
     {
         "Id": "scroll-tech/zkevm-circuits/zellic_Block_number_constraints_are_incorrect_in_PI_circuit",
-        "Path": "dataset/dataset/halo2/scroll-tech/zkevm-circuits/zellic_Block_number_constraints_are_incorrect_in_PI_circuit",
+        "Path": "dataset/halo2/scroll-tech/zkevm-circuits/zellic_Block_number_constraints_are_incorrect_in_PI_circuit",
         "Project": "https://github.com/scroll-tech/zkevm-circuits",
         "Commit": "0x25dd32aa316ec842ffe79bb8efe9f05f86edc33e",
         "Fix Commit": "",
@@ -876,7 +876,7 @@
     },
     {
         "Id": "scroll-tech/zkevm-circuits/trailofbits_The_RlpU64Gadget_is_underconstrained_when_is_lt_128_is_false",
-        "Path": "dataset/dataset/halo2/scroll-tech/zkevm-circuits/trailofbits_The_RlpU64Gadget_is_underconstrained_when_is_lt_128_is_false",
+        "Path": "dataset/halo2/scroll-tech/zkevm-circuits/trailofbits_The_RlpU64Gadget_is_underconstrained_when_is_lt_128_is_false",
         "Project": "https://github.com/scroll-tech/zkevm-circuits",
         "Commit": "0xe8bcb23e1f303bd6e0dc52924b0ed85710b8a016",
         "Fix Commit": "2a69a55562336a54ce2b1a13748db7cf807c8e2a",
@@ -911,7 +911,7 @@
     },
     {
         "Id": "scroll-tech/zkevm-circuits/zellic_Transition_to_new_RLP_instance_in_the_state_machine_is_un-_derconstrained_in_RLP_Circuit",
-        "Path": "dataset/dataset/halo2/scroll-tech/zkevm-circuits/zellic_Transition_to_new_RLP_instance_in_the_state_machine_is_un__derconstrained_in_RLP_Circuit",
+        "Path": "dataset/halo2/scroll-tech/zkevm-circuits/zellic_Transition_to_new_RLP_instance_in_the_state_machine_is_un__derconstrained_in_RLP_Circuit",
         "Project": "https://github.com/scroll-tech/zkevm-circuits",
         "Commit": "0x25dd32aa316ec842ffe79bb8efe9f05f86edc33e",
         "Fix Commit": "2e422878e0d78f769e08f0b1ad1275ee039362d5",
@@ -946,7 +946,7 @@
     },
     {
         "Id": "scroll-tech/zkevm-circuits/zellic_Non-trivial_rotation_incorrectly_handled_in_ComparatorChip",
-        "Path": "dataset/dataset/halo2/scroll-tech/zkevm-circuits/zellic_Non_trivial_rotation_incorrectly_handled_in_ComparatorChip",
+        "Path": "dataset/halo2/scroll-tech/zkevm-circuits/zellic_Non_trivial_rotation_incorrectly_handled_in_ComparatorChip",
         "Project": "https://github.com/scroll-tech/zkevm-circuits",
         "Commit": "0xf3ebc6af0e5049d2f45259ef79741f9c7d7794e1",
         "Fix Commit": "21f887d2ce44c4dc42c5ccae80c5ed94a6930954",
@@ -981,7 +981,7 @@
     },
     {
         "Id": "scroll-tech/zkevm-circuits/zellic_Multiple_RLP_encodings_share_the_same_RLC_value",
-        "Path": "dataset/dataset/halo2/scroll-tech/zkevm-circuits/zellic_Multiple_RLP_encodings_share_the_same_RLC_value",
+        "Path": "dataset/halo2/scroll-tech/zkevm-circuits/zellic_Multiple_RLP_encodings_share_the_same_RLC_value",
         "Project": "https://github.com/scroll-tech/zkevm-circuits",
         "Commit": "0x25dd32aa316ec842ffe79bb8efe9f05f86edc33e",
         "Fix Commit": "2e422878e0d78f769e08f0b1ad1275ee039362d5",
@@ -1016,7 +1016,7 @@
     },
     {
         "Id": "scroll-tech/zkevm-circuits/zellic_The_sv_address_is_not_constrained_to_be_equal_throughout_a_single_transaction",
-        "Path": "dataset/dataset/halo2/scroll-tech/zkevm-circuits/zellic_The_sv_address_is_not_constrained_to_be_equal_throughout_a_single_transaction",
+        "Path": "dataset/halo2/scroll-tech/zkevm-circuits/zellic_The_sv_address_is_not_constrained_to_be_equal_throughout_a_single_transaction",
         "Project": "https://github.com/scroll-tech/zkevm-circuits",
         "Commit": "0x25dd32aa316ec842ffe79bb8efe9f05f86edc33e",
         "Fix Commit": "2565e254fc7d42184aaade3d8ee144fdc79fdd10",
@@ -1051,7 +1051,7 @@
     },
     {
         "Id": "scroll-tech/zkevm-circuits/zellic_The_state_machine_is_not_constrained_to_end_at_End",
-        "Path": "dataset/dataset/halo2/scroll-tech/zkevm-circuits/zellic_The_state_machine_is_not_constrained_to_end_at_End",
+        "Path": "dataset/halo2/scroll-tech/zkevm-circuits/zellic_The_state_machine_is_not_constrained_to_end_at_End",
         "Project": "https://github.com/scroll-tech/zkevm-circuits",
         "Commit": "0x25dd32aa316ec842ffe79bb8efe9f05f86edc33e",
         "Fix Commit": "2e422878e0d78f769e08f0b1ad1275ee039362d5",
@@ -1086,7 +1086,7 @@
     },
     {
         "Id": "scroll-tech/zkevm-circuits/zellic_Missing_range_check_for_byte_values_in_RLP_Circuit",
-        "Path": "dataset/dataset/halo2/scroll-tech/zkevm-circuits/zellic_Missing_range_check_for_byte_values_in_RLP_Circuit",
+        "Path": "dataset/halo2/scroll-tech/zkevm-circuits/zellic_Missing_range_check_for_byte_values_in_RLP_Circuit",
         "Project": "https://github.com/scroll-tech/zkevm-circuits",
         "Commit": "0x25dd32aa316ec842ffe79bb8efe9f05f86edc33e",
         "Fix Commit": "2e422878e0d78f769e08f0b1ad1275ee039362d5",
@@ -1121,7 +1121,7 @@
     },
     {
         "Id": "scroll-tech/zkevm-circuits/zellic_ExpCircuit_has_a_under-constrained_exponentiation_algorithm_",
-        "Path": "dataset/dataset/halo2/scroll-tech/zkevm-circuits/zellic_ExpCircuit_has_a_under_constrained_exponentiation_algorithm_",
+        "Path": "dataset/halo2/scroll-tech/zkevm-circuits/zellic_ExpCircuit_has_a_under_constrained_exponentiation_algorithm_",
         "Project": "https://github.com/scroll-tech/zkevm-circuits",
         "Commit": "0xf3ebc6af0e5049d2f45259ef79741f9c7d7794e1",
         "Fix Commit": "9b46ddbf01393ad845e48dea77de55b9358074da",
@@ -1156,7 +1156,7 @@
     },
     {
         "Id": "scroll-tech/zkevm-circuits/trailofbits_The_CREATE_and_CREATE2_opcodes_can_be_called_within_a_static_context",
-        "Path": "dataset/dataset/halo2/scroll-tech/zkevm-circuits/trailofbits_The_CREATE_and_CREATE2_opcodes_can_be_called_within_a_static_context",
+        "Path": "dataset/halo2/scroll-tech/zkevm-circuits/trailofbits_The_CREATE_and_CREATE2_opcodes_can_be_called_within_a_static_context",
         "Project": "https://github.com/scroll-tech/zkevm-circuits",
         "Commit": "0xe8bcb23e1f303bd6e0dc52924b0ed85710b8a016",
         "Fix Commit": "66e8458ad6b55447e17de7f715e4395be943d682483be4a945b51f98a4cc50ae",
@@ -1191,7 +1191,7 @@
     },
     {
         "Id": "scroll-tech/zkevm-circuits/zellic_Missing_range_checks_for_the_LtChip",
-        "Path": "dataset/dataset/halo2/scroll-tech/zkevm-circuits/zellic_Missing_range_checks_for_the_LtChip",
+        "Path": "dataset/halo2/scroll-tech/zkevm-circuits/zellic_Missing_range_checks_for_the_LtChip",
         "Project": "https://github.com/scroll-tech/zkevm-circuits",
         "Commit": "0x25dd32aa316ec842ffe79bb8efe9f05f86edc33e",
         "Fix Commit": "d0e7a07e8af25220623564ef1c3ed101ce63220e",
@@ -1226,7 +1226,7 @@
     },
     {
         "Id": "scroll-tech/mpt-circuit/zellic_Missing_constraints_for_new_account_in_configure_balance",
-        "Path": "dataset/dataset/halo2/scroll-tech/mpt-circuit/zellic_Missing_constraints_for_new_account_in_configure_balance",
+        "Path": "dataset/halo2/scroll-tech/mpt-circuit/zellic_Missing_constraints_for_new_account_in_configure_balance",
         "Project": "https://github.com/scroll-tech/mpt-circuit",
         "Commit": "0x25dd32aa316ec842ffe79bb8efe9f05f86edc33e",
         "Fix Commit": "ef64eb52548946a0dd7f0ee83ce71ed8d460c405",
@@ -1261,7 +1261,7 @@
     },
     {
         "Id": "scroll-tech/mpt-circuit/zellic_Incorrect_constraints_in_configure_nonce",
-        "Path": "dataset/dataset/halo2/scroll-tech/mpt-circuit/zellic_Incorrect_constraints_in_configure_nonce",
+        "Path": "dataset/halo2/scroll-tech/mpt-circuit/zellic_Incorrect_constraints_in_configure_nonce",
         "Project": "https://github.com/scroll-tech/mpt-circuit",
         "Commit": "0x25dd32aa316ec842ffe79bb8efe9f05f86edc33e",
         "Fix Commit": "9aeff02e4d86e9bbecd0e420ebd3ed13a824e094",
@@ -1296,7 +1296,7 @@
     },
     {
         "Id": "scroll-tech/mpt-circuit/zellic_The_OneHot_encoding_gadget_has_incorrect_constraints",
-        "Path": "dataset/dataset/halo2/scroll-tech/mpt-circuit/zellic_The_OneHot_encoding_gadget_has_incorrect_constraints",
+        "Path": "dataset/halo2/scroll-tech/mpt-circuit/zellic_The_OneHot_encoding_gadget_has_incorrect_constraints",
         "Project": "https://github.com/scroll-tech/mpt-circuit",
         "Commit": "0x25dd32aa316ec842ffe79bb8efe9f05f86edc33e",
         "Fix Commit": "9bd18782c19b5f5b2a2410b80f1ace6cd9637dcb",
@@ -1331,7 +1331,7 @@
     },
     {
         "Id": "scroll-tech/mpt-circuit/trailofbits_The_NonceChanged_configuration_circuit_does_not_constrain_the_new_value_nonce_value",
-        "Path": "dataset/dataset/halo2/scroll-tech/mpt-circuit/trailofbits_The_NonceChanged_configuration_circuit_does_not_constrain_the_new_value_nonce_value",
+        "Path": "dataset/halo2/scroll-tech/mpt-circuit/trailofbits_The_NonceChanged_configuration_circuit_does_not_constrain_the_new_value_nonce_value",
         "Project": "https://github.com/scroll-tech/mpt-circuit",
         "Commit": "0xfc6c8a2972870e62e96cde480b3aa48c0cc1303d",
         "Fix Commit": "",
@@ -1366,7 +1366,7 @@
     },
     {
         "Id": "scroll-tech/mpt-circuit/zellic_Missing_constraints_in_configure_empty_storage",
-        "Path": "dataset/dataset/halo2/scroll-tech/mpt-circuit/zellic_Missing_constraints_in_configure_empty_storage",
+        "Path": "dataset/halo2/scroll-tech/mpt-circuit/zellic_Missing_constraints_in_configure_empty_storage",
         "Project": "https://github.com/scroll-tech/mpt-circuit",
         "Commit": "0x25dd32aa316ec842ffe79bb8efe9f05f86edc33e",
         "Fix Commit": "3ab166a4a62329ec42d44cd63fc9563ff29dea4e",
@@ -1401,7 +1401,7 @@
     },
     {
         "Id": "scroll-tech/mpt-circuit/zellic_Missing_range_check_for_address_values_in_MPT_Circuit",
-        "Path": "dataset/dataset/halo2/scroll-tech/mpt-circuit/zellic_Missing_range_check_for_address_values_in_MPT_Circuit",
+        "Path": "dataset/halo2/scroll-tech/mpt-circuit/zellic_Missing_range_check_for_address_values_in_MPT_Circuit",
         "Project": "https://github.com/scroll-tech/mpt-circuit",
         "Commit": "0x25dd32aa316ec842ffe79bb8efe9f05f86edc33e",
         "Fix Commit": "e4f5df31e9b3005bb5977c11aa0c3b262cfe3269",
@@ -1436,7 +1436,7 @@
     },
     {
         "Id": "scroll-tech/mpt-circuit/trailofbits_The_OneHot_primitive_allows_more_than_one_value_at_once",
-        "Path": "dataset/dataset/halo2/scroll-tech/mpt-circuit/trailofbits_The_OneHot_primitive_allows_more_than_one_value_at_once",
+        "Path": "dataset/halo2/scroll-tech/mpt-circuit/trailofbits_The_OneHot_primitive_allows_more_than_one_value_at_once",
         "Project": "https://github.com/scroll-tech/mpt-circuit",
         "Commit": "0xfc6c8a2972870e62e96cde480b3aa48c0cc1303d",
         "Fix Commit": "34af759e94f4b342507778145e7ae364a6d5566e",
@@ -1471,7 +1471,7 @@
     },
     {
         "Id": "summa-dev/summa-solvency/Constant_assignment_to_check_bug",
-        "Path": "dataset/dataset/halo2/summa-dev/summa-solvency/Constant_assignment_to_check_bug",
+        "Path": "dataset/halo2/summa-dev/summa-solvency/Constant_assignment_to_check_bug",
         "Project": "https://github.com/summa-dev/summa-solvency",
         "Commit": "",
         "Fix Commit": "",
@@ -1506,7 +1506,7 @@
     },
     {
         "Id": "starkware-libs/stark-perpetual/abdk_This_function_cannot_handle_the_case_when_n_risk_factor_segments_is_zero.",
-        "Path": "dataset/dataset/cairo/starkware-libs/stark-perpetual/abdk_This_function_cannot_handle_the_case_when_n_risk_factor_segments_is_zero",
+        "Path": "dataset/cairo/starkware-libs/stark-perpetual/abdk_This_function_cannot_handle_the_case_when_n_risk_factor_segments_is_zero",
         "Project": "https://github.com/starkware-libs/stark-perpetual",
         "Commit": "0xe6189aa",
         "Fix Commit": "3eb3a26366f412cf8d0643f65e33d8b2eb5904fc",
@@ -1541,7 +1541,7 @@
     },
     {
         "Id": "HerodotusDev/offchain-evm-headers-processor/abdk_Function_doesn’t_ensure_that_“y”_is_a_power_of_two.",
-        "Path": "dataset/dataset/cairo/HerodotusDev/offchain-evm-headers-processor/abdk_Function_doesnt_ensure_that_y_is_a_power_of_two",
+        "Path": "dataset/cairo/HerodotusDev/offchain-evm-headers-processor/abdk_Function_doesnt_ensure_that_y_is_a_power_of_two",
         "Project": "https://github.com/HerodotusDev/offchain-evm-headers-processor",
         "Commit": "0xb14e74a5a67bd4882383993036658a57f871e12b",
         "Fix Commit": "af97dae8be5cca025f42da9334596de50762c855",
@@ -1576,7 +1576,7 @@
     },
     {
         "Id": "HerodotusDev/offchain-evm-headers-processor/abdk_Behaviour_is_undefined_if_position_is_not_range_checked.",
-        "Path": "dataset/dataset/cairo/HerodotusDev/offchain-evm-headers-processor/abdk_Behaviour_is_undefined_if_position_is_not_range_checked",
+        "Path": "dataset/cairo/HerodotusDev/offchain-evm-headers-processor/abdk_Behaviour_is_undefined_if_position_is_not_range_checked",
         "Project": "https://github.com/HerodotusDev/offchain-evm-headers-processor",
         "Commit": "0xb14e74a5a67bd4882383993036658a57f871e12b",
         "Fix Commit": "af97dae8be5cca025f42da9334596de50762c855",
@@ -1611,7 +1611,7 @@
     },
     {
         "Id": "HerodotusDev/offchain-evm-headers-processor/abdk_Missing_range_checks_for_negative_values",
-        "Path": "dataset/dataset/cairo/HerodotusDev/offchain-evm-headers-processor/abdk_Missing_range_checks_for_negative_values",
+        "Path": "dataset/cairo/HerodotusDev/offchain-evm-headers-processor/abdk_Missing_range_checks_for_negative_values",
         "Project": "https://github.com/HerodotusDev/offchain-evm-headers-processor",
         "Commit": "0xb14e74a5a67bd4882383993036658a57f871e12b",
         "Fix Commit": "eb30c321f41880b35a7af069f7f52fd98d584616",
@@ -1646,7 +1646,7 @@
     },
     {
         "Id": "HerodotusDev/offchain-evm-headers-processor/abdk_Behaviour_is_undefined_if_mmr_offset_is_not_range_checked.",
-        "Path": "dataset/dataset/cairo/HerodotusDev/offchain-evm-headers-processor/abdk_Behaviour_is_undefined_if_mmr_offset_is_not_range_checked",
+        "Path": "dataset/cairo/HerodotusDev/offchain-evm-headers-processor/abdk_Behaviour_is_undefined_if_mmr_offset_is_not_range_checked",
         "Project": "https://github.com/HerodotusDev/offchain-evm-headers-processor",
         "Commit": "0xb14e74a5a67bd4882383993036658a57f871e12b",
         "Fix Commit": "af97dae8be5cca025f42da9334596de50762c855",
@@ -1681,7 +1681,7 @@
     },
     {
         "Id": "HerodotusDev/offchain-evm-headers-processor/abdk_Behaviour_is_undefined_if_mmr_len_is_not_range_checked.",
-        "Path": "dataset/dataset/cairo/HerodotusDev/offchain-evm-headers-processor/abdk_Behaviour_is_undefined_if_mmr_len_is_not_range_checked",
+        "Path": "dataset/cairo/HerodotusDev/offchain-evm-headers-processor/abdk_Behaviour_is_undefined_if_mmr_len_is_not_range_checked",
         "Project": "https://github.com/HerodotusDev/offchain-evm-headers-processor",
         "Commit": "0xb14e74a5a67bd4882383993036658a57f871e12b",
         "Fix Commit": "af97dae8be5cca025f42da9334596de50762c855",
@@ -1716,7 +1716,7 @@
     },
     {
         "Id": "HerodotusDev/offchain-evm-headers-processor/abdk_Implicitly_requires_“value”_to_fit_into_128+32=160_bits.",
-        "Path": "dataset/dataset/cairo/HerodotusDev/offchain-evm-headers-processor/abdk_Implicitly_requires_value_to_fit_into_128_32_160_bits",
+        "Path": "dataset/cairo/HerodotusDev/offchain-evm-headers-processor/abdk_Implicitly_requires_value_to_fit_into_128_32_160_bits",
         "Project": "https://github.com/HerodotusDev/offchain-evm-headers-processor",
         "Commit": "0xb14e74a5a67bd4882383993036658a57f871e12b",
         "Fix Commit": "af97dae8be5cca025f42da9334596de50762c855",
@@ -1751,7 +1751,7 @@
     },
     {
         "Id": "HerodotusDev/offchain-evm-headers-processor/abdk_Behaviour_is_undefined_if_peaks_len_is_not_range_checked.",
-        "Path": "dataset/dataset/cairo/HerodotusDev/offchain-evm-headers-processor/abdk_Behaviour_is_undefined_if_peaks_len_is_not_range_checked",
+        "Path": "dataset/cairo/HerodotusDev/offchain-evm-headers-processor/abdk_Behaviour_is_undefined_if_peaks_len_is_not_range_checked",
         "Project": "https://github.com/HerodotusDev/offchain-evm-headers-processor",
         "Commit": "0xb14e74a5a67bd4882383993036658a57f871e12b",
         "Fix Commit": "af97dae8be5cca025f42da9334596de50762c855",
@@ -1786,7 +1786,7 @@
     },
     {
         "Id": "0xPolygonHermez/zkevm-proverjs/hexens_Missing_constraint_in_PIL_leading_to_execution_flow_hijack",
-        "Path": "dataset/dataset/pil/0xPolygonHermez/zkevm-proverjs/hexens_Missing_constraint_in_PIL_leading_to_execution_flow_hijack",
+        "Path": "dataset/pil/0xPolygonHermez/zkevm-proverjs/hexens_Missing_constraint_in_PIL_leading_to_execution_flow_hijack",
         "Project": "https://github.com/0xPolygonHermez/zkevm-proverjs",
         "Commit": "0x313dc",
         "Fix Commit": "9d6a8948636c05d508694a90d192a0713562ce29",
@@ -1821,7 +1821,7 @@
     },
     {
         "Id": "0xPolygonHermez/zkevm-proverjs/hexens_Missing_constraint_in_PIL_leading_to_proving_fake_inclusion_in_the_SMT",
-        "Path": "dataset/dataset/pil/0xPolygonHermez/zkevm-proverjs/hexens_Missing_constraint_in_PIL_leading_to_proving_fake_inclusion_in_the_SMT",
+        "Path": "dataset/pil/0xPolygonHermez/zkevm-proverjs/hexens_Missing_constraint_in_PIL_leading_to_proving_fake_inclusion_in_the_SMT",
         "Project": "https://github.com/0xPolygonHermez/zkevm-proverjs",
         "Commit": "0x313dc",
         "Fix Commit": "40d1846b50aa6b9e006a85fde99261a8c5c7b8f2",
@@ -1856,7 +1856,7 @@
     },
     {
         "Id": "penumbra-zone/penumbra/nccgroup_Invalid_Comparisons_on_Fixed-Point_Values_are_Accepted_by_the_Circuit_Verifier",
-        "Path": "dataset/dataset/arkworks/penumbra-zone/penumbra/nccgroup_Invalid_Comparisons_on_Fixed_Point_Values_are_Accepted_by_the_Circuit_Verifier",
+        "Path": "dataset/arkworks/penumbra-zone/penumbra/nccgroup_Invalid_Comparisons_on_Fixed_Point_Values_are_Accepted_by_the_Circuit_Verifier",
         "Project": "https://github.com/penumbra-zone/penumbra",
         "Commit": "0xa43b594",
         "Fix Commit": "954b3b2e678075baf1e06279ea41bb2823e540c76ddb80ba44b52476dfd3f55f",
@@ -1891,7 +1891,7 @@
     },
     {
         "Id": "penumbra-zone/penumbra/zksecurity_Unsound_fixed-point_addition",
-        "Path": "dataset/dataset/arkworks/penumbra-zone/penumbra/zksecurity_Unsound_fixed_point_addition",
+        "Path": "dataset/arkworks/penumbra-zone/penumbra/zksecurity_Unsound_fixed_point_addition",
         "Project": "https://github.com/penumbra-zone/penumbra",
         "Commit": "0xa43b594",
         "Fix Commit": "ddab070acff5567f23eb36a4a877358f2c062d9b",
@@ -1926,7 +1926,7 @@
     },
     {
         "Id": "penumbra-zone/penumbra/zksecurity_Unsound_fixed-point_multiplication",
-        "Path": "dataset/dataset/arkworks/penumbra-zone/penumbra/zksecurity_Unsound_fixed_point_multiplication",
+        "Path": "dataset/arkworks/penumbra-zone/penumbra/zksecurity_Unsound_fixed_point_multiplication",
         "Project": "https://github.com/penumbra-zone/penumbra",
         "Commit": "0xa43b594",
         "Fix Commit": "1fdbe1ea10a270180c035aeb8bb7f4a3ff25d99e",
@@ -1961,7 +1961,7 @@
     },
     {
         "Id": "penumbra-zone/penumbra/zksecurity_Double_spending_due_to_incoming_viewing_key_(ivk)_derivation_not_constrained",
-        "Path": "dataset/dataset/arkworks/penumbra-zone/penumbra/zksecurity_Double_spending_due_to_incoming_viewing_key_ivk_derivation_not_constrained",
+        "Path": "dataset/arkworks/penumbra-zone/penumbra/zksecurity_Double_spending_due_to_incoming_viewing_key_ivk_derivation_not_constrained",
         "Project": "https://github.com/penumbra-zone/penumbra",
         "Commit": "0xa43b594",
         "Fix Commit": "e019839939968012ed2d24cf65bdd86d239b50e9",
@@ -1993,6 +1993,41 @@
         "Short Description of the Exploit": "",
         "Proposed Mitigation": "To resolve the issue of double spending due to unconstrained incoming viewing key (ivk) derivation, Penumbra addressed the problem by computing the reduced value `res` outside the circuit and proving that it correctly satisfies the equation `ivk_mod_q = quotient * r_modulus + res` modulo the circuit field `Fq`, with `quotient` being constrained to `<= 4`. This fix ensures that the modulus of the scalar field `Fr` is smaller than the circuit field `Fq`.",
         "title": "Double spending due to incoming viewing key (ivk) derivation not constrained"
+    },
+    {
+        "Id": "arkworks-rs/r1cs-std/Enforce_mul_by_inverse",
+        "Path": "dataset/arkworks-rs/r1cs-std/Enforce_mul_by_inverse",
+        "Project": "https://github.com/arkworks-rs/r1cs-std",
+        "Commit": "",
+        "Fix Commit": "",
+        "DSL": "Arkworks",
+        "Vulnerability": "Under-Constrained",
+        "Impact": "Soundness",
+        "Root Cause": "Wrong translation of logic into constraints",
+        "Reproduced": false,
+        "Location": {
+            "Path": "",
+            "Function": "",
+            "Line": ""
+        },
+        "Source": {
+            "Audit Report": {
+                "Source Link": "https://github.com/arkworks-rs/r1cs-std/pull/70",
+                "Bug ID": "Enforce mul_by_inverse"
+            }
+        },
+        "Commands": {
+            "Setup Environment": "",
+            "Reproduce": "",
+            "Compile and Preprocess": "",
+            "Positive Test": "",
+            "Find Exploit": "",
+            "Clean": ""
+        },
+        "Short Description of the Vulnerability": "",
+        "Short Description of the Exploit": "",
+        "Proposed Mitigation": "",
+        "title": "Enforce mul_by_inverse"
     },
     {
         "Id": "zkopru-network/zkopru/leastauthority-previously-correct-ownership-proof-disabled-via-code-changes",
@@ -2031,7 +2066,7 @@
     },
     {
         "Id": "zkopru-network/zkopru/leastauthority_Circuit_Does_Not_Check_the_ERC-20_Sum_Correctly_",
-        "Path": "dataset/dataset/circom/zkopru-network/zkopru/leastauthority_Circuit_Does_Not_Check_the_ERC_20_Sum_Correctly_",
+        "Path": "dataset/circom/zkopru-network/zkopru/leastauthority_Circuit_Does_Not_Check_the_ERC_20_Sum_Correctly_",
         "Project": "https://github.com/zkopru-network/zkopru",
         "Commit": "0x4236fc8a5cbf73b7f3860d87a1a447eea8d7abd4",
         "Fix Commit": "30a19913ce1a018ce26a34d3d6621fcd38579171",
@@ -2066,7 +2101,7 @@
     },
     {
         "Id": "privacy-scaling-explorations/maci/ProcessMessages_circuit_to_prevent_message_censorship_by_the_coordinator",
-        "Path": "dataset/dataset/circom/privacy-scaling-explorations/maci/ProcessMessages_circuit_to_prevent_message_censorship_by_the_coordinator",
+        "Path": "dataset/circom/privacy-scaling-explorations/maci/ProcessMessages_circuit_to_prevent_message_censorship_by_the_coordinator",
         "Project": "https://github.com/privacy-scaling-explorations/maci",
         "Commit": "",
         "Fix Commit": "",
@@ -2101,7 +2136,7 @@
     },
     {
         "Id": "privacy-scaling-explorations/maci/hashcloak_Data_are_not_fully_verified_during_state_update",
-        "Path": "dataset/dataset/circom/privacy-scaling-explorations/maci/hashcloak_Data_are_not_fully_verified_during_state_update",
+        "Path": "dataset/circom/privacy-scaling-explorations/maci/hashcloak_Data_are_not_fully_verified_during_state_update",
         "Project": "https://github.com/privacy-scaling-explorations/maci",
         "Commit": "0x2db5f6",
         "Fix Commit": "6df6a4054da926b07f35c5befab4f1f8af33dcc6",
@@ -2171,7 +2206,7 @@
     },
     {
         "Id": "personaelabs/spartan-ecdsa/yacademy_Knowledge_of_any_member_signature_allow_to_generate_proof_of_membership",
-        "Path": "dataset/dataset/circom/personaelabs/spartan-ecdsa/yacademy_Knowledge_of_any_member_signature_allow_to_generate_proof_of_membership",
+        "Path": "dataset/circom/personaelabs/spartan-ecdsa/yacademy_Knowledge_of_any_member_signature_allow_to_generate_proof_of_membership",
         "Project": "https://github.com/personaelabs/spartan-ecdsa",
         "Commit": "0x3386b30d9b",
         "Fix Commit": "",
@@ -2827,7 +2862,7 @@
     },
     {
         "Id": "reclaimprotocol/circom-chacha20/zksecurity_Unsound_XOR_gadget",
-        "Path": "dataset/dataset/circom/reclaimprotocol/circom-chacha20/zksecurity_Unsound_XOR_gadget",
+        "Path": "dataset/circom/reclaimprotocol/circom-chacha20/zksecurity_Unsound_XOR_gadget",
         "Project": "https://github.com/reclaimprotocol/circom-chacha20",
         "Commit": "0xef9f5a5ad899d852740a26b30eabe5765673c71f",
         "Fix Commit": "ef9f5a5ad899d852740a26b30eabe5765673c71f",
@@ -2862,7 +2897,7 @@
     },
     {
         "Id": "reclaimprotocol/circom-chacha20/zksecurity_Potentially_Easy-to-Misuse_Interface",
-        "Path": "dataset/dataset/circom/reclaimprotocol/circom-chacha20/zksecurity_Potentially_Easy_to_Misuse_Interface",
+        "Path": "dataset/circom/reclaimprotocol/circom-chacha20/zksecurity_Potentially_Easy_to_Misuse_Interface",
         "Project": "https://github.com/reclaimprotocol/circom-chacha20",
         "Commit": "0xef9f5a5ad899d852740a26b30eabe5765673c71f",
         "Fix Commit": "959fa1557225aed748a5d5ed468222c110faaef9",
@@ -2897,7 +2932,7 @@
     },
     {
         "Id": "reclaimprotocol/circom-chacha20/zksecurity_Unsound_Addition_Gadget",
-        "Path": "dataset/dataset/circom/reclaimprotocol/circom-chacha20/zksecurity_Unsound_Addition_Gadget",
+        "Path": "dataset/circom/reclaimprotocol/circom-chacha20/zksecurity_Unsound_Addition_Gadget",
         "Project": "https://github.com/reclaimprotocol/circom-chacha20",
         "Commit": "0xef9f5a5ad899d852740a26b30eabe5765673c71f",
         "Fix Commit": "4551ca64c9fe536b7b9b7498a1feb1ecdc847474",
@@ -3139,40 +3174,5 @@
         "Short Description of the Exploit": "Generate a correct witness first, then modify entry 2 to 5 to any field element.",
         "Proposed Mitigation": "Change the code to `out[i] <== a[i] ^ b[i]`.",
         "title": "ArrayXOR is under constrained"
-    },
-    {
-        "Id": "arkworks-rs/r1cs-std/Enforce_mul_by_inverse",
-        "Path": "dataset/dataset/arkworks-rs/r1cs-std/Enforce_mul_by_inverse",
-        "Project": "https://github.com/arkworks-rs/r1cs-std",
-        "Commit": "",
-        "Fix Commit": "",
-        "DSL": "",
-        "Vulnerability": "Under-Constrained",
-        "Impact": "Soundness",
-        "Root Cause": "Wrong translation of logic into constraints",
-        "Reproduced": false,
-        "Location": {
-            "Path": "",
-            "Function": "",
-            "Line": ""
-        },
-        "Source": {
-            "Audit Report": {
-                "Source Link": "https://github.com/arkworks-rs/r1cs-std/pull/70",
-                "Bug ID": "Enforce mul_by_inverse"
-            }
-        },
-        "Commands": {
-            "Setup Environment": "",
-            "Reproduce": "",
-            "Compile and Preprocess": "",
-            "Positive Test": "",
-            "Find Exploit": "",
-            "Clean": ""
-        },
-        "Short Description of the Vulnerability": "",
-        "Short Description of the Exploit": "",
-        "Proposed Mitigation": "",
-        "title": "Enforce mul_by_inverse"
     }
 ]
