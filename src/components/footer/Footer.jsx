@@ -95,6 +95,25 @@ function Footer() {
             </Typography>
             <ul>
               <li>
+                <a
+                  href="https://github.com/zksecurity/zkbugs"
+                  className="hover:text-white"
+                >
+                Repo
+              </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.zksecurity.xyz/"
+                  className="hover:text-white"
+                >
+               zkSecurity
+              </a>
+              </li>
+              <li>
+                <NavLink to={paths.home}>Bugs</NavLink>
+              </li>
+              <li>
                 <NavLink to={paths.home}>Bugs</NavLink>
               </li>
               <li>
