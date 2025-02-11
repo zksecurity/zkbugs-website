@@ -43,6 +43,18 @@ export class JsonDTO {
       };
     });
   }
+
+  static convertReports(reportsJSON) {
+    const REPORT_BASE_URL =
+      "https://github.com/zksecurity/zkbugs/blob/main/reports/";
+
+    const reportsCamel = this.convertToCamelCase(reportsJSON, wordToCamel);
+    return reportsCamel.map((report) => ({
+      ...report,
+      report: `${REPORT_BASE_URL}${report.file}`,
+    }));
+  }
+
   static convertTools(toolsJSON) {
     const toolsCamel = this.convertToCamelCase(toolsJSON, wordToCamel);
     return toolsCamel.map((tool, index) => ({ ...tool, id: `tool-${index}` }));

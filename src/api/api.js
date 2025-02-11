@@ -7,6 +7,13 @@ const fetchBugs = async () => {
   return bugs;
 };
 
+const fetchReports = async () => {
+  const response = await fetch("/dataset/reports.json");
+  const rawData = await response.json();
+  const reports = JsonDTO.convertReports(rawData);
+  return reports;
+};
+
 const fetchDescriptions = async () => {
   const response = await fetch("/dataset/descriptions.json");
   const rawData = await response.json();
@@ -23,6 +30,7 @@ const fetchSecurityTools = async () => {
 
 export const api = {
   fetchBugs,
+  fetchReports,
   fetchDescriptions,
   fetchSecurityTools,
 };
