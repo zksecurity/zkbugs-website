@@ -5,6 +5,7 @@ import Header from "../components/header/Header";
 import Footer from "../components/footer/Footer";
 
 const HomePage = lazy(() => import("../pages/home/HomePage"));
+const ReportsPage = lazy(() => import("../pages/reports/ReportsPage"));
 const ToolsPage = lazy(() => import("../pages/tools/ToolsPage"));
 const DescriptionsPage = lazy(() =>
   import("../pages/descriptions/DescriptionsPage")
@@ -17,6 +18,7 @@ function RootLayout() {
       <Header />
       <Routes>
         <Route path={paths.home} element={<HomePage />} />
+        <Route path={paths.reports} element={<ReportsPage />} />
         <Route path={paths.descriptions} element={<DescriptionsPage />} />
         <Route path={paths.paper} element={<PaperPage />} />
         <Route path={paths.tools} element={<ToolsPage />} />
