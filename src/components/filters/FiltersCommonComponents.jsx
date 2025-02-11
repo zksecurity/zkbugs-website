@@ -15,6 +15,7 @@ export const ContainerStyled = styled("div")({
   },
   "& .filter-input": {
     minWidth: "180px",
+    maxWidth: "300px",
   },
 });
 
