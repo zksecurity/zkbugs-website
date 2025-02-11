@@ -114,9 +114,6 @@ function Footer() {
                 <NavLink to={paths.home}>Bugs</NavLink>
               </li>
               <li>
-                <NavLink to={paths.home}>Bugs</NavLink>
-              </li>
-              <li>
                 <NavLink to={paths.descriptions}>Descriptions</NavLink>
               </li>
               <li>
