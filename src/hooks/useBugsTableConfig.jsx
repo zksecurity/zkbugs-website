@@ -125,7 +125,7 @@ const columnsStaticConfig = [
   },
 ];
 
-const useTableConfig = (data) => {
+const useBugsTableConfig = (data) => {
   const [columns, setColumns] = useState([]);
   const [rows, setRows] = useState([]);
   useEffect(() => {
@@ -137,4 +137,4 @@ const useTableConfig = (data) => {
   return { rows, columns };
 };
 
-export default useTableConfig;
+export default useBugsTableConfig;

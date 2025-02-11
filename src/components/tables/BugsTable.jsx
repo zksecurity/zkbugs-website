@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { DataGrid } from "@mui/x-data-grid";
 import { styled } from "@mui/material";
-import useTableConfig from "../../hooks/useTableConfig";
+import useBugsTableConfig from "../../hooks/useBugsTableConfig";
 
 const DataGridStyled = styled(DataGrid)(({ theme }) => ({
   "& .MuiDataGrid-columnHeaders [role=row]": {
@@ -18,7 +18,7 @@ const DataGridStyled = styled(DataGrid)(({ theme }) => ({
 }));
 
 function BugsTable({ data }) {
-  const { rows, columns } = useTableConfig(data);
+  const { rows, columns } = useBugsTableConfig(data);
   return (
     <DataGridStyled
       rows={rows}
