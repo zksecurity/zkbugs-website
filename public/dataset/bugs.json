@@ -1505,6 +1505,111 @@
         "title": "Constant assignment to check bug"
     },
     {
+        "Id": "risc0/risc0/ghsa-g3qg-6746-3mg9",
+        "Project": "https://github.com/risc0/risc0",
+        "Commit": "98387806fe8348d87e32974468c6f35853356ad5",
+        "Fix Commit": "67f2d81c638bff5f4fcfe11a084ebb34799b7a89",
+        "zkVM": true,
+        "DSL": "risc0",
+        "Vulnerability": "Under-Constrained",
+        "Impact": "Soundness",
+        "Root Cause": "Missing Constraint",
+        "Reproduced": false,
+        "Location": {
+            "Path": "risc0/circuit/rv32im/src/execute/rv32im.rs",
+            "Function": "step_compute, step_store",
+            "Line": "327, 504"
+        },
+        "Source": {
+            "GitHub Security Advisory": {
+                "Source Link": "https://github.com/risc0/risc0/security/advisories/GHSA-g3qg-6746-3mg9",
+                "Bug ID": "GHSA-g3qg-6746-3mg9: zkVM Underconstrained Vulnerability"
+            }
+        },
+        "Commands": {
+            "Setup Environment": "./zkbugs_setup.sh",
+            "Reproduce": "",
+            "Compile and Preprocess": "",
+            "Positive Test": "",
+            "Find Exploit": "",
+            "Clean": "./zkbugs_clean.sh"
+        },
+        "Short Description of the Vulnerability": "Due to a missing constraint in the rv32im circuit, any 3-register RISC-V instruction (including remu and divu) in risc0-zkvm 2.0.0-2.0.2 are vulnerable to an attack by a malicious prover. When rs1 == rs2, the vulnerable code performs two register reads to the same address in a single memory cycle, but the circuit's memory subsystem lacks proper constraints to handle multiple accesses to the same address within one cycle, creating an underconstrained state. Reported by Christoph Hochrainer via Hackenproof bug bounty. Fixed in PR #3181 (squash merge).",
+        "Short Description of the Exploit": "Would require crafting malicious proofs that exploit the underconstrained double-read scenario when rs1 == rs2 in 3-register RISC-V instructions.",
+        "Proposed Mitigation": "Fix implemented in zirgen/pull/238 (circuit fix) and risc0/pull/3181 (risc0 update). Upgrade to risc0-zkvm version 2.1.0 or later, or risc0-circuit-rv32im version 2.0.4 or later. On-chain verifiers were disabled via estop mechanism.",
+        "title": "zkVM underconstrained vulnerability in 3-register instructions"
+    },
+    {
+        "Id": "risc0/risc0/ghsa-5c79-r6x7-3jx9",
+        "Project": "https://github.com/risc0/risc0",
+        "Commit": "a165a6e3443fbc2e4f7093d7552399cd56337928",
+        "Fix Commit": "1e6ca468f3fb94ef6939b4f7875848312a708528",
+        "zkVM": true,
+        "DSL": "risc0",
+        "Vulnerability": "Under-Constrained",
+        "Impact": "Soundness",
+        "Root Cause": "Missing Constraint",
+        "Reproduced": false,
+        "Location": {
+            "Path": "risc0/circuit/rv32im-sys/cxx/step_exec.cpp",
+            "Function": "step_exec",
+            "Line": "6053-6063 (example of cross-cycle validation; 16+ similar blocks throughout file missing in buggy version)"
+        },
+        "Source": {
+            "GitHub Security Advisory": {
+                "Source Link": "https://github.com/risc0/risc0/security/advisories/GHSA-5c79-r6x7-3jx9",
+                "Bug ID": "GHSA-5c79-r6x7-3jx9: Insufficient zkVM validation of multi-step instruction modes"
+            }
+        },
+        "Commands": {
+            "Setup Environment": "./zkbugs_setup.sh",
+            "Reproduce": "",
+            "Compile and Preprocess": "",
+            "Positive Test": "",
+            "Find Exploit": "",
+            "Clean": "./zkbugs_clean.sh"
+        },
+        "Short Description of the Vulnerability": "Certain RISC-V instructions require multiple zkVM cycles for execution. During the first cycle of a multi-cycle instruction, the zkVM sets a major_mode which tells the zkVM how to continue the instruction during the subsequent cycle. Prior to v1.1.0, the zkVM circuit lacked constraints to ensure that the major mode had definitively been set by the previous instruction, including missing nextMajor register, majorMux component, and extern functions (extern_isTrap, extern_setUserMode) for mode validation. This under-constrained circuit could potentially allow invalid proofs to verify.",
+        "Short Description of the Exploit": "Potential attack would require manipulating the major mode during multi-cycle RISC-V instruction execution without proper constraints to generate invalid proofs that successfully verify.",
+        "Proposed Mitigation": "Fixed in v1.1.0 (commit 1e6ca468f from Aug 2, 2024) by comprehensive circuit update adding: (1) nextMajor register to BodyStep, (2) majorMux and majorSelect components, (3) extern_isTrap and extern_setUserMode functions. Advisory published Sep 25, 2024 recommends >= v1.1.1. Official verifier contracts deprecated verification of <1.1.1 receipts as of October 31, 2024.",
+        "title": "Insufficient zkVM validation of multi-step instruction modes"
+    },
+    {
+        "Id": "risc0/risc0/ghsa-f6rc-24x4-ppxp",
+        "Project": "https://github.com/risc0/risc0",
+        "Commit": "c8fd3bd2e2e18ad7a5abce213a376432116db039",
+        "Fix Commit": "bef7bf580eb13d5467074b5f6075a986734d3fe5",
+        "zkVM": true,
+        "DSL": "risc0",
+        "Vulnerability": "Under-Constrained",
+        "Impact": "Soundness",
+        "Root Cause": "Missing Constraint",
+        "Reproduced": false,
+        "Location": {
+            "Path": "risc0/circuit/rv32im-sys/kernels/cxx/steps.cpp",
+            "Function": "exec_DoDiv",
+            "Line": "1335-1355"
+        },
+        "Source": {
+            "GitHub Security Advisory": {
+                "Source Link": "https://github.com/risc0/risc0/security/advisories/GHSA-f6rc-24x4-ppxp",
+                "Bug ID": "GHSA-f6rc-24x4-ppxp: Underconstrained Vulnerability Division"
+            }
+        },
+        "Commands": {
+            "Setup Environment": "./zkbugs_setup.sh",
+            "Reproduce": "",
+            "Compile and Preprocess": "",
+            "Positive Test": "",
+            "Find Exploit": "",
+            "Clean": "./zkbugs_clean.sh"
+        },
+        "Short Description of the Vulnerability": "Two issues were found in the risc0-circuit-rv32im circuit: (1) For some inputs to signed integer division, the circuit allowed two outputs, only one of which was valid. (2) The result of division by zero was underconstrained. This vulnerability was identified using the Picus tool from Veridise. Affected versions: risc0-zkvm >= 2.0, < 2.2.",
+        "Short Description of the Exploit": "Would require crafting inputs to signed division operations that produce invalid outputs, or exploiting underconstrained division by zero.",
+        "Proposed Mitigation": "Fixed in PR #3235 and zirgen issue #249. Upgrade to risc0-zkvm version 2.2.0 or later, or risc0-circuit-rv32im version 3.0.0 or later. On-chain verifiers were disabled via estop mechanism.",
+        "title": "Underconstrained vulnerability in division"
+    },
+    {
         "Id": "starkware-libs/stark-perpetual/abdk_This_function_cannot_handle_the_case_when_n_risk_factor_segments_is_zero.",
         "Path": "dataset/cairo/starkware-libs/stark-perpetual/abdk_This_function_cannot_handle_the_case_when_n_risk_factor_segments_is_zero",
         "Project": "https://github.com/starkware-libs/stark-perpetual",
@@ -2030,6 +2135,286 @@
         "title": "Enforce mul_by_inverse"
     },
     {
+        "Id": "openvm-org/openvm/GHSA-4w7p-8f9q-f4g2",
+        "Project": "https://github.com/openvm-org/openvm",
+        "Commit": "7548bdf844db53c0a6fc9ed9f153c54422c6cfa4",
+        "Fix Commit": "bdb4831fefed13b0741d3a052d434a9c995c6d5d",
+        "zkVM": true,
+        "DSL": "Plonky3",
+        "Vulnerability": "Fiat-Shamir Issue",
+        "Impact": "Soundness",
+        "Root Cause": "Fiat-Shamir",
+        "Reproduced": false,
+        "Location": {
+            "Path": "extensions/native/recursion/src/fri/mod.rs, extensions/native/recursion/src/fri/two_adic_pcs.rs",
+            "Function": "verify_query, verify_two_adic_pcs",
+            "Line": "63, 57"
+        },
+        "Source": {
+            "GitHub Security Advisory": {
+                "Source Link": "https://github.com/openvm-org/openvm/security/advisories/GHSA-4w7p-8f9q-f4g2",
+                "Bug ID": "GHSA-4w7p-8f9q-f4g2: Plonky3 missing final polynomial degree check and randomness in FRI verifier"
+            }
+        },
+        "Commands": {
+            "Setup Environment": "./zkbugs_setup.sh",
+            "Reproduce": "",
+            "Compile and Preprocess": "",
+            "Positive Test": "",
+            "Find Exploit": "",
+            "Clean": "./zkbugs_clean.sh"
+        },
+        "Short Description of the Vulnerability": "OpenVM is affected by vulnerabilities in the Plonky3 FRI verifier (Plonky3 CVE GHSA-f69f-5fx9-w9r9). Two issues exist: (1) When rolling in polynomials of lower degree, the FRI prover and verifier were adding low degree polynomials without any randomness (missing beta^2 term). A malicious prover could potentially abuse this to make high degree parts of polynomials cancel out. (2) The native FRI verifier was missing a final polynomial degree check, allowing the prover to pass in a higher than expected degree polynomial without detection. The OpenVM recursive verifier was not affected by the second vulnerability because it fixed final polynomial degree to 0 (constant), but did suffer from the first vulnerability in multi-FRI verification. Projects using OpenVM native verification SDK/CLI (verify_app_proof) are affected by both vulnerabilities. Projects using recursive verifier including EVM smart contract verifier are affected by the first vulnerability. Fixed in v1.2.0 via PR #1703.",
+        "Short Description of the Exploit": "Would require crafting FRI proofs that exploit missing randomness to cancel out high degree polynomial terms, or pass polynomials with incorrect final degree that bypass verification checks.",
+        "Proposed Mitigation": "Update recursive verifier to match Plonky3 fixes: (1) Introduce betas_squared array to precompute and cache beta^2 values for proper randomness when folding and rolling in reduced opening terms. (2) Enforce that proof.final_poly.len() equals config.final_poly_len(). Fixed in v1.2.0 by updating Plonky3 dependency and modifying OpenVM's recursive verifier implementation.",
+        "title": "Plonky3 missing final polynomial degree check and randomness in FRI verifier"
+    },
+    {
+        "Id": "openvm-org/openvm/GHSA-jf2r-x3j4-23m7",
+        "Project": "https://github.com/openvm-org/openvm",
+        "Commit": "f41640c37bc5468a0775a38098053fe37ea3538a",
+        "Fix Commit": "68da4b50c033da5603517064aa0a08e1bbf70a01",
+        "zkVM": true,
+        "DSL": "Plonky3",
+        "Vulnerability": "Under-Constrained",
+        "Impact": "Soundness",
+        "Root Cause": "Other Programming Errors",
+        "Reproduced": false,
+        "Location": {
+            "Path": "extensions/rv32im/circuit/src/auipc/core.rs",
+            "Function": "Rv32AuipcCoreAir::eval, Rv32AuipcCoreChip::execute_instruction",
+            "Line": "133, 245"
+        },
+        "Source": {
+            "GitHub Security Advisory": {
+                "Source Link": "https://github.com/openvm-org/openvm/security/advisories/GHSA-jf2r-x3j4-23m7",
+                "Bug ID": "CVE-2025-46723, GHSA-jf2r-x3j4-23m7: Byte decomposition of pc in AUIPC chip can overflow"
+            }
+        },
+        "Commands": {
+            "Setup Environment": "./zkbugs_setup.sh",
+            "Reproduce": "",
+            "Compile and Preprocess": "",
+            "Positive Test": "",
+            "Find Exploit": "",
+            "Clean": "./zkbugs_clean.sh"
+        },
+        "Short Description of the Vulnerability": "The AUIPC (Add Upper Immediate to PC) chip in OpenVM's RISC-V circuit contains an off-by-one error in byte decomposition logic for the program counter. A typo in iterator method chaining (for (i, limb) in pc_limbs.iter().skip(1).enumerate()) causes enumeration to produce indices 0,1,2 when the code expects 1,2,3. This makes the condition 'if i == pc_limbs.len() - 1' never trigger for the highest limb pc_limbs[3], resulting in it being range-checked to 8 bits instead of the required 6 bits. The weakened constraint allows the decomposed representation of pc to overflow the BabyBear field, enabling a malicious prover to make the AUIPC instruction's destination register take an arbitrary incorrect value. This bug was ironically introduced as a typo while fixing a previous vulnerability (Cantina finding #21). Affected version: 1.0.0, patched in 1.1.0.",
+        "Short Description of the Exploit": "An attacker exploits the insufficient range check on pc_limbs[3] by constructing a witness where the byte decomposition of the program counter intentionally overflows the BabyBear field. Since pc_limbs[3] accepts values up to 255 (8-bit) instead of the correct maximum of 63 (6-bit), the prover can craft limb values such that the reconstructed pc differs from the actual program counter value, breaking the integrity of the AUIPC instruction which computes rd = pc + (imm << 12) and allowing the destination register to be set to an attacker-controlled value.",
+        "Proposed Mitigation": "Fix the iterator method order from .skip(1).enumerate() to .enumerate().skip(1). This ensures enumeration happens before skipping, producing indices 1,2,3 as expected by the logic. With correct indices, the conditional 'if i == pc_limbs.len() - 1' triggers when i equals 3 (the last limb index), properly applying the 6-bit range check to pc_limbs[3] to prevent field overflow.",
+        "title": "AUIPC PC Byte Decomposition Overflow Due to Iterator Off-by-One Error"
+    },
+    {
+        "Id": "succinctlabs/sp1/ghsa-f77q-r5qm-w4m8",
+        "Project": "https://github.com/succinctlabs/sp1",
+        "Commit": "798b695ec682fd922698df2b83857ecfc17c3195",
+        "Fix Commit": "95d5df798738aaa6b348a3684602737d6ff74014",
+        "zkVM": true,
+        "DSL": "Plonky3",
+        "Vulnerability": "Under-Constrained",
+        "Impact": "Soundness",
+        "Root Cause": "Arithmetic Field Issues",
+        "Reproduced": false,
+        "Location": {
+            "Path": "crates/recursion/gnark-ffi/go/sp1/babybear/babybear.go",
+            "Function": "invF, InvE",
+            "Line": "136, 255"
+        },
+        "Source": {
+            "GitHub Security Advisory": {
+                "Source Link": "https://github.com/succinctlabs/sp1/security/advisories/GHSA-f77q-r5qm-w4m8",
+                "Bug ID": "GHSA-f77q-r5qm-w4m8: Insufficient range checks of BabyBear arithmetic"
+            }
+        },
+        "Commands": {
+            "Setup Environment": "./zkbugs_setup.sh",
+            "Reproduce": "",
+            "Compile and Preprocess": "",
+            "Positive Test": "",
+            "Find Exploit": "",
+            "Clean": "./zkbugs_clean.sh"
+        },
+        "Short Description of the Vulnerability": "The Gnark recursion circuit constrains arithmetic over BabyBear when the native field is BN254. Functions like invF and InvE used values generated by hints that were not appropriately range checked to ensure they were less than the BabyBear modulus, allowing potential soundness violations.",
+        "Short Description of the Exploit": "A malicious prover can provide hint values for inverse calculations that are between 2013265921 (BabyBear modulus) and 2147483647 (2^31-1). These values pass the 31-bit range check but represent invalid BabyBear field elements, potentially allowing the prover to break soundness by using incorrect inverse values that still satisfy the multiplication constraint modulo BN254.",
+        "Proposed Mitigation": "Add proper range checks in InvF and InvE functions to ensure all Bn254 values are constrained to be less than the BabyBear modulus.",
+        "title": "Insufficient range checks of BabyBear arithmetic"
+    },
+    {
+        "Id": "succinctlabs/sp1/ghsa-c873-wfhp-wx5m-1",
+        "Project": "https://github.com/succinctlabs/sp1",
+        "Commit": "1fa7d2050e6c0a5f6fc154a395f3e967022f7035",
+        "Fix Commit": "7e2023b2cbd3c2c8e96399ef52784dd2ec08f617",
+        "zkVM": true,
+        "DSL": "Plonky3",
+        "Vulnerability": "Backend Issue",
+        "Impact": "Soundness",
+        "Root Cause": "Missing/Incorrect Verifier Check",
+        "Reproduced": false,
+        "Location": {
+            "Path": "crates/stark/src/verifier.rs",
+            "Function": "verify_shard",
+            "Line": "30"
+        },
+        "Source": {
+            "GitHub Security Advisory": {
+                "Source Link": "https://github.com/succinctlabs/sp1/security/advisories/GHSA-c873-wfhp-wx5m",
+                "Bug ID": "GHSA-c873-wfhp-wx5m (Bug 1 of 3) Missing verifier checks and fiat-shamir observations"
+            }
+        },
+        "Commands": {
+            "Setup Environment": "./zkbugs_setup.sh",
+            "Reproduce": "",
+            "Compile and Preprocess": "",
+            "Positive Test": "",
+            "Find Exploit": "",
+            "Clean": "./zkbugs_clean.sh"
+        },
+        "Short Description of the Vulnerability": "In SP1's STARK verifier, the prover-provided chip_ordering is used to fetch the index of chips that have preprocessed columns. Prior to v4.0.0, validation that this chip_ordering correctly provides these indexes was missing.",
+        "Short Description of the Exploit": "Would require crafting a malicious proof with incorrect chip_ordering.",
+        "Proposed Mitigation": "Add a check that the indexed chip's name is equal to the name stored in the verifying key's chip information (implemented in v4.0.0). Added after line 131 (in buggy commit) in verify_shard.",
+        "title": "Missing chip_ordering validation in STARK verifier"
+    },
+    {
+        "Id": "succinctlabs/sp1/ghsa-6248-228x-mmvh-2",
+        "Project": "https://github.com/succinctlabs/sp1",
+        "Commit": "ad212dd52bdf8f630ea47f2b58aa94d5b6e79904",
+        "Fix Commit": "aa9a8e40b6527a06764ef0347d43ac9307d7bf63",
+        "zkVM": true,
+        "DSL": "Plonky3",
+        "Vulnerability": "Computational Issue",
+        "Impact": "Soundness",
+        "Root Cause": "Other Programming Errors",
+        "Reproduced": false,
+        "Location": {
+            "Path": "crates/zkvm/entrypoint/src/lib.rs",
+            "Function": "read_vec_raw",
+            "Line": "91"
+        },
+        "Source": {
+            "GitHub Security Advisory": {
+                "Source Link": "https://github.com/succinctlabs/sp1/security/advisories/GHSA-6248-228x-mmvh",
+                "Bug ID": "GHSA-6248-228x-mmvh: (Bug 2 of 2) Insufficient checks in the Rust verifier and embedded allocators"
+            }
+        },
+        "Commands": {
+            "Setup Environment": "./zkbugs_setup.sh",
+            "Reproduce": "",
+            "Compile and Preprocess": "",
+            "Positive Test": "",
+            "Find Exploit": "",
+            "Clean": "./zkbugs_clean.sh"
+        },
+        "Short Description of the Vulnerability": "SP1's embedded allocator had two overflow vulnerabilities: (1) In read_vec_raw function (introduced in v4.0.1), the check 'ptr + capacity > MAX_MEMORY' did not use overflow-safe arithmetic for the addition. When capacity is large (e.g., near u32::MAX), ptr + capacity can wrap around to a small address, bypassing the check. This allows arbitrary memory writes - for example, if a program does two read_vec calls, the second could corrupt the first buffer's memory. (2) The heap size calculation (_end to EMBEDDED_RESERVED_INPUT_START) had no check ensuring _end <= EMBEDDED_RESERVED_INPUT_START, potentially causing heap size overflow and overlap with the hint area. The bump allocator (default) was not affected by either issue. Found during Zellic audit, fixed in v5.0.0.",
+        "Short Description of the Exploit": "Would require crafting malicious input with large capacity values to trigger overflow.",
+        "Proposed Mitigation": "Replace unsafe addition with overflow-safe variant: change 'if ptr + capacity > MAX_MEMORY' to 'if ptr.saturating_add(capacity) > MAX_MEMORY'. saturating_add clamps to usize::MAX on overflow instead of wrapping, ensuring the check cannot be bypassed. Implemented in v5.0.0 (commit aa9a8e40).",
+        "title": "Embedded allocator overflow vulnerabilities"
+    },
+    {
+        "Id": "succinctlabs/sp1/ghsa-8m24-3cfx-9fjw",
+        "Project": "https://github.com/succinctlabs/sp1",
+        "Commit": "6512b56296c2c5e53b10cce1a741173a3d2dde68",
+        "Fix Commit": "79884ffb1a2d10bfd2c272f864033577a052468a",
+        "zkVM": true,
+        "DSL": "Plonky3",
+        "Vulnerability": "Fiat-Shamir Issue",
+        "Impact": "Soundness",
+        "Root Cause": "Fiat-Shamir",
+        "Reproduced": false,
+        "Location": {
+            "Path": "crates/recursion/circuit/src/stark.rs",
+            "Function": "verify_shard",
+            "Line": "60"
+        },
+        "Source": {
+            "GitHub Security Advisory": {
+                "Source Link": "https://github.com/succinctlabs/sp1/security/advisories/GHSA-8m24-3cfx-9fjw",
+                "Bug ID": "GHSA-8m24-3cfx-9fjw: Insufficient observation of cumulative sum"
+            }
+        },
+        "Commands": {
+            "Setup Environment": "./zkbugs_setup.sh",
+            "Reproduce": "",
+            "Compile and Preprocess": "",
+            "Positive Test": "",
+            "Find Exploit": "",
+            "Clean": "./zkbugs_clean.sh"
+        },
+        "Short Description of the Vulnerability": "In the recursive verifier circuit's verify_shard function, the zeta challenge is sampled without first observing the cumulative sum values from the permutation argument into the Fiat-Shamir transcript. The vulnerability affects SP1 prior to v3.0.0, discovered during audit and fixed on October 15, 2024 in PR #1638.",
+        "Short Description of the Exploit": "An attacker could exploit this by crafting a malicious proof where the cumulative sum values are manipulated to break permutation argument soundness. Since zeta and alpha are sampled before cumulative sums are committed to the transcript, these challenge values are independent of the cumulative sums. A malicious prover could potentially choose cumulative sum values that satisfy zeta-dependent constraints while violating the permutation argument's integrity. The attack would require finding witness values that make false constraints appear satisfied when evaluated at the manipulable zeta point.",
+        "Proposed Mitigation": "Fixed in PR #1638 (Oct 15, 2024). The fix modifies verify_shard to observe both global_cumulative_sum and local_cumulative_sum for each chip's opened values into the challenger before sampling alpha and zeta challenges. Upgrade to SP1 v3.0.0 or later.",
+        "title": "Insufficient observation of cumulative sum"
+    },
+    {
+        "Id": "succinctlabs/sp1/ghsa-c873-wfhp-wx5m-2",
+        "Project": "https://github.com/succinctlabs/sp1",
+        "Commit": "4681d4f0298b387f074fc93f8254584db9d258de",
+        "Fix Commit": "4fe8144f1d57b27503f23795320a4e0eedf464c5",
+        "zkVM": true,
+        "DSL": "Plonky3",
+        "Vulnerability": "Under-Constrained",
+        "Impact": "Soundness",
+        "Root Cause": "Missing Input Constraints",
+        "Reproduced": false,
+        "Location": {
+            "Path": "crates/recursion/circuit/src/machine/core.rs",
+            "Function": "verify",
+            "Line": "120"
+        },
+        "Source": {
+            "GitHub Security Advisory": {
+                "Source Link": "https://github.com/succinctlabs/sp1/security/advisories/GHSA-c873-wfhp-wx5m",
+                "Bug ID": "GHSA-c873-wfhp-wx5m (Bug 2 of 3) Missing verifier checks and fiat-shamir observations"
+            }
+        },
+        "Commands": {
+            "Setup Environment": "./zkbugs_setup.sh",
+            "Reproduce": "",
+            "Compile and Preprocess": "",
+            "Positive Test": "",
+            "Find Exploit": "",
+            "Clean": "./zkbugs_clean.sh"
+        },
+        "Short Description of the Vulnerability": "In SP1's recursive verifier, the is_complete boolean flag is used to flag a proof of complete execution. Prior to v4.0.0, this flag was underconstrained in parts of the recursive verifier, such as the first layer of recursion. This allows proofs of partial execution to be verified as proofs of complete execution.",
+        "Short Description of the Exploit": "Would require crafting a proof of partial execution that gets verified as complete execution.",
+        "Proposed Mitigation": "Add appropriate calls to the assert_complete function to constrain the correctness of the is_complete flag in all parts of the recursive verifier (implemented in v4.0.0).",
+        "title": "Underconstrained is_complete flag in recursive verifier"
+    },
+    {
+        "Id": "succinctlabs/sp1/ghsa-6248-228x-mmvh-1",
+        "Project": "https://github.com/succinctlabs/sp1",
+        "Commit": "ad212dd52bdf8f630ea47f2b58aa94d5b6e79904",
+        "Fix Commit": "aa9a8e40b6527a06764ef0347d43ac9307d7bf63",
+        "zkVM": true,
+        "DSL": "Plonky3",
+        "Vulnerability": "Under-Constrained",
+        "Impact": "Soundness",
+        "Root Cause": "Missing Input Constraints",
+        "Reproduced": false,
+        "Location": {
+            "Path": "crates/prover/src/verify.rs",
+            "Function": "verify_compressed, verify_shrink, verify_deferred_proof",
+            "Line": "297, 335, 506"
+        },
+        "Source": {
+            "GitHub Security Advisory": {
+                "Source Link": "https://github.com/succinctlabs/sp1/security/advisories/GHSA-6248-228x-mmvh",
+                "Bug ID": "GHSA-6248-228x-mmvh: (Bug 1 of 2) Insufficient checks in the Rust verifier and embedded allocators"
+            }
+        },
+        "Commands": {
+            "Setup Environment": "./zkbugs_setup.sh",
+            "Reproduce": "",
+            "Compile and Preprocess": "",
+            "Positive Test": "",
+            "Find Exploit": "",
+            "Clean": "./zkbugs_clean.sh"
+        },
+        "Short Description of the Vulnerability": "In SP1's native Rust verifier (crates/prover/src/verify.rs), the verify_compressed, verify_shrink, and verify_deferred_proof functions validated verification keys by checking if their hash was in the precomputed recursion_vk_map, but did not validate that the vk_root field (merkle root of all valid verifying key hashes) in the proof's public values matched the expected precomputed vk_root. This allowed a malicious prover to submit proofs with an arbitrary/invalid vk_root that would still pass verification. The recursive verifier circuit and on-chain verifier were not affected as they correctly checked this issue. Found during Zellic audit, fixed in v5.0.0 (commit aa9a8e40).",
+        "Short Description of the Exploit": "Would require crafting a malicious proof with an invalid vk_root that passes verification in compress/shrink/deferred stages.",
+        "Proposed Mitigation": "Add explicit vk_root validation in the Rust verifier: check if public_values.vk_root != self.recursion_vk_root in verify_compressed, verify_shrink, and verify_deferred_proof functions. Return InvalidPublicValues error if mismatch detected. Implemented in v5.0.0 (commit aa9a8e40 at lines 323, 366, 549).",
+        "title": "Missing vk_root validation in Rust verifier"
+    },
+    {
         "Id": "zkopru-network/zkopru/leastauthority-previously-correct-ownership-proof-disabled-via-code-changes",
         "Path": "dataset/circom/zkopru-network/zkopru/leastauthority_previously_correct_ownership_proof_disabled_via_code_changes",
         "Project": "https://github.com/zkopru-network/zkopru/releases/tag/audit-v1",
@@ -2170,6 +2555,40 @@
         "title": "Data are not fully verified during state update"
     },
     {
+        "Id": "tangle-network/protocol-solidity/veridise_incorrect_initialization_in_membership_circuits",
+        "Project": "https://github.com/tangle-network/protocol-solidity",
+        "Commit": "848d073bb17f0aaffc6d39f594cc59efedeaec89",
+        "Fix Commit": "eeb4fc7a4883d513e3fe3adbe2c447133ccd39f2",
+        "DSL": "Circom",
+        "Vulnerability": "Computational/Hints Error",
+        "Impact": "Soundness",
+        "Root Cause": "Wrong translation of logic into constraints",
+        "Reproduced": true,
+        "Location": {
+            "Path": "circuits/set/membership.circom",
+            "Function": "SetMembership",
+            "Line": "20"
+        },
+        "Source": {
+            "Audit Report": {
+                "Source Link": "https://github.com/zksecurity/zkbugs/blob/main/reports/documents/veridise-tangle-network-protocol-solidity.pdf",
+                "Bug ID": "V-WBT-VUL-006"
+            }
+        },
+        "Commands": {
+            "Setup Environment": "./zkbugs_setup.sh",
+            "Reproduce": "./zkbugs_exploit.sh",
+            "Compile and Preprocess": "./zkbugs_compile_setup.sh",
+            "Positive Test": "./zkbugs_positive_test.sh",
+            "Find Exploit": "./zkbugs_find_exploit.sh",
+            "Clean": "./zkbugs_clean.sh"
+        },
+        "Short Description of the Vulnerability": "The templates `SetMembership` try to check if an element e is in a set S by generating a constraint of the form: for all  s in S, product of (s - e) = 0. They do does this by iterating over elements s of the set S and building the product. The issue is that `product[0]` is initialized to `element` which makes the constarint to be trivailly satisfied when `element` is 0.",
+        "Short Description of the Exploit": "The template `SetMembership` is used to check whether a computed Merkle root belongs to a set of known Merkle roots. A malicious user that knows how to compute a Merkle root equal to 0 could pass along the hashes and generate an invalid proof.",
+        "Proposed Mitigation": "We recommend that `product[0]` is initialized to 1.",
+        "title": "Incorrect Initialization in Membership Circuits"
+    },
+    {
         "Id": "semaphore-protocol/semaphore/veridise-V-SEM-VUL-001",
         "Path": "dataset/circom/semaphore-protocol/semaphore/veridise_no_zero_value_validation",
         "Project": "https://github.com/semaphore-protocol/semaphore",
@@ -2288,7 +2707,7 @@
         "Vulnerability": "Under-Constrained",
         "Impact": "Soundness",
         "Root Cause": "Assigned but Unconstrained",
-        "Reproduced": false,
+        "Reproduced": true,
         "Location": {
             "Path": "circuits/mul.circom",
             "Function": "K",
@@ -2459,6 +2878,281 @@
             "Unirep/Unirep/veridise_missing_range_checks_on_comparison_circuits"
         ],
         "title": "Dark Forest v0.3: Missing Bit Length Check"
+    },
+    {
+        "Id": "selfxyz/self/zksecurity_missing_byte_range_checks_allows_packed_data_pollution",
+        "Project": "https://github.com/selfxyz/self",
+        "Commit": "3905a30aeb19016d22c5493b8b34ade2d118da4e",
+        "Fix Commit": "285f0a9776514c1f03f546d1a03a4da588ba098d",
+        "DSL": "Circom",
+        "Vulnerability": "Under-Constrained",
+        "Impact": "Soundness",
+        "Root Cause": "Wrong translation of logic into constraints",
+        "Reproduced": true,
+        "Location": {
+            "Path": "circuits/circuits/disclose/vc_and_disclose_aadhaar.circom",
+            "Function": "VC_AND_DISCLOSE_Aadhaar",
+            "Line": "41-198"
+        },
+        "Source": {
+            "Audit Report": {
+                "Source Link": "https://github.com/zksecurity/zkbugs/blob/main/reports/documents/zksecurity-self-aadhaar-circuits.pdf",
+                "Bug ID": "#02 - Missing Byte Range Checks Allows Packed Data Pollution"
+            }
+        },
+        "Commands": {
+            "Setup Environment": "./zkbugs_setup.sh",
+            "Reproduce": "./zkbugs_exploit.sh",
+            "Compile and Preprocess": "./zkbugs_compile_setup.sh",
+            "Positive Test": "./zkbugs_positive_test.sh",
+            "Find Exploit": "./zkbugs_find_exploit.sh",
+            "Clean": "./zkbugs_clean.sh"
+        },
+        "Short Description of the Vulnerability": "`PackBytes` is used to pack the revealed data bytes. The template does not constrain each provided input value to be a byte, i.e. in the range [0, 2^8). This allows crafting inputs exceeding 255.",
+        "Short Description of the Exploit": "Using a “negative” (large and close to the modulus) `minimumAge` enables pollution of the final packed output segment (bytes 93–118) that is expected to encode: part of the state, the last 4 digits of the phone number, OFAC result bits, and `minimumAge`.",
+        "Proposed Mitigation": "Add an explicit range check using `Num2Bits(8)`, ensuring `minimumAge` is constrained to a byte",
+        "title": "Missing Byte Range Checks Allows Packed Data Pollution"
+    },
+    {
+        "Id": "selfxyz/self/zksecurity_missing_boolean_constraints_in_the_merkle_tree_path_leads_to_an_attacker_being_able_to_craft_a_fake_merkle_proof_for_an_arbitrary_leaf",
+        "Project": "https://github.com/selfxyz/self",
+        "Commit": "4f18c75041bb47c1862169eef82c22067642a83a",
+        "Fix Commit": "8801c6c1d793896a778c4b597531bc710995d30c",
+        "DSL": "Circom",
+        "Vulnerability": "Under-Constrained",
+        "Impact": "Soundness",
+        "Root Cause": "Wrong translation of logic into constraints",
+        "Reproduced": true,
+        "Location": {
+            "Path": "circuits/circuits/utils/crypto/merkle-trees/smt.circom",
+            "Function": "BinaryMerkleRoot",
+            "Line": "57-59"
+        },
+        "Source": {
+            "Audit Report": {
+                "Source Link": "https://github.com/zksecurity/zkbugs/blob/main/reports/documents/zksecurity-celo-self-audit-2.pdf",
+                "Bug ID": "#02 - Missing boolean constraints in the Merkle tree path leads to an attacker being able to craft a fake Merkle proof for an arbitrary leaf"
+            }
+        },
+        "Commands": {
+            "Setup Environment": "./zkbugs_setup.sh",
+            "Reproduce": "./zkbugs_exploit.sh",
+            "Compile and Preprocess": "./zkbugs_compile_setup.sh",
+            "Positive Test": "./zkbugs_positive_test.sh",
+            "Find Exploit": "./zkbugs_find_exploit.sh",
+            "Clean": "./zkbugs_clean.sh"
+        },
+        "Short Description of the Vulnerability": "The `BinaryMerkleRoot` template is used in multiple places in the circuits to recover the root of a binary Merkle tree. Notice that this template does not enforce any boolean constraints on the `indices` array. As a result of this issue, an attacker can craft a fake Merkle proof for any leaf value of their choosing. Since the Merkle tree is used to perform multiple checks throughout the circuits, this means that the attacker can bypass any check that relies on a Merkle proof, for example the inclusion of the CSCA and DSC certificates in the certificates trees.",
+        "Short Description of the Exploit": "An attacker can craft fake Merkle proofs for any leaf value of their choosing by carefully constructing the `indices` and `siblings` array such that the input to the Poseidon call matches a real leaf pair.",
+        "Proposed Mitigation": "We recommend adding boolean constraints to the `indices` array in the `BinaryMerkleRoot` template.",
+        "title": "Missing boolean constraints in the Merkle tree path leads to an attacker being able to craft a fake Merkle proof for an arbitrary leaf"
+    },
+    {
+        "Id": "selfxyz/self/zksecurity_an_attacker_can_craft_a_fake_non_inclusion_proof_for_a_given_key_due_to_an_aliasing_bug_in_the_smt_verifier",
+        "Project": "https://github.com/selfxyz/self",
+        "Commit": "4f18c75041bb47c1862169eef82c22067642a83a",
+        "Fix Commit": "99e8eece5e0867017ca076731fba63ed96ae4711",
+        "DSL": "Circom",
+        "Vulnerability": "Under-Constrained",
+        "Impact": "Soundness",
+        "Root Cause": "Wrong translation of logic into constraints",
+        "Reproduced": true,
+        "Location": {
+            "Path": "circuits/circuits/utils/crypto/merkle-trees/smt.circom",
+            "Function": "SMTVerify",
+            "Line": "18-67"
+        },
+        "Source": {
+            "Audit Report": {
+                "Source Link": "https://github.com/zksecurity/zkbugs/blob/main/reports/documents/zksecurity-celo-self-audit-2.pdf",
+                "Bug ID": "#00 - An attacker can craft a fake non-inclusion proof for a given key due to an aliasing bug in the SMT verifier"
+            }
+        },
+        "Commands": {
+            "Setup Environment": "./zkbugs_setup.sh",
+            "Reproduce": "./zkbugs_exploit.sh",
+            "Compile and Preprocess": "./zkbugs_compile_setup.sh",
+            "Positive Test": "./zkbugs_positive_test.sh",
+            "Find Exploit": "./zkbugs_find_exploit.sh",
+            "Clean": "./zkbugs_clean.sh"
+        },
+        "Short Description of the Vulnerability": "The `Num2Bits(254)` component presents an aliasing issue. The Num2Bits circuit in circomlib, witnesses the binary representation in the `out` array, and then checks that the recomposed value matches the input `in`. This computation is done modulo the field size, which is smaller than 2^254. Therefore, for approximately a quarter of the possible keys, an attacker can witness a different binary representation of the key.",
+        "Short Description of the Exploit": "If the original key is k and the field prime is p, if k < 2^254 - p the attacker can witness the binary representation of k + p, which will be accepted by the circuit. However, this new representation will not be equal to the original key’s representation, and the new path that will be checked by the circuit will be different. This means that an attacker can craft a fake non-inclusion proof for a key which is present in the tree, by just opening the leaf corresponding to the position of k + p instead of k.",
+        "Proposed Mitigation": "We recommend replacing the `Num2Bits` component with `Num2Bits_strict`, which does not have the aliasing issue.",
+        "title": "An attacker can craft a fake non-inclusion proof for a given key due to an aliasing bug in the SMT verifier"
+    },
+    {
+        "Id": "selfxyz/self/zksecurity_second_pre_image_attacks_on_packbytesandposeidon_may_be_used_to_register_arbitrary_passports_and_dsc_certificates",
+        "Project": "https://github.com/selfxyz/self",
+        "Commit": "629dfdad1a867eb82ccba6857a545f3ef838e123",
+        "Fix Commit": "",
+        "DSL": "Circom",
+        "Vulnerability": "Under-Constrained",
+        "Impact": "Soundness",
+        "Root Cause": "Missing Input Constraints",
+        "Reproduced": true,
+        "Location": {
+            "Path": "circuits/circuits/utils/passport/customHashers.circom",
+            "Function": "PackBytesAndPoseidon",
+            "Line": "54-60"
+        },
+        "Source": {
+            "Audit Report": {
+                "Source Link": "https://github.com/zksecurity/zkbugs/blob/main/reports/documents/zksecurity-self-aadhaar-circuits.pdf",
+                "Bug ID": "#01 - Second Pre-Image Attacks On PackBytesAndPoseidon May Be Used To Register Arbitrary Passports And DSC Certificates"
+            }
+        },
+        "Commands": {
+            "Setup Environment": "./zkbugs_setup.sh",
+            "Reproduce": "./zkbugs_exploit.sh",
+            "Compile and Preprocess": "./zkbugs_compile_setup.sh",
+            "Positive Test": "./zkbugs_positive_test.sh",
+            "Find Exploit": "./zkbugs_find_exploit.sh",
+            "Clean": "./zkbugs_clean.sh"
+        },
+        "Short Description of the Vulnerability": "The function `PackBytesAndPoseidon(k)` in CustomHashers.circom is susceptible to a second pre-image attack: given an input x, an input y can be found such that `PackBytesAndPoseidon(k)(x) == PackBytesAndPoseidon(k)(y)` where y is not an array of bytes, but an array of arbitrary field elements. For example consider [0, 1, 0] and [256, 0, 0] they both compute [256] as an intermediate value (output of PackBytes bytes.circom). This intermediate value is later passed to the `CustomHasher` function: because the intermediate value is identical, both inputs will yield the same hash.",
+        "Short Description of the Exploit": "This is a serious vulnerability because, although it is not possible for an attacker to modify all bytes of a key, given that some bytes outside the key are needed to preserve the hash collision, using this technique an attacker could modify up to 30 bytes of the original public key and search for a new public key he can factorize to sign an arbitrary passport. Similarly he could freely modify up to 30 bytes of an ECDSA key (which could be as small as 56 bytes for brainpool224) to achieve a similar goal of computing a corresponding valid private key.",
+        "Proposed Mitigation": "We recommend that the ranges of the bytes array are checked inside `PackBytesAndPoseidon`.",
+        "title": "Second Pre-Image Attacks On PackBytesAndPoseidon May Be Used To Register Arbitrary Passports And DSC Certificates"
+    },
+    {
+        "Id": "selfxyz/self/zksecurity_big_integer_zero_check_is_not_sound",
+        "Project": "https://github.com/selfxyz/self",
+        "Commit": "",
+        "Fix Commit": "",
+        "DSL": "Circom",
+        "Vulnerability": "Computational/Hints Error",
+        "Impact": "Soundness",
+        "Root Cause": "Wrong translation of logic into constraints",
+        "Reproduced": true,
+        "Location": {
+            "Path": "",
+            "Function": "BigIntIsZero",
+            "Line": "05-26"
+        },
+        "Source": {
+            "Audit Report": {
+                "Source Link": "https://github.com/zksecurity/zkbugs/blob/main/reports/documents/zksecurity-celo-self-audit.pdf",
+                "Bug ID": "#02 - Big Integer Zero-Check Is Not Sound"
+            }
+        },
+        "Commands": {
+            "Setup Environment": "./zkbugs_setup.sh",
+            "Reproduce": "./zkbugs_exploit.sh",
+            "Compile and Preprocess": "./zkbugs_compile_setup.sh",
+            "Positive Test": "./zkbugs_positive_test.sh",
+            "Find Exploit": "./zkbugs_find_exploit.sh",
+            "Clean": "./zkbugs_clean.sh"
+        },
+        "Short Description of the Vulnerability": "One of the core operation that is used throughout the big integer implementation is the assertion for a zero element. It is implemented in the template `BigIntIsZero` and is used in multiple places in the library. It does so by first accumulating the carries, then range checking the final carry value and then asserting that the final carry is the opposite of the most significant chunk. However, the accumulation of the carries is performed over the native field, so the entire relation is checked modulo the Circom native prime. This bug does not compromise completeness, as the zero integer will still be considered as zero modulo the native prime. However, this check is not sound, as a non-zero integer, which is zero mod native prime, will be considered zero by the library.",
+        "Short Description of the Exploit": "To show an exploit, we provide an input to check if a point is on the elliptic curve, which satisfies the constraints but is not a valid point on the curve. To assert that a point (x, y) lies on a curve, the circuits computes Z = y^2 - x^3 - a * x - b and then it asserts that Z = 0 mod p, which internally uses BigIntIsZero. To make this check pass with an invalid point, it suffices to find a pair of coordinates that satisfy the curve equation modulo the Circom prime, but not modulo the curve prime p.",
+        "Proposed Mitigation": " It is recommended that the Big Integer Library used for ECDSA Verification is either carefully reviewed for such issues and fixed, or it is replaced by a more mature implementation.",
+        "title": "Big Integer Zero-Check Is Not Sound"
+    },
+    {
+        "Id": "selfxyz/self/zksecurity_the_registration_and_disclosure_circuits_lack_range_checks_for_the_input_indices",
+        "Project": "https://github.com/selfxyz/self",
+        "Commit": "4f18c75041bb47c1862169eef82c22067642a83a",
+        "Fix Commit": "49de54966e40709ac59d4070fd4bd0279b2a10c0",
+        "DSL": "Circom",
+        "Vulnerability": "Under-Constrained",
+        "Impact": "Soundness",
+        "Root Cause": "Wrong translation of logic into constraints",
+        "Reproduced": true,
+        "Location": {
+            "Path": "circuits/circuits/register_id/register_id.circom",
+            "Function": "REGISTER_ID",
+            "Line": "101-105"
+        },
+        "Source": {
+            "Audit Report": {
+                "Source Link": "https://github.com/zksecurity/zkbugs/blob/main/reports/documents/zksecurity-celo-self-audit-2.pdf",
+                "Bug ID": "#03 - The registration and disclosure circuits lack range checks for the input indices"
+            }
+        },
+        "Commands": {
+            "Setup Environment": "./zkbugs_setup.sh",
+            "Reproduce": "./zkbugs_exploit.sh",
+            "Compile and Preprocess": "./zkbugs_compile_setup.sh",
+            "Positive Test": "./zkbugs_positive_test.sh",
+            "Find Exploit": "./zkbugs_find_exploit.sh",
+            "Clean": "./zkbugs_clean.sh"
+        },
+        "Short Description of the Vulnerability": "There are actually two separate issues with this code. (1) The computation `dsc_pubKey_offset + dsc_pubKey_actual_size` could overflow or underflow the field, leading to a wrong check semantics. (2) The `LessEqThan` template checks that the first input is less than or equal to the second input, but it assumes that both of the inputs are between 0 and 2^{12} - 1. If this is not the case, the circuit will produce some unexpected behaviour, as for example `LessEqThan(12)` with input values p - 1 and 0 will return 1 instead of 0. In this context, the intended range of the indices is to be between 0 and 2^{12} - 1, so this check could pass even if the indices are outside this range, leading to unexpected behaviour in the circuit.",
+        "Short Description of the Exploit": "An attacker can provide incorrect indices to the circuit, for example negative indices, which pass the range checks. We could not find any concrete exploit, as incorrect indices make the proof fail in subsequent checks. However, they can lead to unexpected behaviour in the circuits, if for example some other circuits rely on the fact that indices are in the correct range.",
+        "Proposed Mitigation": "We recommend to ensure that every computation done with indices does not overflow or underflow the field, by adding additional range checks. Additionally, we recommend to add range checks to the input signals of the `LessEqThan` template, to ensure that there is no unexpected behaviour when the inputs are outside the intended range.",
+        "title": "The registration and disclosure circuits lack range checks for the input indices"
+    },
+    {
+        "Id": "selfxyz/self/zksecurity_forbidden_country_check_bypass_via_packed_byte_overflow",
+        "Project": "https://github.com/selfxyz/self",
+        "Commit": "3905a30aeb19016d22c5493b8b34ade2d118da4e",
+        "Fix Commit": [
+            "60501d17ee9b339e36c3a2a0d63f24bda65110a8",
+            "4914074d11d1d6e4579c7fa4d20c0eae4fc1e02f"
+        ],
+        "DSL": "Circom",
+        "Vulnerability": "Under-Constrained",
+        "Impact": "Soundness",
+        "Root Cause": "Wrong translation of logic into constraints",
+        "Reproduced": true,
+        "Location": {
+            "Path": "circuits/circuits/utils/aadhaar/disclose/country_not_in_list.circom",
+            "Function": "CountryNotInList",
+            "Line": "12-29"
+        },
+        "Source": {
+            "Audit Report": {
+                "Source Link": "https://github.com/zksecurity/zkbugs/blob/main/reports/documents/zksecurity-self-aadhaar-circuits.pdf",
+                "Bug ID": "#00 - Forbidden Country Check Bypass via Packed Byte Overflow"
+            }
+        },
+        "Commands": {
+            "Setup Environment": "./zkbugs_setup.sh",
+            "Reproduce": "./zkbugs_exploit.sh",
+            "Compile and Preprocess": "./zkbugs_compile_setup.sh",
+            "Positive Test": "./zkbugs_positive_test.sh",
+            "Find Exploit": "./zkbugs_find_exploit.sh",
+            "Clean": "./zkbugs_clean.sh"
+        },
+        "Short Description of the Vulnerability": "The elements of `forbidden_countries_list` are not range‑checked to be bytes, which means PackBytes allows for aliasing.",
+        "Short Description of the Exploit": "By omitting range checks on forbidden_countries_list, an attacker can supply out‑of‑range values (e.g. >255) so per‑byte equality checks with the user’s 3‑byte code fail while PackBytes produces packed integers that decode to the forbidden country, allowing the check to be bypassed.",
+        "Proposed Mitigation": "Add explicit byte range constraints, for example using `AssertBytes`, on every country code element before passing them to `PackBytes` in `CountryNotInList`.",
+        "title": "Forbidden Country Check Bypass via Packed Byte Overflow"
+    },
+    {
+        "Id": "selfxyz/self/zksecurity_exclusion_check_of_forbidden_countries_is_unsound_and_incomplete_due_to_incorrect_indexing",
+        "Project": "https://github.com/selfxyz/self",
+        "Commit": "59c16d6e924c946970665504d883ced46981e5c1",
+        "Fix Commit": "",
+        "DSL": "Circom",
+        "Vulnerability": "Computational/Hints Error",
+        "Impact": "Soundness and Completeness",
+        "Root Cause": "Wrong translation of logic into constraints",
+        "Reproduced": true,
+        "Location": {
+            "Path": "circuits/circuits/utils/passport/disclose/proveCountryIsNotInList.circom",
+            "Function": "ProveCountryIsNotInList",
+            "Line": "12-18"
+        },
+        "Source": {
+            "Audit Report": {
+                "Source Link": "https://github.com/zksecurity/zkbugs/blob/main/reports/documents/zksecurity-celo-self-audit.pdf",
+                "Bug ID": "#00 - Exclusion Check Of Forbidden Countries Is Unsound And Incomplete Due To Incorrect Indexing"
+            }
+        },
+        "Commands": {
+            "Setup Environment": "./zkbugs_setup.sh",
+            "Reproduce": "./zkbugs_exploit.sh",
+            "Compile and Preprocess": "./zkbugs_compile_setup.sh",
+            "Positive Test": "./zkbugs_positive_test.sh",
+            "Find Exploit": "./zkbugs_find_exploit.sh",
+            "Clean": "./zkbugs_clean.sh"
+        },
+        "Short Description of the Vulnerability": "The `ProveCountryIsNotInList` check is performed by iterating over forbidden countries entry and comparing each letter individually for equality. However, the index `i` that is used to loop over the forbidden countries list is incorrect, as it should loop over `i * 3` instead.",
+        "Short Description of the Exploit": "This issue breaks both soundness and completeness as demonstrated by the following examples: - **Unsound**: let `MAX_FORBIDDEN_COUNTRIES_LIST_LENGTH = 3` and `forbidden_countries_list = ['ABC','DEF','GHI']`, then someone with the passport from `GHI` country will pass the check because the loop will stop at `i = 3`. - **Incomplete**: let `forbidden_countries_list = ['ABC','DEF']`, then someone with the passport from `BCD` country will not pass the check because the loop will also check over `i = 2`, `i = 3`, and `i = 4`.",
+        "Proposed Mitigation": "Update the indexing of `forbidden_countries_list` to use `i*3`.",
+        "title": "Exclusion Check Of Forbidden Countries Is Unsound And Incomplete Due To Incorrect Indexing"
     },
     {
         "Id": "iden3/circomlib/veridise-V-CIRCOMLIB-VUL-004",
@@ -2822,6 +3516,40 @@
         "title": "Underconstrained points in Montgomery2Edwards"
     },
     {
+        "Id": "iden3/circuits/trailofbits_unsafe_use_of_num2bits_in_multiple_circuits",
+        "Project": "https://github.com/iden3/circuits",
+        "Commit": "7a1e04de3e5f3a9f0cfb27a43c9f41c986c1b9ed",
+        "Fix Commit": "",
+        "DSL": "Circom",
+        "Vulnerability": "Under-Constrained",
+        "Impact": "Soundness",
+        "Root Cause": "Wrong translation of logic into constraints",
+        "Reproduced": true,
+        "Location": {
+            "Path": "circuits/lib/utils/claimUtils.circom",
+            "Function": "Num2Bits",
+            "Line": "123"
+        },
+        "Source": {
+            "Audit Report": {
+                "Source Link": "https://github.com/zksecurity/zkbugs/blob/main/reports/documents/trailofbits-iden3-circuits.pdf",
+                "Bug ID": "TOB-IDEN3-1"
+            }
+        },
+        "Commands": {
+            "Setup Environment": "./zkbugs_setup.sh",
+            "Reproduce": "./zkbugs_exploit.sh",
+            "Compile and Preprocess": "./zkbugs_compile_setup.sh",
+            "Positive Test": "./zkbugs_positive_test.sh",
+            "Find Exploit": "./zkbugs_find_exploit.sh",
+            "Clean": "./zkbugs_clean.sh"
+        },
+        "Short Description of the Vulnerability": "Multiple circuits call `Num2Bits(254)` and `Num2Bits(256)` when working with field elements of the BN-254 prime field. These templates do not enforce uniqueness of the bit decompositions, allowing malicious provers to bypass token expiration or revocation.",
+        "Short Description of the Exploit": "Alice has a credential attesting to her identity. Mallory steals Alice’s device. Alice issues a revocation for her auth credential. Mallory modifies the witness generation to produce the wrong revocation nonce. Mallory uses the unrevoked credential to perform an action impersonating Alice.",
+        "Proposed Mitigation": "Update the circuits to use `Num2Bits_strict()` instead of `Num2Bits(254)` or `Num2Bits(256)`.",
+        "title": "Unsafe use of Num2Bits in multiple circuits"
+    },
+    {
         "Id": "reclaimprotocol/circom-chacha20/zksecurity-1",
         "Path": "dataset/circom/reclaimprotocol/circom-chacha20/zksecurity_unsound_left_rotation",
         "Project": "https://github.com/reclaimprotocol/circom-chacha20",
@@ -2975,7 +3703,7 @@
         "Vulnerability": "Under-Constrained",
         "Impact": "Completeness",
         "Root Cause": "Unsafe Reuse of Circuit",
-        "Reproduced": false,
+        "Reproduced": true,
         "Location": {
             "Path": "circuits/pairing/bls12_381_hash_to_G2",
             "Function": "SubgroupCheckG1WithValidX",

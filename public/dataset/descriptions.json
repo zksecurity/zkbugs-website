@@ -11,6 +11,14 @@
     {
       "title": "Computational Issues",
       "description": "Occurs when the computational part of a circuit is erroneous, often leading to completeness issues where for correct inputs, the witness generation either fails or produces wrong results. This category is distinct as the primary issue is not directly related to applying constraints."
+    },
+    {
+      "title": "Fiat-Shamir Issue",
+      "description": "Errors in the Fiat–Shamir transformation or transcript handling (e.g., missing domain separation, inconsistent transcript updates) lead to unsound challenge derivation and break soundness."
+    },
+    {
+      "title": "Backend Issue",
+      "description": "Bugs in the proof-system backend or verifier implementation (e.g., chip ordering, constraint wiring) that cause incorrect verification independent of circuit business logic."
     }
   ],
   "root_causes": [
@@ -53,6 +61,18 @@
     {
       "title": "Other Programming Errors",
       "description": "This category includes common programming mistakes such as API misuse, incorrect indexing in arrays, and logical errors in witness generation that are not directly related to constraint application."
+    },
+    {
+      "title": "Missing Constraint",
+      "description": "A required relation is never constrained (or only partially), allowing multiple or arbitrary assignments that still pass verification."
+    },
+    {
+      "title": "Fiat-Shamir",
+      "description": "Incorrect instantiation or use of the Fiat–Shamir transform (e.g., failing to absorb inputs/context or wrong domain separation) breaks challenge binding to the transcript."
+    },
+    {
+      "title": "Missing/Incorrect Verifier Check",
+      "description": "Verifier-side checks are absent or incorrect (e.g., ordering/consistency checks), enabling proofs to bypass intended validation."
     }
   ]
 }
