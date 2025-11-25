@@ -10,7 +10,12 @@ function DescriptionsPage() {
   useEffect(() => {
     api.fetchDescriptions().then((descriptions) => {
       setVulnerabilities(descriptions.vulnerabilities);
-      setRootCauses(descriptions.rootCauses);
+      const sortedRootCauses = [...descriptions.rootCauses].sort((a, b) =>
+        String(a.title).localeCompare(String(b.title), undefined, {
+          sensitivity: "base",
+        })
+      );
+      setRootCauses(sortedRootCauses);
     });
   }, []);
   return (

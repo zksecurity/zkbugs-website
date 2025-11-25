@@ -11,6 +11,11 @@ export const useBugsChartData = (data) => {
   });
 
   useEffect(() => {
+    const rootCauseData = getChartData(data, "rootCause").sort((a, b) =>
+      String(a.label).localeCompare(String(b.label), undefined, {
+        sensitivity: "base",
+      })
+    );
     setChartsData({
       dsl: getChartData(data, "dsl"),
       vulnerability: getChartData(data, "vulnerability"),
@@ -19,7 +24,7 @@ export const useBugsChartData = (data) => {
         true: "Reproduced",
         false: "Not Reproduced",
       }),
-      rootCause: getChartData(data, "rootCause"),
+      rootCause: rootCauseData,
     });
   }, [data]);
 

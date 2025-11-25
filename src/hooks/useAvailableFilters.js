@@ -13,12 +13,17 @@ const getAvailableFilters = (data = [], filterFields = [], renderLabel) => {
 
   const filters = {};
 
-  // Convert sets to options arrays
+  // Convert sets to options arrays and sort alphabetically by label
   Object.entries(filtersSets).forEach(([filter, valuesSet]) => {
-    filters[filter] = Array.from(valuesSet).map((value) => ({
-      value,
-      label: renderLabel ? renderLabel(filter, value) : value,
-    }));
+    const options = Array.from(valuesSet)
+      .filter((v) => v !== undefined && v !== null && v !== "")
+      .map((value) => ({
+        value,
+        label: renderLabel ? renderLabel(filter, value) : value,
+      }))
+      .sort((a, b) => String(a.label).localeCompare(String(b.label), undefined, { sensitivity: "base" }));
+
+    filters[filter] = options;
   });
 
   return filters;

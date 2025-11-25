@@ -1,6 +1,6 @@
 import { useCallback, useMemo, useState } from "react";
 import PropTypes from "prop-types";
-import { Divider } from "@mui/material";
+import { Checkbox, Divider, FormControlLabel } from "@mui/material";
 import { useAvailableFilters } from "../../hooks/useAvailableFilters";
 import { getTrimmedPathFromUrl } from "../../utils/transformations";
 import Select from "../select/Select";
@@ -32,6 +32,7 @@ function BugsFilters({ data, className, onChange }) {
     project: "",
     rootCause: "",
     reproduced: "",
+    zkvm: "",
   });
 
   const filtersApplied = useMemo(() => {
@@ -46,6 +47,15 @@ function BugsFilters({ data, className, onChange }) {
   const handleFilterChange = useCallback(
     (field) => (event) => {
       const newFilters = { ...filters, [field]: event.target.value ?? "" };
+      setFilters(newFilters);
+      onChange?.(newFilters);
+    },
+    [filters, onChange]
+  );
+
+  const handleZkvmToggle = useCallback(
+    (event) => {
+      const newFilters = { ...filters, zkvm: event.target.checked ? "true" : "" };
       setFilters(newFilters);
       onChange?.(newFilters);
     },
@@ -97,6 +107,11 @@ function BugsFilters({ data, className, onChange }) {
           className="filter-input"
           onChange={handleFilterChange("reproduced")}
         />
+        <FormControlLabel
+          control={<Checkbox checked={filters.zkvm === "true"} onChange={handleZkvmToggle} />}
+          label="Only zkVM"
+          className="filter-input"
+        />
       </div>
     </ContainerStyled>
   );
@@ -115,6 +130,7 @@ BugsFilters.propTypes = {
       reproduced: PropTypes.bool,
       rootCause: PropTypes.string,
       vulnerability: PropTypes.string,
+      zkvm: PropTypes.bool,
       similarBugs: PropTypes.arrayOf(PropTypes.string),
       source: PropTypes.shape({
         variant: PropTypes.string,
