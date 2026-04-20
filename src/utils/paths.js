@@ -4,7 +4,10 @@ export const paths = {
   paper: "/paper",
   tools: "/tools",
   reports: "/reports",
+  reportDetail: "/reports/:reportId",
 };
+
+export const reportPath = (id) => `/reports/${encodeURIComponent(id)}`;
 
 export const pathsLabeled = [
   { to: paths.home, label: "Bugs" },

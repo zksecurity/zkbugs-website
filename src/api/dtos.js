@@ -47,12 +47,23 @@ export class JsonDTO {
   static convertReports(reportsJSON) {
     const REPORT_BASE_URL =
       "https://github.com/zksecurity/zkbugs/blob/main/reports/";
+    const LOCAL_BASE = "/dataset/reports/";
 
     const reportsCamel = this.convertToCamelCase(reportsJSON, wordToCamel);
-    return reportsCamel.map((report) => ({
-      ...report,
-      report: `${REPORT_BASE_URL}${report.file}`,
-    }));
+    return reportsCamel.map((report) => {
+      const file = report.file ?? "";
+      const basename = file.split("/").pop();
+      const isPdf = basename.toLowerCase().endsWith(".pdf");
+      const pdfUrl = isPdf ? `${LOCAL_BASE}${basename}` : null;
+      const externalUrl = `${REPORT_BASE_URL}${file}`;
+      return {
+        ...report,
+        report: pdfUrl ?? externalUrl,
+        pdfUrl,
+        externalUrl,
+        isPdf,
+      };
+    });
   }
 
   static convertTools(toolsJSON) {
