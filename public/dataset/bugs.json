@@ -11,9 +11,9 @@
         "Root Cause": "Wrong Translation of Logic into Constraints",
         "Reproduced": false,
         "Location": {
-            "Path": "src/circuits",
+            "Path": "src/circuit/circuit_frame.rs",
             "Function": "apply_continuation",
-            "Line": ""
+            "Line": "2737"
         },
         "Source": {
             "Audit Report": {
@@ -46,9 +46,9 @@
         "Root Cause": "Wrong Translation of Logic into Constraints",
         "Reproduced": false,
         "Location": {
-            "Path": "src/circuits/reduce_sym.rs",
+            "Path": "src/circuit/circuit_frame.rs",
             "Function": "reduce_sym",
-            "Line": ""
+            "Line": "923"
         },
         "Source": {
             "Audit Report": {
@@ -81,9 +81,9 @@
         "Root Cause": "Assigned but Unconstrained",
         "Reproduced": false,
         "Location": {
-            "Path": "src/circuits",
+            "Path": "src/circuit/gadgets/case.rs",
             "Function": "selector_dot_product",
-            "Line": ""
+            "Line": "138"
         },
         "Source": {
             "Audit Report": {
@@ -116,9 +116,9 @@
         "Root Cause": "Wrong Translation of Logic into Constraints",
         "Reproduced": false,
         "Location": {
-            "Path": "src/circuits",
+            "Path": "src/circuit/gadgets/case.rs",
             "Function": "multi_case",
-            "Line": ""
+            "Line": "197"
         },
         "Source": {
             "Audit Report": {
@@ -151,9 +151,9 @@
         "Root Cause": "Assigned but Unconstrained",
         "Reproduced": false,
         "Location": {
-            "Path": "src/circuits/multi_case_aux",
+            "Path": "src/circuit/gadgets/case.rs",
             "Function": "multi_case_aux",
-            "Line": ""
+            "Line": "213"
         },
         "Source": {
             "Audit Report": {
@@ -178,7 +178,7 @@
         "Id": "lurk-lab/neptune/inference_Zero_padding_not_enforced",
         "Path": "dataset/bellperson/lurk-lab/neptune/inference_Zero_padding_not_enforced",
         "Project": "https://github.com/lurk-lab/neptune",
-        "Commit": "0x5c92c6a37856f43cb23bcfce59443da9d0ce0061",
+        "Commit": "4e29c4c02c55025eb49b1519c91199ca11546cc5",
         "Fix Commit": "2415d641dcbdab17b3264d2254705a382c86ce73",
         "DSL": "Bellperson",
         "Vulnerability": "Under-Constrained",
@@ -186,7 +186,7 @@
         "Root Cause": "Assigned but Unconstrained",
         "Reproduced": false,
         "Location": {
-            "Path": "filecoin-project/neptune/src/circuit2.rs",
+            "Path": "src/circuit2.rs",
             "Function": "poseidon_hash_allocated",
             "Line": ""
         },
@@ -213,7 +213,7 @@
         "Id": "filecoin-project/rust-fil-proofs/trapdoor_Add_missing_public_input_for_replica-id",
         "Path": "dataset/bellperson/filecoin-project/rust-fil-proofs/trapdoor_Add_missing_public_input_for_replica_id",
         "Project": "https://github.com/filecoin-project/rust-fil-proofs",
-        "Commit": "8efe93",
+        "Commit": "8efe933117f7570767cdaa57613d9a95f89de739",
         "Fix Commit": "a4c25bedaaa3099e89770d704ba3bee2cbec87c3fd7e4f5fabbcb1bce7aa9fce",
         "DSL": "Bellperson",
         "Vulnerability": "Under-Constrained",
@@ -221,7 +221,7 @@
         "Root Cause": "Circuit Design Issue",
         "Reproduced": false,
         "Location": {
-            "Path": "storage-proofs/src/porep/stacked/vanilla/challenges.rs",
+            "Path": "storage-proofs/porep/src/stacked/vanilla/challenges.rs",
             "Function": "derive_internal",
             "Line": ""
         },
@@ -248,16 +248,16 @@
         "Id": "Consensys/gnark/Unsoundness_in_variable_comparison_/_non-unique_binary_decomposition",
         "Path": "dataset/gnark/Consensys/gnark/Unsoundness_in_variable_comparison__non_unique_binary_decomposition",
         "Project": "https://github.com/Consensys/gnark",
-        "Commit": "",
-        "Fix Commit": "",
+        "Commit": "7f38c2116e04914798d44a5289c07e5410b8bded",
+        "Fix Commit": "59a4087261a6c73f13e80d695c17b398c3d0934f",
         "DSL": "gnark",
         "Vulnerability": "Under-Constrained",
         "Impact": "Soundness",
         "Root Cause": "Missing Input Constraints",
         "Reproduced": false,
         "Location": {
-            "Path": "",
-            "Function": "",
+            "Path": "std/math/bits/conversion.go",
+            "Function": "ToBinary",
             "Line": ""
         },
         "Source": {
@@ -283,7 +283,7 @@
         "Id": "scroll-tech/poseidon-circuit/zellic_mpt_only_being_true_leads_to_overconstrained_circuits",
         "Path": "dataset/halo2/scroll-tech/poseidon-circuit/zellic_mpt_only_being_true_leads_to_overconstrained_circuits",
         "Project": "https://github.com/scroll-tech/poseidon-circuit",
-        "Commit": "0xf3ebc6af0e5049d2f45259ef79741f9c7d7794e1",
+        "Commit": "079e3f5bfc30d63ded672a97850e3c160504bfad",
         "Fix Commit": "912f5ed2c6cacd64a0006e868e3cb4b624acc019",
         "DSL": "Halo2",
         "Vulnerability": "Over-Constrained",
@@ -361,7 +361,7 @@
         "Root Cause": "Misimplementation of a Specification",
         "Reproduced": false,
         "Location": {
-            "Path": "TxCircuit/tx_circuit.rs",
+            "Path": "zkevm-circuits/src/tx_circuit.rs",
             "Function": "",
             "Line": "66"
         },
@@ -396,7 +396,7 @@
         "Root Cause": "Missing Input Constraints",
         "Reproduced": false,
         "Location": {
-            "Path": "rlp_circuit_fsm.rs",
+            "Path": "zkevm-circuits/src/rlp_circuit_fsm.rs",
             "Function": "",
             "Line": "19"
         },
@@ -431,7 +431,7 @@
         "Root Cause": "Missing Input Constraints",
         "Reproduced": false,
         "Location": {
-            "Path": "TxCircuit",
+            "Path": "zkevm-circuits/src/tx_circuit.rs",
             "Function": "",
             "Line": "40"
         },
@@ -466,7 +466,7 @@
         "Root Cause": "Wrong Translation of Logic into Constraints",
         "Reproduced": false,
         "Location": {
-            "Path": "evm_circuit/execution/error_invalid_creation_code.rs",
+            "Path": "zkevm-circuits/src/evm_circuit/execution/error_invalid_creation_code.rs",
             "Function": "",
             "Line": "36"
         },
@@ -501,7 +501,7 @@
         "Root Cause": "Missing Input Constraints",
         "Reproduced": false,
         "Location": {
-            "Path": "TxCircuit/tx_circuit.rs",
+            "Path": "zkevm-circuits/src/tx_circuit.rs",
             "Function": "",
             "Line": "64"
         },
@@ -536,7 +536,7 @@
         "Root Cause": "Wrong Translation of Logic into Constraints",
         "Reproduced": false,
         "Location": {
-            "Path": "rlp_circuit_fsm.rs",
+            "Path": "zkevm-circuits/src/rlp_circuit_fsm.rs",
             "Function": "",
             "Line": "25"
         },
@@ -641,7 +641,7 @@
         "Root Cause": "Assigned but Unconstrained",
         "Reproduced": false,
         "Location": {
-            "Path": "TxCircuit",
+            "Path": "zkevm-circuits/src/tx_circuit.rs",
             "Function": "",
             "Line": "42"
         },
@@ -676,7 +676,7 @@
         "Root Cause": "Wrong Translation of Logic into Constraints",
         "Reproduced": false,
         "Location": {
-            "Path": "TxCircuit",
+            "Path": "zkevm-circuits/src/tx_circuit.rs",
             "Function": "",
             "Line": "30"
         },
@@ -781,7 +781,7 @@
         "Root Cause": "Wrong Translation of Logic into Constraints",
         "Reproduced": false,
         "Location": {
-            "Path": "zkevm-circuits/src/bytecode_circuit/to_poseidon_hash.rs",
+            "Path": "zkevm-circuits/src/bytecode_circuit/circuit/to_poseidon_hash.rs",
             "Function": "",
             "Line": "13"
         },
@@ -816,7 +816,7 @@
         "Root Cause": "Assigned but Unconstrained",
         "Reproduced": false,
         "Location": {
-            "Path": "RLPCircuit/rlp_circuit_fsm.rs",
+            "Path": "zkevm-circuits/src/rlp_circuit_fsm.rs",
             "Function": "",
             "Line": "23"
         },
@@ -851,7 +851,7 @@
         "Root Cause": "Wrong Translation of Logic into Constraints",
         "Reproduced": false,
         "Location": {
-            "Path": "PICircuit/pi_circuit.rs",
+            "Path": "zkevm-circuits/src/pi_circuit.rs",
             "Function": "",
             "Line": "36"
         },
@@ -921,7 +921,7 @@
         "Root Cause": "Wrong Translation of Logic into Constraints",
         "Reproduced": false,
         "Location": {
-            "Path": "rlp_circuit_fsm.rs",
+            "Path": "zkevm-circuits/src/rlp_circuit_fsm.rs",
             "Function": "",
             "Line": "21"
         },
@@ -991,7 +991,7 @@
         "Root Cause": "Wrong Translation of Logic into Constraints",
         "Reproduced": false,
         "Location": {
-            "Path": "RLPCircuit/rlp_circuit_fsm.rs",
+            "Path": "zkevm-circuits/src/rlp_circuit_fsm.rs",
             "Function": "",
             "Line": "68"
         },
@@ -1026,7 +1026,7 @@
         "Root Cause": "Wrong Translation of Logic into Constraints",
         "Reproduced": false,
         "Location": {
-            "Path": "TxCircuit",
+            "Path": "zkevm-circuits/src/tx_circuit.rs",
             "Function": "",
             "Line": "33"
         },
@@ -1061,7 +1061,7 @@
         "Root Cause": "Wrong Translation of Logic into Constraints",
         "Reproduced": false,
         "Location": {
-            "Path": "RLPCircuit/rlp_circuit_fsm.rs",
+            "Path": "zkevm-circuits/src/rlp_circuit_fsm.rs",
             "Function": "",
             "Line": "27"
         },
@@ -1096,7 +1096,7 @@
         "Root Cause": "Wrong Translation of Logic into Constraints",
         "Reproduced": false,
         "Location": {
-            "Path": "rlp_circuit_fsm.rs",
+            "Path": "zkevm-circuits/src/rlp_circuit_fsm.rs",
             "Function": "",
             "Line": "14"
         },
@@ -1131,7 +1131,7 @@
         "Root Cause": "Wrong Translation of Logic into Constraints",
         "Reproduced": false,
         "Location": {
-            "Path": "zkevm-circuits/src/exp-circuit.rs",
+            "Path": "zkevm-circuits/src/exp_circuit.rs",
             "Function": "",
             "Line": "19"
         },
@@ -1201,7 +1201,7 @@
         "Root Cause": "Missing Input Constraints",
         "Reproduced": false,
         "Location": {
-            "Path": "RLPCircuit",
+            "Path": "gadgets/src/less_than.rs",
             "Function": "",
             "Line": "17"
         },
@@ -1228,7 +1228,7 @@
         "Id": "scroll-tech/mpt-circuit/zellic_Missing_constraints_for_new_account_in_configure_balance",
         "Path": "dataset/halo2/scroll-tech/mpt-circuit/zellic_Missing_constraints_for_new_account_in_configure_balance",
         "Project": "https://github.com/scroll-tech/mpt-circuit",
-        "Commit": "0x25dd32aa316ec842ffe79bb8efe9f05f86edc33e",
+        "Commit": "5026317aec5eb416129c03fdb4b8cd5edad2dd6c",
         "Fix Commit": "ef64eb52548946a0dd7f0ee83ce71ed8d460c405",
         "DSL": "Halo2",
         "Vulnerability": "Under-Constrained",
@@ -1236,7 +1236,7 @@
         "Root Cause": "Assigned but Unconstrained",
         "Reproduced": false,
         "Location": {
-            "Path": "MPTCircuit/gadgets/mpt_update.rs",
+            "Path": "src/gadgets/mpt_update.rs",
             "Function": "configure_balance",
             "Line": "53"
         },
@@ -1263,7 +1263,7 @@
         "Id": "scroll-tech/mpt-circuit/zellic_Incorrect_constraints_in_configure_nonce",
         "Path": "dataset/halo2/scroll-tech/mpt-circuit/zellic_Incorrect_constraints_in_configure_nonce",
         "Project": "https://github.com/scroll-tech/mpt-circuit",
-        "Commit": "0x25dd32aa316ec842ffe79bb8efe9f05f86edc33e",
+        "Commit": "5026317aec5eb416129c03fdb4b8cd5edad2dd6c",
         "Fix Commit": "9aeff02e4d86e9bbecd0e420ebd3ed13a824e094",
         "DSL": "Halo2",
         "Vulnerability": "Under-Constrained",
@@ -1271,7 +1271,7 @@
         "Root Cause": "Wrong Translation of Logic into Constraints",
         "Reproduced": false,
         "Location": {
-            "Path": "MPTCircuit/gadgets/mpt_update.rs",
+            "Path": "src/gadgets/mpt_update.rs",
             "Function": "",
             "Line": "56"
         },
@@ -1298,7 +1298,7 @@
         "Id": "scroll-tech/mpt-circuit/zellic_The_OneHot_encoding_gadget_has_incorrect_constraints",
         "Path": "dataset/halo2/scroll-tech/mpt-circuit/zellic_The_OneHot_encoding_gadget_has_incorrect_constraints",
         "Project": "https://github.com/scroll-tech/mpt-circuit",
-        "Commit": "0x25dd32aa316ec842ffe79bb8efe9f05f86edc33e",
+        "Commit": "5026317aec5eb416129c03fdb4b8cd5edad2dd6c",
         "Fix Commit": "9bd18782c19b5f5b2a2410b80f1ace6cd9637dcb",
         "DSL": "Halo2",
         "Vulnerability": "Under-Constrained",
@@ -1306,7 +1306,7 @@
         "Root Cause": "Incorrect Custom Gates",
         "Reproduced": false,
         "Location": {
-            "Path": "MPTCircuit",
+            "Path": "src/gadgets/one_hot.rs",
             "Function": "",
             "Line": "43"
         },
@@ -1333,7 +1333,7 @@
         "Id": "scroll-tech/mpt-circuit/trailofbits_The_NonceChanged_configuration_circuit_does_not_constrain_the_new_value_nonce_value",
         "Path": "dataset/halo2/scroll-tech/mpt-circuit/trailofbits_The_NonceChanged_configuration_circuit_does_not_constrain_the_new_value_nonce_value",
         "Project": "https://github.com/scroll-tech/mpt-circuit",
-        "Commit": "0xfc6c8a2972870e62e96cde480b3aa48c0cc1303d",
+        "Commit": "5026317aec5eb416129c03fdb4b8cd5edad2dd6c",
         "Fix Commit": "",
         "DSL": "Halo2",
         "Vulnerability": "Under-Constrained",
@@ -1368,7 +1368,7 @@
         "Id": "scroll-tech/mpt-circuit/zellic_Missing_constraints_in_configure_empty_storage",
         "Path": "dataset/halo2/scroll-tech/mpt-circuit/zellic_Missing_constraints_in_configure_empty_storage",
         "Project": "https://github.com/scroll-tech/mpt-circuit",
-        "Commit": "0x25dd32aa316ec842ffe79bb8efe9f05f86edc33e",
+        "Commit": "5026317aec5eb416129c03fdb4b8cd5edad2dd6c",
         "Fix Commit": "3ab166a4a62329ec42d44cd63fc9563ff29dea4e",
         "DSL": "Halo2",
         "Vulnerability": "Under-Constrained",
@@ -1376,7 +1376,7 @@
         "Root Cause": "Wrong Translation of Logic into Constraints",
         "Reproduced": false,
         "Location": {
-            "Path": "MPTCircuit/gadgets/mpt_update.rs",
+            "Path": "src/gadgets/mpt_update.rs",
             "Function": "",
             "Line": "54"
         },
@@ -1403,7 +1403,7 @@
         "Id": "scroll-tech/mpt-circuit/zellic_Missing_range_check_for_address_values_in_MPT_Circuit",
         "Path": "dataset/halo2/scroll-tech/mpt-circuit/zellic_Missing_range_check_for_address_values_in_MPT_Circuit",
         "Project": "https://github.com/scroll-tech/mpt-circuit",
-        "Commit": "0x25dd32aa316ec842ffe79bb8efe9f05f86edc33e",
+        "Commit": "5026317aec5eb416129c03fdb4b8cd5edad2dd6c",
         "Fix Commit": "e4f5df31e9b3005bb5977c11aa0c3b262cfe3269",
         "DSL": "Halo2",
         "Vulnerability": "Under-Constrained",
@@ -1411,7 +1411,7 @@
         "Root Cause": "Missing Input Constraints",
         "Reproduced": false,
         "Location": {
-            "Path": "MPTCircuit/gadgets/mpt_update.rs",
+            "Path": "src/gadgets/mpt_update.rs",
             "Function": "",
             "Line": "47"
         },
@@ -1438,7 +1438,7 @@
         "Id": "scroll-tech/mpt-circuit/trailofbits_The_OneHot_primitive_allows_more_than_one_value_at_once",
         "Path": "dataset/halo2/scroll-tech/mpt-circuit/trailofbits_The_OneHot_primitive_allows_more_than_one_value_at_once",
         "Project": "https://github.com/scroll-tech/mpt-circuit",
-        "Commit": "0xfc6c8a2972870e62e96cde480b3aa48c0cc1303d",
+        "Commit": "5026317aec5eb416129c03fdb4b8cd5edad2dd6c",
         "Fix Commit": "34af759e94f4b342507778145e7ae364a6d5566e",
         "DSL": "Halo2",
         "Vulnerability": "Under-Constrained",
@@ -1446,7 +1446,7 @@
         "Root Cause": "Missing Input Constraints",
         "Reproduced": false,
         "Location": {
-            "Path": "constraint_builder/binary_column.rs",
+            "Path": "src/constraint_builder/binary_column.rs",
             "Function": "",
             "Line": "29-37"
         },
@@ -1473,17 +1473,17 @@
         "Id": "summa-dev/summa-solvency/Constant_assignment_to_check_bug",
         "Path": "dataset/halo2/summa-dev/summa-solvency/Constant_assignment_to_check_bug",
         "Project": "https://github.com/summa-dev/summa-solvency",
-        "Commit": "",
-        "Fix Commit": "",
+        "Commit": "c62b2c743120a5bf0f189e19500fa6042fcfa455",
+        "Fix Commit": "90b65a159b2ae322763cfdb86bb49efa85b4afc1",
         "DSL": "Halo2",
         "Vulnerability": "Under-Constrained",
         "Impact": "Soundness",
         "Root Cause": "Assigned but Unconstrained",
         "Reproduced": false,
         "Location": {
-            "Path": "",
-            "Function": "",
-            "Line": ""
+            "Path": "src/chips/merkle_sum_tree.rs",
+            "Function": "configure",
+            "Line": "147"
         },
         "Source": {
             "Audit Report": {
@@ -1613,7 +1613,7 @@
         "Id": "starkware-libs/stark-perpetual/abdk_This_function_cannot_handle_the_case_when_n_risk_factor_segments_is_zero.",
         "Path": "dataset/cairo/starkware-libs/stark-perpetual/abdk_This_function_cannot_handle_the_case_when_n_risk_factor_segments_is_zero",
         "Project": "https://github.com/starkware-libs/stark-perpetual",
-        "Commit": "0xe6189aa",
+        "Commit": "e6189aa6aad3e9d9a2f3b61474e7e284e73153f5",
         "Fix Commit": "3eb3a26366f412cf8d0643f65e33d8b2eb5904fc",
         "DSL": "Cairo",
         "Vulnerability": "Under-Constrained",
@@ -1621,7 +1621,7 @@
         "Root Cause": "Missing Input Constraints",
         "Reproduced": false,
         "Location": {
-            "Path": "execute_batch_utils.cairo",
+            "Path": "src/services/perpetual/cairo/execute_batch_utils.cairo",
             "Function": "validate_risk_factor_function",
             "Line": "78"
         },
@@ -1656,9 +1656,9 @@
         "Root Cause": "Missing Input Constraints",
         "Reproduced": false,
         "Location": {
-            "Path": "",
-            "Function": "",
-            "Line": ""
+            "Path": "src/libs/utils.cairo",
+            "Function": "bitwise_divmod",
+            "Line": "17"
         },
         "Source": {
             "Audit Report": {
@@ -1691,9 +1691,9 @@
         "Root Cause": "Missing Input Constraints",
         "Reproduced": false,
         "Location": {
-            "Path": "",
+            "Path": "src/libs/mmr.cairo",
             "Function": "",
-            "Line": ""
+            "Line": "193"
         },
         "Source": {
             "Audit Report": {
@@ -1726,9 +1726,9 @@
         "Root Cause": "Arithmetic Field Issues",
         "Reproduced": false,
         "Location": {
-            "Path": "",
+            "Path": "src/libs/utils.cairo",
             "Function": "",
-            "Line": ""
+            "Line": "101"
         },
         "Source": {
             "Audit Report": {
@@ -1761,9 +1761,9 @@
         "Root Cause": "Missing Input Constraints",
         "Reproduced": false,
         "Location": {
-            "Path": "",
+            "Path": "src/libs/mmr.cairo",
             "Function": "",
-            "Line": ""
+            "Line": "190"
         },
         "Source": {
             "Audit Report": {
@@ -1796,9 +1796,9 @@
         "Root Cause": "Missing Input Constraints",
         "Reproduced": false,
         "Location": {
-            "Path": "",
-            "Function": "",
-            "Line": ""
+            "Path": "src/libs/mmr.cairo",
+            "Function": "left_child_jump_until_inside_mmr",
+            "Line": "147"
         },
         "Source": {
             "Audit Report": {
@@ -1831,9 +1831,9 @@
         "Root Cause": "Missing Input Constraints",
         "Reproduced": false,
         "Location": {
-            "Path": "",
+            "Path": "src/libs/utils.cairo",
             "Function": "",
-            "Line": ""
+            "Line": "34"
         },
         "Source": {
             "Audit Report": {
@@ -1866,9 +1866,9 @@
         "Root Cause": "Missing Input Constraints",
         "Reproduced": false,
         "Location": {
-            "Path": "",
+            "Path": "src/libs/mmr.cairo",
             "Function": "",
-            "Line": ""
+            "Line": "291"
         },
         "Source": {
             "Audit Report": {
@@ -1893,7 +1893,7 @@
         "Id": "0xPolygonHermez/zkevm-proverjs/hexens_Missing_constraint_in_PIL_leading_to_execution_flow_hijack",
         "Path": "dataset/pil/0xPolygonHermez/zkevm-proverjs/hexens_Missing_constraint_in_PIL_leading_to_execution_flow_hijack",
         "Project": "https://github.com/0xPolygonHermez/zkevm-proverjs",
-        "Commit": "0x313dc",
+        "Commit": "313dcd8d2df49b02fb04e0d99743dc33cfa25faf",
         "Fix Commit": "9d6a8948636c05d508694a90d192a0713562ce29",
         "DSL": "PIL",
         "Vulnerability": "Under-Constrained",
@@ -1901,7 +1901,7 @@
         "Root Cause": "Missing Input Constraints",
         "Reproduced": false,
         "Location": {
-            "Path": "utils.zkasm",
+            "Path": "pil/main.pil",
             "Function": "",
             "Line": ""
         },
@@ -1928,7 +1928,7 @@
         "Id": "0xPolygonHermez/zkevm-proverjs/hexens_Missing_constraint_in_PIL_leading_to_proving_fake_inclusion_in_the_SMT",
         "Path": "dataset/pil/0xPolygonHermez/zkevm-proverjs/hexens_Missing_constraint_in_PIL_leading_to_proving_fake_inclusion_in_the_SMT",
         "Project": "https://github.com/0xPolygonHermez/zkevm-proverjs",
-        "Commit": "0x313dc",
+        "Commit": "313dcd8d2df49b02fb04e0d99743dc33cfa25faf",
         "Fix Commit": "40d1846b50aa6b9e006a85fde99261a8c5c7b8f2",
         "DSL": "PIL",
         "Vulnerability": "Under-Constrained",
@@ -1936,7 +1936,7 @@
         "Root Cause": "Missing Input Constraints",
         "Reproduced": false,
         "Location": {
-            "Path": "storage.pil",
+            "Path": "pil/storage.pil",
             "Function": "",
             "Line": ""
         },
@@ -1963,7 +1963,7 @@
         "Id": "penumbra-zone/penumbra/nccgroup_Invalid_Comparisons_on_Fixed-Point_Values_are_Accepted_by_the_Circuit_Verifier",
         "Path": "dataset/arkworks/penumbra-zone/penumbra/nccgroup_Invalid_Comparisons_on_Fixed_Point_Values_are_Accepted_by_the_Circuit_Verifier",
         "Project": "https://github.com/penumbra-zone/penumbra",
-        "Commit": "0xa43b594",
+        "Commit": "a43b5944dfac702fd76fee6aab81de05f97de898",
         "Fix Commit": "954b3b2e678075baf1e06279ea41bb2823e540c76ddb80ba44b52476dfd3f55f",
         "DSL": "Arkworks",
         "Vulnerability": "Under-Constrained",
@@ -1971,7 +1971,7 @@
         "Root Cause": "Wrong Translation of Logic into Constraints",
         "Reproduced": false,
         "Location": {
-            "Path": "penumbra/crates/core/num/src/fixpoint.rs",
+            "Path": "crates/core/num/src/fixpoint.rs",
             "Function": "U128x128Var::enforce_cmp",
             "Line": "428-459"
         },
@@ -1998,7 +1998,7 @@
         "Id": "penumbra-zone/penumbra/zksecurity_Unsound_fixed-point_addition",
         "Path": "dataset/arkworks/penumbra-zone/penumbra/zksecurity_Unsound_fixed_point_addition",
         "Project": "https://github.com/penumbra-zone/penumbra",
-        "Commit": "0xa43b594",
+        "Commit": "a43b5944dfac702fd76fee6aab81de05f97de898",
         "Fix Commit": "ddab070acff5567f23eb36a4a877358f2c062d9b",
         "DSL": "Arkworks",
         "Vulnerability": "Computational Issues",
@@ -2006,9 +2006,9 @@
         "Root Cause": "Wrong Translation of Logic into Constraints",
         "Reproduced": false,
         "Location": {
-            "Path": "core/num",
+            "Path": "crates/core/num/src/fixpoint.rs",
             "Function": "checked_add",
-            "Line": ""
+            "Line": "265"
         },
         "Source": {
             "Audit Report": {
@@ -2033,7 +2033,7 @@
         "Id": "penumbra-zone/penumbra/zksecurity_Unsound_fixed-point_multiplication",
         "Path": "dataset/arkworks/penumbra-zone/penumbra/zksecurity_Unsound_fixed_point_multiplication",
         "Project": "https://github.com/penumbra-zone/penumbra",
-        "Commit": "0xa43b594",
+        "Commit": "a43b5944dfac702fd76fee6aab81de05f97de898",
         "Fix Commit": "1fdbe1ea10a270180c035aeb8bb7f4a3ff25d99e",
         "DSL": "Arkworks",
         "Vulnerability": "Computational Issues",
@@ -2041,9 +2041,9 @@
         "Root Cause": "Wrong Translation of Logic into Constraints",
         "Reproduced": false,
         "Location": {
-            "Path": "core/num",
+            "Path": "crates/core/num/src/fixpoint.rs",
             "Function": "U128x128Var::checked_mul",
-            "Line": ""
+            "Line": "323"
         },
         "Source": {
             "Audit Report": {
@@ -2068,7 +2068,7 @@
         "Id": "penumbra-zone/penumbra/zksecurity_Double_spending_due_to_incoming_viewing_key_(ivk)_derivation_not_constrained",
         "Path": "dataset/arkworks/penumbra-zone/penumbra/zksecurity_Double_spending_due_to_incoming_viewing_key_ivk_derivation_not_constrained",
         "Project": "https://github.com/penumbra-zone/penumbra",
-        "Commit": "0xa43b594",
+        "Commit": "a43b5944dfac702fd76fee6aab81de05f97de898",
         "Fix Commit": "e019839939968012ed2d24cf65bdd86d239b50e9",
         "DSL": "Arkworks",
         "Vulnerability": "Under-Constrained",
@@ -2076,9 +2076,9 @@
         "Root Cause": "Out-of-Circuit Computation Not Being Constrained",
         "Reproduced": false,
         "Location": {
-            "Path": "core/keys",
+            "Path": "crates/core/keys/src/keys/ivk.rs",
             "Function": "IncomingViewingKeyVar::derive",
-            "Line": ""
+            "Line": "101"
         },
         "Source": {
             "Audit Report": {
@@ -2103,16 +2103,16 @@
         "Id": "arkworks-rs/r1cs-std/Enforce_mul_by_inverse",
         "Path": "dataset/arkworks-rs/r1cs-std/Enforce_mul_by_inverse",
         "Project": "https://github.com/arkworks-rs/r1cs-std",
-        "Commit": "",
-        "Fix Commit": "",
+        "Commit": "1ad210462cae103ebf2718a397cca33f44183f65",
+        "Fix Commit": "47ddbaa411afe7c499311a248a38135e5a192b67",
         "DSL": "Arkworks",
         "Vulnerability": "Under-Constrained",
         "Impact": "Soundness",
         "Root Cause": "Wrong Translation of Logic into Constraints",
         "Reproduced": false,
         "Location": {
-            "Path": "",
-            "Function": "",
+            "Path": "src/fields/mod.rs",
+            "Function": "mul_by_inverse",
             "Line": ""
         },
         "Source": {
@@ -2146,9 +2146,9 @@
         "Root Cause": "Fiat-Shamir",
         "Reproduced": false,
         "Location": {
-            "Path": "extensions/native/recursion/src/fri/mod.rs, extensions/native/recursion/src/fri/two_adic_pcs.rs",
-            "Function": "verify_query, verify_two_adic_pcs",
-            "Line": "63, 57"
+            "Path": "extensions/native/recursion/src/fri/mod.rs",
+            "Function": "verify_query",
+            "Line": "63"
         },
         "Source": {
             "GitHub Security Advisory": {
@@ -2417,16 +2417,18 @@
     {
         "Id": "zkopru-network/zkopru/leastauthority-previously-correct-ownership-proof-disabled-via-code-changes",
         "Path": "dataset/circom/zkopru-network/zkopru/leastauthority_previously_correct_ownership_proof_disabled_via_code_changes",
-        "Project": "https://github.com/zkopru-network/zkopru/releases/tag/audit-v1",
-        "Commit": "1f5c880d47b6913f848861667b8de6b88dcfe10d",
+        "Project": "https://github.com/zkopru-network/zkopru",
+        "Commit": "4236fc8a5cbf73b7f3860d87a1a447eea8d7abd4",
         "Fix Commit": "6458fe4ef384d2f2198aae00e719a7f94c30f090",
         "DSL": "Circom",
         "Vulnerability": "Under-Constrained",
         "Impact": "Soundness",
         "Root Cause": "Unsafe Reuse of Circuit",
-        "Reproduced": true,
+        "Reproduced": false,
+        "Codebase": "dataset/codebases/circom/tag/audit-v1/4236fc8a5cbf73b7f3860d87a1a447eea8d7abd4",
+        "Direct Entrypoint": "circuit.circom",
         "Location": {
-            "Path": "circuits/ownership_proof.circom",
+            "Path": "packages/circuits/lib/ownership_proof.circom",
             "Function": "OwnershipProof",
             "Line": "14"
         },
@@ -2436,34 +2438,44 @@
                 "Bug ID": "Issue C: Previously Correct Ownership Proof Disabled via Code Changes"
             }
         },
+        "Input": {
+            "Original": "input.json",
+            "Direct": "direct_input.json"
+        },
         "Commands": {
             "Setup Environment": "./zkbugs_setup.sh",
-            "Reproduce": "./zkbugs_exploit.sh",
             "Compile and Preprocess": "./zkbugs_compile_setup.sh",
             "Positive Test": "./zkbugs_positive_test.sh",
-            "Find Exploit": "./zkbugs_find_exploit.sh",
-            "Clean": "./zkbugs_clean.sh"
+            "Clean": "./zkbugs_clean.sh",
+            "Compile": "./zkbugs_compile.sh"
         },
         "Short Description of the Vulnerability": "The circuit integrates with `EdDSAPoseidonVerifier` template from circomlib, but the `enabled` signal is set to 0, disabling the verification. There is no signature verification in the circuit, so attacker can craft some non-existent signature and still generate a valid proof.",
-        "Short Description of the Exploit": "Run zkbugs_js_setup.sh to set up the circomlibjs environment. Do `node generateInput.js` to generate the input for the circuit. Here every field besides `S` is valid, the signature is hardcoded to `13371337` for demonstrating the bug.",
         "Proposed Mitigation": "Change the line of code to `eddsa.enabled <== 1`.",
+        "Executed": true,
+        "Compiled Direct": true,
+        "Compiled Original": true,
+        "Original Entrypoint": [
+            "packages/circuits/tester/ownership_proof.test.circom"
+        ],
         "title": "Previously Correct Ownership Proof Disabled via Code Changes"
     },
     {
         "Id": "zkopru-network/zkopru/leastauthority_Circuit_Does_Not_Check_the_ERC-20_Sum_Correctly_",
         "Path": "dataset/circom/zkopru-network/zkopru/leastauthority_Circuit_Does_Not_Check_the_ERC_20_Sum_Correctly_",
         "Project": "https://github.com/zkopru-network/zkopru",
-        "Commit": "0x4236fc8a5cbf73b7f3860d87a1a447eea8d7abd4",
+        "Commit": "4236fc8a5cbf73b7f3860d87a1a447eea8d7abd4",
         "Fix Commit": "30a19913ce1a018ce26a34d3d6621fcd38579171",
         "DSL": "Circom",
         "Vulnerability": "Under-Constrained",
         "Impact": "Soundness",
         "Root Cause": "Circuit Design Issue",
         "Reproduced": false,
+        "Codebase": "dataset/codebases/circom/zkopru-network/zkopru/4236fc8a5cbf73b7f3860d87a1a447eea8d7abd4",
+        "Direct Entrypoint": "circuit.circom",
         "Location": {
-            "Path": "circuits/lib/zk_transaction.circom",
-            "Function": "",
-            "Line": "255"
+            "Path": "packages/circuits/lib/zk_transaction.circom",
+            "Function": "ZkTransaction",
+            "Line": "257-274"
         },
         "Source": {
             "Audit Report": {
@@ -2471,69 +2483,44 @@
                 "Bug ID": "Circuit Does Not Check the ERC-20 Sum Correctly "
             }
         },
+        "Input": {
+            "Original": "input.json",
+            "Direct": "direct_input.json"
+        },
         "Commands": {
             "Setup Environment": "",
-            "Reproduce": "",
             "Compile and Preprocess": "",
             "Positive Test": "",
-            "Find Exploit": "",
-            "Clean": ""
+            "Clean": "",
+            "Compile": "./zkbugs_compile.sh"
         },
-        "Short Description of the Vulnerability": "The Zkopru zk-SNARK circuit has an issue where it incorrectly checks the ERC-20 token sum during transactions. This oversight allows a scenario where the circuit only verifies the sum of tokens for addresses included in the input notes, but fails to check for other addresses. Consequently, this bug could potentially let a malicious actor drain funds by exploiting this loophole, undetectably taking tokens not accounted for in the input notes.",
-        "Short Description of the Exploit": "",
-        "Proposed Mitigation": "Modify the circuit to enforce that outputs do not contain ERC-20 addresses that are not part of any spend note. This issue was resolved by the Zkopru team during the audit.",
+        "Short Description of the Vulnerability": "In `ZkTransaction`, the ERC-20 sum check iterates over input notes and for each `spending_note_token_addr[i]`, computes inflow and outflow sums via `ERC20Sum`. The outflow component uses `outflow_erc20[i].addr <== spending_note_token_addr[i]`, meaning it only sums output notes whose token address matches an input note's address. Output notes with token addresses not present in any input note are completely ignored by the balance check. The constraint `inflow_erc20[i].out === outflow_erc20[i].out` only verifies per-address balance for addresses in the input set, allowing an attacker to create output notes with new token addresses and drain funds.",
+        "Proposed Mitigation": "Enforce that output notes do not contain ERC-20 token addresses that are not present in any input (spend) note, or verify the sum across all token addresses appearing in both inputs and outputs.",
+        "Executed": false,
+        "Compiled Direct": true,
+        "Compiled Original": true,
+        "Original Entrypoint": [
+            "packages/circuits/impls/zk_transaction_1_1.circom"
+        ],
         "title": "Circuit Does Not Check the ERC-20 Sum Correctly "
-    },
-    {
-        "Id": "privacy-scaling-explorations/maci/ProcessMessages_circuit_to_prevent_message_censorship_by_the_coordinator",
-        "Path": "dataset/circom/privacy-scaling-explorations/maci/ProcessMessages_circuit_to_prevent_message_censorship_by_the_coordinator",
-        "Project": "https://github.com/privacy-scaling-explorations/maci",
-        "Commit": "",
-        "Fix Commit": "",
-        "DSL": "Circom",
-        "Vulnerability": "Under-Constrained",
-        "Impact": "Completeness",
-        "Root Cause": "Circuit Design Issue",
-        "Reproduced": false,
-        "Location": {
-            "Path": "",
-            "Function": "",
-            "Line": ""
-        },
-        "Source": {
-            "Audit Report": {
-                "Source Link": "https://github.com/privacy-scaling-explorations/maci/issues/320",
-                "Bug ID": "ProcessMessages circuit to prevent message censorship by the coordinator"
-            }
-        },
-        "Commands": {
-            "Setup Environment": "",
-            "Reproduce": "",
-            "Compile and Preprocess": "",
-            "Positive Test": "",
-            "Find Exploit": "",
-            "Clean": ""
-        },
-        "Short Description of the Vulnerability": "",
-        "Short Description of the Exploit": "",
-        "Proposed Mitigation": "",
-        "title": "ProcessMessages circuit to prevent message censorship by the coordinator"
     },
     {
         "Id": "privacy-scaling-explorations/maci/hashcloak_Data_are_not_fully_verified_during_state_update",
         "Path": "dataset/circom/privacy-scaling-explorations/maci/hashcloak_Data_are_not_fully_verified_during_state_update",
         "Project": "https://github.com/privacy-scaling-explorations/maci",
-        "Commit": "0x2db5f6",
+        "Commit": "2db5f625b67a6b810bd851950d7a42c26189088b",
         "Fix Commit": "6df6a4054da926b07f35c5befab4f1f8af33dcc6",
         "DSL": "Circom",
         "Vulnerability": "Under-Constrained",
         "Impact": "Soundness",
         "Root Cause": "Misimplementation of a Specification",
         "Reproduced": false,
+        "Codebase": "dataset/codebases/circom/privacy-scaling-explorations/maci/2db5f625b67a6b810bd851950d7a42c26189088b",
+        "Direct Entrypoint": "circuit.circom",
         "Location": {
-            "Path": "",
-            "Function": "",
-            "Line": ""
+            "Path": "circuits/circom/tallyVotes.circom",
+            "Function": "ResultCommitmentVerifier",
+            "Line": "258-273"
         },
         "Source": {
             "Audit Report": {
@@ -2541,17 +2528,23 @@
                 "Bug ID": "Data are not fully verified during state update"
             }
         },
+        "Input": {
+            "Original": "input.json",
+            "Direct": "direct_input.json"
+        },
         "Commands": {
             "Setup Environment": "",
-            "Reproduce": "",
             "Compile and Preprocess": "",
             "Positive Test": "",
-            "Find Exploit": "",
-            "Clean": ""
+            "Clean": "",
+            "Compile": "./zkbugs_compile.sh"
         },
-        "Short Description of the Vulnerability": "The bug 'Data are not fully verified during state update' is not explicitly listed in the report. However, the closest relevant issue described involves the initial conditions in the tallyVotes.circom file. The system does not correctly verify the initial tally commitment when processing the first batch of results, allowing a malicious coordinator to start with an arbitrary tally, potentially compromising the tally results. Suggestions include adding constraints to the tally in the first batch or initializing the tally commitment with a valid value in Poll.sol, but issues remain due to the limit on contract bytecode size.",
-        "Short Description of the Exploit": "",
-        "Proposed Mitigation": "To address the issue of data not being fully verified during state updates, add constraints to the current tally in case of the first batch in the tallyVotes circuit and consider not skipping verification and initializing the tally commitment in Poll.sol with a valid and expected commitment.",
+        "Short Description of the Vulnerability": "In `ResultCommitmentVerifier` (tallyVotes.circom), the initial tally commitment is not verified for the first batch. The circuit computes `hz <== iz.out * currentTallyCommitmentHasher.hash` where `iz.out` is 0 when `isFirstBatch == 1`, making `hz = 0`. The constraint `hz === currentTallyCommitment` then only forces `currentTallyCommitment` to be zero without verifying it against the actual computed tally hash. A malicious coordinator can start with an arbitrary tally state for the first batch, compromising all subsequent tally results.",
+        "Proposed Mitigation": "Add constraints to verify `currentTallyCommitment` against the computed `currentTallyCommitmentHasher.hash` even for the first batch, or initialize the tally commitment in Poll.sol with a valid and expected commitment value.",
+        "Executed": false,
+        "Compiled Direct": true,
+        "Compiled Original": true,
+        "Original Entrypoint": [],
         "title": "Data are not fully verified during state update"
     },
     {
@@ -2563,7 +2556,9 @@
         "Vulnerability": "Computational Issues",
         "Impact": "Soundness",
         "Root Cause": "Wrong Translation of Logic into Constraints",
-        "Reproduced": true,
+        "Reproduced": false,
+        "Codebase": "dataset/codebases/circom/tangle-network/protocol-solidity/848d073bb17f0aaffc6d39f594cc59efedeaec89",
+        "Direct Entrypoint": "circuit.circom",
         "Location": {
             "Path": "circuits/set/membership.circom",
             "Function": "SetMembership",
@@ -2575,17 +2570,25 @@
                 "Bug ID": "V-WBT-VUL-006"
             }
         },
+        "Input": {
+            "Original": "input.json",
+            "Direct": "direct_input.json"
+        },
         "Commands": {
             "Setup Environment": "./zkbugs_setup.sh",
-            "Reproduce": "./zkbugs_exploit.sh",
             "Compile and Preprocess": "./zkbugs_compile_setup.sh",
             "Positive Test": "./zkbugs_positive_test.sh",
-            "Find Exploit": "./zkbugs_find_exploit.sh",
-            "Clean": "./zkbugs_clean.sh"
+            "Clean": "./zkbugs_clean.sh",
+            "Compile": "./zkbugs_compile.sh"
         },
         "Short Description of the Vulnerability": "The templates `SetMembership` try to check if an element e is in a set S by generating a constraint of the form: for all  s in S, product of (s - e) = 0. They do does this by iterating over elements s of the set S and building the product. The issue is that `product[0]` is initialized to `element` which makes the constarint to be trivailly satisfied when `element` is 0.",
-        "Short Description of the Exploit": "The template `SetMembership` is used to check whether a computed Merkle root belongs to a set of known Merkle roots. A malicious user that knows how to compute a Merkle root equal to 0 could pass along the hashes and generate an invalid proof.",
         "Proposed Mitigation": "We recommend that `product[0]` is initialized to 1.",
+        "Executed": true,
+        "Compiled Direct": true,
+        "Compiled Original": true,
+        "Original Entrypoint": [
+            "circuits/test/poseidon_vanchor_2_2.circom"
+        ],
         "title": "Incorrect Initialization in Membership Circuits"
     },
     {
@@ -2598,9 +2601,11 @@
         "Vulnerability": "Under-Constrained",
         "Impact": "Soundness",
         "Root Cause": "Missing Input Constraints",
-        "Reproduced": true,
+        "Reproduced": false,
+        "Codebase": "dataset/codebases/circom/semaphore-protocol/semaphore/27320f17233b18de477a74919084fba76513470f",
+        "Direct Entrypoint": "circuit.circom",
         "Location": {
-            "Path": "circuits/semaphore.circom",
+            "Path": "packages/circuits/semaphore.circom",
             "Function": "Semaphore",
             "Line": "47-88"
         },
@@ -2610,34 +2615,44 @@
                 "Bug ID": "V-SEM-VUL-001: No Zero Value Validation"
             }
         },
+        "Input": {
+            "Original": "input.json",
+            "Direct": "direct_input.json"
+        },
         "Commands": {
             "Setup Environment": "./zkbugs_setup.sh",
-            "Reproduce": "./zkbugs_exploit.sh",
             "Compile and Preprocess": "./zkbugs_compile_setup.sh",
             "Positive Test": "./zkbugs_positive_test.sh",
-            "Find Exploit": "./zkbugs_find_exploit.sh",
-            "Clean": "./zkbugs_clean.sh"
+            "Clean": "./zkbugs_clean.sh",
+            "Compile": "./zkbugs_compile.sh"
         },
-        "Short Description of the Vulnerability": "The bug in the Semaphore protocol involves the use of a zeroValue in incremental Merkle trees, which acts as an implicit group member. This zeroValue cannot be removed, and its addition does not trigger a MemberAdded event, making it invisible in membership records. This allows the group creator guaranteed access, which can be problematic if the admin changes. Additionally, if common values like 0 are compromised, they could be used to gain unauthorized access to groups.",
-        "Short Description of the Exploit": "generateInput.js gives all necessary inputs for the incremental merkle tree. In real-world attack, identityNullifier and identityTrapdoor should be correct values corresponding to `zeroValue` membership in the incremental merkle tree. Here we just use 0 to represent them. The actual checks are in the solidity contracts.",
-        "Proposed Mitigation": "Disallow proofs where the leaf corresponds to the zeroValue to ensure only legitimate users are added.",
+        "Short Description of the Vulnerability": "In the `Semaphore` template, the `MerkleTreeInclusionProof` accepts any `leaf` value including `zeroValue` (the default empty-leaf value used to initialize the incremental Merkle tree). Since `hashes[0] <== leaf` has no constraint rejecting `zeroValue`, and the on-chain tree is initialized with `zeroValue` at every empty position, anyone who knows the `zeroValue` and the corresponding sibling path can generate a valid inclusion proof. This `zeroValue` acts as an implicit group member that cannot be removed and whose addition does not trigger a `MemberAdded` event, giving the group creator (or anyone who knows the value) guaranteed unauthorized access.",
+        "Proposed Mitigation": "Add a constraint in the circuit to reject proofs where the identity commitment equals `zeroValue`, e.g., by adding a non-equality check on the leaf before the Merkle proof.",
+        "Executed": true,
+        "Compiled Direct": true,
+        "Compiled Original": true,
+        "Original Entrypoint": [
+            "packages/circuits/generated/semaphore_main.circom"
+        ],
         "title": "No Zero Value Validation"
     },
     {
         "Id": "personaelabs/spartan-ecdsa/yacademy_Knowledge_of_any_member_signature_allow_to_generate_proof_of_membership",
         "Path": "dataset/circom/personaelabs/spartan-ecdsa/yacademy_Knowledge_of_any_member_signature_allow_to_generate_proof_of_membership",
         "Project": "https://github.com/personaelabs/spartan-ecdsa",
-        "Commit": "0x3386b30d9b",
+        "Commit": "3386b30d9b5b62d8a60735cbeab42bfe42e80429",
         "Fix Commit": "",
         "DSL": "Circom",
         "Vulnerability": "Under-Constrained",
         "Impact": "Soundness",
         "Root Cause": "Circuit Design Issue",
         "Reproduced": false,
+        "Codebase": "dataset/codebases/circom/personaelabs/spartan-ecdsa/3386b30d9b5b62d8a60735cbeab42bfe42e80429",
+        "Direct Entrypoint": "circuit.circom",
         "Location": {
-            "Path": "",
-            "Function": "",
-            "Line": ""
+            "Path": "packages/circuits/eff_ecdsa_membership/pubkey_membership.circom",
+            "Function": "PubKeyMembership",
+            "Line": "17-46"
         },
         "Source": {
             "Audit Report": {
@@ -2645,17 +2660,28 @@
                 "Bug ID": "Knowledge of any member signature allow to generate proof of membership"
             }
         },
+        "Input": {
+            "Original": "input.json",
+            "Direct": "direct_input.json"
+        },
         "Commands": {
             "Setup Environment": "",
-            "Reproduce": "",
             "Compile and Preprocess": "",
             "Positive Test": "",
-            "Find Exploit": "",
-            "Clean": ""
+            "Clean": "",
+            "Compile": "./zkbugs_compile.sh"
         },
-        "Short Description of the Vulnerability": "",
-        "Short Description of the Exploit": "",
-        "Proposed Mitigation": "",
+        "Short Description of the Vulnerability": "The `PubKeyMembership` template derives a public key from ECDSA parameters via `EfficientECDSA()` and checks it against a Merkle tree root. However, the inputs `Tx`, `Ty`, `Ux`, `Uy` are unconstrained private inputs that can be freely chosen by the prover. Since `pubKey = s * T + U`, an attacker who knows any valid member signature `s` can pick arbitrary `T` and `U` values to derive any target public key in the Merkle tree, generating a valid membership proof without being a member.",
+        "Proposed Mitigation": "Bind the ECDSA verification inputs to a specific message and public key. The circuit should constrain that the signature corresponds to a known message, preventing the prover from freely choosing `Tx`, `Ty`, `Ux`, `Uy` to target arbitrary public keys.",
+        "Executed": false,
+        "Compiled Direct": true,
+        "Compiled Original": true,
+        "Original Entrypoint": [
+            "packages/circuits/instances/pubkey_membership.circom"
+        ],
+        "Similar Bugs": [
+            "personaelabs/spartan-ecdsa/yacademy_input_signal_s_is_not_constrained_in_eff_ecdsa_circom"
+        ],
         "title": "Knowledge of any member signature allow to generate proof of membership"
     },
     {
@@ -2668,9 +2694,11 @@
         "Vulnerability": "Under-Constrained",
         "Impact": "Soundness",
         "Root Cause": "Missing Input Constraints",
-        "Reproduced": true,
+        "Reproduced": false,
+        "Codebase": "dataset/codebases/circom/personaelabs/spartan-ecdsa/3386b30d9b5b62d8a60735cbeab42bfe42e80429",
+        "Direct Entrypoint": "circuit.circom",
         "Location": {
-            "Path": "circuits/eff_ecdsa.circom",
+            "Path": "packages/circuits/eff_ecdsa_membership/eff_ecdsa.circom",
             "Function": "EfficientECDSA",
             "Line": "25-28"
         },
@@ -2680,20 +2708,27 @@
                 "Bug ID": "Input signal s is not constrained in eff_ecdsa.circom"
             }
         },
+        "Input": {
+            "Original": "input.json",
+            "Direct": "direct_input.json"
+        },
         "Commands": {
             "Setup Environment": "./zkbugs_setup.sh",
-            "Reproduce": "./zkbugs_exploit.sh",
             "Compile and Preprocess": "./zkbugs_compile_setup.sh",
             "Positive Test": "./zkbugs_positive_test.sh",
-            "Find Exploit": "./zkbugs_find_exploit.sh",
-            "Clean": "./zkbugs_clean.sh"
+            "Clean": "./zkbugs_clean.sh",
+            "Compile": "./zkbugs_compile.sh"
         },
         "Short Description of the Vulnerability": "The circuit computes `pubKey = s * T + U` but `s` isn't constrained. If we set `s = 0` and `(Ux, Uy) = pubKey`, then `(Tx, Ty)` can be any pair of values.",
-        "Short Description of the Exploit": "Set `s = 0` and rest of the inputs can be any number.",
         "Proposed Mitigation": "Add constraint to `s` so that `s * T` can't be skipped in the computation.",
         "Similar Bugs": [
-            "iden3/circomlib/kobi_gurkan_mimc_hash_assigned_but_not_constrained",
-            "reclaimprotocol/circom-chacha20/zksecurity_unsound_left_rotation"
+            "personaelabs/spartan-ecdsa/yacademy_Knowledge_of_any_member_signature_allow_to_generate_proof_of_membership"
+        ],
+        "Executed": true,
+        "Compiled Direct": true,
+        "Compiled Original": true,
+        "Original Entrypoint": [
+            "packages/circuits/instances/pubkey_membership.circom"
         ],
         "title": "Input signal s is not constrained in eff_ecdsa.circom"
     },
@@ -2707,9 +2742,11 @@
         "Vulnerability": "Under-Constrained",
         "Impact": "Soundness",
         "Root Cause": "Assigned but Unconstrained",
-        "Reproduced": true,
+        "Reproduced": false,
+        "Codebase": "dataset/codebases/circom/personaelabs/spartan-ecdsa/3386b30d9b5b62d8a60735cbeab42bfe42e80429",
+        "Direct Entrypoint": "circuit.circom",
         "Location": {
-            "Path": "circuits/mul.circom",
+            "Path": "packages/circuits/eff_ecdsa_membership/secp256k1/mul.circom",
             "Function": "K",
             "Line": "123-124"
         },
@@ -2719,17 +2756,29 @@
                 "Bug ID": "Under constrained circuits compromising the soundness of the system"
             }
         },
+        "Input": {
+            "Original": "input.json",
+            "Direct": "direct_input.json"
+        },
         "Commands": {
             "Setup Environment": "./zkbugs_setup.sh",
-            "Reproduce": "./zkbugs_exploit.sh",
             "Compile and Preprocess": "./zkbugs_compile_setup.sh",
             "Positive Test": "./zkbugs_positive_test.sh",
-            "Find Exploit": "./zkbugs_find_exploit.sh",
-            "Clean": "./zkbugs_clean.sh"
+            "Clean": "./zkbugs_clean.sh",
+            "Compile": "./zkbugs_compile.sh"
         },
         "Short Description of the Vulnerability": "The signals `slo` and `shi` are assigned but not constrained",
-        "Short Description of the Exploit": "Modify `slo` or `shi`, then deduce all related intermediate signals and modify the witness.",
         "Proposed Mitigation": "Use `<==` instead of `<--`.",
+        "Executed": true,
+        "Compiled Direct": true,
+        "Compiled Original": true,
+        "Original Entrypoint": [
+            "packages/circuits/instances/pubkey_membership.circom"
+        ],
+        "Similar Bugs": [
+            "iden3/circomlib/kobi_gurkan_mimc_hash_assigned_but_not_constrained",
+            "succinctlabs/telepathy-circuits/veridise_arrayxor_is_under_constrained"
+        ],
         "title": "Under constrained circuits compromising the soundness of the system"
     },
     {
@@ -2742,7 +2791,9 @@
         "Vulnerability": "Under-Constrained",
         "Impact": "Soundness",
         "Root Cause": "Arithmetic Field Issues",
-        "Reproduced": true,
+        "Reproduced": false,
+        "Codebase": "dataset/codebases/circom/0xbok/circom-bigint/436665bf01728ae8c581fdb39e8428cb6b835c37",
+        "Direct Entrypoint": "circuit.circom",
         "Location": {
             "Path": "circuits/bigint.circom",
             "Function": "BigMod",
@@ -2754,17 +2805,29 @@
                 "Bug ID": "V-BIGINT-COD-001: Missing range checks in BigMod"
             }
         },
+        "Input": {
+            "Original": "input.json",
+            "Direct": "direct_input.json"
+        },
         "Commands": {
             "Setup Environment": "./zkbugs_setup.sh",
-            "Reproduce": "./zkbugs_exploit.sh",
             "Compile and Preprocess": "./zkbugs_compile_setup.sh",
             "Positive Test": "./zkbugs_positive_test.sh",
-            "Find Exploit": "./zkbugs_find_exploit.sh",
-            "Clean": "./zkbugs_clean.sh"
+            "Clean": "./zkbugs_clean.sh",
+            "Compile": "./zkbugs_compile.sh"
         },
         "Short Description of the Vulnerability": "The bug in the BigMod template arises from missing range checks on the remainder `mod[i]`, allowing it to exceed the expected range of `2**n`. This underconstrained error can be exploited by providing inputs that result in a remainder larger than `2^n`, potentially compromising the integrity of the circuit. Proper range checks are applied to the quotient `div[i]`, but not to `mod[i]`, leaving the system vulnerable to malicious inputs that break the invariant of the modulus operation.",
-        "Short Description of the Exploit": "We design a pair of `a` and `b` such that the remainder after `divmod` overflows `2**126`.",
         "Proposed Mitigation": "Add additional range checking constraints for `mod[i]`. This can be done using the Num2Bits template.",
+        "Executed": true,
+        "Compiled Direct": true,
+        "Compiled Original": true,
+        "Original Entrypoint": [
+            "test/circuits/test_bigmod_22.circom"
+        ],
+        "Similar Bugs": [
+            "selfxyz/self/zksecurity_big_integer_zero_check_is_not_sound",
+            "succinctlabs/telepathy-circuits/veridise_zero_padding_for_sha256_in_ExpandMessageXMD_is_vulnerable_to_an_overflow"
+        ],
         "title": "Missing range checks in BigMod"
     },
     {
@@ -2777,9 +2840,11 @@
         "Vulnerability": "Under-Constrained",
         "Impact": "Soundness",
         "Root Cause": "Unsafe Reuse of Circuit",
-        "Reproduced": true,
+        "Reproduced": false,
+        "Codebase": "dataset/codebases/circom/Unirep/Unirep/0985a28c38c8b2e7b7a9e80f43e63179fdd08b89",
+        "Direct Entrypoint": "circuit.circom",
         "Location": {
-            "Path": "circuits/epochKeyLite.circom",
+            "Path": "packages/circuits/circuits/epochKeyLite.circom",
             "Function": "EpochKeyLite",
             "Line": "45-48"
         },
@@ -2789,19 +2854,28 @@
                 "Bug ID": "V-UNI-VUL-002: Missing Range Checks on Comparison Circuits"
             }
         },
+        "Input": {
+            "Original": "input.json",
+            "Direct": "direct_input.json"
+        },
         "Commands": {
             "Setup Environment": "./zkbugs_setup.sh",
-            "Reproduce": "./zkbugs_exploit.sh",
             "Compile and Preprocess": "./zkbugs_compile_setup.sh",
             "Positive Test": "./zkbugs_positive_test.sh",
-            "Find Exploit": "./zkbugs_find_exploit.sh",
-            "Clean": "./zkbugs_clean.sh"
+            "Clean": "./zkbugs_clean.sh",
+            "Compile": "./zkbugs_compile.sh"
         },
         "Short Description of the Vulnerability": "Input of `LessThan(8)` is assumed to have <=8 bits, but there is no constraint for it in `LessThan` template. Attacker can use large values such as `p - 1` to trigger overflow and make something like `p - 1 < EPOCH_KEY_NONCE_PER_EPOCH` return true.",
-        "Short Description of the Exploit": "Set `nonce = -1` in `input.json` and other inputs to 0 then generate witness. No need to modify the witness.",
         "Proposed Mitigation": "Implement range check so that attacker can't exploit overflow in `LessThan`.",
         "Similar Bugs": [
-            "darkforest-eth/darkforest-v0.3/daira_hopwood_darkforest_v0_3_missing_bit_length_check"
+            "darkforest-eth/darkforest-v0.3/daira_hopwood_darkforest_v0_3_missing_bit_length_check",
+            "selfxyz/self/zksecurity_the_registration_and_disclosure_circuits_lack_range_checks_for_the_input_indices"
+        ],
+        "Executed": true,
+        "Compiled Direct": true,
+        "Compiled Original": true,
+        "Original Entrypoint": [
+            "packages/circuits/generated/epochKeyLite.circom"
         ],
         "title": "Missing Range Checks on Comparison Circuits"
     },
@@ -2815,9 +2889,11 @@
         "Vulnerability": "Under-Constrained",
         "Impact": "Soundness",
         "Root Cause": "Arithmetic Field Issues",
-        "Reproduced": true,
+        "Reproduced": false,
+        "Codebase": "dataset/codebases/circom/Unirep/Unirep/0985a28c38c8b2e7b7a9e80f43e63179fdd08b89",
+        "Direct Entrypoint": "circuit.circom",
         "Location": {
-            "Path": "circuits/bigComparators.circom",
+            "Path": "packages/circuits/circuits/bigComparators.circom",
             "Function": "BigLessThan",
             "Line": "45"
         },
@@ -2827,18 +2903,29 @@
                 "Bug ID": "V-UNI-VUL-001: Underconstrained Circuit allows Invalid Comparison"
             }
         },
+        "Input": {
+            "Original": "input.json",
+            "Direct": "direct_input.json"
+        },
         "Commands": {
             "Setup Environment": "./zkbugs_setup.sh",
-            "Reproduce": "./zkbugs_exploit.sh",
             "Compile and Preprocess": "./zkbugs_compile_setup.sh",
             "Positive Test": "./zkbugs_positive_test.sh",
-            "Find Exploit": "./zkbugs_find_exploit.sh",
-            "Clean": "./zkbugs_clean.sh"
+            "Clean": "./zkbugs_clean.sh",
+            "Compile": "./zkbugs_compile.sh"
         },
         "Short Description of the Vulnerability": "`Num2Bits(254)` is used so malicious prover can provide input that is larger than scalar field modulus `p` but smaller than `2**254`, exploiting the overflow. That makes some comparison opertions invalid, for example, `1 < p` evaluates to true but in the circuit it is treated as `1 < 0`.",
-        "Short Description of the Exploit": "Set `in[0]` to 1 and `in[1]` to `p`, then generate the witness from inputs directly, no need to modify the witness.",
         "Proposed Mitigation": "Use `Num2Bits_strict` rather than `Num2Bits(254)`.",
-        "Similar Bugs": [],
+        "Similar Bugs": [
+            "iden3/circuits/trailofbits_unsafe_use_of_num2bits_in_multiple_circuits",
+            "selfxyz/self/zksecurity_an_attacker_can_craft_a_fake_non_inclusion_proof_for_a_given_key_due_to_an_aliasing_bug_in_the_smt_verifier"
+        ],
+        "Executed": true,
+        "Compiled Direct": true,
+        "Compiled Original": true,
+        "Original Entrypoint": [
+            "packages/circuits/generated/bigComparators.circom"
+        ],
         "title": "Underconstrained Circuit allows Invalid Comparison"
     },
     {
@@ -2851,7 +2938,9 @@
         "Vulnerability": "Under-Constrained",
         "Impact": "Soundness",
         "Root Cause": "Unsafe Reuse of Circuit",
-        "Reproduced": true,
+        "Reproduced": false,
+        "Codebase": "dataset/codebases/circom/darkforest-eth/darkforest-v0.3/1c83685e22e0463d5481c83e21616745b3204c9c",
+        "Direct Entrypoint": "circuit.circom",
         "Location": {
             "Path": "circuits/range_proof/circuit.circom",
             "Function": "RangeProof",
@@ -2863,19 +2952,28 @@
                 "Bug ID": "Dark Forest v0.3: Missing Bit Length Check"
             }
         },
+        "Input": {
+            "Original": "input.json",
+            "Direct": "direct_input.json"
+        },
         "Commands": {
             "Setup Environment": "./zkbugs_setup.sh",
-            "Reproduce": "./zkbugs_exploit.sh",
             "Compile and Preprocess": "./zkbugs_compile_setup.sh",
             "Positive Test": "./zkbugs_positive_test.sh",
-            "Find Exploit": "./zkbugs_find_exploit.sh",
-            "Clean": "./zkbugs_clean.sh"
+            "Clean": "./zkbugs_clean.sh",
+            "Compile": "./zkbugs_compile.sh"
         },
         "Short Description of the Vulnerability": "Input of `LessThan(bits)` is assumed to take inputs bounded by `2**(bits-1)`, but there is no constraint for it in `LessThan` template. Attacker can use unexpected values outside the range and pass all the constraints, rendering this RangeProof useless. Note: The original circuit does not contain the output `out`, it was added to prevent snarkJS 'Scalar size does not match' error.",
-        "Short Description of the Exploit": "Set `in = -255` then generate witness. No need to modify the witness.",
         "Proposed Mitigation": "Add constraints to check the range of `in` and `max_abs_value`. This can be done using the `Num2Bits` template.",
         "Similar Bugs": [
-            "Unirep/Unirep/veridise_missing_range_checks_on_comparison_circuits"
+            "Unirep/Unirep/veridise_missing_range_checks_on_comparison_circuits",
+            "selfxyz/self/zksecurity_the_registration_and_disclosure_circuits_lack_range_checks_for_the_input_indices"
+        ],
+        "Executed": true,
+        "Compiled Direct": true,
+        "Compiled Original": true,
+        "Original Entrypoint": [
+            "circuits/init/circuit.circom"
         ],
         "title": "Dark Forest v0.3: Missing Bit Length Check"
     },
@@ -2888,7 +2986,9 @@
         "Vulnerability": "Under-Constrained",
         "Impact": "Soundness",
         "Root Cause": "Wrong Translation of Logic into Constraints",
-        "Reproduced": true,
+        "Reproduced": false,
+        "Codebase": "dataset/codebases/circom/selfxyz/self/3905a30aeb19016d22c5493b8b34ade2d118da4e",
+        "Direct Entrypoint": "circuit.circom",
         "Location": {
             "Path": "circuits/circuits/disclose/vc_and_disclose_aadhaar.circom",
             "Function": "VC_AND_DISCLOSE_Aadhaar",
@@ -2900,17 +3000,29 @@
                 "Bug ID": "#02 - Missing Byte Range Checks Allows Packed Data Pollution"
             }
         },
+        "Input": {
+            "Original": "input.json",
+            "Direct": "direct_input.json"
+        },
         "Commands": {
             "Setup Environment": "./zkbugs_setup.sh",
-            "Reproduce": "./zkbugs_exploit.sh",
             "Compile and Preprocess": "./zkbugs_compile_setup.sh",
             "Positive Test": "./zkbugs_positive_test.sh",
-            "Find Exploit": "./zkbugs_find_exploit.sh",
-            "Clean": "./zkbugs_clean.sh"
+            "Clean": "./zkbugs_clean.sh",
+            "Compile": "./zkbugs_compile.sh"
         },
         "Short Description of the Vulnerability": "`PackBytes` is used to pack the revealed data bytes. The template does not constrain each provided input value to be a byte, i.e. in the range [0, 2^8). This allows crafting inputs exceeding 255.",
-        "Short Description of the Exploit": "Using a “negative” (large and close to the modulus) `minimumAge` enables pollution of the final packed output segment (bytes 93–118) that is expected to encode: part of the state, the last 4 digits of the phone number, OFAC result bits, and `minimumAge`.",
         "Proposed Mitigation": "Add an explicit range check using `Num2Bits(8)`, ensuring `minimumAge` is constrained to a byte",
+        "Executed": false,
+        "Compiled Direct": true,
+        "Compiled Original": true,
+        "Original Entrypoint": [
+            "circuits/circuits/disclose/generated/vc_and_disclose_aadhaar_main.circom"
+        ],
+        "Similar Bugs": [
+            "selfxyz/self/zksecurity_forbidden_country_check_bypass_via_packed_byte_overflow",
+            "selfxyz/self/zksecurity_second_pre_image_attacks_on_packbytesandposeidon_may_be_used_to_register_arbitrary_passports_and_dsc_certificates"
+        ],
         "title": "Missing Byte Range Checks Allows Packed Data Pollution"
     },
     {
@@ -2922,7 +3034,9 @@
         "Vulnerability": "Under-Constrained",
         "Impact": "Soundness",
         "Root Cause": "Wrong Translation of Logic into Constraints",
-        "Reproduced": true,
+        "Reproduced": false,
+        "Codebase": "dataset/codebases/circom/selfxyz/self/4f18c75041bb47c1862169eef82c22067642a83a",
+        "Direct Entrypoint": "circuit.circom",
         "Location": {
             "Path": "circuits/circuits/utils/crypto/merkle-trees/smt.circom",
             "Function": "BinaryMerkleRoot",
@@ -2934,17 +3048,25 @@
                 "Bug ID": "#02 - Missing boolean constraints in the Merkle tree path leads to an attacker being able to craft a fake Merkle proof for an arbitrary leaf"
             }
         },
+        "Input": {
+            "Original": "input.json",
+            "Direct": "direct_input.json"
+        },
         "Commands": {
             "Setup Environment": "./zkbugs_setup.sh",
-            "Reproduce": "./zkbugs_exploit.sh",
             "Compile and Preprocess": "./zkbugs_compile_setup.sh",
             "Positive Test": "./zkbugs_positive_test.sh",
-            "Find Exploit": "./zkbugs_find_exploit.sh",
-            "Clean": "./zkbugs_clean.sh"
+            "Clean": "./zkbugs_clean.sh",
+            "Compile": "./zkbugs_compile.sh"
         },
         "Short Description of the Vulnerability": "The `BinaryMerkleRoot` template is used in multiple places in the circuits to recover the root of a binary Merkle tree. Notice that this template does not enforce any boolean constraints on the `indices` array. As a result of this issue, an attacker can craft a fake Merkle proof for any leaf value of their choosing. Since the Merkle tree is used to perform multiple checks throughout the circuits, this means that the attacker can bypass any check that relies on a Merkle proof, for example the inclusion of the CSCA and DSC certificates in the certificates trees.",
-        "Short Description of the Exploit": "An attacker can craft fake Merkle proofs for any leaf value of their choosing by carefully constructing the `indices` and `siblings` array such that the input to the Poseidon call matches a real leaf pair.",
         "Proposed Mitigation": "We recommend adding boolean constraints to the `indices` array in the `BinaryMerkleRoot` template.",
+        "Executed": true,
+        "Compiled Direct": true,
+        "Compiled Original": true,
+        "Original Entrypoint": [
+            "circuits/circuits/register_id/instances/register_id_sha256_sha256_sha256_rsa_65537_4096.circom"
+        ],
         "title": "Missing boolean constraints in the Merkle tree path leads to an attacker being able to craft a fake Merkle proof for an arbitrary leaf"
     },
     {
@@ -2956,7 +3078,9 @@
         "Vulnerability": "Under-Constrained",
         "Impact": "Soundness",
         "Root Cause": "Wrong Translation of Logic into Constraints",
-        "Reproduced": true,
+        "Reproduced": false,
+        "Codebase": "dataset/codebases/circom/selfxyz/self/4f18c75041bb47c1862169eef82c22067642a83a",
+        "Direct Entrypoint": "circuit.circom",
         "Location": {
             "Path": "circuits/circuits/utils/crypto/merkle-trees/smt.circom",
             "Function": "SMTVerify",
@@ -2968,17 +3092,29 @@
                 "Bug ID": "#00 - An attacker can craft a fake non-inclusion proof for a given key due to an aliasing bug in the SMT verifier"
             }
         },
+        "Input": {
+            "Original": "input.json",
+            "Direct": "direct_input.json"
+        },
         "Commands": {
             "Setup Environment": "./zkbugs_setup.sh",
-            "Reproduce": "./zkbugs_exploit.sh",
             "Compile and Preprocess": "./zkbugs_compile_setup.sh",
             "Positive Test": "./zkbugs_positive_test.sh",
-            "Find Exploit": "./zkbugs_find_exploit.sh",
-            "Clean": "./zkbugs_clean.sh"
+            "Clean": "./zkbugs_clean.sh",
+            "Compile": "./zkbugs_compile.sh"
         },
         "Short Description of the Vulnerability": "The `Num2Bits(254)` component presents an aliasing issue. The Num2Bits circuit in circomlib, witnesses the binary representation in the `out` array, and then checks that the recomposed value matches the input `in`. This computation is done modulo the field size, which is smaller than 2^254. Therefore, for approximately a quarter of the possible keys, an attacker can witness a different binary representation of the key.",
-        "Short Description of the Exploit": "If the original key is k and the field prime is p, if k < 2^254 - p the attacker can witness the binary representation of k + p, which will be accepted by the circuit. However, this new representation will not be equal to the original key’s representation, and the new path that will be checked by the circuit will be different. This means that an attacker can craft a fake non-inclusion proof for a key which is present in the tree, by just opening the leaf corresponding to the position of k + p instead of k.",
         "Proposed Mitigation": "We recommend replacing the `Num2Bits` component with `Num2Bits_strict`, which does not have the aliasing issue.",
+        "Executed": true,
+        "Compiled Direct": true,
+        "Compiled Original": true,
+        "Original Entrypoint": [
+            "circuits/circuits/register_id/instances/register_id_sha256_sha256_sha256_rsa_65537_4096.circom"
+        ],
+        "Similar Bugs": [
+            "Unirep/Unirep/veridise_underconstrained_circuit_allows_invalid_comparison",
+            "iden3/circuits/trailofbits_unsafe_use_of_num2bits_in_multiple_circuits"
+        ],
         "title": "An attacker can craft a fake non-inclusion proof for a given key due to an aliasing bug in the SMT verifier"
     },
     {
@@ -2990,7 +3126,9 @@
         "Vulnerability": "Under-Constrained",
         "Impact": "Soundness",
         "Root Cause": "Missing Input Constraints",
-        "Reproduced": true,
+        "Reproduced": false,
+        "Codebase": "dataset/codebases/circom/selfxyz/self/629dfdad1a867eb82ccba6857a545f3ef838e123",
+        "Direct Entrypoint": "circuit.circom",
         "Location": {
             "Path": "circuits/circuits/utils/passport/customHashers.circom",
             "Function": "PackBytesAndPoseidon",
@@ -3002,31 +3140,45 @@
                 "Bug ID": "#01 - Second Pre-Image Attacks On PackBytesAndPoseidon May Be Used To Register Arbitrary Passports And DSC Certificates"
             }
         },
+        "Input": {
+            "Original": "input.json",
+            "Direct": "direct_input.json"
+        },
         "Commands": {
             "Setup Environment": "./zkbugs_setup.sh",
-            "Reproduce": "./zkbugs_exploit.sh",
             "Compile and Preprocess": "./zkbugs_compile_setup.sh",
             "Positive Test": "./zkbugs_positive_test.sh",
-            "Find Exploit": "./zkbugs_find_exploit.sh",
-            "Clean": "./zkbugs_clean.sh"
+            "Clean": "./zkbugs_clean.sh",
+            "Compile": "./zkbugs_compile.sh"
         },
         "Short Description of the Vulnerability": "The function `PackBytesAndPoseidon(k)` in CustomHashers.circom is susceptible to a second pre-image attack: given an input x, an input y can be found such that `PackBytesAndPoseidon(k)(x) == PackBytesAndPoseidon(k)(y)` where y is not an array of bytes, but an array of arbitrary field elements. For example consider [0, 1, 0] and [256, 0, 0] they both compute [256] as an intermediate value (output of PackBytes bytes.circom). This intermediate value is later passed to the `CustomHasher` function: because the intermediate value is identical, both inputs will yield the same hash.",
-        "Short Description of the Exploit": "This is a serious vulnerability because, although it is not possible for an attacker to modify all bytes of a key, given that some bytes outside the key are needed to preserve the hash collision, using this technique an attacker could modify up to 30 bytes of the original public key and search for a new public key he can factorize to sign an arbitrary passport. Similarly he could freely modify up to 30 bytes of an ECDSA key (which could be as small as 56 bytes for brainpool224) to achieve a similar goal of computing a corresponding valid private key.",
         "Proposed Mitigation": "We recommend that the ranges of the bytes array are checked inside `PackBytesAndPoseidon`.",
+        "Executed": true,
+        "Compiled Direct": true,
+        "Compiled Original": true,
+        "Original Entrypoint": [
+            "circuits/circuits/disclose/vc_and_disclose.circom"
+        ],
+        "Similar Bugs": [
+            "selfxyz/self/zksecurity_forbidden_country_check_bypass_via_packed_byte_overflow",
+            "selfxyz/self/zksecurity_missing_byte_range_checks_allows_packed_data_pollution"
+        ],
         "title": "Second Pre-Image Attacks On PackBytesAndPoseidon May Be Used To Register Arbitrary Passports And DSC Certificates"
     },
     {
         "Id": "selfxyz/self/zksecurity_big_integer_zero_check_is_not_sound",
         "Project": "https://github.com/selfxyz/self",
-        "Commit": "",
+        "Commit": "4f18c75041bb47c1862169eef82c22067642a83a",
         "Fix Commit": "",
         "DSL": "Circom",
         "Vulnerability": "Computational Issues",
         "Impact": "Soundness",
         "Root Cause": "Wrong Translation of Logic into Constraints",
-        "Reproduced": true,
+        "Reproduced": false,
+        "Codebase": "dataset/codebases/circom/selfxyz/self/4f18c75041bb47c1862169eef82c22067642a83a",
+        "Direct Entrypoint": "circuit.circom",
         "Location": {
-            "Path": "",
+            "Path": "circuits/circuits/utils/crypto/bigInt/bigIntComparators.circom",
             "Function": "BigIntIsZero",
             "Line": "05-26"
         },
@@ -3036,17 +3188,29 @@
                 "Bug ID": "#02 - Big Integer Zero-Check Is Not Sound"
             }
         },
+        "Input": {
+            "Original": "input.json",
+            "Direct": "direct_input.json"
+        },
         "Commands": {
             "Setup Environment": "./zkbugs_setup.sh",
-            "Reproduce": "./zkbugs_exploit.sh",
+            "Compile": "./zkbugs_compile.sh",
             "Compile and Preprocess": "./zkbugs_compile_setup.sh",
             "Positive Test": "./zkbugs_positive_test.sh",
-            "Find Exploit": "./zkbugs_find_exploit.sh",
             "Clean": "./zkbugs_clean.sh"
         },
         "Short Description of the Vulnerability": "One of the core operation that is used throughout the big integer implementation is the assertion for a zero element. It is implemented in the template `BigIntIsZero` and is used in multiple places in the library. It does so by first accumulating the carries, then range checking the final carry value and then asserting that the final carry is the opposite of the most significant chunk. However, the accumulation of the carries is performed over the native field, so the entire relation is checked modulo the Circom native prime. This bug does not compromise completeness, as the zero integer will still be considered as zero modulo the native prime. However, this check is not sound, as a non-zero integer, which is zero mod native prime, will be considered zero by the library.",
-        "Short Description of the Exploit": "To show an exploit, we provide an input to check if a point is on the elliptic curve, which satisfies the constraints but is not a valid point on the curve. To assert that a point (x, y) lies on a curve, the circuits computes Z = y^2 - x^3 - a * x - b and then it asserts that Z = 0 mod p, which internally uses BigIntIsZero. To make this check pass with an invalid point, it suffices to find a pair of coordinates that satisfy the curve equation modulo the Circom prime, but not modulo the curve prime p.",
         "Proposed Mitigation": " It is recommended that the Big Integer Library used for ECDSA Verification is either carefully reviewed for such issues and fixed, or it is replaced by a more mature implementation.",
+        "Executed": true,
+        "Compiled Direct": true,
+        "Compiled Original": true,
+        "Original Entrypoint": [
+            "circuits/circuits/register_id/instances/register_id_sha256_sha256_sha256_rsa_65537_4096.circom"
+        ],
+        "Similar Bugs": [
+            "0xbok/circom-bigint/veridise_missing_range_checks_in_bigmod",
+            "succinctlabs/telepathy-circuits/veridise_zero_padding_for_sha256_in_ExpandMessageXMD_is_vulnerable_to_an_overflow"
+        ],
         "title": "Big Integer Zero-Check Is Not Sound"
     },
     {
@@ -3058,7 +3222,9 @@
         "Vulnerability": "Under-Constrained",
         "Impact": "Soundness",
         "Root Cause": "Wrong Translation of Logic into Constraints",
-        "Reproduced": true,
+        "Reproduced": false,
+        "Codebase": "dataset/codebases/circom/selfxyz/self/4f18c75041bb47c1862169eef82c22067642a83a",
+        "Direct Entrypoint": "circuit.circom",
         "Location": {
             "Path": "circuits/circuits/register_id/register_id.circom",
             "Function": "REGISTER_ID",
@@ -3070,17 +3236,29 @@
                 "Bug ID": "#03 - The registration and disclosure circuits lack range checks for the input indices"
             }
         },
+        "Input": {
+            "Original": "input.json",
+            "Direct": "direct_input.json"
+        },
         "Commands": {
             "Setup Environment": "./zkbugs_setup.sh",
-            "Reproduce": "./zkbugs_exploit.sh",
             "Compile and Preprocess": "./zkbugs_compile_setup.sh",
             "Positive Test": "./zkbugs_positive_test.sh",
-            "Find Exploit": "./zkbugs_find_exploit.sh",
-            "Clean": "./zkbugs_clean.sh"
+            "Clean": "./zkbugs_clean.sh",
+            "Compile": "./zkbugs_compile.sh"
         },
         "Short Description of the Vulnerability": "There are actually two separate issues with this code. (1) The computation `dsc_pubKey_offset + dsc_pubKey_actual_size` could overflow or underflow the field, leading to a wrong check semantics. (2) The `LessEqThan` template checks that the first input is less than or equal to the second input, but it assumes that both of the inputs are between 0 and 2^{12} - 1. If this is not the case, the circuit will produce some unexpected behaviour, as for example `LessEqThan(12)` with input values p - 1 and 0 will return 1 instead of 0. In this context, the intended range of the indices is to be between 0 and 2^{12} - 1, so this check could pass even if the indices are outside this range, leading to unexpected behaviour in the circuit.",
-        "Short Description of the Exploit": "An attacker can provide incorrect indices to the circuit, for example negative indices, which pass the range checks. We could not find any concrete exploit, as incorrect indices make the proof fail in subsequent checks. However, they can lead to unexpected behaviour in the circuits, if for example some other circuits rely on the fact that indices are in the correct range.",
         "Proposed Mitigation": "We recommend to ensure that every computation done with indices does not overflow or underflow the field, by adding additional range checks. Additionally, we recommend to add range checks to the input signals of the `LessEqThan` template, to ensure that there is no unexpected behaviour when the inputs are outside the intended range.",
+        "Executed": true,
+        "Compiled Direct": true,
+        "Compiled Original": true,
+        "Original Entrypoint": [
+            "circuits/circuits/register_id/instances/register_id_sha256_sha256_sha256_rsa_65537_4096.circom"
+        ],
+        "Similar Bugs": [
+            "Unirep/Unirep/veridise_missing_range_checks_on_comparison_circuits",
+            "darkforest-eth/darkforest-v0.3/daira_hopwood_darkforest_v0_3_missing_bit_length_check"
+        ],
         "title": "The registration and disclosure circuits lack range checks for the input indices"
     },
     {
@@ -3095,7 +3273,9 @@
         "Vulnerability": "Under-Constrained",
         "Impact": "Soundness",
         "Root Cause": "Wrong Translation of Logic into Constraints",
-        "Reproduced": true,
+        "Reproduced": false,
+        "Codebase": "dataset/codebases/circom/selfxyz/self/3905a30aeb19016d22c5493b8b34ade2d118da4e",
+        "Direct Entrypoint": "circuit.circom",
         "Location": {
             "Path": "circuits/circuits/utils/aadhaar/disclose/country_not_in_list.circom",
             "Function": "CountryNotInList",
@@ -3107,17 +3287,29 @@
                 "Bug ID": "#00 - Forbidden Country Check Bypass via Packed Byte Overflow"
             }
         },
+        "Input": {
+            "Original": "input.json",
+            "Direct": "direct_input.json"
+        },
         "Commands": {
             "Setup Environment": "./zkbugs_setup.sh",
-            "Reproduce": "./zkbugs_exploit.sh",
             "Compile and Preprocess": "./zkbugs_compile_setup.sh",
             "Positive Test": "./zkbugs_positive_test.sh",
-            "Find Exploit": "./zkbugs_find_exploit.sh",
-            "Clean": "./zkbugs_clean.sh"
+            "Clean": "./zkbugs_clean.sh",
+            "Compile": "./zkbugs_compile.sh"
         },
         "Short Description of the Vulnerability": "The elements of `forbidden_countries_list` are not range‑checked to be bytes, which means PackBytes allows for aliasing.",
-        "Short Description of the Exploit": "By omitting range checks on forbidden_countries_list, an attacker can supply out‑of‑range values (e.g. >255) so per‑byte equality checks with the user’s 3‑byte code fail while PackBytes produces packed integers that decode to the forbidden country, allowing the check to be bypassed.",
         "Proposed Mitigation": "Add explicit byte range constraints, for example using `AssertBytes`, on every country code element before passing them to `PackBytes` in `CountryNotInList`.",
+        "Executed": true,
+        "Compiled Direct": true,
+        "Compiled Original": true,
+        "Original Entrypoint": [
+            "circuits/circuits/disclose/generated/vc_and_disclose_aadhaar_main.circom"
+        ],
+        "Similar Bugs": [
+            "selfxyz/self/zksecurity_missing_byte_range_checks_allows_packed_data_pollution",
+            "selfxyz/self/zksecurity_second_pre_image_attacks_on_packbytesandposeidon_may_be_used_to_register_arbitrary_passports_and_dsc_certificates"
+        ],
         "title": "Forbidden Country Check Bypass via Packed Byte Overflow"
     },
     {
@@ -3129,7 +3321,9 @@
         "Vulnerability": "Computational Issues",
         "Impact": "Soundness and Completeness",
         "Root Cause": "Wrong Translation of Logic into Constraints",
-        "Reproduced": true,
+        "Reproduced": false,
+        "Codebase": "dataset/codebases/circom/selfxyz/self/59c16d6e924c946970665504d883ced46981e5c1",
+        "Direct Entrypoint": "circuit.circom",
         "Location": {
             "Path": "circuits/circuits/utils/passport/disclose/proveCountryIsNotInList.circom",
             "Function": "ProveCountryIsNotInList",
@@ -3141,17 +3335,25 @@
                 "Bug ID": "#00 - Exclusion Check Of Forbidden Countries Is Unsound And Incomplete Due To Incorrect Indexing"
             }
         },
+        "Input": {
+            "Original": "input.json",
+            "Direct": "direct_input.json"
+        },
         "Commands": {
             "Setup Environment": "./zkbugs_setup.sh",
-            "Reproduce": "./zkbugs_exploit.sh",
             "Compile and Preprocess": "./zkbugs_compile_setup.sh",
             "Positive Test": "./zkbugs_positive_test.sh",
-            "Find Exploit": "./zkbugs_find_exploit.sh",
-            "Clean": "./zkbugs_clean.sh"
+            "Clean": "./zkbugs_clean.sh",
+            "Compile": "./zkbugs_compile.sh"
         },
         "Short Description of the Vulnerability": "The `ProveCountryIsNotInList` check is performed by iterating over forbidden countries entry and comparing each letter individually for equality. However, the index `i` that is used to loop over the forbidden countries list is incorrect, as it should loop over `i * 3` instead.",
-        "Short Description of the Exploit": "This issue breaks both soundness and completeness as demonstrated by the following examples: - **Unsound**: let `MAX_FORBIDDEN_COUNTRIES_LIST_LENGTH = 3` and `forbidden_countries_list = ['ABC','DEF','GHI']`, then someone with the passport from `GHI` country will pass the check because the loop will stop at `i = 3`. - **Incomplete**: let `forbidden_countries_list = ['ABC','DEF']`, then someone with the passport from `BCD` country will not pass the check because the loop will also check over `i = 2`, `i = 3`, and `i = 4`.",
         "Proposed Mitigation": "Update the indexing of `forbidden_countries_list` to use `i*3`.",
+        "Executed": true,
+        "Compiled Direct": true,
+        "Compiled Original": true,
+        "Original Entrypoint": [
+            "circuits/circuits/disclose/vc_and_disclose.circom"
+        ],
         "title": "Exclusion Check Of Forbidden Countries Is Unsound And Incomplete Due To Incorrect Indexing"
     },
     {
@@ -3164,7 +3366,9 @@
         "Vulnerability": "Under-Constrained",
         "Impact": "Soundness",
         "Root Cause": "Missing Input Constraints",
-        "Reproduced": true,
+        "Reproduced": false,
+        "Codebase": "dataset/codebases/circom/iden3/circomlib/cff5ab6288b55ef23602221694a6a38a0239dcc0",
+        "Direct Entrypoint": "circuit.circom",
         "Location": {
             "Path": "circuits/montgomery.circom",
             "Function": "MontgomeryAdd",
@@ -3176,24 +3380,31 @@
                 "Bug ID": "V-CIRCOMLIB-VUL-004: Underconstrained points in MontgomeryAdd"
             }
         },
+        "Input": {
+            "Original": "input.json",
+            "Direct": "direct_input.json"
+        },
         "Commands": {
             "Setup Environment": "./zkbugs_setup.sh",
-            "Reproduce": "./zkbugs_exploit.sh",
             "Compile and Preprocess": "./zkbugs_compile_setup.sh",
             "Positive Test": "./zkbugs_positive_test.sh",
-            "Find Exploit": "./zkbugs_find_exploit.sh",
-            "Clean": "./zkbugs_clean.sh"
+            "Clean": "./zkbugs_clean.sh",
+            "Compile": "./zkbugs_compile.sh"
         },
         "Short Description of the Vulnerability": "Lambda calculation involves a division but there is no constraint on the divisor to be non-zero. In this case `out[1]` is underconstrained and can be set to any value.",
-        "Short Description of the Exploit": "Set `out[0]` to -168697. `out[1]` can be set to any value but it has to satisfy some relative relation with `in1[1]` and `in2[1]`. Check out `detect.sage` to learn more.",
         "Proposed Mitigation": "Send `in2[0] - in1[0]` to `isZero` template and let the constraint there do the work.",
         "Similar Bugs": [
-            "iden3/circomlib/veridise_decoder_accepting_bogus_output_signal",
             "iden3/circomlib/veridise_underconstrained_outputs_in_bitElementMulAny",
+            "iden3/circomlib/veridise_underconstrained_outputs_in_window4",
+            "iden3/circomlib/veridise_underconstrained_outputs_in_windowmulfix",
             "iden3/circomlib/veridise_underconstrained_points_in_edwards2Montgomery",
             "iden3/circomlib/veridise_underconstrained_points_in_montgomery2Edwards",
             "iden3/circomlib/veridise_underconstrained_points_in_montgomeryDouble"
         ],
+        "Executed": true,
+        "Compiled Direct": true,
+        "Compiled Original": true,
+        "Original Entrypoint": [],
         "title": "Underconstrained points in MontgomeryAdd"
     },
     {
@@ -3206,7 +3417,9 @@
         "Vulnerability": "Under-Constrained",
         "Impact": "Soundness",
         "Root Cause": "Unsafe Reuse of Circuit",
-        "Reproduced": true,
+        "Reproduced": false,
+        "Codebase": "dataset/codebases/circom/iden3/circomlib/cff5ab6288b55ef23602221694a6a38a0239dcc0",
+        "Direct Entrypoint": "circuit.circom",
         "Location": {
             "Path": "circuits/escalarmulany.circom",
             "Function": "BitElementMulAny",
@@ -3218,24 +3431,29 @@
                 "Bug ID": "V-CIRCOMLIB-VUL-006: Underconstrained outputs in BitElementMulAny"
             }
         },
+        "Input": {
+            "Original": "input.json",
+            "Direct": "direct_input.json"
+        },
         "Commands": {
             "Setup Environment": "./zkbugs_setup.sh",
-            "Reproduce": "./zkbugs_exploit.sh",
             "Compile and Preprocess": "./zkbugs_compile_setup.sh",
             "Positive Test": "./zkbugs_positive_test.sh",
-            "Find Exploit": "./zkbugs_find_exploit.sh",
-            "Clean": "./zkbugs_clean.sh"
+            "Clean": "./zkbugs_clean.sh",
+            "Compile": "./zkbugs_compile.sh"
         },
         "Short Description of the Vulnerability": "`BitElementMulAny` template itself is fine, but it uses `MontgomeryDouble` and `MontgomeryAdd`, which have underconstraint bugs. With the same `input.json`, malicious prover can manipulate lambda value in `MontgomeryDouble` to let the circuit produce different outputs, making it nondeterministic.",
-        "Short Description of the Exploit": "In input.json, just use dummy EC point (1,2) to pass the positive test. Then we exploit the `MontgomeryDouble` underconstrained bug, let divisor be 0 and solve for the exploitable witness in sagemath step by step.",
         "Proposed Mitigation": "Fix underconstraint bugs in `MontgomeryDouble` and `MontgomeryAdd`.",
         "Similar Bugs": [
-            "iden3/circomlib/veridise_decoder_accepting_bogus_output_signal",
-            "iden3/circomlib/veridise_underconstrained_points_in_edwards2Montgomery",
-            "iden3/circomlib/veridise_underconstrained_points_in_montgomery2Edwards",
+            "iden3/circomlib/veridise_underconstrained_outputs_in_window4",
+            "iden3/circomlib/veridise_underconstrained_outputs_in_windowmulfix",
             "iden3/circomlib/veridise_underconstrained_points_in_montgomeryAdd",
             "iden3/circomlib/veridise_underconstrained_points_in_montgomeryDouble"
         ],
+        "Executed": true,
+        "Compiled Direct": true,
+        "Compiled Original": true,
+        "Original Entrypoint": [],
         "title": "Underconstrained outputs in BitElementMulAny"
     },
     {
@@ -3248,7 +3466,9 @@
         "Vulnerability": "Under-Constrained",
         "Impact": "Soundness",
         "Root Cause": "Missing Input Constraints",
-        "Reproduced": true,
+        "Reproduced": false,
+        "Codebase": "dataset/codebases/circom/iden3/circomlib/cff5ab6288b55ef23602221694a6a38a0239dcc0",
+        "Direct Entrypoint": "circuit.circom",
         "Location": {
             "Path": "circuits/montgomery.circom",
             "Function": "MontgomeryDouble",
@@ -3260,24 +3480,31 @@
                 "Bug ID": "V-CIRCOMLIB-VUL-005: Underconstrained points in MontgomeryDouble"
             }
         },
+        "Input": {
+            "Original": "input.json",
+            "Direct": "direct_input.json"
+        },
         "Commands": {
             "Setup Environment": "./zkbugs_setup.sh",
-            "Reproduce": "./zkbugs_exploit.sh",
             "Compile and Preprocess": "./zkbugs_compile_setup.sh",
             "Positive Test": "./zkbugs_positive_test.sh",
-            "Find Exploit": "./zkbugs_find_exploit.sh",
-            "Clean": "./zkbugs_clean.sh"
+            "Clean": "./zkbugs_clean.sh",
+            "Compile": "./zkbugs_compile.sh"
         },
         "Short Description of the Vulnerability": "Lambda calculation involves a division but there is no constraint on the divisor to be non-zero. In this case `lamda` is underconstrained and can be set to any value.",
-        "Short Description of the Exploit": "Set `in[1]` to 0. Make the assumption that `3*x1_2 + 2*A*in[0] + 1 == 0` and solve for rest of the signals with some sagemath magic.",
         "Proposed Mitigation": "Send `in[1]` to `isZero` template and let the constraint there do the work.",
         "Similar Bugs": [
-            "iden3/circomlib/veridise_decoder_accepting_bogus_output_signal",
             "iden3/circomlib/veridise_underconstrained_outputs_in_bitElementMulAny",
+            "iden3/circomlib/veridise_underconstrained_outputs_in_window4",
+            "iden3/circomlib/veridise_underconstrained_outputs_in_windowmulfix",
             "iden3/circomlib/veridise_underconstrained_points_in_edwards2Montgomery",
             "iden3/circomlib/veridise_underconstrained_points_in_montgomery2Edwards",
             "iden3/circomlib/veridise_underconstrained_points_in_montgomeryAdd"
         ],
+        "Executed": true,
+        "Compiled Direct": true,
+        "Compiled Original": true,
+        "Original Entrypoint": [],
         "title": "Underconstrained points in MontgomeryDouble"
     },
     {
@@ -3290,7 +3517,9 @@
         "Vulnerability": "Under-Constrained",
         "Impact": "Soundness",
         "Root Cause": "Wrong Translation of Logic into Constraints",
-        "Reproduced": true,
+        "Reproduced": false,
+        "Codebase": "dataset/codebases/circom/iden3/circomlib/cff5ab6288b55ef23602221694a6a38a0239dcc0",
+        "Direct Entrypoint": "circuit.circom",
         "Location": {
             "Path": "circuits/multiplexer.circom",
             "Function": "Decoder",
@@ -3302,24 +3531,24 @@
                 "Bug ID": "V-CIRCOMLIB-VUL-001: Decoder accepting bogus output signal"
             }
         },
+        "Input": {
+            "Original": "input.json",
+            "Direct": "direct_input.json"
+        },
         "Commands": {
             "Setup Environment": "./zkbugs_setup.sh",
-            "Reproduce": "./zkbugs_exploit.sh",
             "Compile and Preprocess": "./zkbugs_compile_setup.sh",
             "Positive Test": "./zkbugs_positive_test.sh",
-            "Find Exploit": "./zkbugs_find_exploit.sh",
-            "Clean": "./zkbugs_clean.sh"
+            "Clean": "./zkbugs_clean.sh",
+            "Compile": "./zkbugs_compile.sh"
         },
         "Short Description of the Vulnerability": "The circuit does not constrain `out` properly, malicious prover can set a bogus `out` and set `success` to 0, the circuit won't throw error. This makes integration error-prone.",
-        "Short Description of the Exploit": "Set `out` to be full of zeroes and set `success` to 0.",
         "Proposed Mitigation": "Send `inp - i` to `isZero` template and let the constraint there do the work.",
-        "Similar Bugs": [
-            "iden3/circomlib/veridise_underconstrained_outputs_in_bitElementMulAny",
-            "iden3/circomlib/veridise_underconstrained_points_in_edwards2Montgomery",
-            "iden3/circomlib/veridise_underconstrained_points_in_montgomery2Edwards",
-            "iden3/circomlib/veridise_underconstrained_points_in_montgomeryAdd",
-            "iden3/circomlib/veridise_underconstrained_points_in_montgomeryDouble"
-        ],
+        "Similar Bugs": [],
+        "Executed": true,
+        "Compiled Direct": true,
+        "Compiled Original": true,
+        "Original Entrypoint": [],
         "title": "Decoder accepting bogus output signal"
     },
     {
@@ -3332,7 +3561,9 @@
         "Vulnerability": "Under-Constrained",
         "Impact": "Soundness",
         "Root Cause": "Unsafe Reuse of Circuit",
-        "Reproduced": true,
+        "Reproduced": false,
+        "Codebase": "dataset/codebases/circom/iden3/circomlib/cff5ab6288b55ef23602221694a6a38a0239dcc0",
+        "Direct Entrypoint": "circuit.circom",
         "Location": {
             "Path": "circuits/escalarmulfix.circom",
             "Function": "WindowMulFix",
@@ -3344,17 +3575,29 @@
                 "Bug ID": "V-CIRCOMLIB-VUL-008: Underconstrained outputs in WindowMulFix"
             }
         },
+        "Input": {
+            "Original": "input.json",
+            "Direct": "direct_input.json"
+        },
         "Commands": {
             "Setup Environment": "./zkbugs_setup.sh",
-            "Reproduce": "./zkbugs_exploit.sh",
             "Compile and Preprocess": "./zkbugs_compile_setup.sh",
             "Positive Test": "./zkbugs_positive_test.sh",
-            "Find Exploit": "./zkbugs_find_exploit.sh",
-            "Clean": "./zkbugs_clean.sh"
+            "Clean": "./zkbugs_clean.sh",
+            "Compile": "./zkbugs_compile.sh"
         },
         "Short Description of the Vulnerability": "`WindowMulFix` template itself is fine, but it uses `MontgomeryDouble` and `MontgomeryAdd`, which have underconstraint bugs. With the same `input.json`, malicious prover can manipulate lambda value in `MontgomeryDouble` to let the circuit produce different outputs, making it nondeterministic.",
-        "Short Description of the Exploit": "Here we exploit the `MontgomeryDouble` underconstrained bug, let divisor be 0 and solve for signals in sagemath step by step. The full witness is provided in veridise report.",
         "Proposed Mitigation": "Fix underconstraint bugs in `MontgomeryDouble` and `MontgomeryAdd`.",
+        "Executed": true,
+        "Compiled Direct": true,
+        "Compiled Original": true,
+        "Original Entrypoint": [],
+        "Similar Bugs": [
+            "iden3/circomlib/veridise_underconstrained_outputs_in_bitElementMulAny",
+            "iden3/circomlib/veridise_underconstrained_outputs_in_window4",
+            "iden3/circomlib/veridise_underconstrained_points_in_montgomeryAdd",
+            "iden3/circomlib/veridise_underconstrained_points_in_montgomeryDouble"
+        ],
         "title": "Underconstrained outputs in WindowMulFix"
     },
     {
@@ -3367,9 +3610,11 @@
         "Vulnerability": "Under-Constrained",
         "Impact": "Soundness",
         "Root Cause": "Unsafe Reuse of Circuit",
-        "Reproduced": true,
+        "Reproduced": false,
+        "Codebase": "dataset/codebases/circom/iden3/circomlib/cff5ab6288b55ef23602221694a6a38a0239dcc0",
+        "Direct Entrypoint": "circuit.circom",
         "Location": {
-            "Path": "circuits/pederson.circom",
+            "Path": "circuits/pedersen.circom",
             "Function": "Window4",
             "Line": "47-108"
         },
@@ -3379,17 +3624,29 @@
                 "Bug ID": "V-CIRCOMLIB-VUL-007: Underconstrained outputs in Window4"
             }
         },
+        "Input": {
+            "Original": "input.json",
+            "Direct": "direct_input.json"
+        },
         "Commands": {
             "Setup Environment": "./zkbugs_setup.sh",
-            "Reproduce": "./zkbugs_exploit.sh",
             "Compile and Preprocess": "./zkbugs_compile_setup.sh",
             "Positive Test": "./zkbugs_positive_test.sh",
-            "Find Exploit": "./zkbugs_find_exploit.sh",
-            "Clean": "./zkbugs_clean.sh"
+            "Clean": "./zkbugs_clean.sh",
+            "Compile": "./zkbugs_compile.sh"
         },
         "Short Description of the Vulnerability": "`Window4` template itself is fine, but it uses `MontgomeryDouble` and `MontgomeryAdd`, which have underconstraint bugs. With the same `input.json`, malicious prover can manipulate lambda value in `MontgomeryDouble` to let the circuit produce different outputs, making it nondeterministic.",
-        "Short Description of the Exploit": "Here we exploit the `MontgomeryDouble` underconstrained bug, let divisor be 0 and solve for signals in sagemath step by step. The full witness is provided in veridise report.",
         "Proposed Mitigation": "Fix underconstraint bugs in `MontgomeryDouble` and `MontgomeryAdd`.",
+        "Executed": true,
+        "Compiled Direct": true,
+        "Compiled Original": true,
+        "Original Entrypoint": [],
+        "Similar Bugs": [
+            "iden3/circomlib/veridise_underconstrained_outputs_in_bitElementMulAny",
+            "iden3/circomlib/veridise_underconstrained_outputs_in_windowmulfix",
+            "iden3/circomlib/veridise_underconstrained_points_in_montgomeryAdd",
+            "iden3/circomlib/veridise_underconstrained_points_in_montgomeryDouble"
+        ],
         "title": "Underconstrained outputs in Window4"
     },
     {
@@ -3402,7 +3659,9 @@
         "Vulnerability": "Under-Constrained",
         "Impact": "Soundness",
         "Root Cause": "Missing Input Constraints",
-        "Reproduced": true,
+        "Reproduced": false,
+        "Codebase": "dataset/codebases/circom/iden3/circomlib/cff5ab6288b55ef23602221694a6a38a0239dcc0",
+        "Direct Entrypoint": "circuit.circom",
         "Location": {
             "Path": "circuits/montgomery.circom",
             "Function": "Edwards2Montgomery",
@@ -3414,24 +3673,28 @@
                 "Bug ID": "V-CIRCOMLIB-VUL-002: Underconstrained points in Edwards2Montgomery"
             }
         },
+        "Input": {
+            "Original": "input.json",
+            "Direct": "direct_input.json"
+        },
         "Commands": {
             "Setup Environment": "./zkbugs_setup.sh",
-            "Reproduce": "./zkbugs_exploit.sh",
             "Compile and Preprocess": "./zkbugs_compile_setup.sh",
             "Positive Test": "./zkbugs_positive_test.sh",
-            "Find Exploit": "./zkbugs_find_exploit.sh",
-            "Clean": "./zkbugs_clean.sh"
+            "Clean": "./zkbugs_clean.sh",
+            "Compile": "./zkbugs_compile.sh"
         },
         "Short Description of the Vulnerability": "The circuit does not implement constraint to avoid division by zero. When setting the divisor to 0, `out[1]` is underconstrained and can be set to any value.",
-        "Short Description of the Exploit": "Set `in[0]` to 0 to trigger division by zero. Set `out[1]` to 1337 just to show that it can be set to any value.",
         "Proposed Mitigation": "Send `in[0]` and `1 - in[1]` to `isZero` template and let the constraint there do the work.",
         "Similar Bugs": [
-            "iden3/circomlib/veridise_decoder_accepting_bogus_output_signal",
-            "iden3/circomlib/veridise_underconstrained_outputs_in_bitElementMulAny",
             "iden3/circomlib/veridise_underconstrained_points_in_montgomery2Edwards",
             "iden3/circomlib/veridise_underconstrained_points_in_montgomeryAdd",
             "iden3/circomlib/veridise_underconstrained_points_in_montgomeryDouble"
         ],
+        "Executed": true,
+        "Compiled Direct": true,
+        "Compiled Original": true,
+        "Original Entrypoint": [],
         "title": "Underconstrained points in Edwards2Montgomery"
     },
     {
@@ -3444,7 +3707,9 @@
         "Vulnerability": "Under-Constrained",
         "Impact": "Soundness",
         "Root Cause": "Assigned but Unconstrained",
-        "Reproduced": true,
+        "Reproduced": false,
+        "Codebase": "dataset/codebases/circom/iden3/circomlib/324b8bf8cc4a80357354752deb6c2ae5be22e5f5",
+        "Direct Entrypoint": "circuit.circom",
         "Location": {
             "Path": "circuits/mimcsponge.circom",
             "Function": "MiMCSponge",
@@ -3456,21 +3721,27 @@
                 "Bug ID": "MiMC Hash: Assigned but not Constrained"
             }
         },
+        "Input": {
+            "Original": "input.json",
+            "Direct": "direct_input.json"
+        },
         "Commands": {
             "Setup Environment": "./zkbugs_setup.sh",
-            "Reproduce": "./zkbugs_exploit.sh",
             "Compile and Preprocess": "./zkbugs_compile_setup.sh",
             "Positive Test": "./zkbugs_positive_test.sh",
-            "Find Exploit": "./zkbugs_find_exploit.sh",
-            "Clean": "./zkbugs_clean.sh"
+            "Clean": "./zkbugs_clean.sh",
+            "Compile": "./zkbugs_compile.sh"
         },
         "Short Description of the Vulnerability": "In `MiMCSponge` template, `outs[0]` is assigned but not constrained, so it can be any value. Note that the circuit code is modified from a newer version since the original buggy code couldn't be reproduced in Circom version 2. The bug idea is still the same.",
-        "Short Description of the Exploit": "Set `ins[0]` and `k` to any random field element. Generate a correct witness first then modify the 2nd entry to a number as you wish. You can see that `outs[0]` can be any number.",
         "Proposed Mitigation": "Use `<==` instead of `<--` to add a constraint to `outs[0]`.",
         "Similar Bugs": [
-            "reclaimprotocol/circom-chacha20/zksecurity_unsound_left_rotation",
-            "personaelabs/spartan-ecdsa/yacademy_input_signal_s_is_not_constrained_in_eff_ecdsa_circom"
+            "personaelabs/spartan-ecdsa/yacademy_under_constrained_circuits_compromising_the_soundness_of_the_system",
+            "succinctlabs/telepathy-circuits/veridise_arrayxor_is_under_constrained"
         ],
+        "Executed": true,
+        "Compiled Direct": true,
+        "Compiled Original": true,
+        "Original Entrypoint": [],
         "title": "MiMC Hash: Assigned but not Constrained"
     },
     {
@@ -3483,7 +3754,9 @@
         "Vulnerability": "Under-Constrained",
         "Impact": "Soundness",
         "Root Cause": "Missing Input Constraints",
-        "Reproduced": true,
+        "Reproduced": false,
+        "Codebase": "dataset/codebases/circom/iden3/circomlib/cff5ab6288b55ef23602221694a6a38a0239dcc0",
+        "Direct Entrypoint": "circuit.circom",
         "Location": {
             "Path": "circuits/montgomery.circom",
             "Function": "Montgomery2Edwards",
@@ -3495,24 +3768,28 @@
                 "Bug ID": "V-CIRCOMLIB-VUL-003: Underconstrained points in Montgomery2Edwards"
             }
         },
+        "Input": {
+            "Original": "input.json",
+            "Direct": "direct_input.json"
+        },
         "Commands": {
             "Setup Environment": "./zkbugs_setup.sh",
-            "Reproduce": "./zkbugs_exploit.sh",
             "Compile and Preprocess": "./zkbugs_compile_setup.sh",
             "Positive Test": "./zkbugs_positive_test.sh",
-            "Find Exploit": "./zkbugs_find_exploit.sh",
-            "Clean": "./zkbugs_clean.sh"
+            "Clean": "./zkbugs_clean.sh",
+            "Compile": "./zkbugs_compile.sh"
         },
         "Short Description of the Vulnerability": "The circuit does not implement constraint to avoid division by zero. When setting the divisor to 0, `out[0]` is underconstrained and can be set to any value.",
-        "Short Description of the Exploit": "Set `in[1]` to 0 to trigger division by zero. Set `out[0]` to 1337 just to show that it can be set to any value.",
         "Proposed Mitigation": "Send `in[1]` and `in[0] + 1` to `isZero` template and let the constraint there do the work.",
         "Similar Bugs": [
-            "iden3/circomlib/veridise_decoder_accepting_bogus_output_signal",
-            "iden3/circomlib/veridise_underconstrained_outputs_in_bitElementMulAny",
             "iden3/circomlib/veridise_underconstrained_points_in_edwards2Montgomery",
             "iden3/circomlib/veridise_underconstrained_points_in_montgomeryAdd",
             "iden3/circomlib/veridise_underconstrained_points_in_montgomeryDouble"
         ],
+        "Executed": true,
+        "Compiled Direct": true,
+        "Compiled Original": true,
+        "Original Entrypoint": [],
         "title": "Underconstrained points in Montgomery2Edwards"
     },
     {
@@ -3524,7 +3801,9 @@
         "Vulnerability": "Under-Constrained",
         "Impact": "Soundness",
         "Root Cause": "Wrong Translation of Logic into Constraints",
-        "Reproduced": true,
+        "Reproduced": false,
+        "Codebase": "dataset/codebases/circom/iden3/circuits/7a1e04de3e5f3a9f0cfb27a43c9f41c986c1b9ed",
+        "Direct Entrypoint": "circuit.circom",
         "Location": {
             "Path": "circuits/lib/utils/claimUtils.circom",
             "Function": "Num2Bits",
@@ -3536,17 +3815,27 @@
                 "Bug ID": "TOB-IDEN3-1"
             }
         },
+        "Input": {
+            "Original": "input.json",
+            "Direct": "direct_input.json"
+        },
         "Commands": {
             "Setup Environment": "./zkbugs_setup.sh",
-            "Reproduce": "./zkbugs_exploit.sh",
             "Compile and Preprocess": "./zkbugs_compile_setup.sh",
             "Positive Test": "./zkbugs_positive_test.sh",
-            "Find Exploit": "./zkbugs_find_exploit.sh",
-            "Clean": "./zkbugs_clean.sh"
+            "Clean": "./zkbugs_clean.sh",
+            "Compile": "./zkbugs_compile.sh"
         },
         "Short Description of the Vulnerability": "Multiple circuits call `Num2Bits(254)` and `Num2Bits(256)` when working with field elements of the BN-254 prime field. These templates do not enforce uniqueness of the bit decompositions, allowing malicious provers to bypass token expiration or revocation.",
-        "Short Description of the Exploit": "Alice has a credential attesting to her identity. Mallory steals Alice’s device. Alice issues a revocation for her auth credential. Mallory modifies the witness generation to produce the wrong revocation nonce. Mallory uses the unrevoked credential to perform an action impersonating Alice.",
         "Proposed Mitigation": "Update the circuits to use `Num2Bits_strict()` instead of `Num2Bits(254)` or `Num2Bits(256)`.",
+        "Executed": true,
+        "Compiled Direct": true,
+        "Compiled Original": true,
+        "Original Entrypoint": [],
+        "Similar Bugs": [
+            "Unirep/Unirep/veridise_underconstrained_circuit_allows_invalid_comparison",
+            "selfxyz/self/zksecurity_an_attacker_can_craft_a_fake_non_inclusion_proof_for_a_given_key_due_to_an_aliasing_bug_in_the_smt_verifier"
+        ],
         "title": "Unsafe use of Num2Bits in multiple circuits"
     },
     {
@@ -3559,7 +3848,9 @@
         "Vulnerability": "Under-Constrained",
         "Impact": "Soundness",
         "Root Cause": "Wrong Translation of Logic into Constraints",
-        "Reproduced": true,
+        "Reproduced": false,
+        "Codebase": "dataset/codebases/circom/reclaimprotocol/circom-chacha20/ef9f5a5ad899d852740a26b30eabe5765673c71f",
+        "Direct Entrypoint": "circuit.circom",
         "Location": {
             "Path": "circuits/generics.circom",
             "Function": "RotateLeft32Bits",
@@ -3571,38 +3862,46 @@
                 "Bug ID": "#1 Unsound Left Rotation Gadget"
             }
         },
+        "Input": {
+            "Original": "input.json",
+            "Direct": "direct_input.json"
+        },
         "Commands": {
             "Setup Environment": "./zkbugs_setup.sh",
-            "Reproduce": "./zkbugs_exploit.sh",
             "Compile and Preprocess": "./zkbugs_compile_setup.sh",
             "Positive Test": "./zkbugs_positive_test.sh",
-            "Find Exploit": "./zkbugs_find_exploit.sh",
-            "Clean": "./zkbugs_clean.sh"
+            "Clean": "./zkbugs_clean.sh",
+            "Compile": "./zkbugs_compile.sh"
         },
         "Short Description of the Vulnerability": "The `part1` and `part2` signals are not sufficiently constrained. One can arbitrarily set a value to `part1` or `part2` and find a value for the other signal to satisfy the constraint on line 45. This way you can get another `out` value for a given `in`.",
-        "Short Description of the Exploit": "To exploit the vulnerability, one has to simply find a witness that produces a different value for `out` rather than the one produced by the witness generator. The sage script demonstrates how to find another witness that satisfies the constraints. Then, you simply need to produce a new proof.",
         "Proposed Mitigation": "The recommendation to fix this issue was to constrain `part1` (resp. `part2`) to be (resp. ) bit-sized values. For the concrete mitigation applied, check the commit of the fix.",
         "Similar Bugs": [
-            "iden3/circomlib/kobi_gurkan_mimc_hash_assigned_but_not_constrained",
-            "personaelabs/spartan-ecdsa/yacademy_input_signal_s_is_not_constrained_in_eff_ecdsa_circom"
+            "reclaimprotocol/circom-chacha20/zksecurity_Unsound_Addition_Gadget",
+            "reclaimprotocol/circom-chacha20/zksecurity_Unsound_XOR_gadget"
         ],
+        "Executed": true,
+        "Compiled Direct": true,
+        "Compiled Original": true,
+        "Original Entrypoint": [],
         "title": "Unsound Left Rotation"
     },
     {
         "Id": "reclaimprotocol/circom-chacha20/zksecurity_Unsound_XOR_gadget",
         "Path": "dataset/circom/reclaimprotocol/circom-chacha20/zksecurity_Unsound_XOR_gadget",
         "Project": "https://github.com/reclaimprotocol/circom-chacha20",
-        "Commit": "0xef9f5a5ad899d852740a26b30eabe5765673c71f",
+        "Commit": "ef9f5a5ad899d852740a26b30eabe5765673c71f",
         "Fix Commit": "ef9f5a5ad899d852740a26b30eabe5765673c71f",
         "DSL": "Circom",
         "Vulnerability": "Under-Constrained",
         "Impact": "Soundness",
         "Root Cause": "Wrong Translation of Logic into Constraints",
         "Reproduced": false,
+        "Codebase": "dataset/codebases/circom/reclaimprotocol/circom-chacha20/ef9f5a5ad899d852740a26b30eabe5765673c71f",
+        "Direct Entrypoint": "circuit.circom",
         "Location": {
-            "Path": "generics.circom",
-            "Function": "XorWords",
-            "Line": ""
+            "Path": "circuits/generics.circom",
+            "Function": "XorBits",
+            "Line": "19-28"
         },
         "Source": {
             "Audit Report": {
@@ -3610,69 +3909,46 @@
                 "Bug ID": "Unsound XOR gadget"
             }
         },
+        "Input": {
+            "Original": "input.json",
+            "Direct": "direct_input.json"
+        },
         "Commands": {
             "Setup Environment": "",
-            "Reproduce": "",
             "Compile and Preprocess": "",
             "Positive Test": "",
-            "Find Exploit": "",
-            "Clean": ""
+            "Clean": "",
+            "Compile": "./zkbugs_compile.sh"
         },
-        "Short Description of the Vulnerability": "The \"Unsound XOR gadget\" bug found in the \"generics.circom\" of the Reclaim Protocol's ChaCha20 circuit relates to the incorrect implementation of the XOR operation on two M-bit value arrays. The bit constraints meant to ensure that the set bits were either 0 or 1 were commented out during the audit, compromising the security and validity of the operation. The XOR logic was supposed to decompose each operand into a series of checks on individual bits, but it failed to enforce that all bits must exactly represent the original values, allowing a malicious party to exploit the poorly constrained bit representation.",
-        "Short Description of the Exploit": "",
-        "Proposed Mitigation": "The recommended fix for the 'Unsound XOR gadget' is to enforce an XOR constraint (res = a + b - 2*ab) on each bit individually, ensuring that each bit is correctly constrained as 0 or 1.",
+        "Short Description of the Vulnerability": "In `XorBits(M)`, the bit decomposition uses witness assignments `a_bits[i] <-- (a >> i) & 1` and `b_bits[i] <-- (b >> i) & 1` but the boolean constraints `a_bits[i] * (a_bits[i] - 1) === 0` and `b_bits[i] * (b_bits[i] - 1) === 0` are commented out. Without these constraints, `a_bits[i]` and `b_bits[i]` can be set to arbitrary field values (not just 0 or 1). The XOR computation `xor_bits[i] <== a_bits[i] + b_bits[i] - 2 * a_bits[i] * b_bits[i]` then operates on unconstrained inputs, allowing a malicious prover to produce arbitrary XOR outputs.",
+        "Proposed Mitigation": "Uncomment the boolean constraints (`a_bits[i] * (a_bits[i] - 1) === 0` and same for `b_bits[i]`) to enforce that each bit is 0 or 1. Additionally constrain that the bit decomposition reconstructs the original values: `sum_a === a` and `sum_b === b`.",
+        "Executed": true,
+        "Compiled Direct": true,
+        "Compiled Original": true,
+        "Original Entrypoint": [],
+        "Similar Bugs": [
+            "reclaimprotocol/circom-chacha20/zksecurity_Unsound_Addition_Gadget",
+            "reclaimprotocol/circom-chacha20/zksecurity_unsound_left_rotation"
+        ],
         "title": "Unsound XOR gadget"
-    },
-    {
-        "Id": "reclaimprotocol/circom-chacha20/zksecurity_Potentially_Easy-to-Misuse_Interface",
-        "Path": "dataset/circom/reclaimprotocol/circom-chacha20/zksecurity_Potentially_Easy_to_Misuse_Interface",
-        "Project": "https://github.com/reclaimprotocol/circom-chacha20",
-        "Commit": "0xef9f5a5ad899d852740a26b30eabe5765673c71f",
-        "Fix Commit": "959fa1557225aed748a5d5ed468222c110faaef9",
-        "DSL": "Circom",
-        "Vulnerability": "Under-Constrained",
-        "Impact": "Soundness",
-        "Root Cause": "Missing Input Constraints",
-        "Reproduced": false,
-        "Location": {
-            "Path": "chacha20.circom",
-            "Function": "",
-            "Line": ""
-        },
-        "Source": {
-            "Audit Report": {
-                "Source Link": "https://github.com/zksecurity/zkbugs/blob/main/reports/documents/zksecurity-reclaimprotocol.pdf",
-                "Bug ID": "Potentially Easy-to-Misuse Interface"
-            }
-        },
-        "Commands": {
-            "Setup Environment": "",
-            "Reproduce": "",
-            "Compile and Preprocess": "",
-            "Positive Test": "",
-            "Find Exploit": "",
-            "Clean": ""
-        },
-        "Short Description of the Vulnerability": "The ChaCha20 interface in the library can be easily misused because it allows users to provide their own key, nonce, starting counter, and plaintext/ciphertext inputs without any built-in constraints on these inputs. Typically, nonces are initialized in a standard manner, making it potentially safer to exclude user input for this component. The current design assumes all inputs are 32-bit, but does not enforce this, which increases the risk of misuse. Suggestions include renaming the interface to indicate its unchecked nature and adding documentation highlighting the importance of input constraints, or alternatively, designing an interface that enforces these constraints automatically.",
-        "Short Description of the Exploit": "",
-        "Proposed Mitigation": "To address the 'Potentially Easy-to-Misuse Interface' issue in the ChaCha20 circuit, the recommended fix includes adding warnings in the documentation about the necessity to constrain inputs as 32-bit values and considering renaming the interface to `ChaCha20Unsafe` or `ChaCha20Unchecked` to alert users about the need for careful handling. Additionally, an alternative interface should be provided that enforces checks on all inputs.",
-        "title": "Potentially Easy-to-Misuse Interface"
     },
     {
         "Id": "reclaimprotocol/circom-chacha20/zksecurity_Unsound_Addition_Gadget",
         "Path": "dataset/circom/reclaimprotocol/circom-chacha20/zksecurity_Unsound_Addition_Gadget",
         "Project": "https://github.com/reclaimprotocol/circom-chacha20",
-        "Commit": "0xef9f5a5ad899d852740a26b30eabe5765673c71f",
+        "Commit": "ef9f5a5ad899d852740a26b30eabe5765673c71f",
         "Fix Commit": "4551ca64c9fe536b7b9b7498a1feb1ecdc847474",
         "DSL": "Circom",
         "Vulnerability": "Under-Constrained",
         "Impact": "Soundness",
         "Root Cause": "Wrong Translation of Logic into Constraints",
         "Reproduced": false,
+        "Codebase": "dataset/codebases/circom/reclaimprotocol/circom-chacha20/ef9f5a5ad899d852740a26b30eabe5765673c71f",
+        "Direct Entrypoint": "circuit.circom",
         "Location": {
-            "Path": "generics.circom",
+            "Path": "circuits/generics.circom",
             "Function": "Add32Bits",
-            "Line": ""
+            "Line": "12-16"
         },
         "Source": {
             "Audit Report": {
@@ -3680,17 +3956,27 @@
                 "Bug ID": "Unsound Addition Gadget"
             }
         },
+        "Input": {
+            "Original": "input.json",
+            "Direct": "direct_input.json"
+        },
         "Commands": {
             "Setup Environment": "",
-            "Reproduce": "",
             "Compile and Preprocess": "",
             "Positive Test": "",
-            "Find Exploit": "",
-            "Clean": ""
+            "Clean": "",
+            "Compile": "./zkbugs_compile.sh"
         },
-        "Short Description of the Vulnerability": "The `Add32Bits` gadget constrains the addition of two (assumed to be 32-bit) values to wrap around. In other words, if the addition of two 32-bit values overflows, the gadget removes the carry bit (the 33rd most-significant bit). To do that, the logic witnesses a carry bit, which is used to remove the carry from the result if set to 1. The problem is that the carry bit `tmp` is not constrained to be correctly computed. That is, there are two scenarios in which this function can be maliciously used: (1) If `a + b` are overowing (the result is 33 bits), then you can set `tmp=0` and the output will be 33 bits, (2) If `a + b` is not overflowing (the result is 32 bits), then you can set `tmp=1` and the output will underflow (it should be around the bit size of the circuit field). Both are problems if the output is not constrained to be 32 bits on the caller side, which seems to be the case.",
-        "Short Description of the Exploit": "",
-        "Proposed Mitigation": "In addition to fixing the issue, document the function to warn callers that they must be ensure that the two inputs are well-constrained to be 32-bit values.",
+        "Short Description of the Vulnerability": "In `Add32Bits`, the carry bit `tmp` is assigned via witness `tmp <-- (a + b) >> 32` but never constrained. The output is computed as `out <== a + b - tmp * (1 << 32)`, which only enforces `out = a + b - tmp * 2^32` without verifying `tmp` is correct. A malicious prover can: (1) set `tmp = 0` when `a + b` overflows, producing a 33-bit output, or (2) set `tmp = 1` when `a + b` does not overflow, causing underflow to a value near the field prime. Both scenarios break the 32-bit wrapping invariant that callers depend on.",
+        "Proposed Mitigation": "Constrain `tmp` to be a boolean (`tmp * (tmp - 1) === 0`) and verify the output is in range (`out < 2^32`), or use `Num2Bits(32)` on the output. Additionally, document that callers must ensure inputs are 32-bit values.",
+        "Executed": true,
+        "Compiled Direct": true,
+        "Compiled Original": true,
+        "Original Entrypoint": [],
+        "Similar Bugs": [
+            "reclaimprotocol/circom-chacha20/zksecurity_Unsound_XOR_gadget",
+            "reclaimprotocol/circom-chacha20/zksecurity_unsound_left_rotation"
+        ],
         "title": "Unsound Addition Gadget"
     },
     {
@@ -3703,9 +3989,11 @@
         "Vulnerability": "Under-Constrained",
         "Impact": "Completeness",
         "Root Cause": "Unsafe Reuse of Circuit",
-        "Reproduced": true,
+        "Reproduced": false,
+        "Codebase": "dataset/codebases/circom/succinctlabs/telepathy-circuits/b0c839cef30c3c25ef41d1ad3000081784766934",
+        "Direct Entrypoint": "circuit.circom",
         "Location": {
-            "Path": "circuits/pairing/bls12_381_hash_to_G2",
+            "Path": "circuits/pairing/bls12_381_hash_to_G2.circom",
             "Function": "SubgroupCheckG1WithValidX",
             "Line": "723-731"
         },
@@ -3715,17 +4003,29 @@
                 "Bug ID": "1. Prover can lock user funds by including ill-formed BigInts in public key comitment"
             }
         },
+        "Input": {
+            "Original": "input.json",
+            "Direct": "direct_input.json"
+        },
         "Commands": {
             "Setup Environment": "./zkbugs_setup.sh",
-            "Reproduce": "./zkbugs_exploit.sh",
             "Compile and Preprocess": "./zkbugs_compile_setup.sh",
             "Positive Test": "./zkbugs_positive_test.sh",
-            "Find Exploit": "./zkbugs_find_exploit.sh",
-            "Clean": "./zkbugs_clean.sh"
+            "Clean": "./zkbugs_clean.sh",
+            "Compile": "./zkbugs_compile.sh"
         },
         "Short Description of the Vulnerability": "The `Rotate()` template in rotate.circom fails to validate the format of BigInts in public keys. SubgroupCheckG1WithValidX assumes that its input is a properly formed BigInt, with all limbs less than 2**55. This property is not validated anywhere in the `Rotate()` template. It allows a malicious prover to manipulate public keys by inserting ill-formed BigInts, specifically by altering the y-coordinate of public keys. This manipulation can lock user funds by preventing future provers from generating valid proofs, as the circuit uses these malformed keys without proper validation. The exploit involves modifying the y coordinate in a public key to create an invalid commitment, which then updates the system's commitment state, potentially leading to incorrect or fraudulent operations.",
-        "Short Description of the Exploit": "Subtract one from the most significant limb and add 2**55 to the second-most significant limb.",
         "Proposed Mitigation": "Use `Num2Bits()` template to verify that each limb of the `pubkeysBigIntY`, witness value is less than 2**55.",
+        "Executed": true,
+        "Compiled Direct": true,
+        "Compiled Original": true,
+        "Original Entrypoint": [
+            "circuits/step.circom"
+        ],
+        "Similar Bugs": [
+            "succinctlabs/telepathy-circuits/trailofbits_prover_can_lock_user_funds_by_supplying_non-reduced_Y_values_to_G1BigIntToSignFlag",
+            "succinctlabs/telepathy-circuits/veridise_template_CoreVerifyPubkeyG1_does_not_perform_input_validation_simplified"
+        ],
         "title": "Prover can lock user funds by including ill-formed BigInts in public key commitment"
     },
     {
@@ -3738,9 +4038,11 @@
         "Vulnerability": "Under-Constrained",
         "Impact": "Soundness",
         "Root Cause": "Unsafe Reuse of Circuit",
-        "Reproduced": true,
+        "Reproduced": false,
+        "Codebase": "dataset/codebases/circom/succinctlabs/telepathy-circuits/9c84fb0f38531718296d9b611f8bd6107f61a9b8",
+        "Direct Entrypoint": "circuit.circom",
         "Location": {
-            "Path": "circuits/bls_signature.circom",
+            "Path": "circuits/pairing/bls_signature.circom",
             "Function": "CoreVerifyPubkeyG1ToyExample",
             "Line": "77-95"
         },
@@ -3750,17 +4052,29 @@
                 "Bug ID": "V-SUC-VUL-002: Template CoreVerifyPubkeyG1 does not perform input validation"
             }
         },
+        "Input": {
+            "Original": "input.json",
+            "Direct": "direct_input.json"
+        },
         "Commands": {
             "Setup Environment": "./zkbugs_setup.sh",
-            "Reproduce": "./zkbugs_exploit.sh",
             "Compile and Preprocess": "./zkbugs_compile_setup.sh",
             "Positive Test": "./zkbugs_positive_test.sh",
-            "Find Exploit": "./zkbugs_find_exploit.sh",
-            "Clean": "./zkbugs_clean.sh"
+            "Clean": "./zkbugs_clean.sh",
+            "Compile": "./zkbugs_compile.sh"
         },
         "Short Description of the Vulnerability": "This bug is in the circom-pairing BLS signature verification logic. pubkey, signature and hash are divided into 7-entry chunks of 55-bit data, and each entry is checked against according entry in `p`. When calling `BigLessThan()`, the output isn't verified therefore attacker can manipulate the input so that it overflows p.",
-        "Short Description of the Exploit": "The circuit had been simplified to demonstrate the bug, the attack idea is calculating a `delta` such that it makes the input overflow but still bounded by 2**55 - 1 to pass the range check inside `BigLessThan()`. In reality, attacker would bruteforce a special set of inputs satisfying a list of constraints. The details are explained in the PR comment.",
         "Proposed Mitigation": "In each iteration of the for loop, add a constraint `lt[idx].out === 1` to make sure the input is indeed bounded by `p`.",
+        "Executed": true,
+        "Compiled Direct": true,
+        "Compiled Original": true,
+        "Original Entrypoint": [
+            "circuits/step.circom"
+        ],
+        "Similar Bugs": [
+            "succinctlabs/telepathy-circuits/trailofbits_prover_can_lock_user_funds_by_including_ill-formed_bigints_in_public_key_commitment",
+            "succinctlabs/telepathy-circuits/trailofbits_prover_can_lock_user_funds_by_supplying_non-reduced_Y_values_to_G1BigIntToSignFlag"
+        ],
         "title": "Template CoreVerifyPubkeyG1 does not perform input validation (Simplified)"
     },
     {
@@ -3773,7 +4087,9 @@
         "Vulnerability": "Under-Constrained",
         "Impact": "Soundness",
         "Root Cause": "Arithmetic Field Issues",
-        "Reproduced": true,
+        "Reproduced": false,
+        "Codebase": "dataset/codebases/circom/succinctlabs/telepathy-circuits/9c84fb0f38531718296d9b611f8bd6107f61a9b8",
+        "Direct Entrypoint": "circuit.circom",
         "Location": {
             "Path": "circuits/hash_to_field.circom",
             "Function": "I2OSP",
@@ -3785,17 +4101,29 @@
                 "Bug ID": "V-SUC-VUL-003: Zero Padding for Sha256 in ExpandMessageXMD is vulnerable to an overflow"
             }
         },
+        "Input": {
+            "Original": "input.json",
+            "Direct": "direct_input.json"
+        },
         "Commands": {
             "Setup Environment": "./zkbugs_setup.sh",
-            "Reproduce": "./zkbugs_exploit.sh",
             "Compile and Preprocess": "./zkbugs_compile_setup.sh",
             "Positive Test": "./zkbugs_positive_test.sh",
-            "Find Exploit": "./zkbugs_find_exploit.sh",
-            "Clean": "./zkbugs_clean.sh"
+            "Clean": "./zkbugs_clean.sh",
+            "Compile": "./zkbugs_compile.sh"
         },
         "Short Description of the Vulnerability": "Template ExpandMessageXMD calls I2OSP(64) with `in` set to 0. In template I2OSP, numbers are represented in bigint format, a 64-byte chunk. This representation allows number much larger than scalar field modulus `p`, so attacker can compute `0 + k * p` and turn that into bigint representation and still pass the constraints.",
-        "Short Description of the Exploit": "Compute `0 + p` and turn that into bigint format. Also keep track of the accumulator `acc[64]`.",
         "Proposed Mitigation": "Add assertion `assert(l < 31)` when using template I2OSP(l), so the largest possible number is 31 * 8 = 248 bit, which is less than scalar field modulus `p`.",
+        "Executed": true,
+        "Compiled Direct": true,
+        "Compiled Original": true,
+        "Original Entrypoint": [
+            "circuits/step.circom"
+        ],
+        "Similar Bugs": [
+            "0xbok/circom-bigint/veridise_missing_range_checks_in_bigmod",
+            "selfxyz/self/zksecurity_big_integer_zero_check_is_not_sound"
+        ],
         "title": "Zero Padding for Sha256 in ExpandMessageXMD is vulnerable to an overflow"
     },
     {
@@ -3808,7 +4136,9 @@
         "Vulnerability": "Under-Constrained",
         "Impact": "Completeness",
         "Root Cause": "Unsafe Reuse of Circuit",
-        "Reproduced": true,
+        "Reproduced": false,
+        "Codebase": "dataset/codebases/circom/succinctlabs/telepathy-circuits/b0c839cef30c3c25ef41d1ad3000081784766934",
+        "Direct Entrypoint": "circuit.circom",
         "Location": {
             "Path": "circuits/bls.circom",
             "Function": "G1BigIntToSignFlag",
@@ -3820,17 +4150,29 @@
                 "Bug ID": "2. Prover can lock user funds by supplying non-reduced Y values to G1BigIntToSignFlag"
             }
         },
+        "Input": {
+            "Original": "input.json",
+            "Direct": "direct_input.json"
+        },
         "Commands": {
             "Setup Environment": "./zkbugs_setup.sh",
-            "Reproduce": "./zkbugs_exploit.sh",
             "Compile and Preprocess": "./zkbugs_compile_setup.sh",
             "Positive Test": "./zkbugs_positive_test.sh",
-            "Find Exploit": "./zkbugs_find_exploit.sh",
-            "Clean": "./zkbugs_clean.sh"
+            "Clean": "./zkbugs_clean.sh",
+            "Compile": "./zkbugs_compile.sh"
         },
         "Short Description of the Vulnerability": "`G1BigIntToSignFlag` fails to check if the y-coordinate is properly reduced mod p. This missing of range check allows malicious prover to lock user funds by supplying a non-reduced y-coordinate, which can be manipulated to have a positive sign when it should be negative. This manipulation can prevent future provers from generating valid proofs, effectively halting the LightClient and trapping user funds in the bridge.",
-        "Short Description of the Exploit": "In detect.sage, we grab a 'positive' y-coordinate from a public key and turn it into 'negative' by negating it and mod p. We call this new value `y` and it has negative sign. Now we compute `2*p - y` and use it as input. This value is congruent to `-y mod p` so it is positive, but the circuit still considers it as negative. This fact can be observed in exploitable_witness.json: the second entry is 0, which represents negative sign.",
         "Proposed Mitigation": "Constrain the `pubkeysBigIntY` values to be less than `p` using `BigLessThan` template.",
+        "Executed": true,
+        "Compiled Direct": true,
+        "Compiled Original": true,
+        "Original Entrypoint": [
+            "circuits/step.circom"
+        ],
+        "Similar Bugs": [
+            "succinctlabs/telepathy-circuits/trailofbits_prover_can_lock_user_funds_by_including_ill-formed_bigints_in_public_key_commitment",
+            "succinctlabs/telepathy-circuits/veridise_template_CoreVerifyPubkeyG1_does_not_perform_input_validation_simplified"
+        ],
         "title": "Prover can lock user funds by supplying non-reduced Y values to G1BigIntToSignFlag"
     },
     {
@@ -3843,9 +4185,11 @@
         "Vulnerability": "Under-Constrained",
         "Impact": "Soundness",
         "Root Cause": "Unsafe Reuse of Circuit",
-        "Reproduced": true,
+        "Reproduced": false,
+        "Codebase": "dataset/codebases/circom/succinctlabs/telepathy-circuits/b0c839cef30c3c25ef41d1ad3000081784766934",
+        "Direct Entrypoint": "circuit.circom",
         "Location": {
-            "Path": "circuits/curve.circom",
+            "Path": "circuits/pairing/curve.circom",
             "Function": "EllipticCurveAddUnequal",
             "Line": "155-227"
         },
@@ -3855,17 +4199,25 @@
                 "Bug ID": "3. Incorrect handling of point doubling can allow signature forgery"
             }
         },
+        "Input": {
+            "Original": "input.json",
+            "Direct": "direct_input.json"
+        },
         "Commands": {
             "Setup Environment": "./zkbugs_setup.sh",
-            "Reproduce": "./zkbugs_exploit.sh",
             "Compile and Preprocess": "./zkbugs_compile_setup.sh",
             "Positive Test": "./zkbugs_positive_test.sh",
-            "Find Exploit": "./zkbugs_find_exploit.sh",
-            "Clean": "./zkbugs_clean.sh"
+            "Clean": "./zkbugs_clean.sh",
+            "Compile": "./zkbugs_compile.sh"
         },
         "Short Description of the Vulnerability": "`G1Add` calls `EllipticCurveAddUnequal`. The template `EllipticCurveAddUnequal` assumes input `a` and `b` are two unequal public keys but this is not checked. Attacker can use two same public keys to do sophisticated attacks. In such scenario, the constraint on output in `EllipticCurveAddUnequal` reduces to 0 = 0 so it is always true. In other words, attacker can do point doubling at a place where it is supposed to do point addition of two unequal EC points.",
-        "Short Description of the Exploit": "We generate `A = aG`, `B = bG` and `C = (a+b)G`. We use `(a+b)G` for both inputs.",
         "Proposed Mitigation": "Change `G1Add` to use `EllipticCurveAdd`, which correctly handles equal inputs by checking and managing point doubling.",
+        "Executed": true,
+        "Compiled Direct": true,
+        "Compiled Original": true,
+        "Original Entrypoint": [
+            "circuits/step.circom"
+        ],
         "title": "Incorrect handling of point doubling can allow signature forgery"
     },
     {
@@ -3878,11 +4230,13 @@
         "Vulnerability": "Under-Constrained",
         "Impact": "Soundness",
         "Root Cause": "Assigned but Unconstrained",
-        "Reproduced": true,
+        "Reproduced": false,
+        "Codebase": "dataset/codebases/circom/succinctlabs/telepathy-circuits/9c84fb0f38531718296d9b611f8bd6107f61a9b8",
+        "Direct Entrypoint": "circuit.circom",
         "Location": {
             "Path": "circuits/hash_to_field.circom",
             "Function": "ArrayXOR",
-            "Line": "9"
+            "Line": "231"
         },
         "Source": {
             "Audit Report": {
@@ -3890,17 +4244,29 @@
                 "Bug ID": "V-SUC-VUL-001: ArrayXOR is under constrained"
             }
         },
+        "Input": {
+            "Original": "input.json",
+            "Direct": "direct_input.json"
+        },
         "Commands": {
             "Setup Environment": "./zkbugs_setup.sh",
-            "Reproduce": "./zkbugs_exploit.sh",
+            "Compile": "./zkbugs_compile.sh",
             "Compile and Preprocess": "./zkbugs_compile_setup.sh",
             "Positive Test": "./zkbugs_positive_test.sh",
-            "Find Exploit": "./zkbugs_find_exploit.sh",
             "Clean": "./zkbugs_clean.sh"
         },
-        "Short Description of the Vulnerability": "out[i]` is assigned with `<--` but not constrained with `<==`, so it can be set to any value.",
-        "Short Description of the Exploit": "Generate a correct witness first, then modify entry 2 to 5 to any field element.",
+        "Short Description of the Vulnerability": "`out[i]` is assigned with `<--` but not constrained with `<==`, so it can be set to any value.",
         "Proposed Mitigation": "Change the code to `out[i] <== a[i] ^ b[i]`.",
+        "Executed": true,
+        "Compiled Direct": true,
+        "Compiled Original": true,
+        "Original Entrypoint": [
+            "circuits/step.circom"
+        ],
+        "Similar Bugs": [
+            "iden3/circomlib/kobi_gurkan_mimc_hash_assigned_but_not_constrained",
+            "personaelabs/spartan-ecdsa/yacademy_under_constrained_circuits_compromising_the_soundness_of_the_system"
+        ],
         "title": "ArrayXOR is under constrained"
     }
 ]

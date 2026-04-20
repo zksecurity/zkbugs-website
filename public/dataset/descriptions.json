@@ -2,77 +2,155 @@
   "vulnerabilities": [
     {
       "title": "Under-Constrained",
-      "description": "The most frequent vulnerability in ZKP circuits arises from insufficient constraints. This deficiency causes the verifier to mistakenly accept invalid proofs for incorrect witnesses, thus undermining the system's soundness."
+      "description": "The most frequent vulnerability in ZKP circuits arises from insufficient constraints. This deficiency causes the verifier to mistakenly accept invalid proofs for incorrect witnesses, thus undermining the system's soundness.",
+      "examples": [
+        "iden3/circomlib/Kobi-Gurkan-MiMC-Hash-Assigned-but-not-Constrained",
+        "0xbok/circom-bigint/veridise-V-BIGINT-COD-001",
+        "personaelabs/spartan-ecdsa/yacademy_Knowledge_of_any_member_signature_allow_to_generate_proof_of_membership"
+      ]
     },
     {
       "title": "Over-Constrained",
-      "description": "Although less common than being underconstrained, circuits can be over-constrained, leading to the rejection of valid witnesses by honest provers. This issue stems from extra constraints in the verifier circuit and leads to breaking completeness, where legitimate solutions cannot be proven or verified."
+      "description": "Although less common than being underconstrained, circuits can be over-constrained, leading to the rejection of valid witnesses by honest provers. This issue stems from extra constraints in the verifier circuit and leads to breaking completeness, where legitimate solutions cannot be proven or verified.",
+      "examples": [
+        "scroll-tech/poseidon-circuit/zellic_mpt_only_being_true_leads_to_overconstrained_circuits"
+      ]
     },
     {
       "title": "Computational Issues",
-      "description": "Occurs when the computational part of a circuit is erroneous, often leading to completeness issues where for correct inputs, the witness generation either fails or produces wrong results. This category is distinct as the primary issue is not directly related to applying constraints."
+      "description": "Occurs when the computational part of a circuit is erroneous, often leading to completeness issues where for correct inputs, the witness generation either fails or produces wrong results. This category is distinct as the primary issue is not directly related to applying constraints.",
+      "examples": [
+        "penumbra-zone/penumbra/zksecurity_Unsound_fixed-point_addition",
+        "selfxyz/self/zksecurity_big_integer_zero_check_is_not_sound",
+        "succinctlabs/sp1/ghsa-6248-228x-mmvh-2"
+      ]
     },
     {
       "title": "Fiat-Shamir Issue",
-      "description": "Errors in the Fiat–Shamir transformation or transcript handling (e.g., missing domain separation, inconsistent transcript updates) lead to unsound challenge derivation and break soundness."
+      "description": "Errors in the Fiat–Shamir transformation or transcript handling (e.g., missing domain separation, inconsistent transcript updates) lead to unsound challenge derivation and break soundness.",
+      "examples": [
+        "openvm-org/openvm/GHSA-4w7p-8f9q-f4g2",
+        "succinctlabs/sp1/ghsa-8m24-3cfx-9fjw"
+      ]
     },
     {
       "title": "Backend Issue",
-      "description": "Bugs in the proof-system backend or verifier implementation (e.g., chip ordering, constraint wiring) that cause incorrect verification independent of circuit business logic."
+      "description": "Bugs in the proof-system backend or verifier implementation (e.g., chip ordering, constraint wiring) that cause incorrect verification independent of circuit business logic.",
+      "examples": [
+        "succinctlabs/sp1/ghsa-c873-wfhp-wx5m-1"
+      ]
     }
   ],
   "root_causes": [
     {
       "title": "Assigned but Unconstrained",
-      "description": "A frequent issue in zk circuit design lies in distinguishing between assignments and constraints. The problem arises when variables are assigned values based on correct computations but lack corresponding constraints, leading the verifier to erroneously accept any value for these variables."
+      "description": "A frequent issue in zk circuit design lies in distinguishing between assignments and constraints. The problem arises when variables are assigned values based on correct computations but lack corresponding constraints, leading the verifier to erroneously accept any value for these variables.",
+      "examples": [
+        "iden3/circomlib/Kobi-Gurkan-MiMC-Hash-Assigned-but-not-Constrained",
+        "lurk-lab/lurk-rs/inference_Soundness_failure_due_to_0_value_not_enforced",
+        "scroll-tech/mpt-circuit/zellic_Missing_constraints_for_new_account_in_configure_balance"
+      ]
     },
     {
       "title": "Missing Input Constraints",
-      "description": "Developers sometimes neglect to apply constraints on input variables in reusable circuits, either unintentionally or because they anticipate these constraints will be enforced at a different interface level. This can lead to severe vulnerabilities if not explicitly documented or constrained."
+      "description": "Developers sometimes neglect to apply constraints on input variables in reusable circuits, either unintentionally or because they anticipate these constraints will be enforced at a different interface level. This can lead to severe vulnerabilities if not explicitly documented or constrained.",
+      "examples": [
+        "darkforest-eth/darkforest-v0.3/Daira-Hopwood-Missing-Bit-Length-Check",
+        "iden3/circomlib/veridise-V-CIRCOMLIB-VUL-002",
+        "HerodotusDev/offchain-evm-headers-processor/abdk_Behaviour_is_undefined_if_mmr_len_is_not_range_checked."
+      ]
     },
     {
       "title": "Unsafe Reuse of Circuit",
-      "description": "The practice of reusing circuits can introduce vulnerabilities if not handled correctly. This occurs when circuits are reused without appropriately constraining their inputs/outputs or when developers fail to apply necessary constraints on output signals."
+      "description": "The practice of reusing circuits can introduce vulnerabilities if not handled correctly. This occurs when circuits are reused without appropriately constraining their inputs/outputs or when developers fail to apply necessary constraints on output signals.",
+      "examples": [
+        "Unirep/Unirep/veridise-V-UNI-VUL-002",
+        "reclaimprotocol/circom-chacha20/zksecurity-1",
+        "scroll-tech/zkevm-circuits/zellic_Non-trivial_rotation_incorrectly_handled_in_ComparatorChip"
+      ]
     },
     {
       "title": "Wrong Translation of Logic into Constraints",
-      "description": "Variables that, despite being constrained, can take multiple or any values under certain assignments of other variables, leading to underconstrained variables. This can result from missing corner cases or incorrect constraint logic."
+      "description": "Variables that, despite being constrained, can take multiple or any values under certain assignments of other variables, leading to underconstrained variables. This can result from missing corner cases or incorrect constraint logic.",
+      "examples": [
+        "iden3/circomlib/veridise-V-CIRCOMLIB-VUL-001",
+        "lurk-lab/lurk-rs/inference_Multicase_number_of_defaults_not_enforced",
+        "arkworks-rs/r1cs-std/Enforce_mul_by_inverse"
+      ]
     },
     {
       "title": "Incorrect Custom Gates",
-      "description": "This occurs when custom gates are not applied to the correct rows/cells, such as accidentally choosing the wrong offset when defining/using a gate or enabling the wrong selector."
+      "description": "This occurs when custom gates are not applied to the correct rows/cells, such as accidentally choosing the wrong offset when defining/using a gate or enabling the wrong selector.",
+      "examples": [
+        "scroll-tech/mpt-circuit/zellic_The_OneHot_encoding_gadget_has_incorrect_constraints"
+      ]
     },
     {
       "title": "Out-of-Circuit Computation Not Being Constrained",
-      "description": "Out-of-circuit computation refers to operations within the code that do not directly impact witness generation but play a crucial role in functionality. If these computations lead to incorrect witness values, they can cause vulnerabilities."
+      "description": "Out-of-circuit computation refers to operations within the code that do not directly impact witness generation but play a crucial role in functionality. If these computations lead to incorrect witness values, they can cause vulnerabilities.",
+      "examples": [
+        "penumbra-zone/penumbra/zksecurity_Double_spending_due_to_incoming_viewing_key_(ivk)_derivation_not_constrained"
+      ]
     },
     {
       "title": "Arithmetic Field Issues",
-      "description": "Arithmetic overflows and underflows in zk circuits pose challenges due to the absence of runtime checks. These issues can lead to multiple solutions being accepted, making circuits underconstrained."
+      "description": "Arithmetic overflows and underflows in zk circuits pose challenges due to the absence of runtime checks. These issues can lead to multiple solutions being accepted, making circuits underconstrained.",
+      "examples": [
+        "0xbok/circom-bigint/veridise-V-BIGINT-COD-001",
+        "HerodotusDev/offchain-evm-headers-processor/abdk_Missing_range_checks_for_negative_values",
+        "scroll-tech/zkevm-circuits/zellic_Missing_range_checks_in_MulAdd_chip"
+      ]
     },
     {
       "title": "Circuit Design Issue",
-      "description": "Design flaws in circuits that lead to undesired behavior or break protocol properties, such as incorrectly defining a variable as private instead of public."
+      "description": "Design flaws in circuits that lead to undesired behavior or break protocol properties, such as incorrectly defining a variable as private instead of public.",
+      "examples": [
+        "personaelabs/spartan-ecdsa/yacademy_Knowledge_of_any_member_signature_allow_to_generate_proof_of_membership",
+        "zkopru-network/zkopru/leastauthority_Circuit_Does_Not_Check_the_ERC-20_Sum_Correctly_",
+        "filecoin-project/rust-fil-proofs/trapdoor_Add_missing_public_input_for_replica-id"
+      ]
     },
     {
       "title": "Misimplementation of a Specification",
-      "description": "This occurs when a circuit fails to adhere completely to explicit or implicit specifications, particularly in addressing critical aspects or corner cases, leading to unexpected behavior."
+      "description": "This occurs when a circuit fails to adhere completely to explicit or implicit specifications, particularly in addressing critical aspects or corner cases, leading to unexpected behavior.",
+      "examples": [
+        "privacy-scaling-explorations/maci/hashcloak_Data_are_not_fully_verified_during_state_update",
+        "scroll-tech/zkevm-circuits/trailofbits_The_CREATE_and_CREATE2_opcodes_can_be_called_within_a_static_context",
+        "scroll-tech/zkevm-circuits/zellic_Highest_tx_id_must_be_equal_to_cum_num_txs_in_Tx_Circuit"
+      ]
     },
     {
       "title": "Other Programming Errors",
-      "description": "This category includes common programming mistakes such as API misuse, incorrect indexing in arrays, and logical errors in witness generation that are not directly related to constraint application."
+      "description": "This category includes common programming mistakes such as API misuse, incorrect indexing in arrays, and logical errors in witness generation that are not directly related to constraint application.",
+      "examples": [
+        "scroll-tech/poseidon-circuit/zellic_mpt_only_being_true_leads_to_overconstrained_circuits",
+        "openvm-org/openvm/GHSA-jf2r-x3j4-23m7",
+        "succinctlabs/sp1/ghsa-6248-228x-mmvh-2"
+      ]
     },
     {
       "title": "Missing Constraint",
-      "description": "A required relation is never constrained (or only partially), allowing multiple or arbitrary assignments that still pass verification."
+      "description": "A required relation is never constrained (or only partially), allowing multiple or arbitrary assignments that still pass verification.",
+      "examples": [
+        "risc0/risc0/ghsa-5c79-r6x7-3jx9",
+        "risc0/risc0/ghsa-f6rc-24x4-ppxp",
+        "risc0/risc0/ghsa-g3qg-6746-3mg9"
+      ]
     },
     {
       "title": "Fiat-Shamir",
-      "description": "Incorrect instantiation or use of the Fiat–Shamir transform (e.g., failing to absorb inputs/context or wrong domain separation) breaks challenge binding to the transcript."
+      "description": "Incorrect instantiation or use of the Fiat–Shamir transform (e.g., failing to absorb inputs/context or wrong domain separation) breaks challenge binding to the transcript.",
+      "examples": [
+        "openvm-org/openvm/GHSA-4w7p-8f9q-f4g2",
+        "succinctlabs/sp1/ghsa-8m24-3cfx-9fjw"
+      ]
     },
     {
       "title": "Missing/Incorrect Verifier Check",
-      "description": "Verifier-side checks are absent or incorrect (e.g., ordering/consistency checks), enabling proofs to bypass intended validation."
+      "description": "Verifier-side checks are absent or incorrect (e.g., ordering/consistency checks), enabling proofs to bypass intended validation.",
+      "examples": [
+        "succinctlabs/sp1/ghsa-c873-wfhp-wx5m-1"
+      ]
     }
   ]
 }
