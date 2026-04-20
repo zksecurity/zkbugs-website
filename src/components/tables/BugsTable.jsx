@@ -8,17 +8,41 @@ const DataGridStyled = styled(DataGrid)(({ theme }) => ({
     backgroundColor: theme.palette.background.paper,
     "& .MuiDataGrid-columnHeaderTitle": {
       textTransform: "uppercase",
-      // color: "#657795",
       color: theme.palette.text.secondary,
     },
   },
   "& .MuiDataGrid-cell:focus, .MuiDataGrid-cell:focus-within": {
     outline: "none",
   },
+  "& .MuiDataGrid-cell.wrap-cell": {
+    whiteSpace: "normal",
+    lineHeight: 1.35,
+    paddingTop: "8px",
+    paddingBottom: "8px",
+    alignItems: "center",
+    display: "flex",
+  },
 }));
 
-function BugsTable({ data }) {
-  const { rows, columns } = useBugsTableConfig(data);
+const bugShape = PropTypes.shape({
+  dsl: PropTypes.string,
+  impact: PropTypes.string,
+  id: PropTypes.string,
+  title: PropTypes.string,
+  compiledDirect: PropTypes.bool,
+  compiledOriginal: PropTypes.bool,
+  rootCause: PropTypes.string,
+  vulnerability: PropTypes.string,
+  similarBugs: PropTypes.arrayOf(PropTypes.string),
+  source: PropTypes.shape({
+    variant: PropTypes.string,
+    variantName: PropTypes.string,
+    sourceLink: PropTypes.string,
+  }),
+});
+
+function BugsTable({ data, allBugs }) {
+  const { rows, columns } = useBugsTableConfig(data, allBugs ?? data);
   return (
     <DataGridStyled
       rows={rows}
@@ -27,6 +51,7 @@ function BugsTable({ data }) {
       initialState={{
         pagination: { paginationModel: { pageSize: 10 } },
       }}
+      getRowHeight={() => "auto"}
     />
   );
 }
@@ -34,21 +59,6 @@ function BugsTable({ data }) {
 export default BugsTable;
 
 BugsTable.propTypes = {
-  data: PropTypes.arrayOf(
-    PropTypes.shape({
-      dsl: PropTypes.string,
-      impact: PropTypes.string,
-      id: PropTypes.string,
-      title: PropTypes.string,
-      reproduced: PropTypes.bool,
-      rootCause: PropTypes.string,
-      vulnerability: PropTypes.string,
-      similarBugs: PropTypes.arrayOf(PropTypes.string),
-      source: PropTypes.shape({
-        variant: PropTypes.string,
-        variantName: PropTypes.string,
-        sourceLink: PropTypes.string,
-      }),
-    })
-  ),
+  data: PropTypes.arrayOf(bugShape),
+  allBugs: PropTypes.arrayOf(bugShape),
 };

@@ -7,6 +7,7 @@ export const useBugsChartData = (data) => {
     vulnerability: [],
     impact: [],
     reproduced: [],
+    compiled: [],
     rootCause: [],
   });
 
@@ -23,6 +24,10 @@ export const useBugsChartData = (data) => {
       reproduced: getChartData(data, "reproduced", {
         true: "Reproduced",
         false: "Not Reproduced",
+      }),
+      compiled: getChartData(data, "compiledDirect", {
+        true: "Compiled",
+        false: "Not Compiled",
       }),
       rootCause: rootCauseData,
     });

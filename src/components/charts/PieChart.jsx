@@ -26,10 +26,8 @@ const trimLongLengends = (data, trimPoint) => {
       return item;
     }
 
-    // Split the label into words
     const labelWords = item.label.split(" ");
 
-    // Apply new lines to the label
     const firstWord = labelWords.shift();
     const mergedWords = mergeWords(firstWord, labelWords, trimPoint);
 
@@ -40,24 +38,26 @@ const trimLongLengends = (data, trimPoint) => {
   });
 };
 
-const HEIGHT_PER_ITEM = 48;
-const MIN_HEIGHT_WEB = 500;
-const MIN_HEIGHT_MOBILE = 300;
+const HEIGHT_PER_ITEM = 32;
+const MIN_HEIGHT_WEB = 420;
+const MIN_HEIGHT_MOBILE = 360;
+
+const DEFAULT_WIDTH = 640;
+const MOBILE_WIDTH = 480;
+const LEGEND_RESERVE_RIGHT = 220;
+const LEGEND_RESERVE_BOTTOM = 120;
 
 const adjustHeight = (data, isMobile) => {
-  const height = data.length * HEIGHT_PER_ITEM + 50;
+  const computed = data.length * HEIGHT_PER_ITEM + 120;
   const minHeight = isMobile ? MIN_HEIGHT_MOBILE : MIN_HEIGHT_WEB;
-  if (height > minHeight) {
-    return height;
-  }
-  return minHeight;
+  return Math.max(minHeight, computed);
 };
 
 function PieChart({
   data,
   colors,
   innerRadius = 8,
-  outerRadius = 100,
+  outerRadius = 110,
   width,
   children,
   className,
@@ -66,26 +66,43 @@ function PieChart({
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
 
   const finalData = useMemo(() => {
-    if (isSmallScreen) {
-      return trimLongLengends(data, 18);
-    }
-    return trimLongLengends(data, 30);
+    const trim = isSmallScreen ? 18 : 30;
+    return trimLongLengends(data, trim);
   }, [data, isSmallScreen]);
 
-  const finalHeight = useMemo(() => {
-    return adjustHeight(data, isMobile);
-  }, [data, isMobile]);
+  const finalHeight = useMemo(
+    () => adjustHeight(data, isMobile),
+    [data, isMobile]
+  );
 
-  const finalPieParams = useMemo(() => {
-    const pieParams = { height: finalHeight };
-    if (isSmallScreen) {
-      return { ...pieParams, width: 500 };
+  const finalWidth = useMemo(() => {
+    if (isMobile) return MOBILE_WIDTH;
+    if (width) return width;
+    return DEFAULT_WIDTH;
+  }, [isMobile, width]);
+
+  const margin = useMemo(() => {
+    if (isMobile) {
+      return { top: 16, right: 16, bottom: LEGEND_RESERVE_BOTTOM, left: 16 };
     }
-    if (width) {
-      return { ...pieParams, width };
-    }
-    return pieParams;
-  }, [isSmallScreen, width, finalHeight]);
+    return { top: 24, right: LEGEND_RESERVE_RIGHT, bottom: 24, left: 24 };
+  }, [isMobile]);
+
+  const slotProps = useMemo(
+    () => ({
+      legend: {
+        direction: isMobile ? "row" : "column",
+        position: isMobile
+          ? { vertical: "bottom", horizontal: "middle" }
+          : { vertical: "middle", horizontal: "right" },
+        itemMarkWidth: 14,
+        itemMarkHeight: 14,
+        itemGap: 10,
+        labelStyle: { fontSize: 14 },
+      },
+    }),
+    [isMobile]
+  );
 
   return (
     <MuiPieChart
@@ -94,14 +111,16 @@ function PieChart({
         {
           data: finalData,
           highlightScope: { fade: "global", highlight: "item" },
-          // valueFormatter,
           innerRadius,
           outerRadius,
           paddingAngle: 2,
           cornerRadius: 4,
         },
       ]}
-      {...finalPieParams}
+      width={finalWidth}
+      height={finalHeight}
+      margin={margin}
+      slotProps={slotProps}
       className={className}
     >
       {children}

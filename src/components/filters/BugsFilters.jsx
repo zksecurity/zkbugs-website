@@ -10,7 +10,13 @@ import {
   FiltersIcon,
 } from "./FiltersCommonComponents";
 
-const FILTERS = ["dsl", "vulnerability", "project", "reproduced", "rootCause"];
+const FILTERS = [
+  "dsl",
+  "vulnerability",
+  "project",
+  "compiledDirect",
+  "rootCause",
+];
 
 const renderFilterLabel = (filter, value) => {
   if (filter === "project") {
@@ -31,7 +37,7 @@ function BugsFilters({ data, className, onChange }) {
     vulnerability: "",
     project: "",
     rootCause: "",
-    reproduced: "",
+    compiledDirect: "",
     zkvm: "",
   });
 
@@ -98,14 +104,14 @@ function BugsFilters({ data, className, onChange }) {
           onChange={handleFilterChange("rootCause")}
         />
         <Select
-          label="Reproduced"
+          label="Compiled"
           options={[
             { value: "true", label: "Yes" },
             { value: "false", label: "No" },
           ]}
-          value={filters.reproduced}
+          value={filters.compiledDirect}
           className="filter-input"
-          onChange={handleFilterChange("reproduced")}
+          onChange={handleFilterChange("compiledDirect")}
         />
         <FormControlLabel
           control={<Checkbox checked={filters.zkvm === "true"} onChange={handleZkvmToggle} />}
@@ -127,7 +133,8 @@ BugsFilters.propTypes = {
       impact: PropTypes.string,
       id: PropTypes.string,
       title: PropTypes.string,
-      reproduced: PropTypes.bool,
+      compiledDirect: PropTypes.bool,
+      compiledOriginal: PropTypes.bool,
       rootCause: PropTypes.string,
       vulnerability: PropTypes.string,
       zkvm: PropTypes.bool,

@@ -11,6 +11,7 @@ const DescriptionsPage = lazy(() =>
   import("../pages/descriptions/DescriptionsPage")
 );
 const PaperPage = lazy(() => import("../pages/paper/PaperPage"));
+const BugPage = lazy(() => import("../pages/bug/BugPage"));
 const ReportViewerPage = lazy(() =>
   import("../pages/reports/ReportViewerPage")
 );
@@ -26,6 +27,7 @@ function RootLayout() {
         <Route path={paths.descriptions} element={<DescriptionsPage />} />
         <Route path={paths.paper} element={<PaperPage />} />
         <Route path={paths.tools} element={<ToolsPage />} />
+        <Route path={paths.bugDetail} element={<BugPage />} />
       </Routes>
       <Footer />
     </BrowserRouter>

@@ -19,16 +19,16 @@ const ContainerStyled = styled("div")(({ theme }) => ({
   "& .chart-wrapper": {
     border: `1px solid ${theme.palette.borders.default}`,
     borderTop: 0,
-    borderBottomRightRadius: "0.25rem",
-    borderBottomLeftRadius: "0.25rem",
+    borderBottomRightRadius: "0.5rem",
+    borderBottomLeftRadius: "0.5rem",
     "& .chart": {
       width: "100%",
     },
   },
   "& .chart-tabs": {
     border: `1px solid ${theme.palette.borders.default}`,
-    borderTopRightRadius: "0.25rem",
-    borderTopLeftRadius: "0.25rem",
+    borderTopRightRadius: "0.5rem",
+    borderTopLeftRadius: "0.5rem",
     backgroundColor: theme.palette.background.paper,
   },
 }));
@@ -40,6 +40,14 @@ function ChartsSection({ data }) {
 
   const reproducedPercentage = useMemo(() => {
     const occuranciesPercentage = getOccuranciesPercentage(data, "reproduced");
+    return occuranciesPercentage[true];
+  }, [data]);
+
+  const compiledPercentage = useMemo(() => {
+    const occuranciesPercentage = getOccuranciesPercentage(
+      data,
+      "compiledDirect"
+    );
     return occuranciesPercentage[true];
   }, [data]);
 
@@ -59,27 +67,23 @@ function ChartsSection({ data }) {
         <Tab label="DSL" {...a11yProps(0)} />
         <Tab label="Vulnerability" {...a11yProps(1)} />
         <Tab label="Impact" {...a11yProps(2)} />
-        <Tab label="Reproduced" {...a11yProps(2)} />
-        <Tab label="Root Cause" {...a11yProps(2)} />
+        <Tab label="Reproduced" {...a11yProps(3)} />
+        <Tab label="Compiled" {...a11yProps(4)} />
+        <Tab label="Root Cause" {...a11yProps(5)} />
       </Tabs>
       <div className="chart-wrapper">
         <ChartTabPanel value={tabValue} index={0}>
-          <PieChart data={chartsData.dsl} width={500} className="chart" />
+          <PieChart data={chartsData.dsl} className="chart" />
         </ChartTabPanel>
         <ChartTabPanel value={tabValue} index={1}>
-          <PieChart
-            data={chartsData.vulnerability}
-            width={500}
-            className="chart"
-          />
+          <PieChart data={chartsData.vulnerability} className="chart" />
         </ChartTabPanel>
         <ChartTabPanel value={tabValue} index={2}>
-          <PieChart data={chartsData.impact} width={500} className="chart" />
+          <PieChart data={chartsData.impact} className="chart" />
         </ChartTabPanel>
         <ChartTabPanel value={tabValue} index={3}>
           <PieChart
             data={chartsData.reproduced}
-            width={500}
             innerRadius={80}
             className="chart"
           >
@@ -89,6 +93,17 @@ function ChartsSection({ data }) {
           </PieChart>
         </ChartTabPanel>
         <ChartTabPanel value={tabValue} index={4}>
+          <PieChart
+            data={chartsData.compiled}
+            innerRadius={80}
+            className="chart"
+          >
+            <PieChartInnerLabel sx={{ fontSize: "28px" }}>
+              {compiledPercentage}
+            </PieChartInnerLabel>
+          </PieChart>
+        </ChartTabPanel>
+        <ChartTabPanel value={tabValue} index={5}>
           <PieChart data={chartsData.rootCause} className="chart" />
         </ChartTabPanel>
       </div>
@@ -106,6 +121,8 @@ ChartsSection.propTypes = {
       id: PropTypes.string,
       title: PropTypes.string,
       reproduced: PropTypes.bool,
+      compiledDirect: PropTypes.bool,
+      compiledOriginal: PropTypes.bool,
       rootCause: PropTypes.string,
       vulnerability: PropTypes.string,
       similarBugs: PropTypes.arrayOf(PropTypes.string),

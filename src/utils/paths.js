@@ -4,9 +4,11 @@ export const paths = {
   paper: "/paper",
   tools: "/tools",
   reports: "/reports",
+  bugDetail: "/bugs/:bugId",
   reportDetail: "/reports/:reportId",
 };
 
+export const bugPath = (id) => `/bugs/${encodeURIComponent(id)}`;
 export const reportPath = (id) => `/reports/${encodeURIComponent(id)}`;
 
 export const pathsLabeled = [

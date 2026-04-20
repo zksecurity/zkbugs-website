@@ -54,7 +54,7 @@ function HomePage() {
         <ChartsSection data={filteredData} />
       </SectionContainer>
       <SectionContainer>
-        <BugsTable data={filteredData} />
+        <BugsTable data={filteredData} allBugs={bugsData} />
       </SectionContainer>
     </>
   );
