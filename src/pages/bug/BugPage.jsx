@@ -39,6 +39,17 @@ const ZKBUGS_RAW_BASE = "https://raw.githubusercontent.com/zksecurity/zkbugs/mai
 const GITHUB_PREFIX = "https://github.com/";
 const GITHUB_RAW_PREFIX = "https://raw.githubusercontent.com/";
 
+const DSL_LANGUAGE = {
+  Circom: "circom",
+  Bellperson: "rust",
+  Arkworks: "rust",
+  Halo2: "rust",
+  Plonky3: "rust",
+  risc0: "rust",
+  gnark: "go",
+  Cairo: "cairo",
+};
+
 const PageWrapperStyled = styled("div")({
   margin: "3rem 0 4rem",
 });
@@ -543,7 +554,7 @@ function BugPage() {
                 startLine={locationLineRange?.start}
                 endLine={locationLineRange?.end}
                 contextLines={15}
-                language={dsl === "Circom" ? "circom" : "plain"}
+                language={DSL_LANGUAGE[dsl] ?? "plain"}
               />
             </Box>
           )}

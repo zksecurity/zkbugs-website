@@ -7,7 +7,20 @@ import {
   Typography,
   useTheme,
 } from "@mui/material";
-import { tokenizeToLines } from "../../utils/highlightCircom";
+import { ExpandLess, ExpandMore } from "@mui/icons-material";
+import { tokenizeToLines as tokenizeCircom } from "../../utils/highlightCircom";
+import { tokenizeToLines as tokenizeRust } from "../../utils/highlightRust";
+import { tokenizeToLines as tokenizeGo } from "../../utils/highlightGo";
+import { tokenizeToLines as tokenizeCairo } from "../../utils/highlightCairo";
+
+const EXPAND_STEP = 25;
+
+const TOKENIZERS = {
+  circom: tokenizeCircom,
+  rust: tokenizeRust,
+  go: tokenizeGo,
+  cairo: tokenizeCairo,
+};
 
 const TOKEN_COLORS = {
   dark: {
@@ -95,6 +108,35 @@ const LineRowStyled = styled("div")(({ theme }) => ({
   },
 }));
 
+const ExpandRowStyled = styled("button")(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  gap: "0.35rem",
+  width: "100%",
+  minWidth: "max-content",
+  padding: "6px 12px",
+  background: theme.palette.background.default,
+  border: "none",
+  borderTop: `1px solid ${theme.palette.borders.default}`,
+  borderBottom: `1px solid ${theme.palette.borders.default}`,
+  color: theme.palette.text.secondary,
+  cursor: "pointer",
+  fontFamily: "inherit",
+  fontSize: "12px",
+  position: "sticky",
+  left: 0,
+  "& svg": { fontSize: "16px" },
+  "&:hover": {
+    background: theme.palette.action.hover,
+    color: theme.palette.text.primary,
+  },
+  "&:disabled": {
+    cursor: "default",
+    opacity: 0.5,
+  },
+}));
+
 const StatusBoxStyled = styled(Box)(({ theme }) => ({
   padding: "12px",
   border: `1px dashed ${theme.palette.borders.default}`,
@@ -117,6 +159,13 @@ function CodeSnippet({
   const scheme =
     theme.palette.mode === "light" ? TOKEN_COLORS.light : TOKEN_COLORS.dark;
   const [state, setState] = useState({ text: null, error: null, loading: true });
+  const [expandAbove, setExpandAbove] = useState(0);
+  const [expandBelow, setExpandBelow] = useState(0);
+
+  useEffect(() => {
+    setExpandAbove(0);
+    setExpandBelow(0);
+  }, [url, startLine, endLine]);
 
   useEffect(() => {
     let cancelled = false;
@@ -145,8 +194,9 @@ function CodeSnippet({
 
   const allLines = useMemo(() => {
     if (!state.text) return null;
-    if (language === "circom") {
-      return tokenizeToLines(state.text);
+    const tokenize = TOKENIZERS[language];
+    if (tokenize) {
+      return tokenize(state.text);
     }
     return state.text
       .split("\n")
@@ -156,9 +206,11 @@ function CodeSnippet({
   const slice = useMemo(() => {
     if (!allLines) return null;
     const hasRange = Number.isFinite(startLine) && Number.isFinite(endLine);
-    const from = hasRange ? Math.max(1, startLine - contextLines) : 1;
+    const from = hasRange
+      ? Math.max(1, startLine - contextLines - expandAbove)
+      : 1;
     const to = hasRange
-      ? Math.min(allLines.length, endLine + contextLines)
+      ? Math.min(allLines.length, endLine + contextLines + expandBelow)
       : allLines.length;
     const rows = [];
     for (let lineNo = from; lineNo <= to; lineNo += 1) {
@@ -168,8 +220,14 @@ function CodeSnippet({
         highlighted: hasRange && lineNo >= startLine && lineNo <= endLine,
       });
     }
-    return rows;
-  }, [allLines, startLine, endLine, contextLines]);
+    return {
+      rows,
+      canExpandAbove: hasRange && from > 1,
+      canExpandBelow: hasRange && to < allLines.length,
+      remainingAbove: from - 1,
+      remainingBelow: allLines.length - to,
+    };
+  }, [allLines, startLine, endLine, contextLines, expandAbove, expandBelow]);
 
   if (state.loading) {
     return (
@@ -190,7 +248,7 @@ function CodeSnippet({
     );
   }
 
-  if (!slice || slice.length === 0) {
+  if (!slice || slice.rows.length === 0) {
     return (
       <StatusBoxStyled className={className}>
         <Typography variant="body2">Empty file.</Typography>
@@ -198,11 +256,25 @@ function CodeSnippet({
     );
   }
 
-  const width = String(slice[slice.length - 1].lineNo).length;
+  const { rows, canExpandAbove, canExpandBelow, remainingAbove, remainingBelow } = slice;
+  const width = String(rows[rows.length - 1].lineNo).length;
+  const stepAbove = Math.min(EXPAND_STEP, remainingAbove);
+  const stepBelow = Math.min(EXPAND_STEP, remainingBelow);
 
   return (
     <WrapperStyled className={className} scheme={scheme}>
-      {slice.map((row) => (
+      {canExpandAbove && (
+        <ExpandRowStyled
+          type="button"
+          onClick={() => setExpandAbove((n) => n + EXPAND_STEP)}
+          aria-label={`Show ${stepAbove} more lines above`}
+        >
+          <ExpandLess />
+          Show {stepAbove} more line{stepAbove === 1 ? "" : "s"} above
+          {remainingAbove > stepAbove ? ` (${remainingAbove} hidden)` : ""}
+        </ExpandRowStyled>
+      )}
+      {rows.map((row) => (
         <LineRowStyled
           key={row.lineNo}
           className={row.highlighted ? "highlight" : undefined}
@@ -223,6 +295,17 @@ function CodeSnippet({
           </span>
         </LineRowStyled>
       ))}
+      {canExpandBelow && (
+        <ExpandRowStyled
+          type="button"
+          onClick={() => setExpandBelow((n) => n + EXPAND_STEP)}
+          aria-label={`Show ${stepBelow} more lines below`}
+        >
+          <ExpandMore />
+          Show {stepBelow} more line{stepBelow === 1 ? "" : "s"} below
+          {remainingBelow > stepBelow ? ` (${remainingBelow} hidden)` : ""}
+        </ExpandRowStyled>
+      )}
     </WrapperStyled>
   );
 }
@@ -234,6 +317,6 @@ CodeSnippet.propTypes = {
   startLine: PropTypes.number,
   endLine: PropTypes.number,
   contextLines: PropTypes.number,
-  language: PropTypes.oneOf(["plain", "circom"]),
+  language: PropTypes.oneOf(["plain", "circom", "rust", "go", "cairo"]),
   className: PropTypes.string,
 };
