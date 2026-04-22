@@ -240,6 +240,18 @@ function ToolsPage() {
           </FilterRowStyled>
         </FiltersContainerStyled>
 
+        <Typography
+          variant="body2"
+          color="text.secondary"
+          sx={{ marginTop: "1rem" }}
+        >
+          {filtered.length === tools.length
+            ? `${tools.length} tool${tools.length === 1 ? "" : "s"}`
+            : `${filtered.length} of ${tools.length} tool${
+                tools.length === 1 ? "" : "s"
+              }`}
+        </Typography>
+
         {view === "grid" ? (
           <GridStyled>
             {filtered.map((tool, index) => {

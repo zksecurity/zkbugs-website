@@ -319,6 +319,18 @@ function ReportsPage() {
           )}
         </FiltersContainerStyled>
 
+        <Typography
+          variant="body2"
+          color="text.secondary"
+          sx={{ marginTop: "1rem" }}
+        >
+          {filtered.length === reports.length
+            ? `${reports.length} report${reports.length === 1 ? "" : "s"}`
+            : `${filtered.length} of ${reports.length} report${
+                reports.length === 1 ? "" : "s"
+              }`}
+        </Typography>
+
         {view === "grid" ? (
           <GridStyled>
             {filtered.map((report) => {
