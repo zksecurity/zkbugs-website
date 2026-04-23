@@ -678,5 +678,146 @@
             "informational": 4
         },
         "total_bugs_processed": 3
+    },
+    {
+        "ID": "matterlabs-zkemail",
+        "File": "documents/matterlabs-zkemail.pdf",
+        "Project": "https://github.com/zkemail/email-recovery",
+        "Commit": "",
+        "Date": "25/10/2024",
+        "DSL": "Circom",
+        "Auditor": "Matter Labs",
+        "Type": "Audit Report",
+        "Notes": "ZK Email Account Recovery security review prepared for Ivy Research, LLC. Multi-repo scope: zk-email-verify@fc994976, zk-regex@53157534, ether-email-auth@8a62db1e, email-recovery@041a8826 (plus Clave, ic-dns-oracle, UserOverrideableDKIMRegistry). 4 circuit bugs extracted at Medium+ severity; remaining issues are Solidity/Rust-canister.",
+        "processed": true,
+        "bugs": {
+            "critical": 3,
+            "high": 3,
+            "medium": 6,
+            "low": 5,
+            "informational": 0
+        },
+        "total_bugs_processed": 4
+    },
+    {
+        "ID": "openzeppelin-sso",
+        "File": "documents/openzeppelin-sso.pdf",
+        "Project": "https://github.com/Moonsong-Labs/zksync-social-login-circuit",
+        "Commit": "0x27cda6e74492fbad4aa3ca37ff5084ed391b534b",
+        "Date": "15/5/2025",
+        "DSL": "Circom",
+        "Auditor": "OpenZeppelin",
+        "Type": "Audit Report",
+        "Notes": "SSO Account Recovery Circuits Audit. Findings: 0 Critical, 0 High, 2 Medium (resolved), 3 Low (resolved), 4 notes (resolved).",
+        "processed": true,
+        "bugs": {
+            "critical": 0,
+            "high": 0,
+            "medium": 2,
+            "low": 3,
+            "informational": 4
+        },
+        "total_bugs_processed": 2
+    },
+    {
+        "ID": "veridise-arianee",
+        "File": "documents/veridise-arianee.pdf",
+        "Project": "https://github.com/Arianee/arianee-sdk",
+        "Commit": "0xb7da01e",
+        "Date": "17/7/2024",
+        "DSL": "Circom",
+        "Auditor": "Veridise",
+        "Type": "Audit Report",
+        "Notes": "Audit of Arianee Full-Privacy Extension ZK Circuits (packages/privacy-circuits/src/circom). Two warning-severity findings (V-ARIA-VUL-003, V-ARIA-VUL-004) skipped as below Medium.",
+        "processed": true,
+        "bugs": {
+            "critical": 1,
+            "high": 0,
+            "medium": 1,
+            "low": 2,
+            "informational": 0
+        },
+        "total_bugs_processed": 2
+    },
+    {
+        "ID": "veridise-panther",
+        "File": "documents/veridise-panther.pdf",
+        "Project": "https://www.pantherprotocol.io/",
+        "Commit": "a16a43e",
+        "Date": "25/4/2025",
+        "DSL": "Circom",
+        "Auditor": "Veridise",
+        "Type": "Audit Report",
+        "Notes": "Panther Protocol audit (mixed Solidity + Circom). 72 issues. Extracted 11 Medium+ circuit-level bugs; remaining findings are Solidity-only or below Medium severity. Audit-state commit a16a43e is not public; used b464348b (parent of the first public fix commit e9f262b9) as the vulnerable commit.",
+        "processed": true,
+        "bugs": {
+            "critical": 7,
+            "high": 10,
+            "medium": 11,
+            "low": 14,
+            "warning": 28,
+            "informational": 2
+        },
+        "total_bugs_processed": 11
+    },
+    {
+        "ID": "veridise-panther-2",
+        "File": "documents/veridise-panther-2.pdf",
+        "Project": "https://github.com/pantherfoundation/panther-core",
+        "Commit": "06a818632053719b56ace37ef12c9b31904af1e2",
+        "Date": "18/9/2025",
+        "DSL": "Circom",
+        "Auditor": "Veridise",
+        "Type": "Audit Report",
+        "Notes": "Panther Protocol follow-up audit. 3 issues (V-PAN-VUL-001 High, V-PAN-VUL-002 Low, V-PAN-VUL-003 Warning). Only V-PAN-VUL-001 meets the Medium+ threshold; V-PAN-VUL-002 and V-PAN-VUL-003 are below threshold.",
+        "processed": true,
+        "bugs": {
+            "critical": 0,
+            "high": 1,
+            "medium": 0,
+            "low": 1,
+            "informational": 1
+        },
+        "total_bugs_processed": 1
+    },
+    {
+        "ID": "veridise-rln",
+        "File": "documents/veridise-rln.pdf",
+        "Project": "https://github.com/Rate-Limiting-Nullifier/circom-rln",
+        "Commit": "0x022b690b",
+        "Date": "1/9/2023",
+        "DSL": "Circom",
+        "Auditor": "Veridise",
+        "Type": "Audit Report",
+        "Notes": "Rate Limiting Nullifier (RLN) audit for Privacy and Scaling Exploration. 4 vulns (RLN-001 to 004) plus 6 formal-verification spec items (V-RLN-SPEC-001 to 006) which are proofs and not counted as bugs.",
+        "processed": true,
+        "bugs": {
+            "critical": 0,
+            "high": 0,
+            "medium": 1,
+            "low": 2,
+            "informational": 1
+        },
+        "total_bugs_processed": 1
+    },
+    {
+        "ID": "veridise-sismo",
+        "File": "documents/veridise-sismo.pdf",
+        "Project": "https://github.com/sismo-core/hydra-s2-zkps",
+        "Commit": "0x2b79ab3",
+        "Date": "14/4/2023",
+        "DSL": "Circom",
+        "Auditor": "Veridise",
+        "Type": "Audit Report",
+        "Notes": "Sismo Hydra-S2 audit. 1 vuln (V-SH2-VUL-001) plus 6 formal-verification spec items (V-SH2-SPEC-001 to 006, not bugs).",
+        "processed": true,
+        "bugs": {
+            "critical": 0,
+            "high": 0,
+            "medium": 1,
+            "low": 0,
+            "informational": 0
+        },
+        "total_bugs_processed": 1
     }
 ]
