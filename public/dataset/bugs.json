@@ -2430,7 +2430,7 @@
         "Location": {
             "Path": "packages/circuits/lib/ownership_proof.circom",
             "Function": "OwnershipProof",
-            "Line": "14"
+            "Line": "12"
         },
         "Source": {
             "Audit Report": {
@@ -2520,7 +2520,7 @@
         "Location": {
             "Path": "circuits/spend.circom",
             "Function": "Spend",
-            "Line": "42-45"
+            "Line": "41-44"
         },
         "Source": {
             "GitHub Issue": {
@@ -2707,7 +2707,7 @@
         "Location": {
             "Path": "packages/circuits/semaphore.circom",
             "Function": "Semaphore",
-            "Line": "47-88"
+            "Line": "73-81"
         },
         "Source": {
             "Audit Report": {
@@ -2752,7 +2752,7 @@
         "Location": {
             "Path": "circuits/ExtractStringFromPoint.circom",
             "Function": "EmitIfInRange",
-            "Line": "30-38"
+            "Line": "31-39"
         },
         "Source": {
             "GitHub Issue": {
@@ -3002,7 +3002,7 @@
         "Location": {
             "Path": "src/clampTensor.circom",
             "Function": "Clamp",
-            "Line": "39-70"
+            "Line": "38-67"
         },
         "Source": {
             "GitHub Issue": {
@@ -3102,7 +3102,7 @@
         "Location": {
             "Path": "circuits/bigint.circom",
             "Function": "BigMod",
-            "Line": "363-417"
+            "Line": "371-381"
         },
         "Source": {
             "Audit Report": {
@@ -3199,7 +3199,7 @@
         "Location": {
             "Path": "circuits/circuits/zAccountRenewalV1.circom",
             "Function": "ZAccountRenewalV1",
-            "Line": "320-330"
+            "Line": "314-321"
         },
         "Source": {
             "Audit Report": {
@@ -3296,7 +3296,7 @@
         "Location": {
             "Path": "circuits/circuits/zSwapV1.circom",
             "Function": "ZSwapV1",
-            "Line": "628-640"
+            "Line": "628-637"
         },
         "Source": {
             "Audit Report": {
@@ -3342,7 +3342,7 @@
         "Location": {
             "Path": "circuits/circuits/templates/zoneIdInclusionProver.circom",
             "Function": "ZoneIdInclusionProver",
-            "Line": "30-45"
+            "Line": "14-41"
         },
         "Source": {
             "Audit Report": {
@@ -3388,7 +3388,7 @@
         "Location": {
             "Path": "circuits/circuits/templates/trustProvidersKyt.circom",
             "Function": "TrustProvidersKyt",
-            "Line": "270-275"
+            "Line": "272-344"
         },
         "Source": {
             "Audit Report": {
@@ -3434,7 +3434,7 @@
         "Location": {
             "Path": "circuits/circuits/zSwapV1.circom",
             "Function": "ZSwapV1",
-            "Line": "680-690"
+            "Line": "683-686"
         },
         "Source": {
             "Audit Report": {
@@ -3526,7 +3526,7 @@
         "Location": {
             "Path": "circuits/circuits/templates/rewardsExtended.circom",
             "Function": "RewardsExtended",
-            "Line": "20-85"
+            "Line": "42-76"
         },
         "Source": {
             "Audit Report": {
@@ -3572,7 +3572,7 @@
         "Location": {
             "Path": "circuits/circuits/templates/dataEscrowElGamalEncryption.circom",
             "Function": "DataEscrowElGamalEncryption",
-            "Line": "148-152"
+            "Line": "148-150"
         },
         "Source": {
             "Audit Report": {
@@ -3618,7 +3618,7 @@
         "Location": {
             "Path": "circuits/circuits/templates/zAccountBlackListLeafInclusionProver.circom",
             "Function": "ZAccountBlackListLeafInclusionProver",
-            "Line": "18-80"
+            "Line": "54-67"
         },
         "Source": {
             "Audit Report": {
@@ -3664,7 +3664,7 @@
         "Location": {
             "Path": "circuits/circuits/templates/zAccountBlackListLeafInclusionProver.circom",
             "Function": "ZAccountBlackListLeafInclusionProver",
-            "Line": "54-80"
+            "Line": "54-67"
         },
         "Source": {
             "Audit Report": {
@@ -3768,7 +3768,7 @@
         "Location": {
             "Path": "packages/circuits/circuits/bigComparators.circom",
             "Function": "BigLessThan",
-            "Line": "45"
+            "Line": "41-45"
         },
         "Source": {
             "Audit Report": {
@@ -3818,7 +3818,7 @@
         "Location": {
             "Path": "circuits/withdraw.circom",
             "Function": "Withdraw",
-            "Line": "5-11"
+            "Line": "5-12"
         },
         "Source": {
             "Audit Report": {
@@ -3917,7 +3917,7 @@
         "Location": {
             "Path": "circuits/hydra-s2.circom",
             "Function": "hydraS2",
-            "Line": "116-131"
+            "Line": "125-131"
         },
         "Source": {
             "Audit Report": {
@@ -4011,7 +4011,7 @@
         "Location": {
             "Path": "circuits/circuits/disclose/vc_and_disclose_aadhaar.circom",
             "Function": "VC_AND_DISCLOSE_Aadhaar",
-            "Line": "41-198"
+            "Line": "133-184"
         },
         "Source": {
             "Audit Report": {
@@ -4058,9 +4058,9 @@
         "Codebase": "dataset/codebases/circom/selfxyz/self/4f18c75041bb47c1862169eef82c22067642a83a",
         "Direct Entrypoint": "circuit.circom",
         "Location": {
-            "Path": "circuits/circuits/utils/crypto/merkle-trees/smt.circom",
+            "Path": "circuits/node_modules/@zk-kit/binary-merkle-root.circom/src/binary-merkle-root.circom",
             "Function": "BinaryMerkleRoot",
-            "Line": "57-59"
+            "Line": "29-40"
         },
         "Source": {
             "Audit Report": {
@@ -4104,7 +4104,7 @@
         "Location": {
             "Path": "circuits/circuits/utils/crypto/merkle-trees/smt.circom",
             "Function": "SMTVerify",
-            "Line": "18-67"
+            "Line": "27-35"
         },
         "Source": {
             "Audit Report": {
@@ -4154,7 +4154,7 @@
         "Location": {
             "Path": "circuits/circuits/utils/passport/customHashers.circom",
             "Function": "PackBytesAndPoseidon",
-            "Line": "54-60"
+            "Line": "57-58"
         },
         "Source": {
             "Audit Report": {
@@ -4202,7 +4202,7 @@
         "Location": {
             "Path": "circuits/circuits/utils/crypto/bigInt/bigIntComparators.circom",
             "Function": "BigIntIsZero",
-            "Line": "05-26"
+            "Line": "18-42"
         },
         "Source": {
             "Audit Report": {
@@ -4500,7 +4500,7 @@
         "Location": {
             "Path": "circuits/montgomery.circom",
             "Function": "MontgomeryAdd",
-            "Line": "16-17"
+            "Line": "102-103"
         },
         "Source": {
             "Audit Report": {
@@ -4551,7 +4551,7 @@
         "Location": {
             "Path": "circuits/escalarmulany.circom",
             "Function": "BitElementMulAny",
-            "Line": "21-22"
+            "Line": "41-42"
         },
         "Source": {
             "Audit Report": {
@@ -4600,7 +4600,7 @@
         "Location": {
             "Path": "circuits/montgomery.circom",
             "Function": "MontgomeryDouble",
-            "Line": "18-19"
+            "Line": "137-138"
         },
         "Source": {
             "Audit Report": {
@@ -4651,7 +4651,7 @@
         "Location": {
             "Path": "circuits/multiplexer.circom",
             "Function": "Decoder",
-            "Line": "10-11"
+            "Line": "85-86"
         },
         "Source": {
             "Audit Report": {
@@ -4695,7 +4695,7 @@
         "Location": {
             "Path": "circuits/escalarmulfix.circom",
             "Function": "WindowMulFix",
-            "Line": "70-131"
+            "Line": "48-132"
         },
         "Source": {
             "Audit Report": {
@@ -4744,7 +4744,7 @@
         "Location": {
             "Path": "circuits/pedersen.circom",
             "Function": "Window4",
-            "Line": "47-108"
+            "Line": "25-109"
         },
         "Source": {
             "Audit Report": {
@@ -4793,7 +4793,7 @@
         "Location": {
             "Path": "circuits/montgomery.circom",
             "Function": "Edwards2Montgomery",
-            "Line": "7-8"
+            "Line": "34-35"
         },
         "Source": {
             "Audit Report": {
@@ -4841,7 +4841,7 @@
         "Location": {
             "Path": "circuits/mimcsponge.circom",
             "Function": "MiMCSponge",
-            "Line": "28"
+            "Line": "26"
         },
         "Source": {
             "Bug Tracker": {
@@ -4891,7 +4891,7 @@
         "Location": {
             "Path": "circuits/montgomery.circom",
             "Function": "Montgomery2Edwards",
-            "Line": "7-8"
+            "Line": "53-54"
         },
         "Source": {
             "Audit Report": {
@@ -4937,7 +4937,7 @@
         "Direct Entrypoint": "circuit.circom",
         "Location": {
             "Path": "circuits/lib/utils/claimUtils.circom",
-            "Function": "Num2Bits",
+            "Function": "getClaimRevNonce",
             "Line": "123"
         },
         "Source": {
@@ -5132,7 +5132,7 @@
         "Location": {
             "Path": "packages/privacy-circuits/src/circom/ownershipVerifier/ownershipVerifier.circom",
             "Function": "OwnershipVerifier",
-            "Line": "1-29"
+            "Line": "5-31"
         },
         "Source": {
             "Audit Report": {
@@ -5178,7 +5178,7 @@
         "Location": {
             "Path": "packages/privacy-circuits/src/circom/creditVerifier/creditVerifier.circom",
             "Function": "CreditVerifier",
-            "Line": "1-81"
+            "Line": "11-77"
         },
         "Source": {
             "Audit Report": {
@@ -5224,9 +5224,9 @@
         "Codebase": "dataset/codebases/circom/succinctlabs/telepathy-circuits/b0c839cef30c3c25ef41d1ad3000081784766934",
         "Direct Entrypoint": "circuit.circom",
         "Location": {
-            "Path": "circuits/pairing/bls12_381_hash_to_G2.circom",
-            "Function": "SubgroupCheckG1WithValidX",
-            "Line": "723-731"
+            "Path": "circuits/rotate.circom",
+            "Function": "Rotate",
+            "Line": "104-108"
         },
         "Source": {
             "Audit Report": {
@@ -5275,8 +5275,8 @@
         "Direct Entrypoint": "circuit.circom",
         "Location": {
             "Path": "circuits/pairing/bls_signature.circom",
-            "Function": "CoreVerifyPubkeyG1ToyExample",
-            "Line": "77-95"
+            "Function": "CoreVerifyPubkeyG1",
+            "Line": "76-94"
         },
         "Source": {
             "Audit Report": {
@@ -5325,7 +5325,7 @@
         "Location": {
             "Path": "circuits/hash_to_field.circom",
             "Function": "I2OSP",
-            "Line": "3-23"
+            "Line": "237-257"
         },
         "Source": {
             "Audit Report": {
@@ -5374,7 +5374,7 @@
         "Location": {
             "Path": "circuits/bls.circom",
             "Function": "G1BigIntToSignFlag",
-            "Line": "198-227"
+            "Line": "197-226"
         },
         "Source": {
             "Audit Report": {
@@ -5470,7 +5470,7 @@
         "Location": {
             "Path": "circuits/hash_to_field.circom",
             "Function": "ArrayXOR",
-            "Line": "231"
+            "Line": "232"
         },
         "Source": {
             "Audit Report": {
@@ -5573,7 +5573,7 @@
         "Location": {
             "Path": "packages/circuits/lib/fp.circom",
             "Function": "FpMul",
-            "Line": "16-76"
+            "Line": "40-52"
         },
         "Source": {
             "Audit Report": {
@@ -5625,7 +5625,7 @@
         "Location": {
             "Path": "packages/circuits/lib/sha.circom",
             "Function": "Sha256General",
-            "Line": ""
+            "Line": "110-195"
         },
         "Source": {
             "Audit Report": {
