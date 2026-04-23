@@ -39,6 +39,13 @@
       "examples": [
         "succinctlabs/sp1/ghsa-c873-wfhp-wx5m-1"
       ]
+    },
+    {
+      "title": "Private Information Leakage",
+      "description": "The circuit's constraints inadvertently reveal information about private inputs: a valid proof forces the verifier to learn partial information (e.g., a bound, equality, or correlation) about a signal that was meant to remain hidden. Soundness is preserved — no invalid witness is accepted — but the zero-knowledge / privacy property is violated. This typically arises from unconditional constraints that couple private signals to public ones, or from constraints that should have been gated on a flag but are applied regardless.",
+      "examples": [
+        "sismo-core/hydra-s2-zkps/veridise_private_information_leakage"
+      ]
     }
   ],
   "root_causes": [
