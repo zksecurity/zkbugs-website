@@ -1075,6 +1075,20 @@ function ToolsEvaluationPage() {
         </SectionStyled>
 
         <SectionStyled>
+          <Alert severity="info" variant="outlined">
+            <strong>False positives are not measured here.</strong> Each bug in
+            this dataset is a real bug, so a &quot;Detected&quot; verdict is
+            only counted as a true positive. The page does not weigh how often
+            each tool flags clean code as vulnerable. In practice{" "}
+            <strong>Ecne</strong> and <strong>Circomspect</strong> tend to
+            produce many false positives on real codebases, while{" "}
+            <strong>Picus</strong>, <strong>Civer</strong>, and{" "}
+            <strong>zkFuzz</strong> typically have far fewer. Take the
+            detection counts here as one signal, not the whole picture.
+          </Alert>
+        </SectionStyled>
+
+        <SectionStyled>
           <Typography variant="h6" className="section-title">
             Scope
           </Typography>
