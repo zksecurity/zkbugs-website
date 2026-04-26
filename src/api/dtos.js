@@ -75,4 +75,8 @@ export class JsonDTO {
     const descriptionsCamel = this.convertToCamelCase(descriptionsJSON);
     return descriptionsCamel;
   }
+
+  static convertToolsEvaluation(json) {
+    return this.convertToCamelCase(json);
+  }
 }

@@ -33,5 +33,18 @@ npm install  # or yarn install
 
 `npm run preview  # or yarn preview`
 
+#### Tools Evaluation dataset
+
+The `/tools-evaluation` page is backed by a pre-processed file that summarizes
+the latest [zkhydra](https://github.com/zksecurity/zkhydra) run. To regenerate
+it from a local zkhydra output directory:
+
+```
+python3 scripts/build_tools_evaluation.py /path/to/zkhydra/output/<run-name>
+```
+
+The script writes `public/dataset/tools-evaluation.json` and copies the three
+PDF reports into `public/dataset/tools-evaluation/`.
+
 
 

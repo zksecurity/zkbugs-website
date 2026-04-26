@@ -15,6 +15,9 @@ const BugPage = lazy(() => import("../pages/bug/BugPage"));
 const ReportViewerPage = lazy(() =>
   import("../pages/reports/ReportViewerPage")
 );
+const ToolsEvaluationPage = lazy(() =>
+  import("../pages/tools-evaluation/ToolsEvaluationPage")
+);
 
 function RootLayout() {
   return (
@@ -27,6 +30,7 @@ function RootLayout() {
         <Route path={paths.descriptions} element={<DescriptionsPage />} />
         <Route path={paths.paper} element={<PaperPage />} />
         <Route path={paths.tools} element={<ToolsPage />} />
+        <Route path={paths.toolsEvaluation} element={<ToolsEvaluationPage />} />
         <Route path={paths.bugDetail} element={<BugPage />} />
       </Routes>
       <Footer />

@@ -1,0 +1,330 @@
+{
+  "generated_at": "2026-04-26T11:29:48+00:00",
+  "timeout_seconds": 300,
+  "source": {
+    "repo": "https://github.com/zksecurity/zkhydra",
+    "snapshot_summary": {
+      "mode": "both",
+      "dataset": "/Users/schaliasos/Documents/zksecurity/newzkbugs/dataset/circom",
+      "output_root": "output/both-test",
+      "modes": {
+        "direct": {
+          "ran": true,
+          "output_dir": "output/both-test/direct",
+          "total": 2,
+          "processed": 2,
+          "errors": 0,
+          "skipped": 0,
+          "evaluation_counts": null
+        },
+        "original": {
+          "ran": true,
+          "output_dir": "output/both-test/original",
+          "total": 1,
+          "processed": 1,
+          "errors": 0,
+          "skipped": 0,
+          "evaluation_counts": null
+        }
+      },
+      "bugs_with_distinct_original": [
+        "daira_hopwood_darkforest_v0_3_missing_bit_length_check"
+      ]
+    }
+  },
+  "tools": [
+    {
+      "id": "picus",
+      "dir": "picus",
+      "name": "Picus",
+      "kind": "Symbolic Verification",
+      "url": "https://github.com/Veridise/Picus",
+      "description": "SMT-based under-constrained signal detector for circom circuits."
+    },
+    {
+      "id": "civer",
+      "dir": "circom_civer",
+      "name": "Civer",
+      "kind": "Formal Verification",
+      "url": "https://github.com/costa-group/circom_civer",
+      "description": "Verifies circom templates against safety annotations."
+    },
+    {
+      "id": "ecne",
+      "dir": "ecneproject",
+      "name": "Ecne",
+      "kind": "Symbolic Verification",
+      "url": "https://github.com/franklynwang/EcneProject",
+      "description": "R1CS soundness checker that bounds witnesses against inputs."
+    },
+    {
+      "id": "circomspect",
+      "dir": "circomspect",
+      "name": "Circomspect",
+      "kind": "Static Analysis",
+      "url": "https://github.com/trailofbits/circomspect",
+      "description": "Lints circom circuits for known anti-patterns."
+    },
+    {
+      "id": "zkfuzz",
+      "dir": "zkfuzz",
+      "name": "zkFuzz",
+      "kind": "Fuzzing",
+      "url": "https://github.com/saurabh4/zkfuzz",
+      "description": "Genetic fuzzer that searches for unsoundness counterexamples."
+    }
+  ],
+  "modes": {
+    "direct": {
+      "total_bugs": 2,
+      "summary": {
+        "picus": {
+          "safe": 0,
+          "vulnerable": 0,
+          "error": 0,
+          "timeout": 0,
+          "unknown": 0,
+          "missing": 2
+        },
+        "civer": {
+          "safe": 0,
+          "vulnerable": 0,
+          "error": 0,
+          "timeout": 0,
+          "unknown": 0,
+          "missing": 2
+        },
+        "ecne": {
+          "safe": 0,
+          "vulnerable": 0,
+          "error": 0,
+          "timeout": 0,
+          "unknown": 0,
+          "missing": 2
+        },
+        "circomspect": {
+          "safe": 2,
+          "vulnerable": 0,
+          "error": 0,
+          "timeout": 0,
+          "unknown": 0,
+          "missing": 0
+        },
+        "zkfuzz": {
+          "safe": 0,
+          "vulnerable": 0,
+          "error": 0,
+          "timeout": 0,
+          "unknown": 0,
+          "missing": 2
+        }
+      },
+      "errors": {
+        "picus": [],
+        "civer": [],
+        "ecne": [],
+        "circomspect": [],
+        "zkfuzz": []
+      },
+      "bugs": [
+        {
+          "id": "daira_hopwood_darkforest_v0_3_missing_bit_length_check",
+          "website_bug_id": "darkforest-eth/darkforest-v0.3/Daira-Hopwood-Missing-Bit-Length-Check",
+          "title": "Dark Forest v0.3: Missing Bit Length Check",
+          "ground_truth": {
+            "vulnerability": "Under-Constrained",
+            "root_cause": "Unsafe Reuse of Circuit",
+            "impact": "Soundness",
+            "reproduced": false,
+            "compiled_direct": true,
+            "compiled_original": true,
+            "project": "https://github.com/darkforest-eth/darkforest-v0.3"
+          },
+          "tools": {
+            "picus": {
+              "verdict": "missing",
+              "details": {
+                "reason": "Tool not run"
+              }
+            },
+            "civer": {
+              "verdict": "missing",
+              "details": {
+                "reason": "Tool not run"
+              }
+            },
+            "ecne": {
+              "verdict": "missing",
+              "details": {
+                "reason": "Tool not run"
+              }
+            },
+            "circomspect": {
+              "verdict": "safe",
+              "details": {
+                "execution_time_s": 0.02,
+                "ground_truth_match": "FalseNegative"
+              }
+            },
+            "zkfuzz": {
+              "verdict": "missing",
+              "details": {
+                "reason": "Tool not run"
+              }
+            }
+          }
+        },
+        {
+          "id": "veridise_decoder_accepting_bogus_output_signal",
+          "website_bug_id": "iden3/circomlib/veridise-V-CIRCOMLIB-VUL-001",
+          "title": "Decoder accepting bogus output signal",
+          "ground_truth": {
+            "vulnerability": "Under-Constrained",
+            "root_cause": "Wrong Translation of Logic into Constraints",
+            "impact": "Soundness",
+            "reproduced": false,
+            "compiled_direct": true,
+            "compiled_original": true,
+            "project": "https://github.com/iden3/circomlib"
+          },
+          "tools": {
+            "picus": {
+              "verdict": "missing",
+              "details": {
+                "reason": "Tool not run"
+              }
+            },
+            "civer": {
+              "verdict": "missing",
+              "details": {
+                "reason": "Tool not run"
+              }
+            },
+            "ecne": {
+              "verdict": "missing",
+              "details": {
+                "reason": "Tool not run"
+              }
+            },
+            "circomspect": {
+              "verdict": "safe",
+              "details": {
+                "execution_time_s": 0.01,
+                "ground_truth_match": "FalseNegative"
+              }
+            },
+            "zkfuzz": {
+              "verdict": "missing",
+              "details": {
+                "reason": "Tool not run"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "original": {
+      "total_bugs": 1,
+      "summary": {
+        "picus": {
+          "safe": 0,
+          "vulnerable": 0,
+          "error": 0,
+          "timeout": 0,
+          "unknown": 0,
+          "missing": 1
+        },
+        "civer": {
+          "safe": 0,
+          "vulnerable": 0,
+          "error": 0,
+          "timeout": 0,
+          "unknown": 0,
+          "missing": 1
+        },
+        "ecne": {
+          "safe": 0,
+          "vulnerable": 0,
+          "error": 0,
+          "timeout": 0,
+          "unknown": 0,
+          "missing": 1
+        },
+        "circomspect": {
+          "safe": 0,
+          "vulnerable": 1,
+          "error": 0,
+          "timeout": 0,
+          "unknown": 0,
+          "missing": 0
+        },
+        "zkfuzz": {
+          "safe": 0,
+          "vulnerable": 0,
+          "error": 0,
+          "timeout": 0,
+          "unknown": 0,
+          "missing": 1
+        }
+      },
+      "errors": {
+        "picus": [],
+        "civer": [],
+        "ecne": [],
+        "circomspect": [],
+        "zkfuzz": []
+      },
+      "bugs": [
+        {
+          "id": "daira_hopwood_darkforest_v0_3_missing_bit_length_check",
+          "website_bug_id": "darkforest-eth/darkforest-v0.3/Daira-Hopwood-Missing-Bit-Length-Check",
+          "title": "Dark Forest v0.3: Missing Bit Length Check",
+          "ground_truth": {
+            "vulnerability": "Under-Constrained",
+            "root_cause": "Unsafe Reuse of Circuit",
+            "impact": "Soundness",
+            "reproduced": false,
+            "compiled_direct": true,
+            "compiled_original": true,
+            "project": "https://github.com/darkforest-eth/darkforest-v0.3"
+          },
+          "tools": {
+            "picus": {
+              "verdict": "missing",
+              "details": {
+                "reason": "Tool not run"
+              }
+            },
+            "civer": {
+              "verdict": "missing",
+              "details": {
+                "reason": "Tool not run"
+              }
+            },
+            "ecne": {
+              "verdict": "missing",
+              "details": {
+                "reason": "Tool not run"
+              }
+            },
+            "circomspect": {
+              "verdict": "vulnerable",
+              "details": {
+                "warnings": 3,
+                "notes": 5,
+                "execution_time_s": 0.03,
+                "ground_truth_match": "Undecided"
+              }
+            },
+            "zkfuzz": {
+              "verdict": "missing",
+              "details": {
+                "reason": "Tool not run"
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

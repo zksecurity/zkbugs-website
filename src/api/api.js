@@ -28,9 +28,16 @@ const fetchSecurityTools = async () => {
   return tools;
 };
 
+const fetchToolsEvaluation = async () => {
+  const response = await fetch("/dataset/tools-evaluation.json");
+  const rawData = await response.json();
+  return JsonDTO.convertToolsEvaluation(rawData);
+};
+
 export const api = {
   fetchBugs,
   fetchReports,
   fetchDescriptions,
   fetchSecurityTools,
+  fetchToolsEvaluation,
 };

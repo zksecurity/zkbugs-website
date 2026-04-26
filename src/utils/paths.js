@@ -3,6 +3,7 @@ export const paths = {
   home: "/",
   paper: "/paper",
   tools: "/tools",
+  toolsEvaluation: "/tools-evaluation",
   reports: "/reports",
   bugDetail: "/bugs/:bugId",
   reportDetail: "/reports/:reportId",
@@ -16,5 +17,6 @@ export const pathsLabeled = [
   { to: paths.reports, label: "Reports" },
   { to: paths.descriptions, label: "Descriptions" },
   { to: paths.tools, label: "Security Tools" },
+  { to: paths.toolsEvaluation, label: "Tools Evaluation" },
   { to: paths.paper, label: "Paper" },
 ];
