@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { Fragment, useMemo, useState } from "react";
 import PropTypes from "prop-types";
 import { Link as RouterLink } from "react-router";
 import {
@@ -278,6 +278,61 @@ function detectionDistribution(bugs, tools) {
   return bucket;
 }
 
+function computeOverlap(modeObj, tools) {
+  // Returns { perTool: { id -> {caught, unique, shared} },
+  //           pairwise: { idA -> { idB -> intersection } },
+  //           anyCaught, totalBugs }
+  const perTool = Object.fromEntries(
+    tools.map((t) => [t.id, { caughtSet: new Set(), unique: 0, shared: 0 }])
+  );
+  let anyCaught = 0;
+  if (!modeObj?.bugs) {
+    return {
+      perTool: Object.fromEntries(
+        tools.map((t) => [t.id, { caught: 0, unique: 0, shared: 0 }])
+      ),
+      pairwise: {},
+      anyCaught: 0,
+      totalBugs: 0,
+    };
+  }
+  modeObj.bugs.forEach((bug) => {
+    const detectors = tools.filter(
+      (t) => bug.tools?.[t.id]?.verdict === "vulnerable"
+    );
+    if (detectors.length === 0) return;
+    anyCaught += 1;
+    detectors.forEach((t) => {
+      perTool[t.id].caughtSet.add(bug.id);
+      if (detectors.length === 1) perTool[t.id].unique += 1;
+      else perTool[t.id].shared += 1;
+    });
+  });
+  const pairwise = {};
+  tools.forEach((a) => {
+    pairwise[a.id] = {};
+    tools.forEach((b) => {
+      let count = 0;
+      perTool[a.id].caughtSet.forEach((id) => {
+        if (perTool[b.id].caughtSet.has(id)) count += 1;
+      });
+      pairwise[a.id][b.id] = count;
+    });
+  });
+  const perToolPlain = Object.fromEntries(
+    Object.entries(perTool).map(([id, v]) => [
+      id,
+      { caught: v.caughtSet.size, unique: v.unique, shared: v.shared },
+    ])
+  );
+  return {
+    perTool: perToolPlain,
+    pairwise,
+    anyCaught,
+    totalBugs: modeObj.bugs.length,
+  };
+}
+
 function ToolsEvaluationPage() {
   const theme = useTheme();
   const data = useToolsEvaluation();
@@ -331,6 +386,15 @@ function ToolsEvaluationPage() {
       return true;
     });
   }, [mode, directData, originalData, activeVulnerability, reproducedFilter]);
+
+  const directOverlap = useMemo(
+    () => computeOverlap(directData, tools),
+    [directData, tools]
+  );
+  const originalOverlap = useMemo(
+    () => computeOverlap(originalData, tools),
+    [originalData, tools]
+  );
 
   const filteredBoth = useMemo(() => {
     return bothBugs.filter((bug) => {
@@ -469,6 +533,198 @@ function ToolsEvaluationPage() {
         sub: `${stats.totals.vulnerable} of usable runs caught the bug`,
       },
     ];
+  };
+
+  const renderOverlap = (modeObj, overlap, title) => {
+    const orderedTools = tools
+      .slice()
+      .sort((a, b) => overlap.perTool[b.id].caught - overlap.perTool[a.id].caught);
+    const uniqueColor = theme.palette.success.main;
+    const sharedColor =
+      theme.palette.mode === "dark"
+        ? "rgba(102, 187, 106, 0.55)"
+        : "rgba(46, 125, 50, 0.45)";
+    const series = [
+      {
+        label: "Unique to this tool",
+        data: orderedTools.map((t) => overlap.perTool[t.id].unique),
+        stack: "overlap",
+        color: uniqueColor,
+      },
+      {
+        label: "Shared with at least one other",
+        data: orderedTools.map((t) => overlap.perTool[t.id].shared),
+        stack: "overlap",
+        color: sharedColor,
+      },
+    ];
+
+    const maxPair = Math.max(
+      1,
+      ...tools.flatMap((a) =>
+        tools.map((b) => (a.id === b.id ? 0 : overlap.pairwise[a.id][b.id]))
+      )
+    );
+
+    const cellBackground = (count, isDiagonal) => {
+      if (isDiagonal) {
+        return theme.palette.mode === "dark"
+          ? "rgba(255,255,255,0.04)"
+          : "rgba(0,0,0,0.03)";
+      }
+      if (count === 0) return "transparent";
+      const intensity = count / maxPair;
+      if (theme.palette.mode === "dark") {
+        return `rgba(102, 187, 106, ${0.18 + 0.45 * intensity})`;
+      }
+      return `rgba(46, 125, 50, ${0.12 + 0.45 * intensity})`;
+    };
+
+    return (
+      <Box sx={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+        {title && (
+          <Typography
+            variant="subtitle2"
+            sx={{ color: "text.secondary" }}
+          >
+            {title}
+          </Typography>
+        )}
+        <CardStyled elevation={0}>
+          <Typography
+            variant="subtitle2"
+            sx={{ marginBottom: "0.5rem", fontWeight: 600 }}
+          >
+            Unique vs shared detections
+          </Typography>
+          <Typography
+            variant="body2"
+            color="text.secondary"
+            sx={{ marginBottom: "0.75rem", lineHeight: 1.5 }}
+          >
+            For each tool: how many bugs only this tool flagged (top segment)
+            vs how many it flagged together with at least one other tool
+            (lighter segment). Sorted by total catches.
+          </Typography>
+          <BarChart
+            xAxis={[{ data: orderedTools.map((t) => t.name), scaleType: "band" }]}
+            series={series}
+            height={300}
+            margin={{ top: 24, right: 220, bottom: 50, left: 56 }}
+            slotProps={{
+              legend: {
+                direction: "column",
+                position: { vertical: "middle", horizontal: "right" },
+                itemMarkWidth: 14,
+                itemMarkHeight: 14,
+                itemGap: 8,
+                labelStyle: { fontSize: 13 },
+              },
+            }}
+          />
+        </CardStyled>
+        <CardStyled elevation={0}>
+          <Typography
+            variant="subtitle2"
+            sx={{ marginBottom: "0.5rem", fontWeight: 600 }}
+          >
+            Pairwise overlap (bugs both tools flagged)
+          </Typography>
+          <Typography
+            variant="body2"
+            color="text.secondary"
+            sx={{ marginBottom: "0.75rem", lineHeight: 1.5 }}
+          >
+            Each cell shows the number of bugs that the row tool and the
+            column tool both flagged as vulnerable. The diagonal is each
+            tool&apos;s total catches. Darker cells mean more agreement.
+          </Typography>
+          <Box sx={{ overflowX: "auto" }}>
+            <Box
+              sx={{
+                display: "grid",
+                gridTemplateColumns: `minmax(110px, max-content) repeat(${tools.length}, minmax(72px, 1fr))`,
+                rowGap: "2px",
+                columnGap: "2px",
+                fontSize: "0.85rem",
+                minWidth: "max-content",
+              }}
+            >
+              <div />
+              {tools.map((t) => (
+                <Box
+                  key={`h-${t.id}`}
+                  sx={{
+                    color: "text.secondary",
+                    fontWeight: 600,
+                    textAlign: "center",
+                    padding: "6px 4px",
+                    fontSize: "0.78rem",
+                  }}
+                >
+                  {t.name}
+                </Box>
+              ))}
+              {tools.map((rowTool) => (
+                <Fragment key={`r-${rowTool.id}`}>
+                  <Box
+                    sx={{
+                      color: "text.secondary",
+                      fontWeight: 600,
+                      padding: "6px 8px",
+                      whiteSpace: "nowrap",
+                      fontSize: "0.78rem",
+                    }}
+                  >
+                    {rowTool.name}
+                  </Box>
+                  {tools.map((colTool) => {
+                    const value = overlap.pairwise[rowTool.id][colTool.id];
+                    const isDiagonal = rowTool.id === colTool.id;
+                    return (
+                      <Tooltip
+                        key={`c-${rowTool.id}-${colTool.id}`}
+                        title={
+                          isDiagonal
+                            ? `${rowTool.name} caught ${value} bugs total`
+                            : `${rowTool.name} ∩ ${colTool.name}: ${value}`
+                        }
+                      >
+                        <Box
+                          sx={{
+                            backgroundColor: cellBackground(value, isDiagonal),
+                            padding: "8px 4px",
+                            textAlign: "center",
+                            fontWeight: isDiagonal ? 700 : 500,
+                            color: isDiagonal
+                              ? "text.secondary"
+                              : "text.primary",
+                            borderRadius: "4px",
+                          }}
+                        >
+                          {value}
+                        </Box>
+                      </Tooltip>
+                    );
+                  })}
+                </Fragment>
+              ))}
+            </Box>
+          </Box>
+          {overlap.anyCaught > 0 && (
+            <Typography
+              variant="caption"
+              color="text.secondary"
+              sx={{ display: "block", marginTop: "0.75rem" }}
+            >
+              {overlap.anyCaught} of {overlap.totalBugs} bugs were caught by at
+              least one tool. Tools with high unique counts add coverage the
+              others miss.
+            </Typography>
+          )}
+        </CardStyled>
+      </Box>
+    );
   };
 
   const renderChart = (modeObj, title) => {
@@ -1107,6 +1363,22 @@ function ToolsEvaluationPage() {
             </ChartsRowStyled>
           ) : (
             renderChart(mode === "direct" ? directData : originalData)
+          )}
+        </SectionStyled>
+
+        <SectionStyled>
+          <Typography variant="h6" className="section-title">
+            Tool detection overlap
+          </Typography>
+          {mode === "both" ? (
+            <ChartsRowStyled>
+              {renderOverlap(directData, directOverlap, "Direct mode")}
+              {renderOverlap(originalData, originalOverlap, "Original mode")}
+            </ChartsRowStyled>
+          ) : mode === "direct" ? (
+            renderOverlap(directData, directOverlap)
+          ) : (
+            renderOverlap(originalData, originalOverlap)
           )}
         </SectionStyled>
 
