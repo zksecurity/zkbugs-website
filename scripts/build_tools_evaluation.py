@@ -521,8 +521,17 @@ def main(argv: list[str]) -> int:
     summary_json = load_json(src / "summary.json") or {}
     path_to_id = build_path_to_id_map()
 
+    summary_path = src / "summary.json"
+    run_timestamp = (
+        datetime.fromtimestamp(summary_path.stat().st_mtime, tz=timezone.utc)
+        .isoformat(timespec="seconds")
+        if summary_path.is_file()
+        else None
+    )
+
     out = {
         "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "run_timestamp": run_timestamp,
         "timeout_seconds": 300,
         "source": {
             "repo": "https://github.com/zksecurity/zkhydra",

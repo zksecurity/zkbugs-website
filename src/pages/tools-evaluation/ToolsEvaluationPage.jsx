@@ -18,7 +18,7 @@ import {
   Typography,
   useTheme,
 } from "@mui/material";
-import { ExpandMore, OpenInNew, PictureAsPdf } from "@mui/icons-material";
+import { ExpandMore, GitHub, OpenInNew, PictureAsPdf } from "@mui/icons-material";
 import { BarChart } from "@mui/x-charts/BarChart";
 import { DataGrid } from "@mui/x-data-grid";
 import Container from "../../components/layout/Container";
@@ -355,6 +355,9 @@ function ToolsEvaluationPage() {
   const generatedAt = data?.generatedAt
     ? new Date(data.generatedAt).toLocaleString()
     : "unknown";
+  const runTimestamp = data?.runTimestamp
+    ? new Date(data.runTimestamp).toLocaleString()
+    : null;
   const timeoutSeconds = data?.timeoutSeconds ?? 300;
 
   // Highlights — single-mode view: detection coverage by # of tools.
@@ -749,7 +752,7 @@ function ToolsEvaluationPage() {
               .
             </Typography>
           </Box>
-          <Stack direction="row" spacing={1}>
+          <Stack direction="row" spacing={1} sx={{ flexWrap: "wrap", rowGap: "0.5rem" }}>
             <ToggleButtonGroup
               value={mode}
               exclusive
@@ -761,6 +764,22 @@ function ToolsEvaluationPage() {
               <ToggleButton value="original">Original</ToggleButton>
               <ToggleButton value="both">Both</ToggleButton>
             </ToggleButtonGroup>
+            {data.source?.repo && (
+              <Tooltip title="Open the zkhydra repository on GitHub">
+                <Button
+                  component="a"
+                  href={data.source.repo}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  variant="outlined"
+                  color="secondary"
+                  size="small"
+                  startIcon={<GitHub fontSize="small" />}
+                >
+                  zkhydra
+                </Button>
+              </Tooltip>
+            )}
             <Tooltip title="Open the raw zkhydra report PDF in a new tab">
               <Button
                 component="a"
@@ -778,12 +797,22 @@ function ToolsEvaluationPage() {
           </Stack>
         </PageHeaderStyled>
 
+        {runTimestamp && (
+          <Typography
+            variant="caption"
+            color="text.secondary"
+            sx={{ marginTop: "0.5rem", display: "block" }}
+          >
+            Latest zkhydra run: {runTimestamp}
+          </Typography>
+        )}
+
         <SectionStyled>
           <Alert severity="warning" variant="outlined">
             <strong>TODO / Experimental.</strong> Results are early and depend
             on tool versions, parsers, and runner configuration that change
             frequently. Each tool run is capped at a {timeoutSeconds / 60}-minute
-            ({timeoutSeconds}s) timeout — runs that exceeded it land in the
+            ({timeoutSeconds}s) timeout. Runs that exceeded it land in the
             &quot;Timeout&quot; bucket. Treat counts as directional and expect
             them to shift between runs.
           </Alert>
@@ -810,13 +839,13 @@ function ToolsEvaluationPage() {
                 <strong>Direct</strong> ({directData?.totalBugs ?? 0} bugs):
                 each tool runs against an isolated wrapper
                 (<code>circuit.circom</code>) that only instantiates the
-                vulnerable template — useful for comparing tools on a minimal,
+                vulnerable template. Useful for comparing tools on a minimal,
                 reproducible surface.
               </li>
               <li>
                 <strong>Original</strong> ({originalData?.totalBugs ?? 0}{" "}
                 bugs): each tool runs against the project&apos;s real
-                entrypoint at the pinned commit — closer to a real-world audit
+                entrypoint at the pinned commit. Closer to a real-world audit
                 setting.
               </li>
               <li>
