@@ -67,8 +67,9 @@ const verdictThemeColor = (theme, verdict) => {
     case "safe":
       return theme.palette.error.main;
     case "error":
-    case "timeout":
       return theme.palette.warning.main;
+    case "timeout":
+      return theme.palette.info.main;
     case "unknown":
       return theme.palette.grey[500];
     default:
@@ -83,8 +84,9 @@ const verdictChipColor = (verdict) => {
     case "safe":
       return "error";
     case "error":
-    case "timeout":
       return "warning";
+    case "timeout":
+      return "info";
     default:
       return "default";
   }
@@ -727,6 +729,61 @@ function ToolsEvaluationPage() {
     );
   };
 
+  const renderDirectVsOriginalChart = () => {
+    const directColor = theme.palette.success.main;
+    const originalColor = theme.palette.secondary.main;
+    return (
+      <CardStyled elevation={0}>
+        <Typography
+          variant="subtitle2"
+          sx={{ marginBottom: "0.5rem", fontWeight: 600 }}
+        >
+          Detection by mode
+        </Typography>
+        <Typography
+          variant="body2"
+          color="text.secondary"
+          sx={{ marginBottom: "0.75rem", lineHeight: 1.5 }}
+        >
+          For each tool: the number of bugs flagged as vulnerable in the
+          isolated <strong>Direct</strong> wrapper vs in the project&apos;s
+          real <strong>Original</strong> entrypoint at the pinned commit.
+        </Typography>
+        <BarChart
+          xAxis={[{ data: tools.map((t) => t.name), scaleType: "band" }]}
+          series={[
+            {
+              label: "Direct",
+              data: tools.map(
+                (t) => directData?.summary?.[t.id]?.vulnerable ?? 0
+              ),
+              color: directColor,
+            },
+            {
+              label: "Original",
+              data: tools.map(
+                (t) => originalData?.summary?.[t.id]?.vulnerable ?? 0
+              ),
+              color: originalColor,
+            },
+          ]}
+          height={300}
+          margin={{ top: 24, right: 200, bottom: 50, left: 56 }}
+          slotProps={{
+            legend: {
+              direction: "column",
+              position: { vertical: "middle", horizontal: "right" },
+              itemMarkWidth: 14,
+              itemMarkHeight: 14,
+              itemGap: 8,
+              labelStyle: { fontSize: 13 },
+            },
+          }}
+        />
+      </CardStyled>
+    );
+  };
+
   const renderChart = (modeObj, title) => {
     const series = buildChartSeries(theme, tools, modeObj.summary);
     return (
@@ -1140,7 +1197,11 @@ function ToolsEvaluationPage() {
               </Box>{" "}
               = false negative,{" "}
               <Box component="span" sx={{ color: "warning.main", fontWeight: 600 }}>
-                Error / Timeout
+                Error
+              </Box>{" "}
+              and{" "}
+              <Box component="span" sx={{ color: "info.main", fontWeight: 600 }}>
+                Timeout
               </Box>{" "}
               = no usable verdict.
             </Typography>
@@ -1371,10 +1432,13 @@ function ToolsEvaluationPage() {
             Outcomes per tool
           </Typography>
           {mode === "both" ? (
-            <ChartsRowStyled>
-              {renderChart(directData, "Direct mode")}
-              {renderChart(originalData, "Original mode")}
-            </ChartsRowStyled>
+            <>
+              <ChartsRowStyled>
+                {renderChart(directData, "Direct mode")}
+                {renderChart(originalData, "Original mode")}
+              </ChartsRowStyled>
+              {renderDirectVsOriginalChart()}
+            </>
           ) : (
             renderChart(mode === "direct" ? directData : originalData)
           )}
