@@ -9,6 +9,7 @@ import {
   Box,
   Button,
   Chip,
+  Link,
   Paper,
   Stack,
   styled,
@@ -1054,14 +1055,16 @@ function ToolsEvaluationPage() {
             >
               Five static, symbolic and fuzzing tools run across the Circom
               bugs in the dataset. Powered by{" "}
-              <a
+              <Link
                 href={data.source?.repo}
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{ color: "inherit" }}
+                color="secondary"
+                underline="hover"
+                sx={{ fontWeight: 600 }}
               >
                 zkhydra
-              </a>
+              </Link>
               .
             </Typography>
           </Box>
@@ -1634,14 +1637,16 @@ function ToolsEvaluationPage() {
         <SectionStyled>
           <Typography variant="caption" color="text.secondary">
             Generated {generatedAt}. Source data from{" "}
-            <a
+            <Link
               href={data.source?.repo}
               target="_blank"
               rel="noopener noreferrer"
-              style={{ color: "inherit" }}
+              color="secondary"
+              underline="hover"
+              sx={{ fontWeight: 600 }}
             >
               zkhydra
-            </a>
+            </Link>
             .
           </Typography>
         </SectionStyled>
