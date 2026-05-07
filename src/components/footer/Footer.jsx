@@ -69,10 +69,28 @@ const FooterStyled = styled("footer")(({ theme }) => ({
       },
     },
   },
-  "& .footer-text": {
+  "& .acknowledgements": {
     textAlign: "center",
     fontSize: "14px",
     marginTop: "2rem",
+    lineHeight: "1.625rem",
+    "& .acknowledgements-title": {
+      fontWeight: 700,
+      marginBottom: "0.25rem",
+    },
+    "& a": {
+      color: "inherit",
+      textDecoration: "underline",
+      "&:hover": {
+        transition: "color 0.2s",
+        color: "#9333ea",
+      },
+    },
+  },
+  "& .footer-text": {
+    textAlign: "center",
+    fontSize: "14px",
+    marginTop: "1.5rem",
   },
 }));
 
@@ -141,9 +159,50 @@ function Footer() {
           </div>
         </div>
       </Container>
+      <Container>
+        <div className="acknowledgements">
+          <Typography className="acknowledgements-title">
+            Acknowledgements
+          </Typography>
+          <Typography className="text-sm">
+            This project has been partially funded by the{" "}
+            <a
+              href="https://ethereum.foundation/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Ethereum Foundation
+            </a>
+            . We also thank{" "}
+            <a
+              href="https://github.com/ivanvgreiff"
+              target="_blank"
+              rel="noreferrer"
+            >
+              ivanvgreiff
+            </a>
+            ,{" "}
+            <a
+              href="https://github.com/ret2basic"
+              target="_blank"
+              rel="noreferrer"
+            >
+              ret2basic
+            </a>
+            , and{" "}
+            <a
+              href="https://github.com/t-sorger"
+              target="_blank"
+              rel="noreferrer"
+            >
+              t-sorger
+            </a>{" "}
+            for their contributions.
+          </Typography>
+        </div>
+      </Container>
       <Typography className="footer-text">
-        @ {currentDate} zkSecurity - All Rights Reserved • This project was
-        partially funded by the Ethereum Foundation
+        @ {currentDate} zkSecurity - All Rights Reserved
       </Typography>
     </FooterStyled>
   );
