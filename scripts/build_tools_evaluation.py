@@ -71,6 +71,14 @@ TOOLS = [
         "url": "https://github.com/saurabh4/zkfuzz",
         "description": "Genetic fuzzer that searches for unsoundness counterexamples.",
     },
+    {
+        "id": "auditor",
+        "dir": "circom_auditor",
+        "name": "circom-auditor",
+        "kind": "LLM Audit",
+        "url": "https://github.com/zksecurity/zk-skills",
+        "description": "Nine-agent parallel LLM audit via the zksecurity/zk-skills Claude Code skill.",
+    },
 ]
 
 TOOL_IDS = [t["id"] for t in TOOLS]
@@ -128,6 +136,11 @@ def details_for_tool(tool_id: str, parsed: dict | None, results: dict | None) ->
     elif tool_id == "zkfuzz":
         if parsed.get("vulnerability"):
             out["vulnerability"] = parsed["vulnerability"]
+    elif tool_id == "auditor":
+        stats = parsed.get("statistics") or {}
+        for key in ("total_findings", "total_leads"):
+            if key in stats:
+                out[key] = stats[key]
     return out
 
 
@@ -412,12 +425,37 @@ def parse_zkfuzz(raw: str) -> tuple[str, dict]:
     return "unknown", {}
 
 
+AUDITOR_NO_FINDINGS_RE = re.compile(
+    r"_No findings reach the reporting threshold\._", re.I
+)
+AUDITOR_FINDING_ROW_RE = re.compile(r"^\s*\[\d+\]\s+\*\*\d+\.", re.MULTILINE)
+
+
+def parse_circom_auditor(raw: str) -> tuple[str, dict]:
+    text = strip_ansi(tail_for_scan(raw))
+    early_verdict, early_reason = detect_error_or_timeout(text)
+    if early_verdict:
+        return early_verdict, {"reason": early_reason}
+
+    # The skill prints a "## Findings" section that either contains a
+    # "_No findings reach the reporting threshold._" notice or numbered
+    # finding rows like "[95] **1. Title…". Either is decisive.
+    if AUDITOR_NO_FINDINGS_RE.search(text):
+        return "safe", {}
+    if AUDITOR_FINDING_ROW_RE.search(text):
+        return "vulnerable", {}
+    # Skill ran but output drifted from the formatting spec — surface as
+    # error so it shows up in the rollup rather than being silently safe.
+    return "error", {"reason": "circom-auditor output did not match the report template"}
+
+
 PARSERS = {
     "picus": parse_picus,
     "civer": parse_civer,
     "ecne": parse_ecne,
     "circomspect": parse_circomspect,
     "zkfuzz": parse_zkfuzz,
+    "auditor": parse_circom_auditor,
 }
 
 
@@ -455,6 +493,15 @@ def process_bug(bug_dir: Path, mode: str, path_to_id: dict[str, str]) -> dict | 
         results = load_json(tool_dir / "results.json")
         if results and "execution_time" in results:
             details["execution_time_s"] = results["execution_time"]
+
+        # circom-auditor's raw.txt is verbose markdown that uses several
+        # phrasings for "no findings" / "finding row"; trust the
+        # already-normalised status from results.json instead of reparsing.
+        if tool_id == "auditor" and results and results.get("status"):
+            mapped = STATUS_VERDICT.get(results["status"])
+            if mapped:
+                verdict = mapped
+                details.pop("reason", None)
 
         evaluation = load_json(tool_dir / "evaluation.json")
         if evaluation and evaluation.get("status"):

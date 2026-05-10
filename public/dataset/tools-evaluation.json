@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-26T11:49:24+00:00",
+  "generated_at": "2026-05-10T12:18:31+00:00",
   "run_timestamp": "2026-04-24T15:41:23+00:00",
   "timeout_seconds": 300,
   "source": {
@@ -128,6 +128,14 @@
       "kind": "Fuzzing",
       "url": "https://github.com/saurabh4/zkfuzz",
       "description": "Genetic fuzzer that searches for unsoundness counterexamples."
+    },
+    {
+      "id": "auditor",
+      "dir": "circom_auditor",
+      "name": "circom-auditor",
+      "kind": "LLM Audit",
+      "url": "https://github.com/zksecurity/zk-skills",
+      "description": "Nine-agent parallel LLM audit via the zksecurity/zk-skills Claude Code skill."
     }
   ],
   "modes": {
@@ -171,6 +179,14 @@
           "vulnerable": 25,
           "error": 4,
           "timeout": 25,
+          "unknown": 0,
+          "missing": 0
+        },
+        "auditor": {
+          "safe": 2,
+          "vulnerable": 64,
+          "error": 2,
+          "timeout": 2,
           "unknown": 0,
           "missing": 0
         }
@@ -257,6 +273,16 @@
             "pattern": "Rust panic",
             "count": 1
           }
+        ],
+        "auditor": [
+          {
+            "pattern": "Timed out",
+            "count": 2
+          },
+          {
+            "pattern": "Other / uncategorized",
+            "count": 2
+          }
         ]
       },
       "bugs": [
@@ -312,6 +338,13 @@
                 "execution_time_s": 89.63,
                 "ground_truth_match": "FalseNegative"
               }
+            },
+            "auditor": {
+              "verdict": "safe",
+              "details": {
+                "execution_time_s": 459.8,
+                "ground_truth_match": "FalseNegative"
+              }
             }
           }
         },
@@ -359,6 +392,12 @@
               }
             },
             "zkfuzz": {
+              "verdict": "timeout",
+              "details": {
+                "reason": "Hit the global tool timeout"
+              }
+            },
+            "auditor": {
               "verdict": "timeout",
               "details": {
                 "reason": "Hit the global tool timeout"
@@ -411,6 +450,13 @@
               "details": {
                 "counterexample": true,
                 "execution_time_s": 0.04,
+                "ground_truth_match": "TruePositive"
+              }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 564.41,
                 "ground_truth_match": "TruePositive"
               }
             }
@@ -470,6 +516,13 @@
                 "execution_time_s": 0.03,
                 "ground_truth_match": "TruePositive"
               }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 758.19,
+                "ground_truth_match": "TruePositive"
+              }
             }
           }
         },
@@ -525,6 +578,13 @@
                 "execution_time_s": 0.02,
                 "ground_truth_match": "TruePositive"
               }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 587.87,
+                "ground_truth_match": "TruePositive"
+              }
             }
           }
         },
@@ -575,6 +635,13 @@
               "details": {
                 "reason": "Pragma version mismatch (P1003)"
               }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 543.22,
+                "ground_truth_match": "TruePositive"
+              }
             }
           }
         },
@@ -622,6 +689,13 @@
               "verdict": "error",
               "details": {
                 "reason": "Pragma version mismatch (P1003)"
+              }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 459.96,
+                "ground_truth_match": "TruePositive"
               }
             }
           }
@@ -674,6 +748,13 @@
               "verdict": "error",
               "details": {
                 "reason": "Pragma version mismatch (P1003)"
+              }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 515.05,
+                "ground_truth_match": "TruePositive"
               }
             }
           }
@@ -733,6 +814,13 @@
                 "execution_time_s": 0.02,
                 "ground_truth_match": "TruePositive"
               }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 174.2,
+                "ground_truth_match": "TruePositive"
+              }
             }
           }
         },
@@ -783,6 +871,13 @@
               "details": {
                 "counterexample": true,
                 "execution_time_s": 0.13,
+                "ground_truth_match": "TruePositive"
+              }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 516.79,
                 "ground_truth_match": "TruePositive"
               }
             }
@@ -843,6 +938,13 @@
                 "execution_time_s": 2.63,
                 "ground_truth_match": "TruePositive"
               }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 294.06,
+                "ground_truth_match": "TruePositive"
+              }
             }
           }
         },
@@ -893,6 +995,13 @@
               "details": {
                 "reason": "Hit the global tool timeout"
               }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 910.63,
+                "ground_truth_match": "TruePositive"
+              }
             }
           }
         },
@@ -942,6 +1051,13 @@
               "verdict": "timeout",
               "details": {
                 "reason": "Hit the global tool timeout"
+              }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 501.4,
+                "ground_truth_match": "TruePositive"
               }
             }
           }
@@ -997,6 +1113,13 @@
                 "execution_time_s": 1.38,
                 "ground_truth_match": "TruePositive"
               }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 701.63,
+                "ground_truth_match": "TruePositive"
+              }
             }
           }
         },
@@ -1048,6 +1171,13 @@
               "verdict": "timeout",
               "details": {
                 "reason": "Hit the global tool timeout"
+              }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 863.49,
+                "ground_truth_match": "Undecided"
               }
             }
           }
@@ -1103,6 +1233,13 @@
                 "execution_time_s": 0.97,
                 "ground_truth_match": "TruePositive"
               }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 953.24,
+                "ground_truth_match": "TruePositive"
+              }
             }
           }
         },
@@ -1154,6 +1291,13 @@
               "details": {
                 "execution_time_s": 15.01,
                 "ground_truth_match": "FalseNegative"
+              }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 481.92,
+                "ground_truth_match": "TruePositive"
               }
             }
           }
@@ -1210,6 +1354,13 @@
               "details": {
                 "reason": "Hit the global tool timeout"
               }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 375.18,
+                "ground_truth_match": "TruePositive"
+              }
             }
           }
         },
@@ -1262,6 +1413,13 @@
               "details": {
                 "reason": "Hit the global tool timeout"
               }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 596.49,
+                "ground_truth_match": "TruePositive"
+              }
             }
           }
         },
@@ -1309,6 +1467,13 @@
               "details": {
                 "execution_time_s": 42.87,
                 "ground_truth_match": "FalseNegative"
+              }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 1204.22,
+                "ground_truth_match": "TruePositive"
               }
             }
           }
@@ -1362,6 +1527,13 @@
                 "reason": "Rust panic",
                 "execution_time_s": 2.45
               }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 1351.33,
+                "ground_truth_match": "Undecided"
+              }
             }
           }
         },
@@ -1410,6 +1582,13 @@
               "verdict": "safe",
               "details": {
                 "execution_time_s": 9.71,
+                "ground_truth_match": "FalseNegative"
+              }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 1493.4,
                 "ground_truth_match": "FalseNegative"
               }
             }
@@ -1465,6 +1644,13 @@
               "verdict": "timeout",
               "details": {
                 "reason": "Hit the global tool timeout"
+              }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 366.7,
+                "ground_truth_match": "TruePositive"
               }
             }
           }
@@ -1525,6 +1711,12 @@
                 "execution_time_s": 0.12,
                 "ground_truth_match": "TruePositive"
               }
+            },
+            "auditor": {
+              "verdict": "timeout",
+              "details": {
+                "reason": "Hit the global tool timeout"
+              }
             }
           }
         },
@@ -1576,6 +1768,12 @@
                 "execution_time_s": 6.79,
                 "ground_truth_match": "FalseNegative"
               }
+            },
+            "auditor": {
+              "verdict": "error",
+              "details": {
+                "execution_time_s": 772.93
+              }
             }
           }
         },
@@ -1626,6 +1824,13 @@
               "verdict": "timeout",
               "details": {
                 "reason": "Hit the global tool timeout"
+              }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 976.67,
+                "ground_truth_match": "TruePositive"
               }
             }
           }
@@ -1681,6 +1886,12 @@
                 "execution_time_s": 461.4,
                 "ground_truth_match": "FalseNegative"
               }
+            },
+            "auditor": {
+              "verdict": "error",
+              "details": {
+                "execution_time_s": 571.76
+              }
             }
           }
         },
@@ -1730,6 +1941,13 @@
               "verdict": "timeout",
               "details": {
                 "reason": "Hit the global tool timeout"
+              }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 685.75,
+                "ground_truth_match": "TruePositive"
               }
             }
           }
@@ -1782,6 +2000,13 @@
               "verdict": "timeout",
               "details": {
                 "reason": "Hit the global tool timeout"
+              }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 911.23,
+                "ground_truth_match": "TruePositive"
               }
             }
           }
@@ -1841,6 +2066,13 @@
                 "execution_time_s": 0.09,
                 "ground_truth_match": "TruePositive"
               }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 338.9,
+                "ground_truth_match": "TruePositive"
+              }
             }
           }
         },
@@ -1893,6 +2125,13 @@
               "details": {
                 "counterexample": true,
                 "execution_time_s": 0.1,
+                "ground_truth_match": "TruePositive"
+              }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 713.22,
                 "ground_truth_match": "TruePositive"
               }
             }
@@ -1951,6 +2190,13 @@
                 "execution_time_s": 16.65,
                 "ground_truth_match": "FalseNegative"
               }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 208.57,
+                "ground_truth_match": "TruePositive"
+              }
             }
           }
         },
@@ -2001,6 +2247,13 @@
                 "execution_time_s": 39.3,
                 "ground_truth_match": "FalseNegative"
               }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 1325.13,
+                "ground_truth_match": "TruePositive"
+              }
             }
           }
         },
@@ -2048,6 +2301,13 @@
               "verdict": "timeout",
               "details": {
                 "reason": "Hit the global tool timeout"
+              }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 804.74,
+                "ground_truth_match": "TruePositive"
               }
             }
           }
@@ -2101,6 +2361,13 @@
               "verdict": "timeout",
               "details": {
                 "reason": "Hit the global tool timeout"
+              }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 483.12,
+                "ground_truth_match": "TruePositive"
               }
             }
           }
@@ -2156,6 +2423,13 @@
               "details": {
                 "reason": "Hit the global tool timeout"
               }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 477.5,
+                "ground_truth_match": "TruePositive"
+              }
             }
           }
         },
@@ -2205,6 +2479,13 @@
               "details": {
                 "execution_time_s": 40.47,
                 "ground_truth_match": "FalseNegative"
+              }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 1198.49,
+                "ground_truth_match": "TruePositive"
               }
             }
           }
@@ -2256,6 +2537,13 @@
               "details": {
                 "reason": "Hit the global tool timeout"
               }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 371.79,
+                "ground_truth_match": "TruePositive"
+              }
             }
           }
         },
@@ -2305,6 +2593,13 @@
               "verdict": "timeout",
               "details": {
                 "reason": "Hit the global tool timeout"
+              }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 692.12,
+                "ground_truth_match": "TruePositive"
               }
             }
           }
@@ -2361,6 +2656,13 @@
               "details": {
                 "reason": "Hit the global tool timeout"
               }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 268.78,
+                "ground_truth_match": "TruePositive"
+              }
             }
           }
         },
@@ -2416,6 +2718,13 @@
                 "execution_time_s": 0.86,
                 "ground_truth_match": "TruePositive"
               }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 814.43,
+                "ground_truth_match": "TruePositive"
+              }
             }
           }
         },
@@ -2466,6 +2775,13 @@
               "verdict": "timeout",
               "details": {
                 "reason": "Hit the global tool timeout"
+              }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 648.92,
+                "ground_truth_match": "TruePositive"
               }
             }
           }
@@ -2521,6 +2837,13 @@
               "details": {
                 "counterexample": true,
                 "execution_time_s": 0.05,
+                "ground_truth_match": "TruePositive"
+              }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 554.35,
                 "ground_truth_match": "TruePositive"
               }
             }
@@ -2579,6 +2902,13 @@
                 "execution_time_s": 3.22,
                 "ground_truth_match": "TruePositive"
               }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 1122.25,
+                "ground_truth_match": "TruePositive"
+              }
             }
           }
         },
@@ -2633,6 +2963,13 @@
               "details": {
                 "counterexample": true,
                 "execution_time_s": 1.69,
+                "ground_truth_match": "TruePositive"
+              }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 647.76,
                 "ground_truth_match": "TruePositive"
               }
             }
@@ -2693,6 +3030,13 @@
                 "execution_time_s": 0.41,
                 "ground_truth_match": "TruePositive"
               }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 314.11,
+                "ground_truth_match": "TruePositive"
+              }
             }
           }
         },
@@ -2749,6 +3093,13 @@
               "details": {
                 "counterexample": true,
                 "execution_time_s": 0.08,
+                "ground_truth_match": "TruePositive"
+              }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 394.81,
                 "ground_truth_match": "TruePositive"
               }
             }
@@ -2809,6 +3160,13 @@
                 "execution_time_s": 0.01,
                 "ground_truth_match": "TruePositive"
               }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 318.17,
+                "ground_truth_match": "TruePositive"
+              }
             }
           }
         },
@@ -2866,6 +3224,13 @@
                 "execution_time_s": 0.01,
                 "ground_truth_match": "TruePositive"
               }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 381.54,
+                "ground_truth_match": "TruePositive"
+              }
             }
           }
         },
@@ -2916,6 +3281,13 @@
               "verdict": "timeout",
               "details": {
                 "reason": "Hit the global tool timeout"
+              }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 663.55,
+                "ground_truth_match": "TruePositive"
               }
             }
           }
@@ -2968,6 +3340,13 @@
                 "execution_time_s": 86.32,
                 "ground_truth_match": "FalseNegative"
               }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 1045.03,
+                "ground_truth_match": "TruePositive"
+              }
             }
           }
         },
@@ -3018,6 +3397,13 @@
               "details": {
                 "execution_time_s": 99.27,
                 "ground_truth_match": "FalseNegative"
+              }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 1021.24,
+                "ground_truth_match": "TruePositive"
               }
             }
           }
@@ -3074,6 +3460,13 @@
                 "execution_time_s": 531.69,
                 "ground_truth_match": "FalseNegative"
               }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 1058.52,
+                "ground_truth_match": "TruePositive"
+              }
             }
           }
         },
@@ -3124,6 +3517,13 @@
               "details": {
                 "counterexample": true,
                 "execution_time_s": 0.16,
+                "ground_truth_match": "TruePositive"
+              }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 603.13,
                 "ground_truth_match": "TruePositive"
               }
             }
@@ -3177,6 +3577,13 @@
                 "execution_time_s": 41.22,
                 "ground_truth_match": "FalseNegative"
               }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 1714.22,
+                "ground_truth_match": "TruePositive"
+              }
             }
           }
         },
@@ -3227,6 +3634,13 @@
               "details": {
                 "reason": "Hit the global tool timeout"
               }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 904.13,
+                "ground_truth_match": "TruePositive"
+              }
             }
           }
         },
@@ -3274,6 +3688,13 @@
               "verdict": "timeout",
               "details": {
                 "reason": "Hit the global tool timeout"
+              }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 823.43,
+                "ground_truth_match": "TruePositive"
               }
             }
           }
@@ -3323,6 +3744,13 @@
               "details": {
                 "counterexample": true,
                 "execution_time_s": 0.22,
+                "ground_truth_match": "TruePositive"
+              }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 1051.11,
                 "ground_truth_match": "TruePositive"
               }
             }
@@ -3385,6 +3813,13 @@
                 "execution_time_s": 0.02,
                 "ground_truth_match": "TruePositive"
               }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 261.26,
+                "ground_truth_match": "TruePositive"
+              }
             }
           }
         },
@@ -3442,6 +3877,13 @@
                 "execution_time_s": 0.03,
                 "ground_truth_match": "TruePositive"
               }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 272.69,
+                "ground_truth_match": "TruePositive"
+              }
             }
           }
         },
@@ -3489,6 +3931,13 @@
               "verdict": "timeout",
               "details": {
                 "reason": "Hit the global tool timeout"
+              }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 1347.74,
+                "ground_truth_match": "TruePositive"
               }
             }
           }
@@ -3542,6 +3991,13 @@
               "details": {
                 "execution_time_s": 17.04,
                 "ground_truth_match": "FalseNegative"
+              }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 572.08,
+                "ground_truth_match": "TruePositive"
               }
             }
           }
@@ -3597,6 +4053,13 @@
                 "execution_time_s": 71.24,
                 "ground_truth_match": "FalseNegative"
               }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 500.12,
+                "ground_truth_match": "TruePositive"
+              }
             }
           }
         },
@@ -3649,6 +4112,13 @@
                 "execution_time_s": 74.86,
                 "ground_truth_match": "FalseNegative"
               }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 687.82,
+                "ground_truth_match": "TruePositive"
+              }
             }
           }
         },
@@ -3700,6 +4170,13 @@
               "details": {
                 "reason": "Hit the global tool timeout"
               }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 534.53,
+                "ground_truth_match": "TruePositive"
+              }
             }
           }
         },
@@ -3747,6 +4224,13 @@
               "verdict": "timeout",
               "details": {
                 "reason": "Hit the global tool timeout"
+              }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 1381.39,
+                "ground_truth_match": "TruePositive"
               }
             }
           }
@@ -3798,6 +4282,13 @@
               "details": {
                 "reason": "Hit the global tool timeout"
               }
+            },
+            "auditor": {
+              "verdict": "safe",
+              "details": {
+                "execution_time_s": 359.03,
+                "ground_truth_match": "FalseNegative"
+              }
             }
           }
         },
@@ -3845,6 +4336,13 @@
               "verdict": "timeout",
               "details": {
                 "reason": "Hit the global tool timeout"
+              }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 842.45,
+                "ground_truth_match": "TruePositive"
               }
             }
           }
@@ -3899,6 +4397,13 @@
                 "counterexample": true,
                 "execution_time_s": 0.02,
                 "ground_truth_match": "TruePositive"
+              }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 480.49,
+                "ground_truth_match": "Undecided"
               }
             }
           }
@@ -3960,6 +4465,13 @@
                 "execution_time_s": 0.84,
                 "ground_truth_match": "TruePositive"
               }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 289.59,
+                "ground_truth_match": "TruePositive"
+              }
             }
           }
         }
@@ -4005,6 +4517,14 @@
           "vulnerable": 4,
           "error": 4,
           "timeout": 36,
+          "unknown": 0,
+          "missing": 0
+        },
+        "auditor": {
+          "safe": 1,
+          "vulnerable": 45,
+          "error": 6,
+          "timeout": 4,
           "unknown": 0,
           "missing": 0
         }
@@ -4079,6 +4599,20 @@
             "pattern": "File or template not found (P1014)",
             "count": 1
           }
+        ],
+        "auditor": [
+          {
+            "pattern": "Timed out",
+            "count": 4
+          },
+          {
+            "pattern": "API Error: Claude Code is unable to respond to this request, which appears to violate our Usage Policy (https://www.anth",
+            "count": 3
+          },
+          {
+            "pattern": "Other / uncategorized",
+            "count": 3
+          }
         ]
       },
       "bugs": [
@@ -4133,6 +4667,13 @@
               "verdict": "timeout",
               "details": {
                 "reason": "Hit the global tool timeout"
+              }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 882.53,
+                "ground_truth_match": "Undecided"
               }
             }
           }
@@ -4191,6 +4732,12 @@
                 "execution_time_s": 0.05,
                 "ground_truth_match": "TruePositive"
               }
+            },
+            "auditor": {
+              "verdict": "error",
+              "details": {
+                "reason": "circom-auditor output did not match the report template"
+              }
             }
           }
         },
@@ -4245,6 +4792,13 @@
                 "execution_time_s": 0.02,
                 "ground_truth_match": "TruePositive"
               }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 494.14,
+                "ground_truth_match": "TruePositive"
+              }
             }
           }
         },
@@ -4295,6 +4849,13 @@
               "details": {
                 "reason": "Pragma version mismatch (P1003)"
               }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 579.94,
+                "ground_truth_match": "TruePositive"
+              }
             }
           }
         },
@@ -4342,6 +4903,13 @@
               "verdict": "error",
               "details": {
                 "reason": "Pragma version mismatch (P1003)"
+              }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 540.69,
+                "ground_truth_match": "TruePositive"
               }
             }
           }
@@ -4393,6 +4961,13 @@
               "verdict": "error",
               "details": {
                 "reason": "Pragma version mismatch (P1003)"
+              }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 805.1,
+                "ground_truth_match": "TruePositive"
               }
             }
           }
@@ -4449,6 +5024,13 @@
                 "execution_time_s": 0.01,
                 "ground_truth_match": "TruePositive"
               }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 207.77,
+                "ground_truth_match": "TruePositive"
+              }
             }
           }
         },
@@ -4495,6 +5077,13 @@
               "verdict": "error",
               "details": {
                 "reason": "File or template not found (P1014)"
+              }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 1306.21,
+                "ground_truth_match": "TruePositive"
               }
             }
           }
@@ -4546,6 +5135,13 @@
               "details": {
                 "reason": "Hit the global tool timeout"
               }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 844.68,
+                "ground_truth_match": "FalseNegative"
+              }
             }
           }
         },
@@ -4592,6 +5188,12 @@
               }
             },
             "zkfuzz": {
+              "verdict": "timeout",
+              "details": {
+                "reason": "Hit the global tool timeout"
+              }
+            },
+            "auditor": {
               "verdict": "timeout",
               "details": {
                 "reason": "Hit the global tool timeout"
@@ -4647,6 +5249,13 @@
               "details": {
                 "reason": "Hit the global tool timeout"
               }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 411.27,
+                "ground_truth_match": "TruePositive"
+              }
             }
           }
         },
@@ -4696,6 +5305,13 @@
               "verdict": "timeout",
               "details": {
                 "reason": "Hit the global tool timeout"
+              }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 1292.63,
+                "ground_truth_match": "TruePositive"
               }
             }
           }
@@ -4748,6 +5364,13 @@
                 "reason": "zkFuzz did not finish (likely killed)",
                 "execution_time_s": 88.93
               }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 1543.59,
+                "ground_truth_match": "TruePositive"
+              }
             }
           }
         },
@@ -4799,6 +5422,13 @@
                 "reason": "zkFuzz did not finish (likely killed)",
                 "execution_time_s": 119.11
               }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 1082.76,
+                "ground_truth_match": "TruePositive"
+              }
             }
           }
         },
@@ -4849,6 +5479,13 @@
               "details": {
                 "reason": "Hit the global tool timeout"
               }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 918.52,
+                "ground_truth_match": "TruePositive"
+              }
             }
           }
         },
@@ -4898,6 +5535,13 @@
               "verdict": "timeout",
               "details": {
                 "reason": "Hit the global tool timeout"
+              }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 1741.78,
+                "ground_truth_match": "FalseNegative"
               }
             }
           }
@@ -4951,6 +5595,13 @@
                 "reason": "zkFuzz did not finish (likely killed)",
                 "execution_time_s": 63.0
               }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 1212.95,
+                "ground_truth_match": "TruePositive"
+              }
             }
           }
         },
@@ -5002,6 +5653,13 @@
               "details": {
                 "reason": "zkFuzz did not finish (likely killed)",
                 "execution_time_s": 316.49
+              }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 1049.5,
+                "ground_truth_match": "TruePositive"
               }
             }
           }
@@ -5055,6 +5713,13 @@
                 "reason": "zkFuzz did not finish (likely killed)",
                 "execution_time_s": 152.0
               }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 1322.24,
+                "ground_truth_match": "Undecided"
+              }
             }
           }
         },
@@ -5106,6 +5771,13 @@
               "details": {
                 "reason": "zkFuzz did not finish (likely killed)",
                 "execution_time_s": 510.74
+              }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 1359.59,
+                "ground_truth_match": "FalseNegative"
               }
             }
           }
@@ -5160,6 +5832,13 @@
                 "reason": "zkFuzz did not finish (likely killed)",
                 "execution_time_s": 582.87
               }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 1617.11,
+                "ground_truth_match": "TruePositive"
+              }
             }
           }
         },
@@ -5211,6 +5890,13 @@
                 "execution_time_s": 20.75,
                 "ground_truth_match": "FalseNegative"
               }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 1270.41,
+                "ground_truth_match": "TruePositive"
+              }
             }
           }
         },
@@ -5260,6 +5946,13 @@
               "verdict": "safe",
               "details": {
                 "execution_time_s": 24.19,
+                "ground_truth_match": "FalseNegative"
+              }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 1495.99,
                 "ground_truth_match": "FalseNegative"
               }
             }
@@ -5313,6 +6006,13 @@
                 "execution_time_s": 20.63,
                 "ground_truth_match": "FalseNegative"
               }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 1522.81,
+                "ground_truth_match": "FalseNegative"
+              }
             }
           }
         },
@@ -5362,6 +6062,12 @@
               "verdict": "timeout",
               "details": {
                 "reason": "Hit the global tool timeout"
+              }
+            },
+            "auditor": {
+              "verdict": "error",
+              "details": {
+                "reason": "circom-auditor output did not match the report template"
               }
             }
           }
@@ -5414,6 +6120,13 @@
                 "execution_time_s": 24.46,
                 "ground_truth_match": "FalseNegative"
               }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 1218.27,
+                "ground_truth_match": "TruePositive"
+              }
             }
           }
         },
@@ -5464,6 +6177,12 @@
               "details": {
                 "execution_time_s": 22.04,
                 "ground_truth_match": "FalseNegative"
+              }
+            },
+            "auditor": {
+              "verdict": "error",
+              "details": {
+                "reason": "circom-auditor output did not match the report template"
               }
             }
           }
@@ -5519,6 +6238,13 @@
               "details": {
                 "reason": "Hit the global tool timeout"
               }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 543.8,
+                "ground_truth_match": "TruePositive"
+              }
             }
           }
         },
@@ -5570,6 +6296,13 @@
                 "execution_time_s": 17.64,
                 "ground_truth_match": "FalseNegative"
               }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 1722.94,
+                "ground_truth_match": "TruePositive"
+              }
             }
           }
         },
@@ -5617,6 +6350,13 @@
               "verdict": "timeout",
               "details": {
                 "reason": "Hit the global tool timeout"
+              }
+            },
+            "auditor": {
+              "verdict": "safe",
+              "details": {
+                "execution_time_s": 1106.37,
+                "ground_truth_match": "FalseNegative"
               }
             }
           }
@@ -5673,6 +6413,12 @@
                 "execution_time_s": 0.36,
                 "ground_truth_match": "TruePositive"
               }
+            },
+            "auditor": {
+              "verdict": "error",
+              "details": {
+                "reason": "circom-auditor output did not match the report template"
+              }
             }
           }
         },
@@ -5727,6 +6473,13 @@
               "details": {
                 "reason": "Hit the global tool timeout"
               }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 420.01,
+                "ground_truth_match": "TruePositive"
+              }
             }
           }
         },
@@ -5778,6 +6531,13 @@
                 "execution_time_s": 21.46,
                 "ground_truth_match": "FalseNegative"
               }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 1566.33,
+                "ground_truth_match": "TruePositive"
+              }
             }
           }
         },
@@ -5828,6 +6588,13 @@
               "details": {
                 "reason": "Hit the global tool timeout"
               }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 394.66,
+                "ground_truth_match": "TruePositive"
+              }
             }
           }
         },
@@ -5877,6 +6644,13 @@
               "verdict": "timeout",
               "details": {
                 "reason": "Hit the global tool timeout"
+              }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 846.69,
+                "ground_truth_match": "Undecided"
               }
             }
           }
@@ -5933,6 +6707,13 @@
               "details": {
                 "reason": "Hit the global tool timeout"
               }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 226.4,
+                "ground_truth_match": "TruePositive"
+              }
             }
           }
         },
@@ -5985,6 +6766,13 @@
                 "reason": "zkFuzz did not finish (likely killed)",
                 "execution_time_s": 166.88
               }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 1019.4,
+                "ground_truth_match": "TruePositive"
+              }
             }
           }
         },
@@ -6036,6 +6824,13 @@
               "details": {
                 "reason": "Hit the global tool timeout"
               }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 636.02,
+                "ground_truth_match": "TruePositive"
+              }
             }
           }
         },
@@ -6085,6 +6880,13 @@
               "verdict": "safe",
               "details": {
                 "execution_time_s": 21.98,
+                "ground_truth_match": "FalseNegative"
+              }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 1597.62,
                 "ground_truth_match": "FalseNegative"
               }
             }
@@ -6138,6 +6940,13 @@
                 "execution_time_s": 59.47,
                 "ground_truth_match": "FalseNegative"
               }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 1621.88,
+                "ground_truth_match": "TruePositive"
+              }
             }
           }
         },
@@ -6188,6 +6997,13 @@
               "details": {
                 "execution_time_s": 41.47,
                 "ground_truth_match": "FalseNegative"
+              }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 1636.51,
+                "ground_truth_match": "TruePositive"
               }
             }
           }
@@ -6240,6 +7056,13 @@
                 "reason": "zkFuzz did not finish (likely killed)",
                 "execution_time_s": 139.74
               }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 1613.73,
+                "ground_truth_match": "TruePositive"
+              }
             }
           }
         },
@@ -6289,6 +7112,13 @@
               "verdict": "safe",
               "details": {
                 "execution_time_s": 20.53,
+                "ground_truth_match": "FalseNegative"
+              }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 1409.11,
                 "ground_truth_match": "FalseNegative"
               }
             }
@@ -6342,6 +7172,12 @@
                 "execution_time_s": 18.42,
                 "ground_truth_match": "FalseNegative"
               }
+            },
+            "auditor": {
+              "verdict": "timeout",
+              "details": {
+                "reason": "Hit the global tool timeout"
+              }
             }
           }
         },
@@ -6391,6 +7227,13 @@
               "verdict": "timeout",
               "details": {
                 "reason": "Hit the global tool timeout"
+              }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 1026.36,
+                "ground_truth_match": "TruePositive"
               }
             }
           }
@@ -6442,6 +7285,13 @@
               "details": {
                 "reason": "Hit the global tool timeout"
               }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 1021.03,
+                "ground_truth_match": "TruePositive"
+              }
             }
           }
         },
@@ -6492,6 +7342,13 @@
               "details": {
                 "reason": "Hit the global tool timeout"
               }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 1215.69,
+                "ground_truth_match": "TruePositive"
+              }
             }
           }
         },
@@ -6541,6 +7398,13 @@
                 "reason": "zkFuzz did not finish (likely killed)",
                 "execution_time_s": 121.23
               }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 1525.38,
+                "ground_truth_match": "FalseNegative"
+              }
             }
           }
         },
@@ -6589,6 +7453,13 @@
               "details": {
                 "reason": "zkFuzz did not finish (likely killed)",
                 "execution_time_s": 106.18
+              }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 1381.19,
+                "ground_truth_match": "FalseNegative"
               }
             }
           }
@@ -6640,6 +7511,12 @@
               "details": {
                 "reason": "Hit the global tool timeout"
               }
+            },
+            "auditor": {
+              "verdict": "error",
+              "details": {
+                "reason": "circom-auditor output did not match the report template"
+              }
             }
           }
         },
@@ -6684,6 +7561,12 @@
               }
             },
             "zkfuzz": {
+              "verdict": "timeout",
+              "details": {
+                "reason": "Hit the global tool timeout"
+              }
+            },
+            "auditor": {
               "verdict": "timeout",
               "details": {
                 "reason": "Hit the global tool timeout"
@@ -6737,6 +7620,13 @@
                 "reason": "zkFuzz did not finish (likely killed)",
                 "execution_time_s": 173.59
               }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 1423.96,
+                "ground_truth_match": "TruePositive"
+              }
             }
           }
         },
@@ -6781,6 +7671,12 @@
               }
             },
             "zkfuzz": {
+              "verdict": "timeout",
+              "details": {
+                "reason": "Hit the global tool timeout"
+              }
+            },
+            "auditor": {
               "verdict": "timeout",
               "details": {
                 "reason": "Hit the global tool timeout"
@@ -6835,6 +7731,12 @@
               "details": {
                 "reason": "Hit the global tool timeout"
               }
+            },
+            "auditor": {
+              "verdict": "error",
+              "details": {
+                "reason": "circom-auditor output did not match the report template"
+              }
             }
           }
         },
@@ -6884,6 +7786,13 @@
                 "reason": "zkFuzz did not finish (likely killed)",
                 "execution_time_s": 80.72
               }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 727.23,
+                "ground_truth_match": "TruePositive"
+              }
             }
           }
         },
@@ -6932,6 +7841,13 @@
               "details": {
                 "reason": "zkFuzz did not finish (likely killed)",
                 "execution_time_s": 180.84
+              }
+            },
+            "auditor": {
+              "verdict": "vulnerable",
+              "details": {
+                "execution_time_s": 1633.07,
+                "ground_truth_match": "TruePositive"
               }
             }
           }
