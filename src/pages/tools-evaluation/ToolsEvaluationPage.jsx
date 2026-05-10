@@ -1261,13 +1261,34 @@ function ToolsEvaluationPage() {
         <SectionStyled>
           <Alert severity="info" variant="outlined">
             <strong>circom-auditor caveats.</strong> circom-auditor is
-            LLM-driven: the underlying models may have seen some of these bugs
-            (or their patches) during training, which can inflate its detection
-            rate compared with a fully unseen codebase. To keep the comparison
-            self-contained, web search was disabled for these runs, so the LLM
-            could not look up advisories, write-ups, or this dataset at
-            inference time. Use the tool selector below to compare results
-            with and without the LLM tool.
+            LLM-driven, so several factors can inflate its numbers here:
+            <Box
+              component="ul"
+              sx={{ marginTop: "0.5rem", marginBottom: 0, paddingLeft: "1.25rem" }}
+            >
+              <li>
+                The underlying models may have seen some of these bugs (or
+                their patches) during training.
+              </li>
+              <li>
+                The skill itself was authored against the zkbugs dataset, so
+                its prompts and heuristics are likely overfit to the kinds of
+                issues catalogued here.
+              </li>
+              <li>
+                Each bug was audited <strong>once</strong>. In practice the
+                skill is meant to be run several times and the findings
+                consolidated, so a single-run number under-states what a
+                real audit workflow would surface.
+              </li>
+              <li>
+                Web search was <strong>disabled</strong> for these runs to
+                keep the comparison self-contained, the LLM could not look
+                up advisories, write-ups, or this dataset at inference time.
+              </li>
+            </Box>
+            Use the tool selector below to compare results with and without
+            the LLM tool.
           </Alert>
         </SectionStyled>
 
