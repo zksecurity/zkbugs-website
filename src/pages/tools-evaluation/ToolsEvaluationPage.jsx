@@ -271,7 +271,7 @@ function totalsFor(tools, summary) {
 
 function detectionDistribution(bugs, tools) {
   // For each bug, count how many tools flagged it as vulnerable.
-  const bucket = [0, 0, 0, 0, 0, 0]; // index = # tools (0..5)
+  const bucket = Array(tools.length + 1).fill(0);
   bugs.forEach((bug) => {
     const detected = tools.reduce((acc, tool) => {
       return bug.tools?.[tool.id]?.verdict === "vulnerable" ? acc + 1 : acc;
@@ -336,14 +336,41 @@ function computeOverlap(modeObj, tools) {
   };
 }
 
+const isAiTool = (tool) => /llm|ai|auditor/i.test(tool.kind ?? "");
+
 function ToolsEvaluationPage() {
   const theme = useTheme();
   const data = useToolsEvaluation();
   const [mode, setMode] = useState("direct");
   const [activeVulnerability, setActiveVulnerability] = useState("All");
   const [reproducedFilter, setReproducedFilter] = useState("All");
+  const [selectedToolIds, setSelectedToolIds] = useState(null);
 
-  const tools = useMemo(() => data?.tools ?? [], [data]);
+  const allTools = useMemo(() => data?.tools ?? [], [data]);
+
+  const tools = useMemo(() => {
+    if (selectedToolIds === null) return allTools;
+    const set = new Set(selectedToolIds);
+    return allTools.filter((t) => set.has(t.id));
+  }, [allTools, selectedToolIds]);
+
+  const nonAiTools = useMemo(
+    () => allTools.filter((t) => !isAiTool(t)),
+    [allTools]
+  );
+
+  const toggleTool = (id) => {
+    setSelectedToolIds((current) => {
+      const base = current ?? allTools.map((t) => t.id);
+      return base.includes(id) ? base.filter((x) => x !== id) : [...base, id];
+    });
+  };
+
+  const setToolPreset = (preset) => {
+    if (preset === "all") setSelectedToolIds(null);
+    else if (preset === "non-ai")
+      setSelectedToolIds(nonAiTools.map((t) => t.id));
+  };
 
   const directData = data?.modes?.direct ?? null;
   const originalData = data?.modes?.original ?? null;
@@ -434,17 +461,27 @@ function ToolsEvaluationPage() {
       : mode === "original"
       ? originalData?.bugs ?? []
       : [];
-  const singleHighlightDist = detectionDistribution(singleHighlightBugs, tools);
-  const singleHighlightTotal = singleHighlightBugs.length;
-  const detectedAtLeastOne = singleHighlightTotal - singleHighlightDist[0];
-  const detectedAtLeastTwo =
-    singleHighlightDist[2] +
-    singleHighlightDist[3] +
-    singleHighlightDist[4] +
-    singleHighlightDist[5];
-  const detectedAtLeastThree =
-    singleHighlightDist[3] + singleHighlightDist[4] + singleHighlightDist[5];
-  const undetected = singleHighlightDist[0];
+
+  const computeHighlightStats = (bugs, toolsForStats) => {
+    const dist = detectionDistribution(bugs, toolsForStats);
+    const total = bugs.length;
+    const sumFrom = (k) =>
+      dist.slice(k).reduce((acc, count) => acc + count, 0);
+    return {
+      dist,
+      total,
+      atLeastOne: total - (dist[0] ?? 0),
+      atLeastTwo: sumFrom(2),
+      atLeastThree: sumFrom(3),
+      undetected: dist[0] ?? 0,
+    };
+  };
+
+  const singleHighlight = computeHighlightStats(singleHighlightBugs, tools);
+  const nonAiHighlight = computeHighlightStats(
+    singleHighlightBugs,
+    nonAiTools
+  );
 
   // Highlights — both-mode view: per-bug delta direct vs original.
   const detectedInMode = (toolsForMode) =>
@@ -480,6 +517,79 @@ function ToolsEvaluationPage() {
     mode === "direct" ? directStats : mode === "original" ? originalStats : null;
 
   // -------------------- Render helpers --------------------
+
+  const renderHighlightStats = (stats) => (
+    <>
+      <KpiGridStyled>
+        <KpiCardStyled elevation={0}>
+          <span className="kpi-label">Caught by ≥ 1 tool</span>
+          <span className="kpi-value">
+            {stats.atLeastOne}
+            <Box
+              component="span"
+              sx={{
+                fontSize: "1rem",
+                color: "text.secondary",
+                fontWeight: 400,
+                marginLeft: "0.4rem",
+              }}
+            >
+              / {stats.total}
+            </Box>
+          </span>
+          <span className="kpi-sub">
+            {formatPercent(stats.atLeastOne, stats.total)} coverage
+          </span>
+        </KpiCardStyled>
+        <KpiCardStyled elevation={0}>
+          <span className="kpi-label">Caught by ≥ 2 tools</span>
+          <span className="kpi-value">{stats.atLeastTwo}</span>
+          <span className="kpi-sub">
+            {formatPercent(stats.atLeastTwo, stats.total)} of bugs
+          </span>
+        </KpiCardStyled>
+        <KpiCardStyled elevation={0}>
+          <span className="kpi-label">Caught by ≥ 3 tools</span>
+          <span className="kpi-value">{stats.atLeastThree}</span>
+          <span className="kpi-sub">
+            {formatPercent(stats.atLeastThree, stats.total)} of bugs
+          </span>
+        </KpiCardStyled>
+        <KpiCardStyled elevation={0}>
+          <span className="kpi-label">Missed by all tools</span>
+          <span
+            className="kpi-value"
+            style={{ color: theme.palette.error.main }}
+          >
+            {stats.undetected}
+          </span>
+          <span className="kpi-sub">
+            {formatPercent(stats.undetected, stats.total)} fully undetected
+          </span>
+        </KpiCardStyled>
+      </KpiGridStyled>
+      <Box
+        sx={{
+          marginTop: "0.75rem",
+          display: "flex",
+          flexWrap: "wrap",
+          gap: "0.5rem",
+        }}
+      >
+        {stats.dist.map((count, n) => (
+          <Chip
+            key={n}
+            label={`${count} bug${count === 1 ? "" : "s"} · ${n} tool${
+              n === 1 ? "" : "s"
+            }`}
+            size="small"
+            variant="outlined"
+            color={n === 0 ? "error" : "default"}
+          />
+        ))}
+      </Box>
+    </>
+  );
 
   const renderKpis = () => {
     if (mode === "both") {
@@ -1053,8 +1163,8 @@ function ToolsEvaluationPage() {
               color="text.secondary"
               sx={{ marginTop: "0.5rem", maxWidth: 760 }}
             >
-              Five static, symbolic and fuzzing tools run across the Circom
-              bugs in the dataset. Powered by{" "}
+              A mix of static, symbolic, fuzzing, and LLM-based tools run
+              across the Circom bugs in the dataset. Powered by{" "}
               <Link
                 href={data.source?.repo}
                 target="_blank"
@@ -1149,6 +1259,19 @@ function ToolsEvaluationPage() {
         </SectionStyled>
 
         <SectionStyled>
+          <Alert severity="info" variant="outlined">
+            <strong>circom-auditor caveats.</strong> circom-auditor is
+            LLM-driven: the underlying models may have seen some of these bugs
+            (or their patches) during training, which can inflate its detection
+            rate compared with a fully unseen codebase. To keep the comparison
+            self-contained, web search was disabled for these runs, so the LLM
+            could not look up advisories, write-ups, or this dataset at
+            inference time. Use the tool selector below to compare results
+            with and without the LLM tool.
+          </Alert>
+        </SectionStyled>
+
+        <SectionStyled>
           <Typography variant="h6" className="section-title">
             Scope
           </Typography>
@@ -1216,38 +1339,108 @@ function ToolsEvaluationPage() {
             Tools
           </Typography>
           <ToolsGridStyled>
-            {tools.map((tool) => (
-              <ToolCardStyled key={tool.id} elevation={0}>
-                <span className="tool-kind">{tool.kind}</span>
-                <span className="tool-name">{tool.name}</span>
-                <span className="tool-desc">{tool.description}</span>
-                {tool.url && (
-                  <Button
-                    component="a"
-                    href={tool.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    variant="text"
-                    color="secondary"
-                    size="small"
-                    endIcon={<OpenInNew fontSize="small" />}
-                    sx={{
-                      alignSelf: "flex-start",
-                      textTransform: "none",
-                      padding: 0,
-                      minHeight: 0,
-                      "&:hover": {
-                        backgroundColor: "transparent",
-                        textDecoration: "underline",
-                      },
-                    }}
+            {allTools.map((tool) => {
+              const selected = tools.some((t) => t.id === tool.id);
+              return (
+                <ToolCardStyled
+                  key={tool.id}
+                  elevation={0}
+                  sx={{
+                    opacity: selected ? 1 : 0.55,
+                    borderColor: selected
+                      ? theme.palette.secondary.main
+                      : theme.palette.borders.default,
+                  }}
+                >
+                  <span className="tool-kind">{tool.kind}</span>
+                  <span className="tool-name">{tool.name}</span>
+                  <span className="tool-desc">{tool.description}</span>
+                  <Stack
+                    direction="row"
+                    spacing={1}
+                    sx={{ alignItems: "center", marginTop: "0.25rem" }}
                   >
-                    Repo
-                  </Button>
-                )}
-              </ToolCardStyled>
-            ))}
+                    <Chip
+                      label={selected ? "Included" : "Excluded"}
+                      size="small"
+                      clickable
+                      color={selected ? "secondary" : "default"}
+                      variant={selected ? "filled" : "outlined"}
+                      onClick={() => toggleTool(tool.id)}
+                    />
+                    {tool.url && (
+                      <Button
+                        component="a"
+                        href={tool.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        variant="text"
+                        color="secondary"
+                        size="small"
+                        endIcon={<OpenInNew fontSize="small" />}
+                        sx={{
+                          textTransform: "none",
+                          padding: 0,
+                          minHeight: 0,
+                          "&:hover": {
+                            backgroundColor: "transparent",
+                            textDecoration: "underline",
+                          },
+                        }}
+                      >
+                        Repo
+                      </Button>
+                    )}
+                  </Stack>
+                </ToolCardStyled>
+              );
+            })}
           </ToolsGridStyled>
+          <FilterRowStyled>
+            <span className="filter-label">Show in results</span>
+            <div className="chip-row">
+              <Chip
+                label="All tools"
+                size="small"
+                clickable
+                color={tools.length === allTools.length ? "secondary" : "default"}
+                variant={tools.length === allTools.length ? "filled" : "outlined"}
+                onClick={() => setToolPreset("all")}
+              />
+              <Chip
+                label="Non-AI only"
+                size="small"
+                clickable
+                color={
+                  tools.length === nonAiTools.length &&
+                  tools.every((t) => !isAiTool(t))
+                    ? "secondary"
+                    : "default"
+                }
+                variant={
+                  tools.length === nonAiTools.length &&
+                  tools.every((t) => !isAiTool(t))
+                    ? "filled"
+                    : "outlined"
+                }
+                onClick={() => setToolPreset("non-ai")}
+              />
+              {allTools.map((tool) => {
+                const selected = tools.some((t) => t.id === tool.id);
+                return (
+                  <Chip
+                    key={`toggle-${tool.id}`}
+                    label={tool.name}
+                    size="small"
+                    clickable
+                    color={selected ? "secondary" : "default"}
+                    variant={selected ? "filled" : "outlined"}
+                    onClick={() => toggleTool(tool.id)}
+                  />
+                );
+              })}
+            </div>
+          </FilterRowStyled>
         </SectionStyled>
 
         <SectionStyled>
@@ -1257,6 +1450,16 @@ function ToolsEvaluationPage() {
               ? "(direct vs original delta)"
               : `(${mode} mode)`}
           </Typography>
+          {mode !== "both" && tools.length !== allTools.length && (
+            <Typography
+              variant="caption"
+              color="text.secondary"
+              sx={{ display: "block" }}
+            >
+              Counts reflect your current tool selection
+              ({tools.length} of {allTools.length} tools).
+            </Typography>
+          )}
           <CardStyled elevation={0}>
             {mode === "both" ? (
               <>
@@ -1337,82 +1540,33 @@ function ToolsEvaluationPage() {
                 </Typography>
               </>
             ) : (
-              <>
-                <KpiGridStyled>
-                  <KpiCardStyled elevation={0}>
-                    <span className="kpi-label">Caught by ≥ 1 tool</span>
-                    <span className="kpi-value">
-                      {detectedAtLeastOne}
-                      <Box
-                        component="span"
-                        sx={{
-                          fontSize: "1rem",
-                          color: "text.secondary",
-                          fontWeight: 400,
-                          marginLeft: "0.4rem",
-                        }}
-                      >
-                        / {singleHighlightTotal}
-                      </Box>
-                    </span>
-                    <span className="kpi-sub">
-                      {formatPercent(detectedAtLeastOne, singleHighlightTotal)}{" "}
-                      coverage
-                    </span>
-                  </KpiCardStyled>
-                  <KpiCardStyled elevation={0}>
-                    <span className="kpi-label">Caught by ≥ 2 tools</span>
-                    <span className="kpi-value">{detectedAtLeastTwo}</span>
-                    <span className="kpi-sub">
-                      {formatPercent(detectedAtLeastTwo, singleHighlightTotal)}{" "}
-                      of bugs
-                    </span>
-                  </KpiCardStyled>
-                  <KpiCardStyled elevation={0}>
-                    <span className="kpi-label">Caught by ≥ 3 tools</span>
-                    <span className="kpi-value">{detectedAtLeastThree}</span>
-                    <span className="kpi-sub">
-                      {formatPercent(detectedAtLeastThree, singleHighlightTotal)}{" "}
-                      of bugs
-                    </span>
-                  </KpiCardStyled>
-                  <KpiCardStyled elevation={0}>
-                    <span className="kpi-label">Missed by all tools</span>
-                    <span
-                      className="kpi-value"
-                      style={{ color: theme.palette.error.main }}
-                    >
-                      {undetected}
-                    </span>
-                    <span className="kpi-sub">
-                      {formatPercent(undetected, singleHighlightTotal)} fully
-                      undetected
-                    </span>
-                  </KpiCardStyled>
-                </KpiGridStyled>
-                <Box
-                  sx={{
-                    marginTop: "0.75rem",
-                    display: "flex",
-                    flexWrap: "wrap",
-                    gap: "0.5rem",
-                  }}
-                >
-                  {singleHighlightDist.map((count, n) => (
-                    <Chip
-                      key={n}
-                      label={`${count} bug${count === 1 ? "" : "s"} · ${n} tool${
-                        n === 1 ? "" : "s"
-                      }`}
-                      size="small"
-                      variant="outlined"
-                      color={n === 0 ? "error" : "default"}
-                    />
-                  ))}
-                </Box>
-              </>
+              renderHighlightStats(singleHighlight)
             )}
           </CardStyled>
+          {mode !== "both" && nonAiTools.length > 0 && (
+            <>
+              <Typography
+                variant="h6"
+                className="section-title"
+                sx={{ marginTop: "1rem" }}
+              >
+                Highlights of non-AI tools ({mode} mode)
+              </Typography>
+              <Typography
+                variant="caption"
+                color="text.secondary"
+                sx={{ display: "block" }}
+              >
+                Same view restricted to {nonAiTools.length} non-LLM tool
+                {nonAiTools.length === 1 ? "" : "s"} (
+                {nonAiTools.map((t) => t.name).join(", ")}). Useful for gauging
+                detection rates without the LLM contribution.
+              </Typography>
+              <CardStyled elevation={0}>
+                {renderHighlightStats(nonAiHighlight)}
+              </CardStyled>
+            </>
+          )}
         </SectionStyled>
 
         <SectionStyled>
