@@ -72,12 +72,12 @@ TOOLS = [
         "description": "Genetic fuzzer that searches for unsoundness counterexamples.",
     },
     {
-        "id": "auditor",
-        "dir": "circom_auditor",
-        "name": "circom-auditor",
-        "kind": "LLM Audit",
-        "url": "https://github.com/zksecurity/zk-skills",
-        "description": "Nine-agent parallel LLM audit via the zksecurity/zk-skills Claude Code skill.",
+        "id": "conscs",
+        "dir": "conscs",
+        "name": "ConsCS",
+        "kind": "Symbolic Verification",
+        "url": "https://github.com/jinan789/ConsCS",
+        "description": "Constraint-based symbolic checker that searches for under-constrained signals in R1CS circuits.",
     },
 ]
 
@@ -136,11 +136,10 @@ def details_for_tool(tool_id: str, parsed: dict | None, results: dict | None) ->
     elif tool_id == "zkfuzz":
         if parsed.get("vulnerability"):
             out["vulnerability"] = parsed["vulnerability"]
-    elif tool_id == "auditor":
+    elif tool_id == "conscs":
         stats = parsed.get("statistics") or {}
-        for key in ("total_findings", "total_leads"):
-            if key in stats:
-                out[key] = stats[key]
+        if stats.get("total_findings"):
+            out["total_findings"] = stats["total_findings"]
     return out
 
 
@@ -425,28 +424,42 @@ def parse_zkfuzz(raw: str) -> tuple[str, dict]:
     return "unknown", {}
 
 
-AUDITOR_NO_FINDINGS_RE = re.compile(
-    r"_No findings reach the reporting threshold\._", re.I
-)
-AUDITOR_FINDING_ROW_RE = re.compile(r"^\s*\[\d+\]\s+\*\*\d+\.", re.MULTILINE)
+CONSCS_RESULT_RE = re.compile(r"\*\*\s*result:\s*(.+)", re.I)
 
 
-def parse_circom_auditor(raw: str) -> tuple[str, dict]:
+def parse_conscs(raw: str) -> tuple[str, dict]:
     text = strip_ansi(tail_for_scan(raw))
     early_verdict, early_reason = detect_error_or_timeout(text)
     if early_verdict:
         return early_verdict, {"reason": early_reason}
 
-    # The skill prints a "## Findings" section that either contains a
-    # "_No findings reach the reporting threshold._" notice or numbered
-    # finding rows like "[95] **1. Title…". Either is decisive.
-    if AUDITOR_NO_FINDINGS_RE.search(text):
-        return "safe", {}
-    if AUDITOR_FINDING_ROW_RE.search(text):
-        return "vulnerable", {}
-    # Skill ran but output drifted from the formatting spec — surface as
-    # error so it shows up in the rollup rather than being silently safe.
-    return "error", {"reason": "circom-auditor output did not match the report template"}
+    results = CONSCS_RESULT_RE.findall(text)
+    if not results:
+        return "unknown", {}
+
+    details: dict = {}
+    under_constrained = any("UNDER-CONSTRAINED" in r.upper() for r in results)
+    not_sure = any("NOT SURE" in r.upper() for r in results)
+    canceled = any("canceled" in r.lower() for r in results)
+    timed_out = any(r.strip().upper() == "TIMEOUT" for r in results)
+
+    # Check for a real counterexample (non-empty, not None/{}):
+    ce_matches = re.findall(r"\*\*\s*counterexample:\s*(.+)", text, re.I)
+    has_ce = any(
+        ce.strip() not in ("None", "{}", "") for ce in ce_matches
+    )
+    if has_ce:
+        details["counterexample"] = True
+
+    if canceled or timed_out:
+        return "timeout", {"reason": "ConsCS canceled or timed out on this circuit"}
+    if under_constrained:
+        return "vulnerable", details
+    if not_sure:
+        details["reason"] = "ConsCS could not determine (NOT SURE)"
+        return "unknown", details
+    # All results are CONSTRAINED
+    return "safe", details
 
 
 PARSERS = {
@@ -455,7 +468,7 @@ PARSERS = {
     "ecne": parse_ecne,
     "circomspect": parse_circomspect,
     "zkfuzz": parse_zkfuzz,
-    "auditor": parse_circom_auditor,
+    "conscs": parse_conscs,
 }
 
 
@@ -493,15 +506,6 @@ def process_bug(bug_dir: Path, mode: str, path_to_id: dict[str, str]) -> dict | 
         results = load_json(tool_dir / "results.json")
         if results and "execution_time" in results:
             details["execution_time_s"] = results["execution_time"]
-
-        # circom-auditor's raw.txt is verbose markdown that uses several
-        # phrasings for "no findings" / "finding row"; trust the
-        # already-normalised status from results.json instead of reparsing.
-        if tool_id == "auditor" and results and results.get("status"):
-            mapped = STATUS_VERDICT.get(results["status"])
-            if mapped:
-                verdict = mapped
-                details.pop("reason", None)
 
         evaluation = load_json(tool_dir / "evaluation.json")
         if evaluation and evaluation.get("status"):
