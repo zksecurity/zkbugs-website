@@ -154,6 +154,7 @@ ERROR_PATTERNS = [
     ("Stack overflow / recursion limit", re.compile(r"stack overflow|RecursionError|recursion limit", re.I)),
     ("OOM / killed", re.compile(r"\bKilled\b|out of memory|OOM")),
     ("Timed out", re.compile(r"Timed out", re.I)),
+    ("R1CS compilation failed", re.compile(r"Failed to compile circuit to R1CS", re.I)),
     ("Compilation failed", re.compile(r"compilation failed", re.I)),
     ("circom error reported", re.compile(r"previous errors were found")),
     ("Disk full", re.compile(r"No space left on device")),
@@ -456,8 +457,10 @@ def parse_conscs(raw: str) -> tuple[str, dict]:
     if under_constrained:
         return "vulnerable", details
     if not_sure:
+        # NOT SURE = ConsCS found no counterexample; treat as safe so the
+        # ground_truth_match (FalseNegative) correctly reflects the miss.
         details["reason"] = "ConsCS could not determine (NOT SURE)"
-        return "unknown", details
+        return "safe", details
     # All results are CONSTRAINED
     return "safe", details
 
@@ -506,6 +509,10 @@ def process_bug(bug_dir: Path, mode: str, path_to_id: dict[str, str]) -> dict | 
         results = load_json(tool_dir / "results.json")
         if results and "execution_time" in results:
             details["execution_time_s"] = results["execution_time"]
+        # Fall back to results.json status when the raw parser couldn't determine
+        # a verdict (e.g. tool ran but produced no parseable output).
+        if verdict == "unknown" and results and results.get("status") in STATUS_VERDICT:
+            verdict = STATUS_VERDICT[results["status"]]
 
         evaluation = load_json(tool_dir / "evaluation.json")
         if evaluation and evaluation.get("status"):

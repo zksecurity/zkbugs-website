@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-09T05:50:38+00:00",
+  "generated_at": "2026-06-09T06:22:16+00:00",
   "run_timestamp": "2026-04-24T15:41:23+00:00",
   "timeout_seconds": 300,
   "source": {
@@ -183,11 +183,11 @@
           "missing": 0
         },
         "conscs": {
-          "safe": 36,
+          "safe": 48,
           "vulnerable": 11,
           "error": 0,
           "timeout": 11,
-          "unknown": 12,
+          "unknown": 0,
           "missing": 0
         }
       },
@@ -454,7 +454,7 @@
               }
             },
             "conscs": {
-              "verdict": "unknown",
+              "verdict": "safe",
               "details": {
                 "reason": "ConsCS could not determine (NOT SURE)",
                 "execution_time_s": 6.01,
@@ -581,7 +581,7 @@
               }
             },
             "conscs": {
-              "verdict": "unknown",
+              "verdict": "safe",
               "details": {
                 "reason": "ConsCS could not determine (NOT SURE)",
                 "execution_time_s": 0.78,
@@ -819,7 +819,7 @@
               }
             },
             "conscs": {
-              "verdict": "unknown",
+              "verdict": "safe",
               "details": {
                 "reason": "ConsCS could not determine (NOT SURE)",
                 "execution_time_s": 0.24,
@@ -1298,7 +1298,7 @@
               }
             },
             "conscs": {
-              "verdict": "unknown",
+              "verdict": "safe",
               "details": {
                 "reason": "ConsCS could not determine (NOT SURE)",
                 "execution_time_s": 30.45,
@@ -1474,7 +1474,7 @@
               }
             },
             "conscs": {
-              "verdict": "unknown",
+              "verdict": "safe",
               "details": {
                 "reason": "ConsCS could not determine (NOT SURE)",
                 "execution_time_s": 214.15,
@@ -1591,7 +1591,7 @@
               }
             },
             "conscs": {
-              "verdict": "unknown",
+              "verdict": "safe",
               "details": {
                 "reason": "ConsCS could not determine (NOT SURE)",
                 "execution_time_s": 85.62,
@@ -2314,7 +2314,7 @@
               }
             },
             "conscs": {
-              "verdict": "unknown",
+              "verdict": "safe",
               "details": {
                 "reason": "ConsCS could not determine (NOT SURE)",
                 "execution_time_s": 163.57,
@@ -2851,7 +2851,7 @@
               }
             },
             "conscs": {
-              "verdict": "unknown",
+              "verdict": "safe",
               "details": {
                 "reason": "ConsCS could not determine (NOT SURE)",
                 "execution_time_s": 111.23,
@@ -2915,7 +2915,7 @@
               }
             },
             "conscs": {
-              "verdict": "unknown",
+              "verdict": "safe",
               "details": {
                 "reason": "ConsCS could not determine (NOT SURE)",
                 "execution_time_s": 20.8,
@@ -2979,7 +2979,7 @@
               }
             },
             "conscs": {
-              "verdict": "unknown",
+              "verdict": "safe",
               "details": {
                 "reason": "ConsCS could not determine (NOT SURE)",
                 "execution_time_s": 20.94,
@@ -3762,7 +3762,7 @@
               }
             },
             "conscs": {
-              "verdict": "unknown",
+              "verdict": "safe",
               "details": {
                 "reason": "ConsCS could not determine (NOT SURE)",
                 "execution_time_s": 23.19,
@@ -3951,7 +3951,7 @@
               }
             },
             "conscs": {
-              "verdict": "unknown",
+              "verdict": "safe",
               "details": {
                 "reason": "ConsCS could not determine (NOT SURE)",
                 "execution_time_s": 517.44,
@@ -4539,11 +4539,11 @@
           "missing": 0
         },
         "conscs": {
-          "safe": 21,
+          "safe": 25,
           "vulnerable": 1,
-          "error": 0,
+          "error": 5,
           "timeout": 25,
-          "unknown": 9,
+          "unknown": 0,
           "missing": 0
         }
       },
@@ -4622,6 +4622,10 @@
           {
             "pattern": "Timed out",
             "count": 25
+          },
+          {
+            "pattern": "R1CS compilation failed",
+            "count": 5
           }
         ]
       },
@@ -4805,7 +4809,7 @@
               }
             },
             "conscs": {
-              "verdict": "unknown",
+              "verdict": "safe",
               "details": {
                 "reason": "ConsCS could not determine (NOT SURE)",
                 "execution_time_s": 0.69,
@@ -5039,7 +5043,7 @@
               }
             },
             "conscs": {
-              "verdict": "unknown",
+              "verdict": "safe",
               "details": {
                 "reason": "ConsCS could not determine (NOT SURE)",
                 "execution_time_s": 0.23,
@@ -5664,7 +5668,10 @@
               }
             },
             "conscs": {
-              "verdict": "unknown"
+              "verdict": "error",
+              "details": {
+                "reason": "R1CS compilation failed"
+              }
             }
           }
         },
@@ -5719,7 +5726,10 @@
               }
             },
             "conscs": {
-              "verdict": "unknown"
+              "verdict": "error",
+              "details": {
+                "reason": "R1CS compilation failed"
+              }
             }
           }
         },
@@ -5774,7 +5784,10 @@
               }
             },
             "conscs": {
-              "verdict": "unknown"
+              "verdict": "error",
+              "details": {
+                "reason": "R1CS compilation failed"
+              }
             }
           }
         },
@@ -5830,7 +5843,7 @@
               }
             },
             "conscs": {
-              "verdict": "unknown",
+              "verdict": "safe",
               "details": {
                 "execution_time_s": 21.68,
                 "ground_truth_match": "FalseNegative"
@@ -6345,7 +6358,7 @@
               }
             },
             "conscs": {
-              "verdict": "unknown",
+              "verdict": "safe",
               "details": {
                 "reason": "ConsCS could not determine (NOT SURE)",
                 "execution_time_s": 11.18,
@@ -6760,7 +6773,10 @@
               }
             },
             "conscs": {
-              "verdict": "unknown"
+              "verdict": "error",
+              "details": {
+                "reason": "R1CS compilation failed"
+              }
             }
           }
         },
@@ -7045,7 +7061,10 @@
               }
             },
             "conscs": {
-              "verdict": "unknown"
+              "verdict": "error",
+              "details": {
+                "reason": "R1CS compilation failed"
+              }
             }
           }
         },
