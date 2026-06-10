@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-06-09T06:22:16+00:00",
-  "run_timestamp": "2026-04-24T15:41:23+00:00",
+  "generated_at": "2026-06-10T11:15:45+00:00",
+  "run_timestamp": "2026-06-10T11:15:26+00:00",
   "timeout_seconds": 300,
   "source": {
     "repo": "https://github.com/zksecurity/zkhydra",
@@ -16,7 +16,12 @@
           "processed": 70,
           "errors": 0,
           "skipped": 0,
-          "evaluation_counts": null
+          "evaluation_counts": {
+            "TruePositive": 83,
+            "FalseNegative": 217,
+            "Undecided": 0,
+            "untriaged": 0
+          }
         },
         "original": {
           "ran": true,
@@ -25,7 +30,12 @@
           "processed": 56,
           "errors": 0,
           "skipped": 0,
-          "evaluation_counts": null
+          "evaluation_counts": {
+            "TruePositive": 14,
+            "FalseNegative": 160,
+            "Undecided": 0,
+            "untriaged": 0
+          }
         }
       },
       "bugs_with_distinct_original": [
@@ -183,9 +193,9 @@
           "missing": 0
         },
         "conscs": {
-          "safe": 48,
+          "safe": 43,
           "vulnerable": 11,
-          "error": 0,
+          "error": 5,
           "timeout": 11,
           "unknown": 0,
           "missing": 0
@@ -281,7 +291,7 @@
           },
           {
             "pattern": "Other / uncategorized",
-            "count": 1
+            "count": 6
           }
         ]
       },
@@ -342,7 +352,7 @@
             "conscs": {
               "verdict": "safe",
               "details": {
-                "execution_time_s": 0.24,
+                "execution_time_s": 0.28,
                 "ground_truth_match": "FalseNegative"
               }
             }
@@ -457,7 +467,7 @@
               "verdict": "safe",
               "details": {
                 "reason": "ConsCS could not determine (NOT SURE)",
-                "execution_time_s": 6.01,
+                "execution_time_s": 9.79,
                 "ground_truth_match": "FalseNegative"
               }
             }
@@ -521,7 +531,7 @@
             "conscs": {
               "verdict": "safe",
               "details": {
-                "execution_time_s": 0.37,
+                "execution_time_s": 0.31,
                 "ground_truth_match": "FalseNegative"
               }
             }
@@ -584,7 +594,7 @@
               "verdict": "safe",
               "details": {
                 "reason": "ConsCS could not determine (NOT SURE)",
-                "execution_time_s": 0.78,
+                "execution_time_s": 0.74,
                 "ground_truth_match": "FalseNegative"
               }
             }
@@ -641,7 +651,7 @@
             "conscs": {
               "verdict": "safe",
               "details": {
-                "execution_time_s": 0.26,
+                "execution_time_s": 0.28,
                 "ground_truth_match": "FalseNegative"
               }
             }
@@ -697,7 +707,7 @@
               "verdict": "vulnerable",
               "details": {
                 "counterexample": true,
-                "execution_time_s": 2.86,
+                "execution_time_s": 3.1,
                 "ground_truth_match": "TruePositive"
               }
             }
@@ -756,7 +766,7 @@
             "conscs": {
               "verdict": "safe",
               "details": {
-                "execution_time_s": 19.58,
+                "execution_time_s": 20.1,
                 "ground_truth_match": "FalseNegative"
               }
             }
@@ -822,7 +832,7 @@
               "verdict": "safe",
               "details": {
                 "reason": "ConsCS could not determine (NOT SURE)",
-                "execution_time_s": 0.24,
+                "execution_time_s": 0.25,
                 "ground_truth_match": "FalseNegative"
               }
             }
@@ -879,9 +889,10 @@
               }
             },
             "conscs": {
-              "verdict": "safe",
+              "verdict": "error",
               "details": {
-                "execution_time_s": 0.53,
+                "reason": "ConsCS aborted: ** time: 99999999",
+                "execution_time_s": 1.97,
                 "ground_truth_match": "FalseNegative"
               }
             }
@@ -947,7 +958,7 @@
               "verdict": "vulnerable",
               "details": {
                 "counterexample": true,
-                "execution_time_s": 0.28,
+                "execution_time_s": 0.27,
                 "ground_truth_match": "TruePositive"
               }
             }
@@ -1004,7 +1015,7 @@
             "conscs": {
               "verdict": "safe",
               "details": {
-                "execution_time_s": 58.59,
+                "execution_time_s": 59.04,
                 "ground_truth_match": "FalseNegative"
               }
             }
@@ -1061,7 +1072,7 @@
             "conscs": {
               "verdict": "safe",
               "details": {
-                "execution_time_s": 6.86,
+                "execution_time_s": 7.13,
                 "ground_truth_match": "FalseNegative"
               }
             }
@@ -1178,9 +1189,10 @@
               }
             },
             "conscs": {
-              "verdict": "safe",
+              "verdict": "error",
               "details": {
-                "execution_time_s": 288.16,
+                "reason": "ConsCS aborted: ** time: 99999999",
+                "execution_time_s": 254.47,
                 "ground_truth_match": "FalseNegative"
               }
             }
@@ -1239,9 +1251,10 @@
               }
             },
             "conscs": {
-              "verdict": "safe",
+              "verdict": "error",
               "details": {
-                "execution_time_s": 544.52,
+                "reason": "ConsCS aborted: ** time: 99999999",
+                "execution_time_s": 491.43,
                 "ground_truth_match": "FalseNegative"
               }
             }
@@ -1301,7 +1314,7 @@
               "verdict": "safe",
               "details": {
                 "reason": "ConsCS could not determine (NOT SURE)",
-                "execution_time_s": 30.45,
+                "execution_time_s": 29.0,
                 "ground_truth_match": "FalseNegative"
               }
             }
@@ -1363,7 +1376,7 @@
             "conscs": {
               "verdict": "safe",
               "details": {
-                "execution_time_s": 27.62,
+                "execution_time_s": 27.25,
                 "ground_truth_match": "FalseNegative"
               }
             }
@@ -1477,7 +1490,7 @@
               "verdict": "safe",
               "details": {
                 "reason": "ConsCS could not determine (NOT SURE)",
-                "execution_time_s": 214.15,
+                "execution_time_s": 208.95,
                 "ground_truth_match": "FalseNegative"
               }
             }
@@ -1536,7 +1549,7 @@
             "conscs": {
               "verdict": "safe",
               "details": {
-                "execution_time_s": 0.44,
+                "execution_time_s": 0.42,
                 "ground_truth_match": "FalseNegative"
               }
             }
@@ -1594,7 +1607,7 @@
               "verdict": "safe",
               "details": {
                 "reason": "ConsCS could not determine (NOT SURE)",
-                "execution_time_s": 85.62,
+                "execution_time_s": 82.74,
                 "ground_truth_match": "FalseNegative"
               }
             }
@@ -1655,7 +1668,7 @@
             "conscs": {
               "verdict": "safe",
               "details": {
-                "execution_time_s": 0.44,
+                "execution_time_s": 0.39,
                 "ground_truth_match": "FalseNegative"
               }
             }
@@ -1722,7 +1735,7 @@
               "verdict": "vulnerable",
               "details": {
                 "counterexample": true,
-                "execution_time_s": 0.25,
+                "execution_time_s": 0.26,
                 "ground_truth_match": "TruePositive"
               }
             }
@@ -1780,7 +1793,7 @@
             "conscs": {
               "verdict": "safe",
               "details": {
-                "execution_time_s": 0.23,
+                "execution_time_s": 0.27,
                 "ground_truth_match": "FalseNegative"
               }
             }
@@ -1838,7 +1851,7 @@
             "conscs": {
               "verdict": "safe",
               "details": {
-                "execution_time_s": 2.89,
+                "execution_time_s": 2.97,
                 "ground_truth_match": "FalseNegative"
               }
             }
@@ -1956,7 +1969,7 @@
             "conscs": {
               "verdict": "safe",
               "details": {
-                "execution_time_s": 16.97,
+                "execution_time_s": 15.29,
                 "ground_truth_match": "FalseNegative"
               }
             }
@@ -2015,7 +2028,7 @@
             "conscs": {
               "verdict": "safe",
               "details": {
-                "execution_time_s": 139.63,
+                "execution_time_s": 132.52,
                 "ground_truth_match": "FalseNegative"
               }
             }
@@ -2142,7 +2155,7 @@
             "conscs": {
               "verdict": "safe",
               "details": {
-                "execution_time_s": 0.35,
+                "execution_time_s": 0.32,
                 "ground_truth_match": "FalseNegative"
               }
             }
@@ -2205,7 +2218,7 @@
             "conscs": {
               "verdict": "safe",
               "details": {
-                "execution_time_s": 0.23,
+                "execution_time_s": 1.66,
                 "ground_truth_match": "FalseNegative"
               }
             }
@@ -2317,7 +2330,7 @@
               "verdict": "safe",
               "details": {
                 "reason": "ConsCS could not determine (NOT SURE)",
-                "execution_time_s": 163.57,
+                "execution_time_s": 166.43,
                 "ground_truth_match": "FalseNegative"
               }
             }
@@ -2377,7 +2390,7 @@
             "conscs": {
               "verdict": "safe",
               "details": {
-                "execution_time_s": 4.94,
+                "execution_time_s": 4.63,
                 "ground_truth_match": "FalseNegative"
               }
             }
@@ -2550,7 +2563,7 @@
             "conscs": {
               "verdict": "safe",
               "details": {
-                "execution_time_s": 0.28,
+                "execution_time_s": 0.25,
                 "ground_truth_match": "FalseNegative"
               }
             }
@@ -2607,7 +2620,7 @@
             "conscs": {
               "verdict": "safe",
               "details": {
-                "execution_time_s": 42.71,
+                "execution_time_s": 40.1,
                 "ground_truth_match": "FalseNegative"
               }
             }
@@ -2669,7 +2682,7 @@
             "conscs": {
               "verdict": "safe",
               "details": {
-                "execution_time_s": 0.99,
+                "execution_time_s": 1.03,
                 "ground_truth_match": "FalseNegative"
               }
             }
@@ -2732,8 +2745,7 @@
               "verdict": "timeout",
               "details": {
                 "reason": "ConsCS canceled or timed out on this circuit",
-                "execution_time_s": 40.36,
-                "ground_truth_match": "FalseNegative"
+                "execution_time_s": 39.53
               }
             }
           }
@@ -2790,7 +2802,7 @@
             "conscs": {
               "verdict": "safe",
               "details": {
-                "execution_time_s": 33.43,
+                "execution_time_s": 33.96,
                 "ground_truth_match": "FalseNegative"
               }
             }
@@ -2854,7 +2866,7 @@
               "verdict": "safe",
               "details": {
                 "reason": "ConsCS could not determine (NOT SURE)",
-                "execution_time_s": 111.23,
+                "execution_time_s": 107.65,
                 "ground_truth_match": "FalseNegative"
               }
             }
@@ -2918,7 +2930,7 @@
               "verdict": "safe",
               "details": {
                 "reason": "ConsCS could not determine (NOT SURE)",
-                "execution_time_s": 20.8,
+                "execution_time_s": 20.84,
                 "ground_truth_match": "FalseNegative"
               }
             }
@@ -2982,7 +2994,7 @@
               "verdict": "safe",
               "details": {
                 "reason": "ConsCS could not determine (NOT SURE)",
-                "execution_time_s": 20.94,
+                "execution_time_s": 20.9,
                 "ground_truth_match": "FalseNegative"
               }
             }
@@ -3048,7 +3060,7 @@
               "verdict": "vulnerable",
               "details": {
                 "counterexample": true,
-                "execution_time_s": 0.32,
+                "execution_time_s": 0.31,
                 "ground_truth_match": "TruePositive"
               }
             }
@@ -3114,7 +3126,7 @@
               "verdict": "vulnerable",
               "details": {
                 "counterexample": true,
-                "execution_time_s": 0.37,
+                "execution_time_s": 0.35,
                 "ground_truth_match": "TruePositive"
               }
             }
@@ -3180,7 +3192,7 @@
               "verdict": "vulnerable",
               "details": {
                 "counterexample": true,
-                "execution_time_s": 0.9,
+                "execution_time_s": 0.86,
                 "ground_truth_match": "TruePositive"
               }
             }
@@ -3301,7 +3313,7 @@
             "conscs": {
               "verdict": "safe",
               "details": {
-                "execution_time_s": 3.19,
+                "execution_time_s": 2.96,
                 "ground_truth_match": "FalseNegative"
               }
             }
@@ -3359,7 +3371,7 @@
             "conscs": {
               "verdict": "safe",
               "details": {
-                "execution_time_s": 509.59,
+                "execution_time_s": 481.27,
                 "ground_truth_match": "FalseNegative"
               }
             }
@@ -3417,7 +3429,7 @@
             "conscs": {
               "verdict": "safe",
               "details": {
-                "execution_time_s": 496.19,
+                "execution_time_s": 482.35,
                 "ground_truth_match": "FalseNegative"
               }
             }
@@ -3480,7 +3492,7 @@
               "verdict": "vulnerable",
               "details": {
                 "counterexample": true,
-                "execution_time_s": 0.39,
+                "execution_time_s": 0.35,
                 "ground_truth_match": "TruePositive"
               }
             }
@@ -3653,7 +3665,7 @@
             "conscs": {
               "verdict": "safe",
               "details": {
-                "execution_time_s": 6.59,
+                "execution_time_s": 6.65,
                 "ground_truth_match": "FalseNegative"
               }
             }
@@ -3765,7 +3777,7 @@
               "verdict": "safe",
               "details": {
                 "reason": "ConsCS could not determine (NOT SURE)",
-                "execution_time_s": 23.19,
+                "execution_time_s": 25.08,
                 "ground_truth_match": "FalseNegative"
               }
             }
@@ -3833,7 +3845,7 @@
               "verdict": "vulnerable",
               "details": {
                 "counterexample": true,
-                "execution_time_s": 0.26,
+                "execution_time_s": 0.27,
                 "ground_truth_match": "TruePositive"
               }
             }
@@ -3898,7 +3910,7 @@
               "verdict": "vulnerable",
               "details": {
                 "counterexample": true,
-                "execution_time_s": 0.32,
+                "execution_time_s": 0.33,
                 "ground_truth_match": "TruePositive"
               }
             }
@@ -3954,7 +3966,7 @@
               "verdict": "safe",
               "details": {
                 "reason": "ConsCS could not determine (NOT SURE)",
-                "execution_time_s": 517.44,
+                "execution_time_s": 489.04,
                 "ground_truth_match": "FalseNegative"
               }
             }
@@ -4014,7 +4026,7 @@
             "conscs": {
               "verdict": "safe",
               "details": {
-                "execution_time_s": 0.29,
+                "execution_time_s": 0.27,
                 "ground_truth_match": "FalseNegative"
               }
             }
@@ -4075,7 +4087,7 @@
             "conscs": {
               "verdict": "safe",
               "details": {
-                "execution_time_s": 0.39,
+                "execution_time_s": 0.33,
                 "ground_truth_match": "FalseNegative"
               }
             }
@@ -4132,9 +4144,10 @@
               }
             },
             "conscs": {
-              "verdict": "safe",
+              "verdict": "error",
               "details": {
-                "execution_time_s": 0.36,
+                "reason": "ConsCS aborted: ** time: 99999999",
+                "execution_time_s": 0.33,
                 "ground_truth_match": "FalseNegative"
               }
             }
@@ -4192,7 +4205,7 @@
             "conscs": {
               "verdict": "safe",
               "details": {
-                "execution_time_s": 33.73,
+                "execution_time_s": 33.37,
                 "ground_truth_match": "FalseNegative"
               }
             }
@@ -4245,10 +4258,10 @@
               }
             },
             "conscs": {
-              "verdict": "safe",
+              "verdict": "error",
               "details": {
-                "execution_time_s": 71.31,
-                "ground_truth_match": "FalseNegative"
+                "reason": "ConsCS aborted: maximum recursion depth exceeded",
+                "execution_time_s": 66.24
               }
             }
           }
@@ -4304,7 +4317,7 @@
             "conscs": {
               "verdict": "safe",
               "details": {
-                "execution_time_s": 3.93,
+                "execution_time_s": 3.12,
                 "ground_truth_match": "FalseNegative"
               }
             }
@@ -4419,7 +4432,7 @@
             "conscs": {
               "verdict": "safe",
               "details": {
-                "execution_time_s": 0.31,
+                "execution_time_s": 0.29,
                 "ground_truth_match": "FalseNegative"
               }
             }
@@ -4487,7 +4500,7 @@
               "verdict": "vulnerable",
               "details": {
                 "counterexample": true,
-                "execution_time_s": 0.27,
+                "execution_time_s": 0.26,
                 "ground_truth_match": "TruePositive"
               }
             }
@@ -4539,9 +4552,9 @@
           "missing": 0
         },
         "conscs": {
-          "safe": 25,
+          "safe": 21,
           "vulnerable": 1,
-          "error": 5,
+          "error": 9,
           "timeout": 25,
           "unknown": 0,
           "missing": 0
@@ -4625,7 +4638,11 @@
           },
           {
             "pattern": "R1CS compilation failed",
-            "count": 5
+            "count": 6
+          },
+          {
+            "pattern": "Other / uncategorized",
+            "count": 3
           }
         ]
       },
@@ -4686,7 +4703,7 @@
             "conscs": {
               "verdict": "safe",
               "details": {
-                "execution_time_s": 5.6,
+                "execution_time_s": 6.3,
                 "ground_truth_match": "FalseNegative"
               }
             }
@@ -4750,7 +4767,7 @@
             "conscs": {
               "verdict": "safe",
               "details": {
-                "execution_time_s": 0.27,
+                "execution_time_s": 0.34,
                 "ground_truth_match": "FalseNegative"
               }
             }
@@ -4812,7 +4829,7 @@
               "verdict": "safe",
               "details": {
                 "reason": "ConsCS could not determine (NOT SURE)",
-                "execution_time_s": 0.69,
+                "execution_time_s": 0.74,
                 "ground_truth_match": "FalseNegative"
               }
             }
@@ -4869,7 +4886,7 @@
             "conscs": {
               "verdict": "safe",
               "details": {
-                "execution_time_s": 0.28,
+                "execution_time_s": 0.27,
                 "ground_truth_match": "FalseNegative"
               }
             }
@@ -4925,7 +4942,7 @@
               "verdict": "vulnerable",
               "details": {
                 "counterexample": true,
-                "execution_time_s": 3.15,
+                "execution_time_s": 3.03,
                 "ground_truth_match": "TruePositive"
               }
             }
@@ -4983,7 +5000,7 @@
             "conscs": {
               "verdict": "safe",
               "details": {
-                "execution_time_s": 18.86,
+                "execution_time_s": 19.74,
                 "ground_truth_match": "FalseNegative"
               }
             }
@@ -5046,7 +5063,7 @@
               "verdict": "safe",
               "details": {
                 "reason": "ConsCS could not determine (NOT SURE)",
-                "execution_time_s": 0.23,
+                "execution_time_s": 0.27,
                 "ground_truth_match": "FalseNegative"
               }
             }
@@ -5098,8 +5115,9 @@
               }
             },
             "conscs": {
-              "verdict": "safe",
+              "verdict": "error",
               "details": {
+                "reason": "ConsCS aborted: ** time: 99999999",
                 "execution_time_s": 0.55,
                 "ground_truth_match": "FalseNegative"
               }
@@ -5213,7 +5231,7 @@
             "conscs": {
               "verdict": "safe",
               "details": {
-                "execution_time_s": 58.33,
+                "execution_time_s": 59.94,
                 "ground_truth_match": "FalseNegative"
               }
             }
@@ -5271,7 +5289,7 @@
             "conscs": {
               "verdict": "safe",
               "details": {
-                "execution_time_s": 6.97,
+                "execution_time_s": 7.09,
                 "ground_truth_match": "FalseNegative"
               }
             }
@@ -5843,10 +5861,9 @@
               }
             },
             "conscs": {
-              "verdict": "safe",
+              "verdict": "error",
               "details": {
-                "execution_time_s": 21.68,
-                "ground_truth_match": "FalseNegative"
+                "reason": "R1CS compilation failed"
               }
             }
           }
@@ -6073,7 +6090,7 @@
             "conscs": {
               "verdict": "safe",
               "details": {
-                "execution_time_s": 111.86,
+                "execution_time_s": 146.63,
                 "ground_truth_match": "FalseNegative"
               }
             }
@@ -6248,7 +6265,7 @@
             "conscs": {
               "verdict": "safe",
               "details": {
-                "execution_time_s": 40.25,
+                "execution_time_s": 41.11,
                 "ground_truth_match": "FalseNegative"
               }
             }
@@ -6361,7 +6378,7 @@
               "verdict": "safe",
               "details": {
                 "reason": "ConsCS could not determine (NOT SURE)",
-                "execution_time_s": 11.18,
+                "execution_time_s": 11.43,
                 "ground_truth_match": "FalseNegative"
               }
             }
@@ -6423,7 +6440,7 @@
             "conscs": {
               "verdict": "safe",
               "details": {
-                "execution_time_s": 4.51,
+                "execution_time_s": 4.69,
                 "ground_truth_match": "FalseNegative"
               }
             }
@@ -6597,7 +6614,7 @@
             "conscs": {
               "verdict": "safe",
               "details": {
-                "execution_time_s": 0.27,
+                "execution_time_s": 0.31,
                 "ground_truth_match": "FalseNegative"
               }
             }
@@ -6654,7 +6671,7 @@
             "conscs": {
               "verdict": "safe",
               "details": {
-                "execution_time_s": 86.89,
+                "execution_time_s": 91.44,
                 "ground_truth_match": "FalseNegative"
               }
             }
@@ -6716,7 +6733,7 @@
             "conscs": {
               "verdict": "safe",
               "details": {
-                "execution_time_s": 0.99,
+                "execution_time_s": 1.13,
                 "ground_truth_match": "FalseNegative"
               }
             }
@@ -6832,7 +6849,7 @@
             "conscs": {
               "verdict": "safe",
               "details": {
-                "execution_time_s": 30.01,
+                "execution_time_s": 34.16,
                 "ground_truth_match": "FalseNegative"
               }
             }
@@ -6947,7 +6964,7 @@
             "conscs": {
               "verdict": "safe",
               "details": {
-                "execution_time_s": 504.39,
+                "execution_time_s": 476.22,
                 "ground_truth_match": "FalseNegative"
               }
             }
@@ -7005,7 +7022,7 @@
             "conscs": {
               "verdict": "safe",
               "details": {
-                "execution_time_s": 505.74,
+                "execution_time_s": 475.47,
                 "ground_truth_match": "FalseNegative"
               }
             }
@@ -7233,7 +7250,7 @@
             "conscs": {
               "verdict": "safe",
               "details": {
-                "execution_time_s": 16.59,
+                "execution_time_s": 17.29,
                 "ground_truth_match": "FalseNegative"
               }
             }
@@ -7290,7 +7307,7 @@
             "conscs": {
               "verdict": "safe",
               "details": {
-                "execution_time_s": 16.9,
+                "execution_time_s": 17.2,
                 "ground_truth_match": "FalseNegative"
               }
             }
@@ -7347,7 +7364,7 @@
             "conscs": {
               "verdict": "safe",
               "details": {
-                "execution_time_s": 16.95,
+                "execution_time_s": 17.03,
                 "ground_truth_match": "FalseNegative"
               }
             }
@@ -7566,10 +7583,10 @@
               }
             },
             "conscs": {
-              "verdict": "safe",
+              "verdict": "error",
               "details": {
-                "execution_time_s": 477.65,
-                "ground_truth_match": "FalseNegative"
+                "reason": "ConsCS aborted: maximum recursion depth exceeded",
+                "execution_time_s": 557.61
               }
             }
           }
@@ -7676,10 +7693,10 @@
               }
             },
             "conscs": {
-              "verdict": "safe",
+              "verdict": "error",
               "details": {
-                "execution_time_s": 477.02,
-                "ground_truth_match": "FalseNegative"
+                "reason": "ConsCS aborted: maximum recursion depth exceeded",
+                "execution_time_s": 506.93
               }
             }
           }

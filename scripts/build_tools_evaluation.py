@@ -154,7 +154,13 @@ ERROR_PATTERNS = [
     ("Stack overflow / recursion limit", re.compile(r"stack overflow|RecursionError|recursion limit", re.I)),
     ("OOM / killed", re.compile(r"\bKilled\b|out of memory|OOM")),
     ("Timed out", re.compile(r"Timed out", re.I)),
-    ("R1CS compilation failed", re.compile(r"Failed to compile circuit to R1CS", re.I)),
+    ("R1CS compilation failed", re.compile(
+        r"Failed to compile circuit to R1CS"
+        r"|Precompiled R1CS unavailable"
+        r"|R1CS file not generated",
+        re.I,
+    )),
+    ("Tool produced no log output", re.compile(r"produced no log output", re.I)),
     ("Compilation failed", re.compile(r"compilation failed", re.I)),
     ("circom error reported", re.compile(r"previous errors were found")),
     ("Disk full", re.compile(r"No space left on device")),
@@ -436,6 +442,10 @@ def parse_conscs(raw: str) -> tuple[str, dict]:
 
     results = CONSCS_RESULT_RE.findall(text)
     if not results:
+        # ConsCS ran but never wrote a per-circuit verdict block (same
+        # guard as parse_civer for empty/trivial output).
+        if len(text.strip()) < 200:
+            return "error", {"reason": "ConsCS produced no usable output"}
         return "unknown", {}
 
     details: dict = {}
@@ -456,6 +466,15 @@ def parse_conscs(raw: str) -> tuple[str, dict]:
         return "timeout", {"reason": "ConsCS canceled or timed out on this circuit"}
     if under_constrained:
         return "vulnerable", details
+    # Results that are not CONSTRAINED/UNDER-CONSTRAINED/NOT SURE/TIMEOUT/
+    # canceled are internal ConsCS crashes (e.g. "maximum recursion depth
+    # exceeded") — the analysis never completed, so "safe" would be wrong.
+    crashed = [
+        r for r in results
+        if "CONSTRAINED" not in r.upper() and "NOT SURE" not in r.upper()
+    ]
+    if crashed:
+        return "error", {"reason": f"ConsCS aborted: {crashed[0].strip()[:80]}"}
     if not_sure:
         # NOT SURE = ConsCS found no counterexample; treat as safe so the
         # ground_truth_match (FalseNegative) correctly reflects the miss.
